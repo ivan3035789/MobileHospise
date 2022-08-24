@@ -102,13 +102,13 @@ public class AuthorizationScreenStep {
         authorizationScreenElements.getPasswordField().check(matches(not(withText(invalidPasswordText))));
     }
 
-    public void checkingTheLoginAndPasswordCannotBeEmpty(@NonNull AppActivity activity, int text) {
+    public void checkingTheLoginAndPasswordCannotBeEmpty(@NonNull AppActivity activity, String text) {
         Allure.step("Проверка появления предупреждающего сообщения Login and password cannot be empty");
-        onView(withId(text)).inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));;
+        onView(withText(text)).inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
     }
 
-    public void checkingTheWrongLoginOrPassword(@NonNull AppActivity activity, int text) {
+    public void checkingTheWrongLoginOrPassword(@NonNull AppActivity activity, String text) {
         Allure.step("Проверка появления предупреждающего сообщения Wrong login or password");
-        onView(withId(text)).inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
+        onView(withText(text)).inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
     }
 }
