@@ -104,11 +104,11 @@ public class AuthorizationScreenStep {
 
     public void checkingTheLoginAndPasswordCannotBeEmpty(@NonNull AppActivity activity, int text) {
         Allure.step("Проверка появления предупреждающего сообщения Login and password cannot be empty");
-        onView(withId(text)).inRoot(withDecorView(Matchers.not(is(activity.getWindow().getDecorView()))));
+        onView(withId(text)).inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));;
     }
 
     public void checkingTheWrongLoginOrPassword(@NonNull AppActivity activity, int text) {
         Allure.step("Проверка появления предупреждающего сообщения Wrong login or password");
-        onView(withText(text)).inRoot(withDecorView(Matchers.not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
+        onView(withId(text)).inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
     }
 }

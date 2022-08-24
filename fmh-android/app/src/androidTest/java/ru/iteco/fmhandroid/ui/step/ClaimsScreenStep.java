@@ -55,11 +55,6 @@ public class ClaimsScreenStep {
         claimsScreenElements.getExitButton().perform(click());
     }
 
-    public void clickingOnRandomlySelectedClaim(int position) {
-        Allure.step("Нажатие на случайно выбранную претензию");
-        claimsScreenElements.getBlockClaims().perform(actionOnItemAtPosition(position, click()));
-    }
-
     public void clickingOnTheCloseButton() {
         Allure.step("Нажатие на кнопку закрыть");
         claimsScreenElements.getCloseImageButton().perform(click());
@@ -111,10 +106,15 @@ public class ClaimsScreenStep {
         claimsScreenElements.getCancelButton().perform(click());
     }
 
-    public void choosingRandomClaim(int position) {
-        Allure.step("Случайный выбор претензии");
+//    public void choosingRandomClaim(int position) {
+//        Allure.step("Случайный выбор претензии");
+//        claimsScreenElements.getBlockClaims().perform(actionOnItemAtPosition(position, click()));
+//        SystemClock.sleep(3000);
+//    }
+
+    public void clickingOnRandomlySelectedClaim(int position) {
+        Allure.step("Нажатие на случайно выбранную претензию");
         claimsScreenElements.getBlockClaims().perform(actionOnItemAtPosition(position, click()));
-        SystemClock.sleep(3000);
     }
 
     public void searchForClaimsWithTheOpenStatus() {

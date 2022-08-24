@@ -1,7 +1,6 @@
 package ru.iteco.fmhandroid.ui.test;
 
 import static ru.iteco.fmhandroid.ui.data.Helper.Rand.random;
-import static ru.iteco.fmhandroid.ui.data.Helper.Rand.randomClaims;
 import static ru.iteco.fmhandroid.ui.data.Helper.Text.textSymbol;
 import static ru.iteco.fmhandroid.ui.data.Helper.authInfo;
 
@@ -18,6 +17,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.data.Helper;
 import ru.iteco.fmhandroid.ui.step.AuthorizationScreenStep;
 import ru.iteco.fmhandroid.ui.step.ClaimsScreenStep;
@@ -25,10 +28,6 @@ import ru.iteco.fmhandroid.ui.step.CreatingClaimsScreenStep;
 import ru.iteco.fmhandroid.ui.step.EditingClaimsScreenStep;
 import ru.iteco.fmhandroid.ui.step.FilteringWindowScreenStep;
 import ru.iteco.fmhandroid.ui.step.MainScreenStep;
-import io.qameta.allure.android.runners.AllureAndroidJUnit4;
-import io.qameta.allure.kotlin.Description;
-import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.ui.AppActivity;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -40,6 +39,8 @@ public class ClaimsScreenTest {
     CreatingClaimsScreenStep creatingClaimsScreenStep = new CreatingClaimsScreenStep();
     FilteringWindowScreenStep filteringWindowScreenStep = new FilteringWindowScreenStep();
     EditingClaimsScreenStep editingClaimsScreenStep = new EditingClaimsScreenStep();
+
+    int position = random(0);
 
     @Rule
     public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
@@ -55,6 +56,7 @@ public class ClaimsScreenTest {
         } finally {
             mainScreenStep.clickingOnTheActionMenuButton();
             mainScreenStep.clickingOnTheClaimsName();
+            SystemClock.sleep(5000);
         }
     }
 
@@ -91,9 +93,7 @@ public class ClaimsScreenTest {
     @DisplayName("Must go to Claims")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на блок \"претензия\" в ленте страницы \"Claims\", пользователь переходит в \"претензию\"")
     public void mustGoToClaims() {
-        int position = random(1, 2, 3);
-
-        claimsScreenStep.choosingRandomClaim(position);
+        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         claimsScreenStep.checkClaim();
     }
 
@@ -104,7 +104,9 @@ public class ClaimsScreenTest {
         creatingClaimsScreenStep.createClaimStatusOpenSetUp();
         SystemClock.sleep(5000);
 
-        claimsScreenStep.searchForClaimsWithTheOpenStatus();
+        claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
+        filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
+        filteringWindowScreenStep.clickingOnTheOkButton();
         claimsScreenStep.checkingTheOpenStatus();
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         claimsScreenStep.clickingOnTakeToWork();
@@ -115,7 +117,9 @@ public class ClaimsScreenTest {
     @DisplayName("Should go to Editing Claims")
     @Description(" В этом тест кейсе мы проверяем что при нажатии на кнопку  \"блокнот с карандаошом\"  в  \"Claims\" пользователь попадает в  \"Editing Claims\" ")
     public void shouldGoToEditingClaims() {
-        claimsScreenStep.searchForClaimsWithTheOpenStatus();
+        claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
+        filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
+        filteringWindowScreenStep.clickingOnTheOkButton();
         SystemClock.sleep(3000);
         Helper.Swipes.swipeToBottom();
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
@@ -126,10 +130,13 @@ public class ClaimsScreenTest {
     @DisplayName("The claim must be edited")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"блокнот с карандашем\" пользователь попадает в раздел редактирования претензии претензия редактируется ")
     public void theClaimMustBeEdited() {
-        claimsScreenStep.searchForClaimsWithTheOpenStatus();
-        Helper.Swipes.swipeToBottom();
+        claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
+        filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
+        filteringWindowScreenStep.clickingOnTheOkButton();
+        SystemClock.sleep(3000);
+        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
+        SystemClock.sleep(3000);
 
-        claimsScreenStep.checkingTheOpenStatus();
         String titleClaimFieldItWas = editingClaimsScreenStep.titleClaimField();
         String executorClaimFieldItWas = editingClaimsScreenStep.executorClaimField();
         String dateClaimFieldItWas = editingClaimsScreenStep.dateClaimField();
@@ -157,14 +164,13 @@ public class ClaimsScreenTest {
     @DisplayName("Cancellation of claim editing")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"CANCEL\" происходит отмена редактирования претензии")
     public void cancellationOfClaimEditing() {
-        int position = randomClaims( 1, 2);
-
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
-        Helper.Swipes.scrollSlowlyDown();
         SystemClock.sleep(3000);
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
+        SystemClock.sleep(3000);
+        Helper.Swipes.scrollSlowlyDown();
         SystemClock.sleep(3000);
 
         claimsScreenStep.checkingTheOpenStatus();
@@ -196,9 +202,16 @@ public class ClaimsScreenTest {
     public void cancelingTheCommentFieldWhenSelectingToExecute() {
         String text = textSymbol(5);
 
-        creatingClaimsScreenStep.createClaimStatusOpenSetUp();
-        claimsScreenStep.searchForClaimsWithTheOpenStatus();
+        claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
+        filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
+        filteringWindowScreenStep.clickingOnTheOkButton();
+        SystemClock.sleep(3000);
+        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
+        SystemClock.sleep(3000);
         claimsScreenStep.checkingTheOpenStatus();
+        Helper.Swipes.scrollSlowlyDown();
+        SystemClock.sleep(3000);
+
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         SystemClock.sleep(2000);
         claimsScreenStep.clickingOnTakeToWork();
@@ -225,10 +238,16 @@ public class ClaimsScreenTest {
         creatingClaimsScreenStep.createClaimStatusOpenSetUp();
         String text = textSymbol(5);
 
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheClaimsName();
-        claimsScreenStep.searchForClaimsWithTheOpenStatus();
+        claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
+        filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
+        filteringWindowScreenStep.clickingOnTheOkButton();
+        SystemClock.sleep(3000);
+        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
+        SystemClock.sleep(3000);
         claimsScreenStep.checkingTheOpenStatus();
+        Helper.Swipes.scrollSlowlyDown();
+        SystemClock.sleep(3000);
+
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         SystemClock.sleep(2000);
         claimsScreenStep.clickingOnTakeToWork();
@@ -254,12 +273,16 @@ public class ClaimsScreenTest {
         creatingClaimsScreenStep.createClaimStatusOpenSetUp();
         String text = textSymbol(5);
 
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheClaimsName();
-        claimsScreenStep.searchForClaimsWithTheOpenStatus();
+        claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
+        filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
+        filteringWindowScreenStep.clickingOnTheOkButton();
+        SystemClock.sleep(3000);
+        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
+        SystemClock.sleep(3000);
         claimsScreenStep.checkingTheOpenStatus();
-        Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(5000);
+        Helper.Swipes.scrollSlowlyDown();
+        SystemClock.sleep(3000);
+
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         SystemClock.sleep(2000);
         claimsScreenStep.clickingOnTakeToWork();
@@ -285,11 +308,16 @@ public class ClaimsScreenTest {
     public void theStatusShouldBeReset() {
         String text = textSymbol(5);
 
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheClaimsName();
-        claimsScreenStep.searchForClaimsWithTheOpenStatus();
+        claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
+        filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
+        filteringWindowScreenStep.clickingOnTheOkButton();
+        SystemClock.sleep(3000);
+        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
+        SystemClock.sleep(3000);
         claimsScreenStep.checkingTheOpenStatus();
-        Helper.Swipes.swipeToBottom();
+        Helper.Swipes.scrollSlowlyDown();
+        SystemClock.sleep(3000);
+
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         SystemClock.sleep(2000);
         claimsScreenStep.clickingOnTakeToWork();
@@ -314,12 +342,16 @@ public class ClaimsScreenTest {
     @DisplayName("The status should change to cancelled")
     @Description("В этом тест кейсе мы проверяем смену статуса с Open на Canceled")
     public void theStatusShouldChangeToCancelled() {
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheClaimsName();
-        claimsScreenStep.searchForClaimsWithTheOpenStatus();
+        claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
+        filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
+        filteringWindowScreenStep.clickingOnTheOkButton();
+        SystemClock.sleep(3000);
+        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
+        SystemClock.sleep(3000);
         claimsScreenStep.checkingTheOpenStatus();
-        Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(5000);
+        Helper.Swipes.scrollSlowlyDown();
+        SystemClock.sleep(3000);
+
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         claimsScreenStep.clickingOnToCancel();
         Helper.Swipes.swipeToTop();

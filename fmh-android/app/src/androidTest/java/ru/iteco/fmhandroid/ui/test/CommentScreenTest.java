@@ -28,6 +28,7 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
 public class CommentScreenTest {
+
     MainScreenStep mainScreenStep = new MainScreenStep();
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
     ClaimsScreenStep claimsScreenStep = new ClaimsScreenStep();
@@ -59,7 +60,7 @@ public class CommentScreenTest {
         int position = randomClaims(1, 2, 3);
 
         mainScreenStep.clickingOnTheAllClaimsTextLink();
-        claimsScreenStep.choosingRandomClaim(position);
+        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         SystemClock.sleep(3000);
         Helper.Swipes.swipeToBottom();
         SystemClock.sleep(5000);
@@ -75,14 +76,14 @@ public class CommentScreenTest {
         String invalidLanguageTextComment = "Привет мир";
 
         mainScreenStep.clickingOnTheAllClaimsTextLink();
-        claimsScreenStep.choosingRandomClaim(position);
+        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         SystemClock.sleep(3000);
         Helper.Swipes.swipeToBottom();
         SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheAddCommentButton();
         try {
             commentScreenStep.enteringAnIncorrectLanguageTextComment(invalidLanguageTextComment);
-        } catch (RuntimeException e) {
+        } catch (RuntimeException ignored) {
 
         } finally {
             commentScreenStep.checkTheFieldIsNotFilledWithText();
@@ -97,7 +98,7 @@ public class CommentScreenTest {
         String validTextComment = textSymbol(5);
 
         mainScreenStep.clickingOnTheAllClaimsTextLink();
-        claimsScreenStep.choosingRandomClaim(position);
+        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         Helper.Swipes.swipeToBottom();
         SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheAddCommentButton();
@@ -113,7 +114,7 @@ public class CommentScreenTest {
         String validTextComment = textSymbol(5);
 
         mainScreenStep.clickingOnTheAllClaimsTextLink();
-        claimsScreenStep.choosingRandomClaim(position);
+        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         Helper.Swipes.swipeToBottom();
         SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheAddCommentButton();
@@ -136,7 +137,7 @@ public class CommentScreenTest {
         String validTextComment = textSymbol(5);
 
         mainScreenStep.clickingOnTheAllClaimsTextLink();
-        claimsScreenStep.choosingRandomClaim(position);
+        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         Helper.Swipes.swipeToBottom();
         SystemClock.sleep(3000);
 
@@ -156,7 +157,7 @@ public class CommentScreenTest {
         int position = randomClaims(0);
 
         mainScreenStep.clickingOnTheAllClaimsTextLink();
-        claimsScreenStep.choosingRandomClaim(position);
+        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         SystemClock.sleep(3000);
         Helper.Swipes.swipeToBottom();
         SystemClock.sleep(3000);
@@ -174,7 +175,7 @@ public class CommentScreenTest {
         String validTextComment = textSymbol(5);
 
         mainScreenStep.clickingOnTheAllClaimsTextLink();
-        claimsScreenStep.choosingRandomClaim(position);
+        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheButtonToEnterTheCommentEditingScreen(positionComment);
         SystemClock.sleep(3000);
@@ -194,7 +195,7 @@ public class CommentScreenTest {
         String validTextComment2 = textSymbol(5);
 
         mainScreenStep.clickingOnTheAllClaimsTextLink();
-        claimsScreenStep.choosingRandomClaim(position);
+        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         SystemClock.sleep(3000);
         Helper.Swipes.swipeToBottom();
         SystemClock.sleep(5000);
