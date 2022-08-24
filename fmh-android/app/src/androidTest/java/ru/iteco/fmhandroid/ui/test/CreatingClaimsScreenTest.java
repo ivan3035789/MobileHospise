@@ -4,7 +4,6 @@ import static ru.iteco.fmhandroid.ui.data.Helper.Rand.randomExecutor;
 import static ru.iteco.fmhandroid.ui.data.Helper.Text.text51Symbol;
 import static ru.iteco.fmhandroid.ui.data.Helper.Text.textSymbol;
 import static ru.iteco.fmhandroid.ui.data.Helper.authInfo;
-import static ru.iteco.fmhandroid.ui.step.MainScreenStep.enterCreateClaimsActionButton;
 
 import android.os.SystemClock;
 
@@ -18,22 +17,25 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.R;
+import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.step.AuthorizationScreenStep;
 import ru.iteco.fmhandroid.ui.step.ClaimsScreenStep;
 import ru.iteco.fmhandroid.ui.step.CreatingClaimsScreenStep;
 import ru.iteco.fmhandroid.ui.step.FilteringWindowScreenStep;
 import ru.iteco.fmhandroid.ui.step.MainScreenStep;
 import ru.iteco.fmhandroid.ui.step.WatchScreenStep;
-import io.qameta.allure.android.runners.AllureAndroidJUnit4;
-import io.qameta.allure.kotlin.Description;
-import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.R;
-import ru.iteco.fmhandroid.ui.AppActivity;
 
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
 public class CreatingClaimsScreenTest {
+
+    @Rule
+    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
 
     CreatingClaimsScreenStep creatingClaimsScreenStep = new CreatingClaimsScreenStep();
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
@@ -41,9 +43,6 @@ public class CreatingClaimsScreenTest {
     MainScreenStep mainScreenStep = new MainScreenStep();
     WatchScreenStep watchScreenStep = new WatchScreenStep();
     FilteringWindowScreenStep filteringWindowScreenStep = new FilteringWindowScreenStep();
-
-    @Rule
-    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
 
     @Before
     public void logoutCheck() {
@@ -139,8 +138,11 @@ public class CreatingClaimsScreenTest {
         String description = creatingClaimsScreenStep.description();
 
         creatingClaimsScreenStep.clickingOnTheSaveButton();
-        claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
-        filteringWindowScreenStep.clickingOnTheOkButton();
+//        SystemClock.sleep(3000);
+//        claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
+//        SystemClock.sleep(3000);
+//        filteringWindowScreenStep.clickingOnTheOkButton();
+        SystemClock.sleep(3000);
         creatingClaimsScreenStep.searchForCreatedClaim(titleText);
 
         String titleOnCaredClaims = creatingClaimsScreenStep.titleOnCaredClaims();
@@ -163,15 +165,19 @@ public class CreatingClaimsScreenTest {
 //        enterCreateClaimsActionButton();
 
         creatingClaimsScreenStep.fillingInTheFieldsWithValidDataToCreateClaimWithAnOpenStatus(titleText);
+
         String title = creatingClaimsScreenStep.title();
         String date = creatingClaimsScreenStep.dateFromTheField();
         String time = creatingClaimsScreenStep.time();
         String description = creatingClaimsScreenStep.description();
 
         creatingClaimsScreenStep.clickingOnTheSaveButton();
+        SystemClock.sleep(3000);
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
+        SystemClock.sleep(3000);
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
+        SystemClock.sleep(3000);
         creatingClaimsScreenStep.searchForCreatedClaim(titleText);
 
         String titleOnCaredClaims = creatingClaimsScreenStep.titleOnCaredClaims();
@@ -179,6 +185,7 @@ public class CreatingClaimsScreenTest {
         String timeOnCaredClaims = creatingClaimsScreenStep.timeOnCaredClaims();
         String descriptionOnCaredClaims = creatingClaimsScreenStep.descriptionOnCaredClaims();
 
+        SystemClock.sleep(3000);
         creatingClaimsScreenStep.checkingTheDataAndStatusOfTheClaimCreatedAndFound(
                 title, titleOnCaredClaims, date, dateOnCaredClaims, time, timeOnCaredClaims,
                 description, descriptionOnCaredClaims);
@@ -221,7 +228,7 @@ public class CreatingClaimsScreenTest {
 
         try {
             creatingClaimsScreenStep.invalidLanguage(invalidLanguageText, invalidLanguageText, invalidLanguageText);
-        } catch (RuntimeException expected) {
+        } catch (RuntimeException e) {
 
         } finally {
             creatingClaimsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();

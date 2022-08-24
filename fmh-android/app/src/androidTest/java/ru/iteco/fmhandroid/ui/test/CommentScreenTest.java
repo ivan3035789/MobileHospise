@@ -2,6 +2,7 @@ package ru.iteco.fmhandroid.ui.test;
 
 import static ru.iteco.fmhandroid.ui.data.Helper.Rand.randomClaims;
 import static ru.iteco.fmhandroid.ui.data.Helper.Text.textSymbol;
+import static ru.iteco.fmhandroid.ui.data.Helper.authInfo;
 
 import android.os.SystemClock;
 
@@ -38,14 +39,16 @@ public class CommentScreenTest {
     CommentScreenStep commentScreenStep = new CommentScreenStep();
 
     int position = randomClaims(0);
+    int positionComment = 2;
 
     @Before
     public void logoutCheck() {
         SystemClock.sleep(8000);
         try {
             mainScreenStep.checkNameMainScreen();
+            SystemClock.sleep(3000);
         } catch (NoMatchingViewException e) {
-            authorizationScreenStep.validLoginPassword(Helper.authInfo());
+            authorizationScreenStep.validLoginPassword(authInfo());
             SystemClock.sleep(5000);
         } finally {
             mainScreenStep.clickingOnTheAllClaimsTextLink();
@@ -64,7 +67,7 @@ public class CommentScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при клике на кнопку \"+\" в поле \"Add comment\" пользователь переходит в раздел создания коментария ")
     public void mustEnterTheCommentCreationSection() {
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(5000);
+        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheAddCommentButton();
         commentScreenStep.checkingTheEntryToTheCommentScreen();
     }
@@ -107,7 +110,7 @@ public class CommentScreenTest {
         String validTextComment = textSymbol(5);
 
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(5000);
+        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheAddCommentButton();
         SystemClock.sleep(3000);
         commentScreenStep.validLanguageTextComment(validTextComment);
@@ -153,10 +156,8 @@ public class CommentScreenTest {
     @DisplayName("The comment in the claim should be edited")
     @Description("В этом тест кейсе мы проверяем что при нажатии на кнопку с иконкой \"блокнот с карандашом\" пользователь попадает в раздел создания, редактирования коментариев, имеется возможность отредактировать коментарий")
     public void theCommentInTheClaimShouldBeEdited() {
-        int positionComment = 2;
         String validTextComment = textSymbol(5);
 
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheButtonToEnterTheCommentEditingScreen(positionComment);
         SystemClock.sleep(3000);
         commentScreenStep.validLanguageTextComment(validTextComment);
@@ -173,7 +174,6 @@ public class CommentScreenTest {
         String validTextComment1 = textSymbol(5);
         String validTextComment2 = textSymbol(5);
 
-        SystemClock.sleep(3000);
         Helper.Swipes.swipeToBottom();
         SystemClock.sleep(5000);
         claimsScreenStep.clickingOnTheAddCommentButton();

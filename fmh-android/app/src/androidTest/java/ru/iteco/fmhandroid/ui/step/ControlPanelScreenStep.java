@@ -44,11 +44,6 @@ public class ControlPanelScreenStep {
         controlPanelScreenElements.getFilterNewsButton().perform(click());
     }
 
-    public void clickingOnTheButtonToGoToTheNewsEditingScreen() {
-        Allure.step("Нажатие на кнопку перехода на экран редактирование новости");
-        controlPanelScreenElements.getEditingNewsButton().perform(click());
-    }
-
     public void clickingOnTheDeleteNewsButton() {
         Allure.step("Нажатие на кнопку удаления новости");
         controlPanelScreenElements.getDeleteNews().perform(click());
@@ -72,6 +67,11 @@ public class ControlPanelScreenStep {
     public void clickingOnTheButtonToGoToTheEditingNewsScreen(int position) {
         Allure.step("Нажатие на кнопку перехода к экрану Editing News");
         onView(withIndex(withId(R.id.edit_news_item_image_view), position)).perform(click());
+    }
+
+    public void clickingOnTheButtonToGoToTheNewsEditingScreen() {
+        Allure.step("Нажатие на кнопку перехода на экран редактирование новости");
+        controlPanelScreenElements.getEditingNewsButton().perform(click());
     }
 
     public void clickingOnRandomlySelectedNewsItem(int position) {

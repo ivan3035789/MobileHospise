@@ -24,6 +24,7 @@ import ru.iteco.fmhandroid.ui.step.AuthorizationScreenStep;
 import ru.iteco.fmhandroid.ui.step.ControlPanelScreenStep;
 import ru.iteco.fmhandroid.ui.step.EditingNewsScreenStep;
 import ru.iteco.fmhandroid.ui.step.MainScreenStep;
+import ru.iteco.fmhandroid.ui.step.NewsScreenStep;
 import ru.iteco.fmhandroid.ui.step.WatchScreenStep;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
@@ -35,25 +36,30 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 @RunWith(AllureAndroidJUnit4.class)
 public class EditingNewsScreenTest {
 
+    @Rule
+    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
+
     MainScreenStep mainScreenStep = new MainScreenStep();
+    NewsScreenStep newsScreenStep = new NewsScreenStep();
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
     ControlPanelScreenStep controlPanelScreenStep = new ControlPanelScreenStep();
     EditingNewsScreenStep editingNewsScreenStep = new EditingNewsScreenStep();
     WatchScreenStep watchScreenStep = new WatchScreenStep();
-
-    @Rule
-    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
 
     @Before
     public void logoutCheck() {
         SystemClock.sleep(8000);
         try {
             mainScreenStep.checkNameMainScreen();
+            SystemClock.sleep(5000);
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
             SystemClock.sleep(5000);
         } finally {
-            mainScreenStep.switchingToTheControlPanel();
+            mainScreenStep.clickingOnTheActionMenuButton();
+            mainScreenStep.clickingOnTheNewsName();
+            newsScreenStep.clickingOnTheButtonToGoToTheControlPanel();
+            SystemClock.sleep(3000);
         }
     }
 

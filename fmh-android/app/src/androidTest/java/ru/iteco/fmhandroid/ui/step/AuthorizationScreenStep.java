@@ -14,6 +14,8 @@ import static org.hamcrest.core.IsNot.not;
 import static ru.iteco.fmhandroid.ui.data.Helper.invalidAuthInfo;
 import static ru.iteco.fmhandroid.ui.data.Helper.invalidLoginPasswordAuthInfo;
 
+import android.os.SystemClock;
+
 import androidx.annotation.NonNull;
 import androidx.test.espresso.ViewInteraction;
 
@@ -53,6 +55,7 @@ public class AuthorizationScreenStep {
         checkingTheNameOfTheAuthorizationScreen();
         authorizationScreenElements.getLoginField().perform(typeText(info.getLogin()));
         authorizationScreenElements.getPasswordField().perform(typeText(info.getPassword())).perform(closeSoftKeyboard());
+        SystemClock.sleep(3000);
         authorizationScreenElements.getButton().perform(click());
     }
 

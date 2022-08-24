@@ -35,6 +35,9 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 @RunWith(AllureAndroidJUnit4.class)
 public class ControlPanelScreenTest {
 
+    @Rule
+    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
+
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
     MainScreenStep mainScreenStep = new MainScreenStep();
     ControlPanelScreenStep controlPanelScreenStep = new ControlPanelScreenStep();
@@ -43,14 +46,12 @@ public class ControlPanelScreenTest {
     FilterNewsScreenStep filterNewsScreenStep = new FilterNewsScreenStep();
     EditingNewsScreenStep editingNewsScreenStep = new EditingNewsScreenStep();
 
-    @Rule
-    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
-
     @Before
     public void logoutCheck() {
         SystemClock.sleep(8000);
         try {
             mainScreenStep.checkNameMainScreen();
+            SystemClock.sleep(5000);
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
             SystemClock.sleep(3000);

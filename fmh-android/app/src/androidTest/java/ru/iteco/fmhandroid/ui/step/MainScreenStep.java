@@ -186,6 +186,7 @@ public class MainScreenStep {
         CreatingClaimsScreenElements creatingClaimsScreenElements = new CreatingClaimsScreenElements();
 
         mainScreenElements.getAllClaims().perform(click());
+        SystemClock.sleep(3000);
         claimsScreenElements.getCreateClaimsButton().perform(click());
         SystemClock.sleep(3000);
         creatingClaimsScreenElements.getCreatingNameScreen().check(matches(isDisplayed()));
@@ -199,9 +200,11 @@ public class MainScreenStep {
         CreatingClaimsScreenElements creatingClaimsScreenElements = new CreatingClaimsScreenElements();
 
         mainScreenElements.getMainMenuImageButton().perform(click());
+        SystemClock.sleep(3000);
         mainScreenElements.getTitleClaimsScreen().perform(click());
         SystemClock.sleep(3000);
         claimsScreenElements.getCreateClaimsButton().perform(click());
+        SystemClock.sleep(3000);
         creatingClaimsScreenElements.getCreatingNameScreen().check(matches(isDisplayed()));
         creatingClaimsScreenElements.getClaimsNameScreen().check(matches(isDisplayed()));
         SystemClock.sleep(3000);
@@ -211,7 +214,6 @@ public class MainScreenStep {
         MainScreenElements mainScreenElements = new MainScreenElements();
         CreatingClaimsScreenElements creatingClaimsScreenElements = new CreatingClaimsScreenElements();
 
-        SystemClock.sleep(2000);
         mainScreenElements.getCreateClaimsButton().perform(click());
         SystemClock.sleep(3000);
         creatingClaimsScreenElements.getCreatingNameScreen().check(matches(isDisplayed()));
@@ -227,9 +229,10 @@ public class MainScreenStep {
 
         mainScreenElements.getAllNews().perform(click());
         SystemClock.sleep(3000);
-        newsScreenElements.getScreenNameNews().check(matches(withText("News"))).check(matches(isDisplayed()));
+        newsScreenElements.getScreenNameNews().check(matches(isDisplayed()));
         newsScreenElements.getEditButton().perform(click());
-        controlPanelScreenElements.getControlPanelNameScreen().check(matches(withText("Control panel"))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
+        controlPanelScreenElements.getControlPanelNameScreen().check(matches(isDisplayed()));
         controlPanelScreenElements.getCreateNewsButton().perform(click());
         SystemClock.sleep(5000);
         creatingNewsScreenElements.getCreatingNameScreen().check(matches(isDisplayed()));
@@ -243,10 +246,12 @@ public class MainScreenStep {
         ControlPanelScreenElements controlPanelScreenElements = new ControlPanelScreenElements();
 
         mainScreenElements.getMainMenuImageButton().perform(click());
+        SystemClock.sleep(3000);
         mainScreenElements.getTitleNews().perform(click());
-        newsScreenElements.getScreenNameNews().check(matches(withText("News"))).check(matches(isDisplayed()));
+        newsScreenElements.getScreenNameNews().check(matches(isDisplayed()));
         newsScreenElements.getEditButton().perform(click());
-        controlPanelScreenElements.getControlPanelNameScreen().check(matches(withText("Control panel"))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
+        controlPanelScreenElements.getControlPanelNameScreen().check(matches(isDisplayed()));
         controlPanelScreenElements.getCreateNewsButton().perform(click());
         SystemClock.sleep(5000);
         creatingNewsScreenElements.getCreatingNameScreen().check(matches(isDisplayed()));

@@ -45,11 +45,11 @@ public class CalendarScreenTest {
         SystemClock.sleep(8000);
         try {
             mainScreenStep.checkNameMainScreen();
+            SystemClock.sleep(5000);
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
             SystemClock.sleep(5000);
         } finally {
-            SystemClock.sleep(3000);
             mainScreenStep.clickingOnTheButtonToGoToTheClaimCreationScreen();
             SystemClock.sleep(3000);
             creatingClaimsScreenStep.checkingTheNameOfTheClaimCreationScreen();
@@ -109,7 +109,6 @@ public class CalendarScreenTest {
         int randomDay = randomDay();
         String dayOfWeekPlusRandomDay = String.valueOf(LocalDate.now().plusMonths(1).plusDays(randomDay).getDayOfWeek()).substring(0, 3).toLowerCase();
         int yearNowSetUp = LocalDate.now().getYear();
-//        int monthPlusRandomDaySetUp = LocalDate.now().plusDays(randomDay).getMonthValue();
         int monthPlusRandomDaySetUp = LocalDate.now().plusMonths(1).getMonthValue();
         String monthPlusRandomDay = String.valueOf(LocalDate.now().plusMonths(1).plusDays(randomDay).getMonth()).substring(0, 3).toLowerCase();
         int dayPlusRandomDayDetUp = LocalDate.now().plusDays(randomDay).getDayOfMonth();
