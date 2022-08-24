@@ -54,8 +54,7 @@ public class MainScreenElements {
                             withClassName(is("android.widget.LinearLayout")), childAtPosition(
                                     withClassName(is("android.widget.LinearLayout")), withId(R.id.container_list_claim_include_on_fragment_main),
                                     0),
-                            3),
-                    isDisplayed()));
+                            3)));
 
     public ViewInteraction getMainMenuImageButton() {
         return mainMenuImageButton;

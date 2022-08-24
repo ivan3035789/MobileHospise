@@ -119,9 +119,13 @@ public class ClaimsScreenTest {
     public void shouldGoToEditingClaims() {
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
+        SystemClock.sleep(3000);
         filteringWindowScreenStep.clickingOnTheOkButton();
         SystemClock.sleep(3000);
+        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
+        SystemClock.sleep(3000);
         Helper.Swipes.swipeToBottom();
+        SystemClock.sleep(5000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
         editingClaimsScreenStep.checkingTheNameOfTheScreenForEditingClaims();
     }
@@ -146,7 +150,9 @@ public class ClaimsScreenTest {
         Helper.Swipes.swipeToBottom();
         SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
+        SystemClock.sleep(3000);
         editingClaimsScreenStep.fillingInFieldsWithValidData();
+        SystemClock.sleep(3000);
         editingClaimsScreenStep.clickingOnTheSaveButton();
 
         String titleClaimFieldItWasHasBecome = editingClaimsScreenStep.titleClaimField();

@@ -2,6 +2,7 @@ package ru.iteco.fmhandroid.ui.test;
 
 import static ru.iteco.fmhandroid.ui.data.Helper.Rand.random;
 import static ru.iteco.fmhandroid.ui.data.Helper.Rand.randomDay;
+import static ru.iteco.fmhandroid.ui.data.Helper.authInfo;
 
 import android.os.SystemClock;
 
@@ -18,15 +19,14 @@ import org.junit.runner.RunWith;
 
 import java.time.LocalDate;
 
-import ru.iteco.fmhandroid.ui.data.Helper;
-import ru.iteco.fmhandroid.ui.step.AuthorizationScreenStep;
-import ru.iteco.fmhandroid.ui.step.CalendarScreenStep;
-import ru.iteco.fmhandroid.ui.step.CreatingClaimsScreenStep;
-import ru.iteco.fmhandroid.ui.step.MainScreenStep;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.step.AuthorizationScreenStep;
+import ru.iteco.fmhandroid.ui.step.CalendarScreenStep;
+import ru.iteco.fmhandroid.ui.step.CreatingClaimsScreenStep;
+import ru.iteco.fmhandroid.ui.step.MainScreenStep;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -46,10 +46,14 @@ public class CalendarScreenTest {
         try {
             mainScreenStep.checkNameMainScreen();
         } catch (NoMatchingViewException e) {
-            authorizationScreenStep.validLoginPassword(Helper.authInfo());
+            authorizationScreenStep.validLoginPassword(authInfo());
+            SystemClock.sleep(5000);
         } finally {
+            SystemClock.sleep(3000);
             mainScreenStep.clickingOnTheButtonToGoToTheClaimCreationScreen();
+            SystemClock.sleep(3000);
             creatingClaimsScreenStep.checkingTheNameOfTheClaimCreationScreen();
+            SystemClock.sleep(3000);
             creatingClaimsScreenStep.clickingOnTheDateField();
             SystemClock.sleep(5000);
         }
