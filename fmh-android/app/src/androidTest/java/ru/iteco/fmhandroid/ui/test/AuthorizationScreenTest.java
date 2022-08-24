@@ -25,11 +25,11 @@ import ru.iteco.fmhandroid.ui.step.MainScreenStep;
 @RunWith(AllureAndroidJUnit4.class)
 public class AuthorizationScreenTest {
 
-    AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
-    MainScreenStep mainScreenStep = new MainScreenStep();
-
     @Rule
     public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
+
+    AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
+    MainScreenStep mainScreenStep = new MainScreenStep();
 
     @Before
     public void logoutCheck() {

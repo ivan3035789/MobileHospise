@@ -41,13 +41,13 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 @RunWith(AllureAndroidJUnit4.class)
 public class AdvancedNewsSearchTest {
 
+    @Rule
+    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
+
     MainScreenStep mainScreenStep = new MainScreenStep();
     ControlPanelScreenStep controlPanelScreenStep = new ControlPanelScreenStep();
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
     AdvancedNewsSearchScreenStep advancedNewsSearchScreenStep = new AdvancedNewsSearchScreenStep();
-
-    @Rule
-    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
 
     @Before
     public void logoutCheck() {

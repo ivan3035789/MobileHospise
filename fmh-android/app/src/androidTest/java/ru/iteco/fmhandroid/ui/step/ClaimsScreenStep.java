@@ -106,12 +106,6 @@ public class ClaimsScreenStep {
         claimsScreenElements.getCancelButton().perform(click());
     }
 
-//    public void choosingRandomClaim(int position) {
-//        Allure.step("Случайный выбор претензии");
-//        claimsScreenElements.getBlockClaims().perform(actionOnItemAtPosition(position, click()));
-//        SystemClock.sleep(3000);
-//    }
-
     public void clickingOnRandomlySelectedClaim(int position) {
         Allure.step("Нажатие на случайно выбранную претензию");
         claimsScreenElements.getBlockClaims().perform(actionOnItemAtPosition(position, click()));

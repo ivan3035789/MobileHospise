@@ -33,6 +33,9 @@ import ru.iteco.fmhandroid.ui.step.MainScreenStep;
 @RunWith(AllureAndroidJUnit4.class)
 public class ClaimsScreenTest {
 
+    @Rule
+    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
+
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
     MainScreenStep mainScreenStep = new MainScreenStep();
     ClaimsScreenStep claimsScreenStep = new ClaimsScreenStep();
@@ -41,9 +44,6 @@ public class ClaimsScreenTest {
     EditingClaimsScreenStep editingClaimsScreenStep = new EditingClaimsScreenStep();
 
     int position = random(0);
-
-    @Rule
-    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
 
     @Before
     public void logoutCheck() {
@@ -107,9 +107,18 @@ public class ClaimsScreenTest {
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
+        SystemClock.sleep(3000);
+        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
+        SystemClock.sleep(3000);
         claimsScreenStep.checkingTheOpenStatus();
+        SystemClock.sleep(3000);
+        Helper.Swipes.scrollSlowlyDown();
+        SystemClock.sleep(5000);
+
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
+        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnTakeToWork();
+        SystemClock.sleep(2000);
         claimsScreenStep.checkingTheInProgressStatus();
     }
 
@@ -215,8 +224,9 @@ public class ClaimsScreenTest {
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         SystemClock.sleep(3000);
         claimsScreenStep.checkingTheOpenStatus();
-        Helper.Swipes.scrollSlowlyDown();
         SystemClock.sleep(3000);
+        Helper.Swipes.scrollSlowlyDown();
+        SystemClock.sleep(5000);
 
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         SystemClock.sleep(2000);
@@ -343,7 +353,7 @@ public class ClaimsScreenTest {
         claimsScreenStep.checkingTheOpenStatus();
     }
 
-    @Ignore
+    @Ignore("TODO")
     @Test
     @DisplayName("The status should change to cancelled")
     @Description("В этом тест кейсе мы проверяем смену статуса с Open на Canceled")

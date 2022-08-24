@@ -21,10 +21,10 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 @RunWith(AllureAndroidJUnit4.class)
 public class ApplicationLoadingScreenTest {
 
-    ApplicationLoadingScreenStep applicationLoadingScreenStep = new ApplicationLoadingScreenStep();
-
     @Rule
     public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
+
+    ApplicationLoadingScreenStep applicationLoadingScreenStep = new ApplicationLoadingScreenStep();
 
     @Before
     public void logoutCheck() {

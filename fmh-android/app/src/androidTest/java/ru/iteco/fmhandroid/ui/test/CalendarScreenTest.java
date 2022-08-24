@@ -32,13 +32,13 @@ import ru.iteco.fmhandroid.ui.step.MainScreenStep;
 @RunWith(AllureAndroidJUnit4.class)
 public class CalendarScreenTest {
 
+    @Rule
+    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
+
     MainScreenStep mainScreenStep = new MainScreenStep();
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
     CreatingClaimsScreenStep creatingClaimsScreenStep = new CreatingClaimsScreenStep();
     CalendarScreenStep calendarScreenStep = new CalendarScreenStep();
-
-    @Rule
-    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
 
     @Before
     public void logoutCheck() {
