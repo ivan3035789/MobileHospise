@@ -54,9 +54,10 @@ public class ControlPanelScreenTest {
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
             SystemClock.sleep(3000);
+        } finally {
+            deletingNewsUpToTheNumberOfTenControlPanelScreen(7);
+            SystemClock.sleep(5000);
         }
-        deletingNewsUpToTheNumberOfTenControlPanelScreen(7);
-        SystemClock.sleep(5000);
     }
 
     @After
@@ -69,7 +70,6 @@ public class ControlPanelScreenTest {
     @DisplayName("The screen should have a name")
     @Description("В этом тест кейсе мы проверяем название экрана Control Panel")
     public void theScreenShouldHaveName() {
-//        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.checkingTheNameOfTheControlPanelScreen();
     }
 
@@ -80,7 +80,6 @@ public class ControlPanelScreenTest {
             " должна оказаться на самом верху  новостной ленты), на более раннюю (по убыванию, самая раняя дата должна " +
             "оказаться в самом низу новостной ленты) и наоборот")
     public void newsBlocksShouldBeSwapped() {
-//        mainScreenStep.switchingToTheControlPanel();
         String firstNews = newsScreenStep.news();
         SystemClock.sleep(5000);
         controlPanelScreenStep.changeOfSorting();
@@ -98,7 +97,6 @@ public class ControlPanelScreenTest {
     @DisplayName("must go to the Filter news")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"три полоски с кружками\" в  Control panel, пользователь попадает в \"Filter news\" ")
     public void mustGoToTheNewsFilter() {
-//        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
         SystemClock.sleep(5000);
         filterNewsScreenStep.checkingTheScreenNameForNewsSearch();
@@ -108,7 +106,6 @@ public class ControlPanelScreenTest {
     @DisplayName("should go to the news creation section")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"+\" в  Control panel, пользователь попадает в  \"Creating News\"")
     public void shouldGoToTheNewsCreationSection() {
-//        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
         SystemClock.sleep(5000);
         creatingNewsScreenStep.checkingTheNameOfTheCreatingNewsScreen();
@@ -162,7 +159,6 @@ public class ControlPanelScreenTest {
             " These changes cannot be reversed in the future.\" при нажатии на кнопку  \"CANCEL\" не происходит удаление" +
             " новостного блока")
     public void mustNotDeleteNewsBlockFromTheNewsFeedWhileInTheControlPanel() {
-//        mainScreenStep.switchingToTheControlPanel();
         SystemClock.sleep(3000);
         int position = randomNews(1);
 
@@ -197,10 +193,7 @@ public class ControlPanelScreenTest {
     @Description(" В этом тест кейсе мы проверяем, что при нажатии на кнопку \"стрелка вниз\" или нажатии на новость, появляется описание")
     public void aDescriptionShouldAppearInTheNewsBlockInTheControlPanel() {
         int position = randomNews(0);
-//        String descriptionNews = controlPanelScreenStep.descriptionNews();
 
-//        SystemClock.sleep(2000);
-//        controlPanelScreenStep.checkingTheInvisibilityOfTheNewsDescription(descriptionNews);
         SystemClock.sleep(2000);
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
         SystemClock.sleep(2000);

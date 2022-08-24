@@ -47,6 +47,11 @@ public class CalendarScreenTest {
             mainScreenStep.checkNameMainScreen();
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(Helper.authInfo());
+        } finally {
+            mainScreenStep.clickingOnTheButtonToGoToTheClaimCreationScreen();
+            creatingClaimsScreenStep.checkingTheNameOfTheClaimCreationScreen();
+            creatingClaimsScreenStep.clickingOnTheDateField();
+            SystemClock.sleep(5000);
         }
     }
 
@@ -71,10 +76,6 @@ public class CalendarScreenTest {
         String dayPlusYearPlusMonth = String.valueOf(LocalDate.now().plusMonths(1).getDayOfMonth());
         int dayNowSetUp = LocalDate.now().plusMonths(1).getDayOfMonth();
         String dayNow = String.valueOf(LocalDate.now().plusMonths(1).getDayOfMonth());
-
-        mainScreenStep.clickingOnTheButtonToGoToTheClaimCreationScreen();
-        creatingClaimsScreenStep.checkingTheNameOfTheClaimCreationScreen();
-        creatingClaimsScreenStep.clickingOnTheDateField();
 
         calendarScreenStep.pressingTheButtonToGoToTheNextMonthTwelveTimes(numberOfMonths);
         calendarScreenStep.settingDate(yearNowSetUp, monthPlusTwoMonthSetUp, dayNowSetUp);
@@ -110,10 +111,6 @@ public class CalendarScreenTest {
         int dayPlusRandomDayDetUp = LocalDate.now().plusDays(randomDay).getDayOfMonth();
         String dayPlusRandomDay = String.valueOf(LocalDate.now().plusMonths(1).plusDays(randomDay).getDayOfMonth());
 
-        mainScreenStep.clickingOnTheButtonToGoToTheClaimCreationScreen();
-        creatingClaimsScreenStep.checkingTheNameOfTheClaimCreationScreen();
-        creatingClaimsScreenStep.clickingOnTheDateField();
-
         calendarScreenStep.settingDate(yearNowSetUp, monthPlusRandomDaySetUp, dayPlusRandomDayDetUp);
         SystemClock.sleep(3000);
 
@@ -137,10 +134,6 @@ public class CalendarScreenTest {
         int monthNowSetUp = LocalDate.now().getMonthValue();
         int monthPlusNumberOfMonthsSetUp = LocalDate.now().plusMonths(numberOfMonths).getMonthValue();
         int dayNowSetUp = LocalDate.now().getDayOfMonth();
-
-        SystemClock.sleep(3000);
-        mainScreenStep.clickingOnTheButtonToGoToTheClaimCreationScreen();
-        creatingClaimsScreenStep.clickingOnTheDateField();
 
         calendarScreenStep.pressingTheButtonToGoToTheNextMonthTwelveTimes(numberOfMonths);
         calendarScreenStep.settingDate(yearIntPlusNumberOfMonthsSetUp, monthPlusNumberOfMonthsSetUp, dayNowSetUp);
@@ -173,10 +166,6 @@ public class CalendarScreenTest {
         String dayOfMonthPlusRandomDay = String.valueOf(LocalDate.now().plusMonths(1).plusDays(randomDay).getDayOfMonth());
         int DayOfMonthPlusRandomDaySetUp = LocalDate.now().plusMonths(1).plusDays(randomDay).getDayOfMonth();
 
-        SystemClock.sleep(3000);
-        mainScreenStep.clickingOnTheButtonToGoToTheClaimCreationScreen();
-        creatingClaimsScreenStep.clickingOnTheDateField();
-
         calendarScreenStep.settingDate(yearNowSetUp, monthPlusRandomDaySetUp, DayOfMonthPlusRandomDaySetUp);
         SystemClock.sleep(3000);
 
@@ -207,10 +196,6 @@ public class CalendarScreenTest {
         int monthNow = LocalDate.now().getMonthValue();
         int dayOfMonthNow = LocalDate.now().getDayOfMonth();
 
-        SystemClock.sleep(3000);
-        mainScreenStep.clickingOnTheButtonToGoToTheClaimCreationScreen();
-        creatingClaimsScreenStep.clickingOnTheDateField();
-
         calendarScreenStep.pressingTheButtonToSelectTheYear();
         SystemClock.sleep(3000);
         calendarScreenStep.settingTheYear(randomYear);
@@ -240,9 +225,6 @@ public class CalendarScreenTest {
         String monthPlusRandomYearPlusRandomMonth = String.valueOf(LocalDate.now().plusYears(randomYear).plusMonths(randomMonth).plusDays(day).getMonth()).substring(0, 3).toLowerCase();
         String dayPlusRandomYearPlusRandomMonth = String.valueOf(LocalDate.now().plusYears(randomYear).plusMonths(randomMonth).plusDays(day).getDayOfMonth());
 
-        SystemClock.sleep(3000);
-        mainScreenStep.clickingOnTheButtonToGoToTheClaimCreationScreen();
-        creatingClaimsScreenStep.clickingOnTheDateField();
         calendarScreenStep.pressingTheButtonToSelectTheYear();
         SystemClock.sleep(3000);
         calendarScreenStep.settingTheYear(randomYear);
@@ -275,10 +257,7 @@ public class CalendarScreenTest {
     public void thereShouldBeChangeOfYear1() {
         int randomYear = random(1, 2);
         String yearPlusRandomYear = String.valueOf(LocalDate.now().plusYears(randomYear).getYear());
-        SystemClock.sleep(3000);
 
-        mainScreenStep.clickingOnTheButtonToGoToTheClaimCreationScreen();
-        creatingClaimsScreenStep.clickingOnTheDateField();
         calendarScreenStep.pressingTheButtonToSelectTheYear();
         SystemClock.sleep(3000);
         calendarScreenStep.settingTheYear(randomYear);
@@ -294,12 +273,7 @@ public class CalendarScreenTest {
     public void cancelingTheSelectionAndSettingOfTheYear() {
         int randomYear = random(1, 2);
         String yearPlusRandomYear = String.valueOf(LocalDate.now().plusYears(randomYear).getYear());
-        SystemClock.sleep(5000);
 
-        mainScreenStep.clickingOnTheButtonToGoToTheClaimCreationScreen();
-        SystemClock.sleep(3000);
-        creatingClaimsScreenStep.clickingOnTheDateField();
-        SystemClock.sleep(3000);
         calendarScreenStep.pressingTheButtonToSelectTheYear();
         SystemClock.sleep(3000);
         calendarScreenStep.settingTheYear(randomYear);
@@ -311,7 +285,6 @@ public class CalendarScreenTest {
         SystemClock.sleep(3000);
         calendarScreenStep.clickingOnTheCancelYearSettingButton();
         SystemClock.sleep(3000);
-//        creatingClaimsScreenStep.checkingTheNameOfTheClaimCreationScreen();
         creatingClaimsScreenStep.checkingTheAbsenceOfSetYear();
     }
 
@@ -325,9 +298,6 @@ public class CalendarScreenTest {
         String monthNow = String.valueOf(LocalDate.now().getMonth()).substring(0, 3).toLowerCase();
         String dayNow = String.valueOf(LocalDate.now().getDayOfMonth());
         String yearNow = String.valueOf(LocalDate.now().getYear());
-
-        mainScreenStep.clickingOnTheButtonToGoToTheClaimCreationScreen();
-        creatingClaimsScreenStep.clickingOnTheDateField();
 
         String dateAfter = calendarScreenStep.dateFromTheCalendarHeaderReturnString(dayOfWeekNow, monthNow, dayNow);
         ViewInteraction dateFromTheCalendarHeaderAfter = calendarScreenStep.dateFromTheCalendarHeaderBeforeReturnViewInteraction(dayOfWeekNow, monthNow, dayNow);

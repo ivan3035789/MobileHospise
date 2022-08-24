@@ -56,9 +56,10 @@ public class FilterNewsScreenTest {
             mainScreenStep.checkNameMainScreen();
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
+        } finally {
+            deletingNewsUpToTheNumberOfTenControlPanelScreen(7);
+            SystemClock.sleep(5000);
         }
-        deletingNewsUpToTheNumberOfTenControlPanelScreen(7);
-        SystemClock.sleep(5000);
     }
 
     @After

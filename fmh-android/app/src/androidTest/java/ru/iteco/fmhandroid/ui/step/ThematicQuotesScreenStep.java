@@ -32,10 +32,10 @@ public class ThematicQuotesScreenStep {
         thematicQuotesScreenElements.getRecyclerView().perform(actionOnItemAtPosition(position, click()));
     }
 
-    public void openDescription() {
-        Allure.step("Нажатие на кнопку развернуть/свернуть описание цитаты");
-        thematicQuotesScreenElements.getQuoteTitle().perform(click());
-    }
+//    public void openDescription() {
+//        Allure.step("Нажатие на кнопку развернуть/свернуть описание цитаты");
+//        thematicQuotesScreenElements.getQuoteTitle().perform(click());
+//    }
 
     public void checkingTheText(String title, ViewInteraction title2, String description, ViewInteraction description2) {
         Allure.step("Проверка названия и описания");

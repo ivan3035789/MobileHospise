@@ -47,8 +47,9 @@ public class CreatingNewsScreenTest {
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
             SystemClock.sleep(5000);
+        } finally {
+            mainScreenStep.randomTransitionToCreatingNews();
         }
-        mainScreenStep.randomTransitionToCreatingNews();
     }
 
     @After
@@ -210,9 +211,11 @@ public class CreatingNewsScreenTest {
     @Description("В этом тест кейсе мы проверяем, что поля незаполняются нелатинскими буквами")
     public void fieldsShouldNotBeFilledInWithRussianLetters() {
         String invalidLanguageText = "привет мир";
+
         try {
             creatingNewsScreenStep.invalidLanguage(invalidLanguageText, invalidLanguageText);
         } catch (RuntimeException expected) {
+
         } finally {
             creatingNewsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();
         }

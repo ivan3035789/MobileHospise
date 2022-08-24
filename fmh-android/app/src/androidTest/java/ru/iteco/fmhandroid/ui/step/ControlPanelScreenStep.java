@@ -196,10 +196,10 @@ public class ControlPanelScreenStep {
         assertEquals(descriptionNewsItWas, descriptionNewsItWasHasBecomes);
     }
 
-    public void checkingTheInvisibilityOfTheNewsDescription(String descriptionNews) {
-        Allure.step("Проверка невидимости описания новости");
-        onView(allOf(withIndex(withId(R.id.news_item_description_text_view), 0), withText(descriptionNews))).check(matches(not(isDisplayed())));
-    }
+//    public void checkingTheInvisibilityOfTheNewsDescription(String descriptionNews) {
+//        Allure.step("Проверка невидимости описания новости");
+//        onView(allOf(withIndex(withId(R.id.news_item_description_text_view), 0), withText(descriptionNews))).check(matches(not(isDisplayed())));
+//    }
 
     public void checkingTheVisibilityOfTheNewsDescription() {
         Allure.step("Проверка видимости описания новости");
@@ -259,7 +259,7 @@ public class ControlPanelScreenStep {
         return Helper.Text.getText(onView(withIndex(withId(R.id.news_item_description_text_view), 0)));
     }
 
-    public String descriptionNewsPosition(int position) {
-        return Helper.Text.getText(onView(withIndex(withId(R.id.news_item_description_text_view), 0)));
-    }
+//    public String descriptionNewsPosition(int position) {
+//        return Helper.Text.getText(onView(withIndex(withId(R.id.news_item_description_text_view), 0)));
+//    }
 }

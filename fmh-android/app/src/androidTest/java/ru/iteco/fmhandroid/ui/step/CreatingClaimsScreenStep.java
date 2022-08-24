@@ -11,7 +11,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withClassName;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertEquals;
@@ -24,11 +23,11 @@ import android.os.SystemClock;
 import androidx.annotation.NonNull;
 import androidx.test.espresso.action.ViewActions;
 
-import ru.iteco.fmhandroid.ui.data.Helper;
-import ru.iteco.fmhandroid.ui.screenElements.CreatingClaimsScreenElements;
 import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.data.Helper;
+import ru.iteco.fmhandroid.ui.screenElements.CreatingClaimsScreenElements;
 
 public class CreatingClaimsScreenStep {
 
@@ -200,13 +199,12 @@ public class CreatingClaimsScreenStep {
 
     public void checkingTheNameOfTheClaimCreationScreen() {
         Allure.step("Проверка названия экрана создания претензии creating Claims");
-        creatingClaimsScreenElements.getCreatingNameScreen().check(matches(withText("Creating"))).check(matches(isDisplayed()));
-        creatingClaimsScreenElements.getClaimsNameScreen().check(matches(withText("Claims"))).check(matches(isDisplayed()));
+        creatingClaimsScreenElements.getCreatingNameScreen().check(matches(isDisplayed()));
+        creatingClaimsScreenElements.getClaimsNameScreen().check(matches(isDisplayed()));
     }
 
     public void checkingTheAbsenceOfSetYear() {
         Allure.step("Проверка отсутствия установленного года в поле");
-//        onView(allOf(withId(R.id.date_in_plan_text_input_edit_text), withText(""))).check(matches(isDisplayed()));
         creatingClaimsScreenElements.getDateClaimField().check(matches(withText(""))).check(matches(isDisplayed()));
     }
 

@@ -39,6 +39,9 @@ public class AboutScreenTest {
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(Helper.authInfo());
             SystemClock.sleep(5000);
+        } finally {
+            mainScreenStep.clickingOnTheActionMenuButton();
+            mainScreenStep.clickingOnTheAboutName();
         }
     }
 
@@ -51,8 +54,6 @@ public class AboutScreenTest {
     @DisplayName("Should display information about the version of the application")
     @Description("В этом тест кейсе мы проверяем наличие информации на странице о текущей версии приложения")
     public void ShouldDisplayInformationAboutTheVersionOfTheApplication() {
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheAboutName();
         aboutScreenStep.checkScreenNameAbout();
     }
 
@@ -60,8 +61,6 @@ public class AboutScreenTest {
     @DisplayName("Must follow the link in Privacy Policy")
     @Description("В этом тест кейсе мы проверяем переход пользователя на страницу по ссылке указанной в Privacy Policy (страница About)")
     public void mustFollowTheLinkInPrivacyPolicy() {
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheAboutName();
         aboutScreenStep.checkNamePrivacyPolicy();
         aboutScreenStep.checkNameLinkPrivacyPolicy();
         aboutScreenStep.checkNameLinkPrivacyPolicy();
@@ -72,8 +71,6 @@ public class AboutScreenTest {
     @DisplayName("Must follow the link in Terms of use")
     @Description("В этом тест кейсе мы проверяем переход пользователя на страницу по ссылке указанной в Terms of use  (страница About) ")
     public void mustFollowTheLinkInTermsOfUse() {
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheAboutName();
         aboutScreenStep.checkNameTermsOfUse();
         aboutScreenStep.checkNameLinkTermsOfUse();
         aboutScreenStep.checkingTheLinksClickabilityLinkTermsOfUse();
@@ -84,8 +81,6 @@ public class AboutScreenTest {
     @DisplayName("must be the name of the manufacturer")
     @Description("В этом тест кейсе мы проверяем наличие информации на странице о производителе")
     public void mustBeTheNameOfTheManufacturer() {
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheAboutName();
         aboutScreenStep.checkingTheManufacturersName();
     }
 
@@ -93,8 +88,6 @@ public class AboutScreenTest {
     @DisplayName("Should go back to the previous page")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку назад пользователь попадает на предъидущую страницу")
     public void shouldGoBackToThePreviousPage() {
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheAboutName();
         aboutScreenStep.clickAboutExitButton();
     }
 }

@@ -47,6 +47,9 @@ public class WatchScreenTest {
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
             SystemClock.sleep(5000);
+        } finally {
+            mainScreenStep.randomTransitionToCreatingClaims();
+            SystemClock.sleep(5000);
         }
     }
 
@@ -59,8 +62,6 @@ public class WatchScreenTest {
     @DisplayName("The type of watch should change")
     @Description("В этом тест кейсе мы проверяем возможность выбора типа часов, при нажатии на кнопку с иконкой \"клавиатура\" должен поменяться вид часов        (раздел \"Creating News\" или \"Creating Claims\" или \"Еditing News\" ) (вид часов цифровой с полями для ввода, стрелочный)")
     public void theTypeOfWatchShouldChange() {
-        mainScreenStep.randomTransitionToCreatingClaims();
-        SystemClock.sleep(3000);
         creatingClaimsScreenStep.clickingOnTheTimeField();
         watchScreenStep.pressingTheButtonToChangeTheWatchType();
         watchScreenStep.checkingTheTypeOfDigitalClock();
@@ -70,8 +71,6 @@ public class WatchScreenTest {
     @DisplayName("Canceling the time selection and setting")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"Cancel\", происходит отмена установки выбранного пользоваителем времени, часы закрываются  ")
     public void cancelingTheTimeSelectionAndSetting() {
-        mainScreenStep.randomTransitionToCreatingClaims();
-        SystemClock.sleep(3000);
         String timeBefore = watchScreenStep.timeBefore();
         SystemClock.sleep(3000);
         creatingClaimsScreenStep.clickingOnTheTimeField();
@@ -95,8 +94,6 @@ public class WatchScreenTest {
         String hour = randomHour23();
         String minute = randomMinute59();
 
-        mainScreenStep.randomTransitionToCreatingClaims();
-        SystemClock.sleep(3000);
         String timeBefore = watchScreenStep.timeBefore();
         SystemClock.sleep(3000);
         creatingClaimsScreenStep.clickingOnTheTimeField();
@@ -117,11 +114,9 @@ public class WatchScreenTest {
     @DisplayName("A warning message should appear when trying to set an incorrect time in the clock with input fields")
     @Description("В этом тест кейсе мы проверяем, что при вводе в поля некорректного времени и после нажатия на кнопку \"ок\" пользователь остается в окне часов, время не устанавливается, появляется предупреждающее сообщение \"Enter a valid time\"")
     public void aWarningMessageShouldAppearWhenTryingToSetAnIncorrectTimeInTheClockWithInputFields() {
-        mainScreenStep.randomTransitionToCreatingClaims();
         String invalidHour = invalidHour();
         String invalidMinute = invalidMinute();
 
-        SystemClock.sleep(3000);
         creatingClaimsScreenStep.clickingOnTheTimeField();
         watchScreenStep.pressingTheButtonToChangeTheWatchType();
         watchScreenStep.checkingTheTypeOfDigitalClock();

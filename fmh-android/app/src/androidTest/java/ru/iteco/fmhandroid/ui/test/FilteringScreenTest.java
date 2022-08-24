@@ -44,6 +44,9 @@ public class FilteringScreenTest {
             mainScreenStep.checkNameMainScreen();
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
+        } finally {
+            filteringWindowScreenStep.switchingToFilteringWindow();
+            SystemClock.sleep(5000);
         }
     }
 
@@ -56,7 +59,6 @@ public class FilteringScreenTest {
     @DisplayName("The screen should have a name")
     @Description("В этом тест кейсе мы проверяем название экрана Filtering")
     public void theScreenShouldHaveName() {
-        filteringWindowScreenStep.switchingToFilteringWindow();
         filteringWindowScreenStep.checkingTheScreenNameFiltering();
     }
 
@@ -64,9 +66,8 @@ public class FilteringScreenTest {
     @DisplayName("Must find a claim using Filtering when using a single check-box Open")
     @Description("В этом тест кейсе мы проверяем поиск \"Претензии\" с помощью Filtering, устанавливая галочку,  на нужном параметре чек-бокса для поиска \"Open\"")
     public void mustFindClaimUsingFilteringWhenUsingSingleCheckBoxOpen() {
-        int position = randomClaims(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        int position = randomClaims(0, 1, 2);
 
-        filteringWindowScreenStep.switchingToFilteringWindow();
         SystemClock.sleep(5000);
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheCheckBoxOpen();
@@ -82,9 +83,8 @@ public class FilteringScreenTest {
     @DisplayName("Must find a claim using Filtering when using a single checkbox In progress")
     @Description("В этом тест кейсе мы проверяем поиск \"Topic\" с помощью Filtering, устанавливая галочку,  на нужном параметре чек-бокса для поиска  \"In progress\"")
     public void mustFindClaimUsingFilteringWhenUsingSingleCheckboxInProgress() {
-        int position = randomClaims(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        int position = randomClaims(0, 1, 2);
 
-        filteringWindowScreenStep.switchingToFilteringWindow();
         SystemClock.sleep(5000);
         filteringWindowScreenStep.clickingOnTheCheckBoxOpen();
         filteringWindowScreenStep.clickingOnTheOkButton();
@@ -98,9 +98,8 @@ public class FilteringScreenTest {
     @DisplayName("Must find a claim using the Executed checkbox")
     @Description("В этом тест кейсе мы проверяем поиск \"Topic\" с помощью Filtering, устанавливая галочку,  на нужном параметре чек-бокса для поиска \"Executed\"")
     public void mustFindClaimUsingTheExecutedCheckBox() {
-        int position = randomClaims(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        int position = randomClaims(0, 1, 2);
 
-        filteringWindowScreenStep.switchingToFilteringWindow();
         SystemClock.sleep(5000);
         filteringWindowScreenStep.clickingOnTheCheckBoxOpen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
@@ -116,9 +115,8 @@ public class FilteringScreenTest {
     @DisplayName("Must find a claim using Filtering when using a single Cancelled checkbox")
     @Description("В этом тест кейсе мы проверяем поиск \"Topic\" с помощью Filtering, устанавливая галочку,  на нужном параметре чек-бокса для поиска \"Cancelled\"")
     public void mustFindClaimUsingFilteringWhenUsingSingleCancelledCheckbox() {
-        int position = randomClaims(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        int position = randomClaims(0, 1, 2);
 
-        filteringWindowScreenStep.switchingToFilteringWindow();
         SystemClock.sleep(5000);
         filteringWindowScreenStep.clickingOnTheCheckBoxOpen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
@@ -134,9 +132,8 @@ public class FilteringScreenTest {
     @DisplayName("Must find a claim using Filtering when using all checkboxes")
     @Description("В этом тест кейсе мы проверяем поиск \"претензии\" с помощью Filtering, устанавливая  галочку,  на всех имеющихся критериях чек-боксов для поиска ")
     public void mustFindClaimUsingFilteringWhenUsingAllCheckBoxes() {
-        int position = randomClaims(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        int position = randomClaims(0, 1, 2);
 
-        filteringWindowScreenStep.switchingToFilteringWindow();
         SystemClock.sleep(5000);
         filteringWindowScreenStep.clickingOnTheOkButton();
         SystemClock.sleep(2000);
@@ -163,8 +160,6 @@ public class FilteringScreenTest {
     @DisplayName("An inscription should appear about the absence of claims found using Filtering when checking the boxes")
     @Description("В этом тест кейсе мы проверяем, что при отсутствии установленных галочек в чек-боксах  по критериям поиска \"претензии\", появляется окно с изображением бабочки и надписью \"There is nothing here yet...\"")
     public void anInscriptionShouldAppearAboutTheAbsenceOfClaimsFoundUsingFilteringWhenCheckingTheBoxes() {
-        filteringWindowScreenStep.switchingToFilteringWindow();
-        SystemClock.sleep(5000);
         filteringWindowScreenStep.clickingOnTheCheckBoxOpen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
@@ -176,8 +171,6 @@ public class FilteringScreenTest {
     @DisplayName("Cancellation of the claim search")
     @Description("В этом тест кейсе мы проверяем отмену поиска при нажатии на кнопку \"CANCEL\" ")
     public void cancellationOfTheClaimSearch() {
-        filteringWindowScreenStep.switchingToFilteringWindow();
-        SystemClock.sleep(5000);
         filteringWindowScreenStep.checkingTheScreenNameFiltering();
         filteringWindowScreenStep.clickingOnTheExitFilteringButton();
         filteringWindowScreenStep.checkingForMissingScreenNameFiltering();

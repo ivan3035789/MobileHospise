@@ -43,6 +43,10 @@ public class NewsScreenTest {
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
             SystemClock.sleep(5000);
+        } finally {
+            mainScreenStep.clickingOnTheActionMenuButton();
+            mainScreenStep.clickingOnTheNewsName();
+            SystemClock.sleep(5000);
         }
     }
 
@@ -55,8 +59,6 @@ public class NewsScreenTest {
     @DisplayName("The screen should have a name")
     @Description("В этом тест кейсе мы проверяем название экрана News")
     public void theScreenShouldHaveName() {
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheNewsName();
         newsScreenStep.checkTheNameOfTheNewsScreen();
     }
 
@@ -69,8 +71,6 @@ public class NewsScreenTest {
     public void newsBlocksShouldBeSwapped() {
         int position = 0;
 
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheNewsName();
         newsScreenStep.clickingOnTheButtonExpandTheNewsFeed(position);
 
         String firstNews = newsScreenStep.takeTheNameOfTheFirstNews(position);
@@ -101,8 +101,6 @@ public class NewsScreenTest {
     @DisplayName("must go to the News Filter")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку три полоски с кружками пользователь попадает в Filter news")
     public void mustGoToTheNewsFilter() {
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheNewsName();
         newsScreenStep.clickingOnTheButtonToGoToFilterNews();
         newsScreenStep.checkingTheScreenNameFilterNews();
     }
@@ -111,8 +109,6 @@ public class NewsScreenTest {
     @DisplayName("should go to the control panel")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку с иконкой блокнот с карандашом пользователь попадает в Control panel ")
     public void shouldGoToTheControlPanel() {
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheNewsName();
         newsScreenStep.clickingOnTheButtonToGoToTheControlPanel();
         controlPanelScreenStep.checkingTheNameOfTheControlPanelScreen();
     }
@@ -123,8 +119,6 @@ public class NewsScreenTest {
     public void aDescriptionShouldAppearAtTheNews() {
         int position = 0;
 
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheNewsName();
         newsScreenStep.clickingOnTheExpandNewsDescriptionButton(position);
         newsScreenStep.checkingTheTextOfTheNewsDescriptionIsVisible(position);
     }

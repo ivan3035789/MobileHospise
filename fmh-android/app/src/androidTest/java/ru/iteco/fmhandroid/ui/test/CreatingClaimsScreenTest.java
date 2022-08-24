@@ -53,6 +53,9 @@ public class CreatingClaimsScreenTest {
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
             SystemClock.sleep(5000);
+        } finally {
+            mainScreenStep.randomTransitionToCreatingClaims();
+            SystemClock.sleep(5000);
         }
     }
 
@@ -65,7 +68,6 @@ public class CreatingClaimsScreenTest {
     @DisplayName("The screen should have a name")
     @Description("В этом тест кейсе мы проверяем название экрана Creating Claims")
     public void theScreenShouldHaveName() {
-        mainScreenStep.randomTransitionToCreatingClaims();
         creatingClaimsScreenStep.checkingTheNameOfTheClaimCreationScreen();
     }
 
@@ -73,7 +75,6 @@ public class CreatingClaimsScreenTest {
     @DisplayName("The fields must have names")
     @Description("В этом тест кейсе мы проверяем названия полей")
     public void theFieldsMustHaveNames() {
-        mainScreenStep.randomTransitionToCreatingClaims();
         creatingClaimsScreenStep.checkNameFieldInCreatingClaims();
     }
 
@@ -83,16 +84,14 @@ public class CreatingClaimsScreenTest {
     public void noMoreThan50CharactersShouldBeEntered() {
         String invalidText = text51Symbol();
 
-        mainScreenStep.randomTransitionToCreatingClaims();
         creatingClaimsScreenStep.textInput(invalidText);
         creatingClaimsScreenStep.checkingTheNumberOfCharactersEnteredAndCharactersInTheField();
     }
 
-    @Test//добавить в тесты
+    @Test
     @DisplayName("A drop-down list with categories should appear")
     @Description("В этом тест кейсе мы проверяем, что при клике на поле \"Category\" появляется выпадающий список с доспупными категориями")
     public void aDropDownListWithCategoriesShouldAppear() {
-        mainScreenStep.randomTransitionToCreatingClaims();
         creatingClaimsScreenStep.clickingOnTheExecutorField();
         SystemClock.sleep(2000);
         creatingClaimsScreenStep.checkingTheAppearanceOfTheDropDownList(ActivityTestRule.getActivity());
@@ -102,7 +101,6 @@ public class CreatingClaimsScreenTest {
     @DisplayName("A calendar should appear")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на поле \"Date\" появляется календарь")
     public void aCalendarShouldAppear() {
-        mainScreenStep.randomTransitionToCreatingClaims();
         creatingClaimsScreenStep.clickingOnTheDateField();
         creatingClaimsScreenStep.checkingTheCalendarAppearance(ActivityTestRule.getActivity());
     }
@@ -111,7 +109,6 @@ public class CreatingClaimsScreenTest {
     @DisplayName("An arrow-shaped clock should appear")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на поле \"Time\" появляются часы стрелочного типа")
     public void anArrowShapedClockShouldAppear() {
-        mainScreenStep.randomTransitionToCreatingClaims();
         creatingClaimsScreenStep.clickingOnTheTimeField();
         creatingClaimsScreenStep.checkingTheAppearanceOfClockOfTheArrowType(ActivityTestRule.getActivity());
     }
@@ -119,9 +116,7 @@ public class CreatingClaimsScreenTest {
     @Test
     @DisplayName("The type of watch should change")
     @Description("В этом тест кейсе мы проверяем возможность выбора типа часов, при нажатии на кнопку с иконкой \"клавиатура\" должен поменяться вид часов")
-    public void theTypeOfWatchShouldChange() {
-        mainScreenStep.randomTransitionToCreatingClaims();
-        SystemClock.sleep(3000);
+    public void theTypeOfWatchShouldChange() { ;
         creatingClaimsScreenStep.clickingOnTheTimeField();
         watchScreenStep.pressingTheButtonToChangeTheWatchType();
         watchScreenStep.checkingTheTypeOfDigitalClock();
@@ -133,7 +128,7 @@ public class CreatingClaimsScreenTest {
     public void aClaimShouldBeCreatedInTheClaimsSection() {
         String titleText = textSymbol(5);
         String randomExecutor = randomExecutor();
-        enterCreateClaimsActionButton();
+//        enterCreateClaimsActionButton();
 
         creatingClaimsScreenStep.fillingInFieldsWithValidData(titleText, randomExecutor);
 
@@ -165,7 +160,7 @@ public class CreatingClaimsScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при отсутствии ввода исполнителя, или ввода исполнителя не из выпадающего  списка создается претензия со статусом \"Open\"")
     public void aClaimWithTheOpenStatusShouldBeCreated() {
         String titleText = textSymbol(5);
-        enterCreateClaimsActionButton();
+//        enterCreateClaimsActionButton();
 
         creatingClaimsScreenStep.fillingInTheFieldsWithValidDataToCreateClaimWithAnOpenStatus(titleText);
         String title = creatingClaimsScreenStep.title();
@@ -195,7 +190,7 @@ public class CreatingClaimsScreenTest {
     public void cancellationOfTheClaimCreation() {
         String titleText = textSymbol(5);
         String randomExecutor = randomExecutor();
-        enterCreateClaimsActionButton();
+//        enterCreateClaimsActionButton();
 
         creatingClaimsScreenStep.fillingInFieldsWithValidData(titleText, randomExecutor);
         creatingClaimsScreenStep.clickingOnTheCancelClaimCreationButton();
@@ -211,7 +206,6 @@ public class CreatingClaimsScreenTest {
     public void aWarningMessageShouldAppearIfTheFieldsAreEmptyWhenClickingOnTheSaveButton() {
         String titleText = textSymbol(5);
         String randomExecutor = randomExecutor();
-        mainScreenStep.randomTransitionToCreatingClaims();
 
         creatingClaimsScreenStep.fillingInFieldsWithValidData(titleText, randomExecutor);
         creatingClaimsScreenStep.nameDeletion();
@@ -225,7 +219,6 @@ public class CreatingClaimsScreenTest {
     public void fieldsShouldNotBeFilledInWithRussianLetters() {
         String invalidLanguageText = "Привет мир";
 
-        mainScreenStep.randomTransitionToCreatingClaims();
         try {
             creatingClaimsScreenStep.invalidLanguage(invalidLanguageText, invalidLanguageText, invalidLanguageText);
         } catch (RuntimeException expected) {
@@ -241,7 +234,6 @@ public class CreatingClaimsScreenTest {
     public void theFieldsMustBeFilledInWithEnglishLetters() {
         String validLanguageText = "Hello world";
 
-        mainScreenStep.randomTransitionToCreatingClaims();
         SystemClock.sleep(3000);
         creatingClaimsScreenStep.validLanguage(validLanguageText, validLanguageText, validLanguageText);
         SystemClock.sleep(3000);
@@ -254,7 +246,6 @@ public class CreatingClaimsScreenTest {
     public void cancellationOfCancellationOfClaimCreation() {
         String titleText = textSymbol(5);
         String randomExecutor = randomExecutor();
-        mainScreenStep.randomTransitionToCreatingClaims();
 
         creatingClaimsScreenStep.fillingInFieldsWithValidData(titleText, randomExecutor);
         creatingClaimsScreenStep.clickingOnTheCancelClaimCreationButton();

@@ -37,10 +37,10 @@ public class MainScreenStep {
         mainScreenElements.getClaimList().perform(actionOnItemAtPosition(position, click()));
     }
 
-    public void clickingOnAllClaims() {
-        Allure.step("Нажатие на all Claims");
-        mainScreenElements.getAllClaims().perform(click());
-    }
+//    public void clickingOnAllClaims() {
+//        Allure.step("Нажатие на all Claims");
+//        mainScreenElements.getAllClaims().perform(click());
+//    }
 
     public void clickingOnTheActionMenuButton() {
         Allure.step("Нажатие на кнопку ActionMenu");
@@ -164,14 +164,10 @@ public class MainScreenStep {
     }
 
     public void randomTransitionToCreatingClaims() {
-        Allure.step("Рандомный переход в Creating Claims");
-        //добавить шаги в тесты
         randomLogInToClaimsCreation();
     }
 
     public void randomTransitionToCreatingNews() {
-        Allure.step("Рандомный переход в Creating News");
-        //добавить шаги в тесты
         randomLogInToNewsCreation();
     }
 
@@ -192,8 +188,8 @@ public class MainScreenStep {
         mainScreenElements.getAllClaims().perform(click());
         claimsScreenElements.getCreateClaimsButton().perform(click());
         SystemClock.sleep(3000);
-        creatingClaimsScreenElements.getCreatingNameScreen().check(matches(withText("Creating"))).check(matches(isDisplayed()));
-        creatingClaimsScreenElements.getClaimsNameScreen().check(matches(withText("Claims"))).check(matches(isDisplayed()));
+        creatingClaimsScreenElements.getCreatingNameScreen().check(matches(isDisplayed()));
+        creatingClaimsScreenElements.getClaimsNameScreen().check(matches(isDisplayed()));
         SystemClock.sleep(3000);
     }
 
@@ -218,8 +214,8 @@ public class MainScreenStep {
         SystemClock.sleep(2000);
         mainScreenElements.getCreateClaimsButton().perform(click());
         SystemClock.sleep(3000);
-        creatingClaimsScreenElements.getCreatingNameScreen().check(matches(withText("Creating"))).check(matches(isDisplayed()));
-        creatingClaimsScreenElements.getClaimsNameScreen().check(matches(withText("Claims"))).check(matches(isDisplayed()));
+        creatingClaimsScreenElements.getCreatingNameScreen().check(matches(isDisplayed()));
+        creatingClaimsScreenElements.getClaimsNameScreen().check(matches(isDisplayed()));
         SystemClock.sleep(3000);
     }
 

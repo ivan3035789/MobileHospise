@@ -17,7 +17,6 @@ import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.core.IsNot.not;
 import static org.junit.Assert.assertNotEquals;
-import static ru.iteco.fmhandroid.ui.data.Helper.Rand.randomClaims;
 import static ru.iteco.fmhandroid.ui.data.Helper.Rand.randomExecutor;
 import static ru.iteco.fmhandroid.ui.data.Helper.Text.textSymbol;
 import static ru.iteco.fmhandroid.ui.data.Helper.withIndex;
@@ -26,21 +25,21 @@ import android.os.SystemClock;
 
 import androidx.annotation.NonNull;
 
+import io.qameta.allure.kotlin.Allure;
+import ru.iteco.fmhandroid.R;
+import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.data.Helper;
 import ru.iteco.fmhandroid.ui.screenElements.CalendarScreenElements;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreenElements;
 import ru.iteco.fmhandroid.ui.screenElements.EditingClaimsScreenElements;
 import ru.iteco.fmhandroid.ui.screenElements.FilteringWindowScreenElements;
 import ru.iteco.fmhandroid.ui.screenElements.WatchScreenElements;
-import io.qameta.allure.kotlin.Allure;
-import ru.iteco.fmhandroid.R;
-import ru.iteco.fmhandroid.ui.AppActivity;
 
 public class EditingClaimsScreenStep {
 
     EditingClaimsScreenElements editingClaimsScreenElements = new EditingClaimsScreenElements();
 
-    public void goToTheClaimCardWithTheOpenStatus() {
+    public void goToTheClaimCardWithTheOpenStatus(int position) {
         Allure.step("Переход к карточке Claim со статусом Open");
         ClaimsScreenElements claimsScreenElements = new ClaimsScreenElements();
         FilteringWindowScreenElements filteringWindowScreenElements = new FilteringWindowScreenElements();
@@ -52,7 +51,7 @@ public class EditingClaimsScreenStep {
         filteringWindowScreenElements.getCheckBoxInProgress().perform(click());
         filteringWindowScreenElements.getOkButton().perform(click());
         SystemClock.sleep(3000);
-        claimsScreenElements.getBlockClaims().perform(actionOnItemAtPosition(randomClaims(0, 1, 2, 3), click()));
+        claimsScreenElements.getBlockClaims().perform(actionOnItemAtPosition(position, click()));
     }
 
     public void clickingOnTheSaveButton() {
@@ -140,14 +139,14 @@ public class EditingClaimsScreenStep {
         editingClaimsScreenElements.getExecutorClaimField().perform(replaceText(text));
     }
 
-    public void checkNameFieldInEditingClaims() {
-        Allure.step("Проверка идентифицирующих названий полей");
-        editingClaimsScreenElements.getTitleName().check(matches(isDisplayed()));
-        editingClaimsScreenElements.getExecutorName().check(matches(isDisplayed()));
-        editingClaimsScreenElements.getDateName().check(matches(isDisplayed()));
-        editingClaimsScreenElements.getTimeName().check(matches(isDisplayed()));
-        editingClaimsScreenElements.getDescriptionName().check(matches(isDisplayed()));
-    }
+//    public void checkNameFieldInEditingClaims() {
+//        Allure.step("Проверка идентифицирующих названий полей");
+//        editingClaimsScreenElements.getTitleName().check(matches(isDisplayed()));
+//        editingClaimsScreenElements.getExecutorName().check(matches(isDisplayed()));
+//        editingClaimsScreenElements.getDateName().check(matches(isDisplayed()));
+//        editingClaimsScreenElements.getTimeName().check(matches(isDisplayed()));
+//        editingClaimsScreenElements.getDescriptionName().check(matches(isDisplayed()));
+//    }
 
     public void checkingTheFieldsAreFilledIn() {
         Allure.step("Проверка Заполнения Полей");

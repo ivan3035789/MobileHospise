@@ -81,9 +81,6 @@ public class Helper {
     private Helper() {
     }
 
-    @Rule
-    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
-
     public static class AuthInfo {
         private final String login;
         private final String password;
@@ -191,16 +188,11 @@ public class Helper {
     }
 
     public static void createNewsForCategory(String text, String category) {
-        MainScreenStep mainScreenStep = new MainScreenStep();
-        NewsScreenElements newsScreenElements = new NewsScreenElements();
         ControlPanelScreenElements controlPanelScreenElements = new ControlPanelScreenElements();
         CreatingNewsScreenElements creatingNewsScreenElements = new CreatingNewsScreenElements();
         WatchScreenElements watchScreenElements = new WatchScreenElements();
         CalendarScreenElements calendarScreenElements = new CalendarScreenElements();
 
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheNewsName();
-        newsScreenElements.getEditButton().perform(click());
         controlPanelScreenElements.getCreateNewsButton().perform(click());
 
         creatingNewsScreenElements.getCategoryFieldNews().perform(replaceText(category)).perform(closeSoftKeyboard());
@@ -216,16 +208,11 @@ public class Helper {
     }
 
     public static void createNews(String text, String category) {
-        MainScreenStep mainScreenStep = new MainScreenStep();
-        NewsScreenElements newsScreenElements = new NewsScreenElements();
         ControlPanelScreenElements controlPanelScreenElements = new ControlPanelScreenElements();
         CreatingNewsScreenElements creatingNewsScreenElements = new CreatingNewsScreenElements();
         WatchScreenElements watchScreenElements = new WatchScreenElements();
         CalendarScreenElements calendarScreenElements = new CalendarScreenElements();
 
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheNewsName();
-        newsScreenElements.getEditButton().perform(click());
         controlPanelScreenElements.getCreateNewsButton().perform(click());
 
         creatingNewsScreenElements.getCategoryFieldNews().perform(replaceText(category)).perform(closeSoftKeyboard());
@@ -249,7 +236,6 @@ public class Helper {
         while (true) {
             try {
                 controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(positionNews);
-                String newsName = controlPanelScreenStep.nameNews();
                 String description = controlPanelScreenStep.descriptionNews();
                 controlPanelScreenStep.clickingOnTheDeleteNewsButtonPosition(description);
                 SystemClock.sleep(2000);
@@ -261,7 +247,6 @@ public class Helper {
             positionNews += 1;
         }
     }
-
 
     public static class Rand {
 

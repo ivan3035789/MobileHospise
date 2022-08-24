@@ -57,9 +57,10 @@ public class AdvancedNewsSearchTest {
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
             SystemClock.sleep(5000);
+        } finally {
+            deletingNewsUpToTheNumberOfTenControlPanelScreen(7);
+            SystemClock.sleep(5000);
         }
-        deletingNewsUpToTheNumberOfTenControlPanelScreen(7);
-        SystemClock.sleep(5000);
     }
 
     @After
@@ -71,7 +72,6 @@ public class AdvancedNewsSearchTest {
     @DisplayName("The screen should have name")
     @Description("В этом тест кейсе мы проверяем название экрана Filter news")
     public void theScreenShouldHaveName() {
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
         advancedNewsSearchScreenStep.checkingTheNameOfTheAdvancedSearchScreen();
     }
@@ -80,7 +80,6 @@ public class AdvancedNewsSearchTest {
     @DisplayName("the fields must have names")
     @Description("В этом тест кейсе мы проверяем названия полей")
     public void theFieldsMustHaveNames() {
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
         advancedNewsSearchScreenStep.checkingTheVisibilityOfIdentifyingFieldNames();
     }
@@ -89,7 +88,6 @@ public class AdvancedNewsSearchTest {
     @DisplayName("there must be check boxes")
     @Description("В этом тест кейсе мы проверяем названия чек боксов")
     public void thereMustBeCheckBoxes() {
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
         advancedNewsSearchScreenStep.checkingTheVisibilityOfTheNamesOfCheckBoxes();
     }
@@ -150,7 +148,6 @@ public class AdvancedNewsSearchTest {
         String dateStartInput = generatorDate2();
         String dateEndInput = generatorDate();
 
-        mainScreenStep.switchingToTheControlPanel();
         SystemClock.sleep(3000);
 
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
@@ -171,9 +168,6 @@ public class AdvancedNewsSearchTest {
     public void mustFindAllTheNewsWhenPerformingSearchWithoutEnteringData() {
         int position = random( 1, 2);
 
-        mainScreenStep.switchingToTheControlPanel();
-        SystemClock.sleep(3000);
-
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
         advancedNewsSearchScreenStep.checkingTheNameOfTheAdvancedSearchScreen();
         advancedNewsSearchScreenStep.clickingOnTheFilterButtonToSearchForNews();
@@ -185,7 +179,6 @@ public class AdvancedNewsSearchTest {
     @DisplayName("Canceling the search")
     @Description("В этом тест кейсе мы проверяем отмену поиска")
     public void cancelingTheSearch() {
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
         advancedNewsSearchScreenStep.checkingTheNameOfTheAdvancedSearchScreen();
         SystemClock.sleep(3000);
@@ -199,8 +192,6 @@ public class AdvancedNewsSearchTest {
     public void aWindowShouldAppearWithTheInscriptionNewsNotFound() {
         String dateStartInput = invalidGeneratorDate();
         String dateEndInput = invalidGeneratorDate();
-
-        mainScreenStep.switchingToTheControlPanel();
 
         SystemClock.sleep(3000);
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
@@ -219,7 +210,6 @@ public class AdvancedNewsSearchTest {
     public void mustFindNewsWithActiveStatus() {
         int position = randomNews( 1);
 
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
         SystemClock.sleep(3000);
 
@@ -262,7 +252,6 @@ public class AdvancedNewsSearchTest {
     public void mustSearchByStatusAndActiveNotActive() {
         int position = randomClaims(0, 1);
 
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
         SystemClock.sleep(3000);
         advancedNewsSearchScreenStep.clickingOnTheFilterButtonToSearchForNews();

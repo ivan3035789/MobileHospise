@@ -68,10 +68,10 @@ public class CreatingNewsScreenStep {
         creatingNewsScreenElements.getSaveButton().perform(click());
     }
 
-    public void clickingOnTheCancelNewsCreationButton() {
-        Allure.step("Нажатие на кнопку отмены создания новости");
-        creatingNewsScreenElements.getCancelButton2().perform(scrollTo(), click());
-    }
+//    public void clickingOnTheCancelNewsCreationButton() {
+//        Allure.step("Нажатие на кнопку отмены создания новости");
+//        creatingNewsScreenElements.getCancelButton2().perform(scrollTo(), click());
+//    }
 
     public void clickingOnTheConfirmationButtonToCancelTheCreationOfTheNews() {
         Allure.step("Нажатие на кнопку подтверждения отмены создания новости");

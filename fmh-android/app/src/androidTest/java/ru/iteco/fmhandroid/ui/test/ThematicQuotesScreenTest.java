@@ -42,7 +42,10 @@ public class ThematicQuotesScreenTest {
             mainScreenStep.checkNameMainScreen();
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
-            SystemClock.sleep(8000);
+            SystemClock.sleep(5000);
+        } finally {
+            mainScreenStep.pressingTheButtonInTheFormOfButterfly();
+            SystemClock.sleep(3000);
         }
     }
 
@@ -55,7 +58,6 @@ public class ThematicQuotesScreenTest {
     @DisplayName("The screen should have a name")
     @Description("В этом тест кейсе мы проверяем название экрана Love is all")
     public void theScreenShouldHaveName() {
-        mainScreenStep.pressingTheButtonInTheFormOfButterfly();
         thematicQuotesScreenStep.checkingTheScreenName();
     }
 
@@ -64,9 +66,7 @@ public class ThematicQuotesScreenTest {
     @Description("В этом тест кейсе мы проверяем что при нажатии на кнопку ввиде галочки разворачивается описание цитаты")
     public void theDescriptionShouldOpen() {
         int position = random(0);
-        SystemClock.sleep(3000);
 
-        mainScreenStep.pressingTheButtonInTheFormOfButterfly();
         thematicQuotesScreenStep.checkingTheScreenName();
         thematicQuotesScreenStep.quoteSelection(position);
 

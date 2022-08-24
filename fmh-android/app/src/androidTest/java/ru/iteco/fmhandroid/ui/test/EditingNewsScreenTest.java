@@ -34,6 +34,7 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
 public class EditingNewsScreenTest {
+
     MainScreenStep mainScreenStep = new MainScreenStep();
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
     ControlPanelScreenStep controlPanelScreenStep = new ControlPanelScreenStep();
@@ -51,6 +52,8 @@ public class EditingNewsScreenTest {
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
             SystemClock.sleep(5000);
+        } finally {
+            mainScreenStep.switchingToTheControlPanel();
         }
     }
 
@@ -63,7 +66,6 @@ public class EditingNewsScreenTest {
     @DisplayName("The screen should have a name")
     @Description("В этом тест кейсе мы проверяем название экрана Editing News")
     public void theScreenShouldHaveName() {
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
         editingNewsScreenStep.checkingTheNameOfTheEditingNewsScreen();
     }
@@ -72,7 +74,6 @@ public class EditingNewsScreenTest {
     @DisplayName("The fields must contain data")
     @Description("В этом тест кейсе мы проверяем, что поля имеют данные заполненые ранее")
     public void theFieldsMustContainData() {
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
         SystemClock.sleep(3000);
 
@@ -90,7 +91,6 @@ public class EditingNewsScreenTest {
     @DisplayName("A drop-down list with categories should appear")
     @Description("В этом тест кейсе мы проверяем, что при клике на поле \"Category\" появляется выпадающий список с доспупными категориями")
     public void aDropDownListWithCategoriesShouldAppear() {
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
         editingNewsScreenStep.clickingOnTheCategoryField();
         SystemClock.sleep(3000);
@@ -101,7 +101,6 @@ public class EditingNewsScreenTest {
     @DisplayName("A calendar should appear")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на поле \"Publication date\" появляется календарь ")
     public void aCalendarShouldAppear() {
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
         editingNewsScreenStep.clickingOnThePublicationDateField();
         editingNewsScreenStep.checkingTheCalendarAppearance(ActivityTestRule.getActivity());
@@ -111,7 +110,6 @@ public class EditingNewsScreenTest {
     @DisplayName("A clock of the arrow type should appear")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на поле \"Time\" появляется часы стрелочного типа")
     public void aClockOfTheArrowTypeShouldAppear() {
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
         editingNewsScreenStep.clickingOnTheTimeField();
         editingNewsScreenStep.checkingTheAppearanceOfClockOfTheArrowType(ActivityTestRule.getActivity());
@@ -121,7 +119,6 @@ public class EditingNewsScreenTest {
     @DisplayName("The type of watch should change")
     @Description("В этом тест кейсе мы проверяем возможность выбора типа часов. что при нажатии на кнопку с иконкой \"клавиатура\" должен поменяться вид часов")
     public void theTypeOfWatchShouldChange() {
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
         SystemClock.sleep(3000);
         editingNewsScreenStep.clickingOnTheTimeField();
@@ -140,7 +137,6 @@ public class EditingNewsScreenTest {
         int position = randomNews( 1);
         SystemClock.sleep(3000);
 
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
 
         String nameNewsItWas = editingNewsScreenStep.nameNews();
@@ -183,7 +179,6 @@ public class EditingNewsScreenTest {
         int position = randomClaims( 1);
         SystemClock.sleep(3000);
 
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
 
         String nameNewsItWas = editingNewsScreenStep.nameNews();
@@ -221,7 +216,6 @@ public class EditingNewsScreenTest {
     @DisplayName("A warning message should appear if the fields are empty when clicking on the save button")
     @Description("В этом тест кейсе мы проверяем, что при незаполненном, незаполненных полях появляется предупреждающее сообщение, после нажатия на кнопку \"SAVE\"  \"fill empty fields\" ")
     public void aWarningMessageShouldAppearIfTheFieldsAreEmptyWhenClickingOnTheSaveButton() {
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
         editingNewsScreenStep.deletingTheNewsTitle();
         editingNewsScreenStep.clickingOnTheSaveButton();
@@ -234,7 +228,6 @@ public class EditingNewsScreenTest {
     public void aWarningMessageShouldAppearWhenFillingInTheCategoryField() {
         String text = textSymbol(5);
 
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
         editingNewsScreenStep.enteringTextInTheCategoryField(text);
         SystemClock.sleep(2000);
@@ -248,7 +241,6 @@ public class EditingNewsScreenTest {
     public void theFieldsMustBeFilledInWithEnglishLetters() {
         String validLanguageText = "Hello world";
 
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
         editingNewsScreenStep.validLanguage(validLanguageText, validLanguageText, validLanguageText);
         SystemClock.sleep(3000);
@@ -261,11 +253,11 @@ public class EditingNewsScreenTest {
     public void fieldsShouldNotBeFilledInWithRussianLetters() {
         String invalidLanguageText = "Привет мир";
 
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
         try {
             editingNewsScreenStep.invalidLanguage(invalidLanguageText, invalidLanguageText);
         } catch (RuntimeException expected) {
+
         } finally {
             editingNewsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();
         }
@@ -275,7 +267,6 @@ public class EditingNewsScreenTest {
     @DisplayName("Undo Undo Edit")
     @Description("В этом тест кейсе мы проверяем что при нажатии на кнопку Cancel в всплывшем окне (для подтверждения выхода или отмены выхода) пользователь остается на экране Editing News")
     public void undoUndoEdit() {
-        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
         editingNewsScreenStep.clickingOnTheCancelNewsEditingButton();
         SystemClock.sleep(3000);
@@ -291,7 +282,7 @@ public class EditingNewsScreenTest {
         int position = randomClaims(1);
         Helper.setUpStatusNewsNotActive(position);
 
-        mainScreenStep.switchingToTheControlPanel();
+//        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
 
         SystemClock.sleep(3000);

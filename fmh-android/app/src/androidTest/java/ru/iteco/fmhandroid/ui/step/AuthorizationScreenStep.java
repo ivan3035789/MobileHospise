@@ -16,23 +16,18 @@ import static ru.iteco.fmhandroid.ui.data.Helper.invalidLoginPasswordAuthInfo;
 
 import androidx.annotation.NonNull;
 import androidx.test.espresso.ViewInteraction;
-import androidx.test.rule.ActivityTestRule;
 
 import org.hamcrest.Matchers;
-import org.junit.Rule;
 
-import ru.iteco.fmhandroid.ui.data.Helper;
-import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreenElements;
 import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.data.Helper;
+import ru.iteco.fmhandroid.ui.screenElements.AuthorizationScreenElements;
 
 public class AuthorizationScreenStep {
 
     AuthorizationScreenElements authorizationScreenElements = new AuthorizationScreenElements();
-
-    @Rule
-    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
 
     public void clickingTheExitProfileButton() {
         Allure.step("Нажатие кнопки выхода из профиля");
