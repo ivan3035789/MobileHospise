@@ -199,8 +199,8 @@ public class ControlPanelScreenTest {
         int position = randomNews(0);
         String descriptionNews = controlPanelScreenStep.descriptionNews();
 
-        SystemClock.sleep(2000);
-        controlPanelScreenStep.checkingTheInvisibilityOfTheNewsDescription(descriptionNews);
+//        SystemClock.sleep(2000);
+//        controlPanelScreenStep.checkingTheInvisibilityOfTheNewsDescription(descriptionNews);
         SystemClock.sleep(2000);
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
         SystemClock.sleep(2000);

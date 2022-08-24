@@ -153,7 +153,7 @@ public class CommentScreenTest {
     @DisplayName("A warning message should appear when the comment field is empty")
     @Description("В этом тест кейсе мы проверяем что при незаполнении поля \"comment\", после нажатия на кнопку \"SAVE\", появляется предупреждающая надпись \"The field cannot be empty\" ")
     public void warningMessageShouldAppearWhenTheCommentFieldIsEmpty() {
-        int position = randomClaims(1, 2, 3);
+        int position = randomClaims(0);
 
         mainScreenStep.clickingOnTheAllClaimsTextLink();
         claimsScreenStep.choosingRandomClaim(position);

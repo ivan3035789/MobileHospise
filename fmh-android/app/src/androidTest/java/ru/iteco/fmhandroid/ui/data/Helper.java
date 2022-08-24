@@ -250,7 +250,8 @@ public class Helper {
             try {
                 controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(positionNews);
                 String newsName = controlPanelScreenStep.nameNews();
-                controlPanelScreenStep.clickingOnTheDeleteNewsButtonPosition(newsName);
+                String description = controlPanelScreenStep.descriptionNews();
+                controlPanelScreenStep.clickingOnTheDeleteNewsButtonPosition(description);
                 SystemClock.sleep(2000);
                 controlPanelScreenStep.clickingOnTheConfirmationButtonToDeleteTheNews();
                 SystemClock.sleep(2000);

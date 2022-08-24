@@ -52,6 +52,9 @@ public class ClaimsScreenTest {
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
             SystemClock.sleep(5000);
+        } finally {
+            mainScreenStep.clickingOnTheActionMenuButton();
+            mainScreenStep.clickingOnTheClaimsName();
         }
     }
 
@@ -64,8 +67,6 @@ public class ClaimsScreenTest {
     @DisplayName("The screen should have a name")
     @Description("В этом тест кейсе мы проверяем название экрана Claims")
     public void theScreenShouldHaveName() {
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheClaimsName();
         claimsScreenStep.checkScreenNameClaims();
     }
 
@@ -74,8 +75,6 @@ public class ClaimsScreenTest {
     @DisplayName("the filtering window should appear")
     @Description("В этом тест кейсе мы проверяем что при нажатии на кнопку \"три полоски с кружками\" на странице \"Claims\" пользователь попадает в \"Filtering\"")
     public void theFilteringWindowShouldAppear() {
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheClaimsName();
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.checkingTheScreenNameFiltering();
     }
@@ -84,8 +83,6 @@ public class ClaimsScreenTest {
     @DisplayName("should go to the create claims section")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"+\" пользователь попадает в \"Creating Claims\"")
     public void shouldGoToTheCreateClaimsSection() {
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheClaimsName();
         claimsScreenStep.clickingOnTheButtonToGoToTheClaimCreationScreen();
         creatingClaimsScreenStep.checkingTheNameOfTheClaimCreationScreen();
     }
@@ -96,8 +93,6 @@ public class ClaimsScreenTest {
     public void mustGoToClaims() {
         int position = random(1, 2, 3);
 
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheClaimsName();
         claimsScreenStep.choosingRandomClaim(position);
         claimsScreenStep.checkClaim();
     }
@@ -109,8 +104,6 @@ public class ClaimsScreenTest {
         creatingClaimsScreenStep.createClaimStatusOpenSetUp();
         SystemClock.sleep(5000);
 
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheClaimsName();
         claimsScreenStep.searchForClaimsWithTheOpenStatus();
         claimsScreenStep.checkingTheOpenStatus();
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
@@ -122,8 +115,6 @@ public class ClaimsScreenTest {
     @DisplayName("Should go to Editing Claims")
     @Description(" В этом тест кейсе мы проверяем что при нажатии на кнопку  \"блокнот с карандаошом\"  в  \"Claims\" пользователь попадает в  \"Editing Claims\" ")
     public void shouldGoToEditingClaims() {
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheClaimsName();
         claimsScreenStep.searchForClaimsWithTheOpenStatus();
         SystemClock.sleep(3000);
         Helper.Swipes.swipeToBottom();
@@ -135,8 +126,6 @@ public class ClaimsScreenTest {
     @DisplayName("The claim must be edited")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"блокнот с карандашем\" пользователь попадает в раздел редактирования претензии претензия редактируется ")
     public void theClaimMustBeEdited() {
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheClaimsName();
         claimsScreenStep.searchForClaimsWithTheOpenStatus();
         Helper.Swipes.swipeToBottom();
 
@@ -170,8 +159,6 @@ public class ClaimsScreenTest {
     public void cancellationOfClaimEditing() {
         int position = randomClaims( 1, 2);
 
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheClaimsName();
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
@@ -207,11 +194,9 @@ public class ClaimsScreenTest {
     @DisplayName("Canceling the comment field when selecting To execute")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"CANCEL\" происходит отмена заполнения поля для коментария и дальнейшей смены статуса на \" Еxecuted")
     public void cancelingTheCommentFieldWhenSelectingToExecute() {
-        creatingClaimsScreenStep.createClaimStatusOpenSetUp();
         String text = textSymbol(5);
 
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheClaimsName();
+        creatingClaimsScreenStep.createClaimStatusOpenSetUp();
         claimsScreenStep.searchForClaimsWithTheOpenStatus();
         claimsScreenStep.checkingTheOpenStatus();
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
