@@ -46,7 +46,7 @@ jobs:
           api-level: 29
           arch: x86
           profile: Nexus 6
-          script: ./gradlew connectedAndroidTest
+          script: ./gradlew connectedAndroidTest --info
           working-directory: ./fmh-android/
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3
