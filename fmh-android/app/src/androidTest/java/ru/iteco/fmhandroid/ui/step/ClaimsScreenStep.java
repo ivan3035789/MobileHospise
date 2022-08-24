@@ -97,6 +97,7 @@ public class ClaimsScreenStep {
 
     public void clickingOnTheButtonToEnterTheCommentEditingScreen() {
         Allure.step("Нажатие на кнопку для входа в экран редактирования комментария");
+        claimsScreenElements.setEditClaimsButton(2);
         claimsScreenElements.getEditCommentButton().perform(click());
     }
 

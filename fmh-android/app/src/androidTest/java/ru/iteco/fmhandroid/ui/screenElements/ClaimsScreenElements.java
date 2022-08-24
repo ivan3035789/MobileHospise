@@ -155,7 +155,7 @@ public class ClaimsScreenElements {
                             2)));
 
     private final ViewInteraction editClaimsButton = onView(withId(R.id.edit_processing_image_button));
-    private final ViewInteraction editCommentButton = onView(
+    private ViewInteraction editCommentButton = onView(
             allOf(withId(R.id.edit_comment_image_button), withContentDescription("button edit comment"),
     childAtPosition(
             withClassName(is("android.widget.LinearLayout")), childAtPosition(
@@ -308,5 +308,15 @@ public class ClaimsScreenElements {
 
     public ViewInteraction getCreating() {
         return creating;
+    }
+
+    public void setEditClaimsButton(int position) {
+        this.editCommentButton = onView(
+                allOf(withId(R.id.edit_comment_image_button), withContentDescription("button edit comment"),
+                        childAtPosition(
+                                withClassName(is("android.widget.LinearLayout")), childAtPosition(
+                                        withClassName(is("android.widget.LinearLayout")), withId(R.id.claim_comments_list_recycler_view),
+                                        position),
+                                1)));
     }
 }
