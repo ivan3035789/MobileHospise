@@ -105,47 +105,47 @@ public class AuthorizationScreenTest {
         authorizationScreenStep.invalidAuthorization();
         SystemClock.sleep(1000);
 //        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), R.string.empty_login_or_password);
-        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), "empty_login_or_password");
+        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), "Login and password cannot be empty");
     }
 
     @Test
-    @DisplayName("Warning messages should appear when entering an incorrect password")//
+    @DisplayName("Warning messages should appear when entering an incorrect password")
     @Description("В этом тест кейсе мы проверяем, что при вводе неправильного логина или пароля пользователь не входит в систему, появляется надпись Wrong login or password")
     public void warningMessagesShouldAppearWhenEnteringAnIncorrectPassword() {
         authorizationScreenStep.invalidAuthorizationLoginPassword();
         SystemClock.sleep(1000);
 //        authorizationScreenStep.checkingTheWrongLoginOrPassword(ActivityTestRule.getActivity(), R.string.wrong_login_or_password);
-        authorizationScreenStep.checkingTheWrongLoginOrPassword(ActivityTestRule.getActivity(), "wrong_login_or_password");
+        authorizationScreenStep.checkingTheWrongLoginOrPassword(ActivityTestRule.getActivity(), "Wrong login or password");
     }
 
     @Test
-    @DisplayName("Warning Messages Should Appear When You Enter Space")//
+    @DisplayName("Warning Messages Should Appear When You Enter Space")
     @Description("В этом тест кейсе мы проверяем, что при невведенном логине и пароле появлется предупреждающая надпись Login and password cannot be empty")
     public void warningMessagesShouldAppearWhenYouEnterSpace() {
         authorizationScreenStep.invalidAuthorization();
         SystemClock.sleep(1000);
 //        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), R.string.empty_login_or_password);
-        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), "empty_login_or_password");
+        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), "Login and password cannot be empty");
     }
 
     @Test
-    @DisplayName("Warning Messages Should Appear When The Password Field Is Blank")//
+    @DisplayName("Warning Messages Should Appear When The Password Field Is Blank")
     @Description("В этом тест кейсе мы проверяем, что при невведенном пароле появлется предупреждающая надпись Login and password cannot be empty")
     public void warningMessagesShouldAppearWhenThePasswordFieldIsBlank() {
         authorizationScreenStep.invalidAuthorization();
         SystemClock.sleep(1000);
 //        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), R.string.empty_login_or_password);
-        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), "empty_login_or_password");
+        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), "Login and password cannot be empty");
     }
 
     @Test
-    @DisplayName("Warning Messages Should Appear When The Login Field Is Empty")//
+    @DisplayName("Warning Messages Should Appear When The Login Field Is Empty")
     @Description("В этом тест кейсе мы проверяем, что при невведенном логине появлется предупреждающая надпись Login and password cannot be empty")
     public void warningMessagesShouldAppearWhenTheLoginFieldIsEmpty() {
         authorizationScreenStep.invalidAuthorization();
         SystemClock.sleep(1000);
 //        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), R.string.empty_login_or_password);
-        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), "empty_login_or_password");
+        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), "Login and password cannot be empty");
     }
 
     @Test
