@@ -170,12 +170,13 @@ public class CommentScreenTest {
     @Description("В этом тест кейсе мы проверяем что при нажатии на кнопку с иконкой \"блокнот с карандашом\" пользователь попадает в раздел создания, редактирования коментариев, имеется возможность отредактировать коментарий")
     public void theCommentInTheClaimShouldBeEdited() {
         int position = randomClaims(1, 2, 3);
+        int positionComment = 2;
         String validTextComment = textSymbol(5);
 
         mainScreenStep.clickingOnTheAllClaimsTextLink();
         claimsScreenStep.choosingRandomClaim(position);
         SystemClock.sleep(3000);
-        claimsScreenStep.clickingOnTheButtonToEnterTheCommentEditingScreen();
+        claimsScreenStep.clickingOnTheButtonToEnterTheCommentEditingScreen(positionComment);
         SystemClock.sleep(3000);
         commentScreenStep.validLanguageTextComment(validTextComment);
         SystemClock.sleep(3000);

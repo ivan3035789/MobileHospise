@@ -13,6 +13,7 @@ import androidx.test.rule.ActivityTestRule;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -323,6 +324,7 @@ public class ClaimsScreenTest {
         claimsScreenStep.checkingTheOpenStatus();
     }
 
+    @Ignore
     @Test
     @DisplayName("The status should change to cancelled")
     @Description("В этом тест кейсе мы проверяем смену статуса с Open на Canceled")
