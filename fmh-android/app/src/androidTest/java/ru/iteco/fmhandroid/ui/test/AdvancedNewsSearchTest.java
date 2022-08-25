@@ -1,6 +1,6 @@
 package ru.iteco.fmhandroid.ui.test;
 
- import static ru.iteco.fmhandroid.ui.data.Helper.DateTime.generatorDate;
+import static ru.iteco.fmhandroid.ui.data.Helper.DateTime.generatorDate;
 import static ru.iteco.fmhandroid.ui.data.Helper.DateTime.generatorDate2;
 import static ru.iteco.fmhandroid.ui.data.Helper.DateTime.invalidGeneratorDate;
 import static ru.iteco.fmhandroid.ui.data.Helper.Rand.random;
@@ -21,8 +21,7 @@ import androidx.test.rule.ActivityTestRule;
 
 import org.junit.After;
 import org.junit.Before;
- import org.junit.Ignore;
- import org.junit.Rule;
+import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -94,12 +93,10 @@ public class AdvancedNewsSearchTest {
         advancedNewsSearchScreenStep.checkingTheVisibilityOfTheNamesOfCheckBoxes();
     }
 
-    @Ignore
     @Test
     @DisplayName("Must search for news in the list of news blocks using FilterNews according to the specified criteria in all fields")
     @Description("В этом тест кейсе мы проверяем поиск новости по всем заданным критериям в полях в разделе \"Filter news\"")
     public void mustSearchForNewsByCriteriaInAllFields() throws ParseException {
-        int position = 0;
         String category = randomCategory();
         String dateStartInput = generatorDate2();
         String dateEndInput = generatorDate();

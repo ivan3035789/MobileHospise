@@ -37,10 +37,10 @@ public class MainScreenStep {
         mainScreenElements.getClaimList().perform(actionOnItemAtPosition(position, click()));
     }
 
-//    public void clickingOnAllClaims() {
-//        Allure.step("Нажатие на all Claims");
-//        mainScreenElements.getAllClaims().perform(click());
-//    }
+    public void clickingOnAllClaims() {
+        Allure.step("Нажатие на all Claims");
+        mainScreenElements.getAllClaims().perform(click());
+    }
 
     public void clickingOnTheActionMenuButton() {
         Allure.step("Нажатие на кнопку ActionMenu");
@@ -169,15 +169,6 @@ public class MainScreenStep {
 
     public void randomTransitionToCreatingNews() {
         randomLogInToNewsCreation();
-    }
-
-    public void switchingToTheControlPanel() {
-        Allure.step("Переход в Control Panel");
-        MainScreenStep mainScreenStep = new MainScreenStep();
-        NewsScreenStep newsScreenStep = new NewsScreenStep();
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheNewsName();
-        newsScreenStep.clickingOnTheButtonToGoToTheControlPanel();
     }
 
     public static void enterCreateClaimsAllClaims() {

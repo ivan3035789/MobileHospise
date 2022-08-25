@@ -76,6 +76,7 @@ import ru.iteco.fmhandroid.ui.step.MainScreenStep;
 import io.bloco.faker.Faker;
 import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.step.NewsScreenStep;
 
 public class Helper {
 
@@ -230,8 +231,12 @@ public class Helper {
 
     public static void deletingNewsUpToTheNumberOfTenControlPanelScreen(int position) {
         MainScreenStep mainScreenStep = new MainScreenStep();
+        NewsScreenStep newsScreenStep = new NewsScreenStep();
         ControlPanelScreenStep controlPanelScreenStep = new ControlPanelScreenStep();
-        mainScreenStep.switchingToTheControlPanel();
+        mainScreenStep.clickingOnTheActionMenuButton();
+        mainScreenStep.clickingOnTheNewsName();
+        newsScreenStep.clickingOnTheButtonToGoToTheControlPanel();
+//        mainScreenStep.switchingToTheControlPanel();
         int positionNews = position;
 
         while (true) {
@@ -247,29 +252,6 @@ public class Helper {
             }
             positionNews += 1;
         }
-    }
-
-    public static int searchNews(String text) {
-        ControlPanelScreenStep controlPanelScreenStep = new ControlPanelScreenStep();
-        int position = 0;
-        boolean notFound = true;
-
-        while (notFound) {
-            controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
-            try {
-                String description = controlPanelScreenStep.descriptionNews();
-                if (text.equals(description)) {
-                    assertEquals(text, description);
-                    notFound = false;
-                } else {
-                    notFound = true;
-                }
-            } catch (RuntimeException exception) {
-                break;
-            }
-            position += 1;
-        }
-        return position;
     }
 
     public static class Rand {
@@ -426,12 +408,12 @@ public class Helper {
     public static void setUpStatusNewsNotActive(int position) {
         ControlPanelScreenElements controlPanelScreenElements = new ControlPanelScreenElements();
         EditingNewsScreenElements editingNewsScreenElements = new EditingNewsScreenElements();
-        MainScreenStep mainScreenStep = new MainScreenStep();
-        NewsScreenElements newsScreenElements = new NewsScreenElements();
+//        MainScreenStep mainScreenStep = new MainScreenStep();
+//        NewsScreenElements newsScreenElements = new NewsScreenElements();
 
-        mainScreenStep.clickingOnTheActionMenuButton();
-        mainScreenStep.clickingOnTheNewsName();
-        newsScreenElements.getEditButton().perform(click());
+//        mainScreenStep.clickingOnTheActionMenuButton();
+//        mainScreenStep.clickingOnTheNewsName();
+//        newsScreenElements.getEditButton().perform(click());
         controlPanelScreenElements.getRecyclerView().perform(actionOnItemAtPosition(position, click()));
         SystemClock.sleep(3000);
         String nameNewsItWas = Text.getText(controlPanelScreenElements.getNewsItemTitle());
@@ -479,20 +461,23 @@ public class Helper {
             ControlPanelScreenStep controlPanelScreenStep = new ControlPanelScreenStep();
             int position = 0;
             boolean notFound = true;
-
-            controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
+            String d;
 
             while (notFound) {
+
                 try {
                     controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
                     SystemClock.sleep(2000);
-                        onView(withText(text.trim())).check(matches(isDisplayed()));
-                        SystemClock.sleep(2000);
-//                        notFound = false;
-                } catch (RuntimeException e) {
+                } catch (PerformException e) {
                     break;
                 }
-                position += 1;
+                d = controlPanelScreenStep.descriptionNewsPosition(position);
+                if (text.equals(d)) {
+                    notFound = false;
+                } else {
+                    notFound = true;
+                    position += 1;
+                }
             }
             return position;
         }

@@ -259,7 +259,7 @@ public class ControlPanelScreenStep {
         return Helper.Text.getText(onView(withIndex(withId(R.id.news_item_description_text_view), 0)));
     }
 
-//    public String descriptionNewsPosition(int position) {
-//        return Helper.Text.getText(onView(withIndex(withId(R.id.news_item_description_text_view), 0)));
-//    }
+    public String descriptionNewsPosition(int position) {
+        return Helper.Text.getText(onView(withIndex(withId(R.id.news_item_description_text_view), position)));
+    }
 }
