@@ -199,13 +199,14 @@ public class Helper {
 
         creatingNewsScreenElements.getCategoryFieldNews().perform(replaceText(category)).perform(closeSoftKeyboard());
         SystemClock.sleep(3000);
-        creatingNewsScreenElements.getTitleFieldNews().perform(replaceText(category), click()).perform(closeSoftKeyboard());
+        creatingNewsScreenElements.getTitleFieldNews().perform(replaceText(category)).perform(closeSoftKeyboard());
         creatingNewsScreenElements.getPublicationDateFieldNews().perform(click());
         watchScreenElements.getOkButton().perform(scrollTo(), click());
         SystemClock.sleep(3000);
         creatingNewsScreenElements.getTimeFieldNews().perform(click());
         calendarScreenElements.getOkButton().perform(scrollTo(), click());
-        creatingNewsScreenElements.getDescriptionFieldNews().perform(replaceText(text), click()).perform(closeSoftKeyboard());
+        creatingNewsScreenElements.getDescriptionFieldNews().perform(replaceText(text)).perform(closeSoftKeyboard());
+        SystemClock.sleep(3000);
         creatingNewsScreenElements.getSaveButton().perform(click());
     }
 
@@ -225,7 +226,8 @@ public class Helper {
         SystemClock.sleep(3000);
         creatingNewsScreenElements.getTimeFieldNews().perform(click());
         calendarScreenElements.getOkButton().perform(scrollTo(), click());
-        creatingNewsScreenElements.getDescriptionFieldNews().perform(replaceText(text), click()).perform(closeSoftKeyboard());
+        creatingNewsScreenElements.getDescriptionFieldNews().perform(replaceText(text)).perform(closeSoftKeyboard());
+        SystemClock.sleep(3000);
         creatingNewsScreenElements.getSaveButton().perform(click());
     }
 
@@ -233,10 +235,11 @@ public class Helper {
         MainScreenStep mainScreenStep = new MainScreenStep();
         NewsScreenStep newsScreenStep = new NewsScreenStep();
         ControlPanelScreenStep controlPanelScreenStep = new ControlPanelScreenStep();
+
         mainScreenStep.clickingOnTheActionMenuButton();
         mainScreenStep.clickingOnTheNewsName();
         newsScreenStep.clickingOnTheButtonToGoToTheControlPanel();
-//        mainScreenStep.switchingToTheControlPanel();
+
         int positionNews = position;
 
         while (true) {
