@@ -56,7 +56,7 @@ public class ClaimsScreenTest {
             SystemClock.sleep(5000);
         } finally {
             mainScreenStep.clickingOnTheActionMenuButton();
-            mainScreenStep.clickingOnTheClaimsName();
+            mainScreenStep.clickingOnAllClaims();
             SystemClock.sleep(5000);
         }
     }

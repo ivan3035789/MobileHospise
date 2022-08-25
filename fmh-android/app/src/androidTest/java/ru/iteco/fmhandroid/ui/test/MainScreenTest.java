@@ -119,7 +119,7 @@ public class MainScreenTest {
     @DisplayName("Should go to the News Screen when clicking on all News")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на текстовую ссылку  \"all news\", происходит переход на страницу \"News\" ")
     public void shouldGoToTheNewsScreenWhenClickingOnAllNews() {
-        mainScreenStep.clickingOnTheAllNewsTextLink();
+        mainScreenStep.clickingOnAllClaims();
         SystemClock.sleep(3000);
         newsScreenStep.checkTheNameOfTheNewsScreen();
     }
@@ -128,7 +128,7 @@ public class MainScreenTest {
     @DisplayName("Should go to the Claims Screen when clicking on all Claims")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на текстовую ссылку  \"all claims\", происходит переход на страницу \"Claims\"")
     public void shouldGoToTheClaimsScreenWhenClickingOnAllClaims() {
-        mainScreenStep.clickingOnTheAllClaimsTextLink();
+        mainScreenStep.clickingOnAllClaims();
         SystemClock.sleep(3000);
         claimsScreenStep.checkScreenNameClaims();
     }

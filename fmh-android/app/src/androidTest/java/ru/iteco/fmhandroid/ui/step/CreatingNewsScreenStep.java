@@ -96,7 +96,7 @@ public class CreatingNewsScreenStep {
         WatchScreenElements watchScreenElements = new WatchScreenElements();
         CalendarScreenStep calendarScreenStep = new CalendarScreenStep();
 
-        creatingNewsScreenElements.getCategoryFieldNews().perform(typeText(validCategory)).perform(closeSoftKeyboard());
+        creatingNewsScreenElements.getCategoryFieldNews().perform(replaceText(validCategory)).perform(closeSoftKeyboard());
         creatingNewsScreenElements.getTitleFieldNews().perform(typeText(text), click()).perform(closeSoftKeyboard());
         SystemClock.sleep(3000);
         creatingNewsScreenElements.getPublicationDateFieldNews().perform(click());
@@ -184,11 +184,11 @@ public class CreatingNewsScreenStep {
             String creationDateNewsItWas, String creationDateNewsItWasHasBecomes, String authorNewsItWas, String authorNewsItWasHasBecomes,
             String descriptionNewsItWas, String descriptionNewsItWasHasBecomes) {
         Allure.step("Проверка данные первой новости из списка должны совпадать после отмены создания новости");
-        assertEquals(nameNewsItWas, nameNewsItWasHasBecomes);
+        assertEquals(nameNewsItWas.trim(), nameNewsItWasHasBecomes.trim());
         assertEquals(publicationDateNewsItWas, publicationDateNewsItWasHasBecomes);
         assertEquals(creationDateNewsItWas, creationDateNewsItWasHasBecomes);
         assertEquals(authorNewsItWas, authorNewsItWasHasBecomes);
-        assertEquals(descriptionNewsItWas, descriptionNewsItWasHasBecomes);
+        assertEquals(descriptionNewsItWas.trim(), descriptionNewsItWasHasBecomes.trim());
     }
 
     public void checkingTheCalendarAppearance(@NonNull AppActivity activity) {
@@ -227,20 +227,40 @@ public class CreatingNewsScreenStep {
         return Helper.Text.getText(onView(withIndex(withId(R.id.news_item_title_text_view), 0)));
     }
 
+    public String nameNewsPosition(int position) {
+        return Helper.Text.getText(onView(withIndex(withId(R.id.news_item_title_text_view), position)));
+    }
+
     public String publicationDateNews() {
         return Helper.Text.getText(onView(withIndex(withId(R.id.news_item_publication_date_text_view), 0)));
+    }
+
+    public String publicationDateNewsPosition(int position) {
+        return Helper.Text.getText(onView(withIndex(withId(R.id.news_item_publication_date_text_view), position)));
     }
 
     public String creationDateNews() {
         return Helper.Text.getText(onView(withIndex(withId(R.id.news_item_create_date_text_view), 0)));
     }
 
+    public String creationDateNewsPosition(int position) {
+        return Helper.Text.getText(onView(withIndex(withId(R.id.news_item_create_date_text_view), position)));
+    }
+
     public String authorNews() {
         return Helper.Text.getText(onView(withIndex(withId(R.id.news_item_author_name_text_view), 0)));
     }
 
+    public String authorNewsPosition(int position) {
+        return Helper.Text.getText(onView(withIndex(withId(R.id.news_item_author_name_text_view), position)));
+    }
+
     public String descriptionNews() {
         return Helper.Text.getText(onView(withIndex(withId(R.id.news_item_description_text_view), 0)));
+    }
+
+    public String descriptionNewsPosition(int position) {
+        return Helper.Text.getText(onView(withIndex(withId(R.id.news_item_description_text_view), position)));
     }
 
 }

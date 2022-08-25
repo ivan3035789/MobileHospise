@@ -16,6 +16,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import ru.iteco.fmhandroid.ui.data.Helper;
 import ru.iteco.fmhandroid.ui.step.AuthorizationScreenStep;
 import ru.iteco.fmhandroid.ui.step.ControlPanelScreenStep;
 import ru.iteco.fmhandroid.ui.step.CreatingNewsScreenStep;
@@ -129,13 +130,14 @@ public class CreatingNewsScreenTest {
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
         creatingNewsScreenStep.fillingInFieldsWithValidData(text, validCategory);
         creatingNewsScreenStep.clickingOnTheSaveNewsButton();
-        creatingNewsScreenStep.choosingNews(position);
+        int positionNews = Helper.Search.searchNews(text);
+        creatingNewsScreenStep.choosingNews(positionNews);
 
-        String nameNewsItWasHasBecomes = creatingNewsScreenStep.nameNews();
-        String publicationDateNewsItWasHasBecomes = creatingNewsScreenStep.publicationDateNews();
-        String creationDateNewsItWasHasBecomes = creatingNewsScreenStep.creationDateNews();
-        String authorNewsItWasHasBecomes = creatingNewsScreenStep.authorNews();
-        String descriptionNewsItWasHasBecomes = creatingNewsScreenStep.descriptionNews();
+        String nameNewsItWasHasBecomes = creatingNewsScreenStep.nameNewsPosition(positionNews);
+        String publicationDateNewsItWasHasBecomes = creatingNewsScreenStep.publicationDateNewsPosition(positionNews);
+        String creationDateNewsItWasHasBecomes = creatingNewsScreenStep.creationDateNewsPosition(positionNews);
+        String authorNewsItWasHasBecomes = creatingNewsScreenStep.authorNewsPosition(positionNews);
+        String descriptionNewsItWasHasBecomes = creatingNewsScreenStep.descriptionNewsPosition(positionNews);
         SystemClock.sleep(3000);
 
         creatingNewsScreenStep.comparingTheDataOfTheCreatedNewsWithTheDataOfTheFirstNewsFromTheList(
