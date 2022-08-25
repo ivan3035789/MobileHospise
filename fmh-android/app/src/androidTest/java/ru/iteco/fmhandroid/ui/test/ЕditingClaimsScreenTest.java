@@ -17,17 +17,16 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.data.Helper;
 import ru.iteco.fmhandroid.ui.step.AuthorizationScreenStep;
 import ru.iteco.fmhandroid.ui.step.ClaimsScreenStep;
 import ru.iteco.fmhandroid.ui.step.EditingClaimsScreenStep;
 import ru.iteco.fmhandroid.ui.step.MainScreenStep;
 import ru.iteco.fmhandroid.ui.step.WatchScreenStep;
-import io.qameta.allure.android.runners.AllureAndroidJUnit4;
-import io.qameta.allure.kotlin.Description;
-import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.R;
-import ru.iteco.fmhandroid.ui.AppActivity;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -39,7 +38,7 @@ public class ЕditingClaimsScreenTest {
     ClaimsScreenStep claimsScreenStep = new ClaimsScreenStep();
     WatchScreenStep watchScreenStep = new WatchScreenStep();
 
-    int position = randomClaims(0, 1, 2, 3);
+    int position = randomClaims(0);
 
     @Rule
     public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
@@ -215,7 +214,7 @@ public class ЕditingClaimsScreenTest {
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
         editingClaimsScreenStep.deletingTextFromTheTitleField();
         editingClaimsScreenStep.clickingOnTheSaveButton();
-        editingClaimsScreenStep.checkingTheFillEmptyFields(ActivityTestRule.getActivity(), R.string.empty_fields);
+        editingClaimsScreenStep.checkingTheFillEmptyFields(ActivityTestRule.getActivity(), "Fill empty fields");
     }
 
     @Test
@@ -228,7 +227,7 @@ public class ЕditingClaimsScreenTest {
         SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
         SystemClock.sleep(3000);
-        editingClaimsScreenStep.validLanguage(validLanguageText, validLanguageText, validLanguageText);
+        editingClaimsScreenStep.validLanguage(validLanguageText);
         SystemClock.sleep(3000);
         editingClaimsScreenStep.checkingForThePresenceOfWordsFromEnglishLettersInTheFields(validLanguageText);
     }
@@ -244,8 +243,8 @@ public class ЕditingClaimsScreenTest {
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
         SystemClock.sleep(3000);
         try {
-            editingClaimsScreenStep.invalidLanguage(invalidLanguageText, invalidLanguageText, invalidLanguageText);
-        } catch (RuntimeException expected) {
+            editingClaimsScreenStep.invalidLanguage(invalidLanguageText);
+        } catch (RuntimeException e) {
 
         } finally {
             editingClaimsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();
@@ -258,6 +257,8 @@ public class ЕditingClaimsScreenTest {
     public void theStatusOfTheClaimInClaimsShouldChange() {
         String executor = randomExecutor();
 
+        Helper.Swipes.swipeToBottom();
+        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
         SystemClock.sleep(2000);
         editingClaimsScreenStep.clickingOnTheExecutorField();
@@ -274,8 +275,6 @@ public class ЕditingClaimsScreenTest {
     @Description("В этом тест кейсе мы проверяем, что поле  \"Executor\" в  \"Editing claims\"  заполненное категорией не входящей в список не может быть сохранено")
     public void performerShouldNotBeInstalledWhenSavingIfItIsNotSelectedFromTheProposedListOfPerformers() {
         String text = textSymbol(5);
-
-        SystemClock.sleep(3000);
 
         String executorClaimFieldItWas = claimsScreenStep.executorText();
         SystemClock.sleep(2000);

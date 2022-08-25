@@ -4,6 +4,7 @@ import static ru.iteco.fmhandroid.ui.data.Helper.Rand.randomExecutor;
 import static ru.iteco.fmhandroid.ui.data.Helper.Text.text51Symbol;
 import static ru.iteco.fmhandroid.ui.data.Helper.Text.textSymbol;
 import static ru.iteco.fmhandroid.ui.data.Helper.authInfo;
+import static ru.iteco.fmhandroid.ui.step.MainScreenStep.enterCreateClaimsActionButton;
 
 import android.os.SystemClock;
 
@@ -138,12 +139,16 @@ public class CreatingClaimsScreenTest {
         String description = creatingClaimsScreenStep.description();
 
         creatingClaimsScreenStep.clickingOnTheSaveButton();
-//        SystemClock.sleep(3000);
-//        claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
-//        SystemClock.sleep(3000);
-//        filteringWindowScreenStep.clickingOnTheOkButton();
         SystemClock.sleep(3000);
-        creatingClaimsScreenStep.searchForCreatedClaim(titleText);
+        try {
+            claimsScreenStep.checkScreenNameClaims();
+        } catch (NoMatchingViewException e) {
+            mainScreenStep.clickingOnTheActionMenuButton();
+            mainScreenStep.clickingOnTheClaimsName();
+            SystemClock.sleep(3000);
+        } finally {
+            creatingClaimsScreenStep.searchForCreatedClaim(titleText);
+        }
 
         String titleOnCaredClaims = creatingClaimsScreenStep.titleOnCaredClaims();
         String executorOnCaredClaims = creatingClaimsScreenStep.executorOnCaredClaims();
@@ -162,7 +167,6 @@ public class CreatingClaimsScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при отсутствии ввода исполнителя, или ввода исполнителя не из выпадающего  списка создается претензия со статусом \"Open\"")
     public void aClaimWithTheOpenStatusShouldBeCreated() {
         String titleText = textSymbol(5);
-//        enterCreateClaimsActionButton();
 
         creatingClaimsScreenStep.fillingInTheFieldsWithValidDataToCreateClaimWithAnOpenStatus(titleText);
 
@@ -178,7 +182,16 @@ public class CreatingClaimsScreenTest {
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
         SystemClock.sleep(3000);
-        creatingClaimsScreenStep.searchForCreatedClaim(titleText);
+
+        try {
+            claimsScreenStep.checkScreenNameClaims();
+        } catch (NoMatchingViewException e) {
+            mainScreenStep.clickingOnTheActionMenuButton();
+            mainScreenStep.clickingOnTheClaimsName();
+            SystemClock.sleep(3000);
+        } finally {
+            creatingClaimsScreenStep.searchForCreatedClaim(titleText);
+        }
 
         String titleOnCaredClaims = creatingClaimsScreenStep.titleOnCaredClaims();
         String dateOnCaredClaims = creatingClaimsScreenStep.dateOnCaredClaims();
@@ -227,7 +240,7 @@ public class CreatingClaimsScreenTest {
         String invalidLanguageText = "Привет мир";
 
         try {
-            creatingClaimsScreenStep.invalidLanguage(invalidLanguageText, invalidLanguageText, invalidLanguageText);
+            creatingClaimsScreenStep.invalidLanguage(invalidLanguageText);
         } catch (RuntimeException e) {
 
         } finally {
@@ -241,9 +254,7 @@ public class CreatingClaimsScreenTest {
     public void theFieldsMustBeFilledInWithEnglishLetters() {
         String validLanguageText = "Hello world";
 
-        SystemClock.sleep(3000);
-        creatingClaimsScreenStep.validLanguage(validLanguageText, validLanguageText, validLanguageText);
-        SystemClock.sleep(3000);
+        creatingClaimsScreenStep.validLanguage(validLanguageText);
         creatingClaimsScreenStep.checkingForThePresenceOfWordsFromEnglishLettersInTheFields(validLanguageText);
     }
 

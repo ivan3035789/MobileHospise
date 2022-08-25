@@ -15,27 +15,28 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import ru.iteco.fmhandroid.ui.data.Helper;
-import ru.iteco.fmhandroid.ui.step.AuthorizationScreenStep;
-import ru.iteco.fmhandroid.ui.step.ClaimsScreenStep;
-import ru.iteco.fmhandroid.ui.step.FilteringWindowScreenStep;
-import ru.iteco.fmhandroid.ui.step.MainScreenStep;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
 import ru.iteco.fmhandroid.ui.AppActivity;
+import ru.iteco.fmhandroid.ui.step.AuthorizationScreenStep;
+import ru.iteco.fmhandroid.ui.step.ClaimsScreenStep;
+import ru.iteco.fmhandroid.ui.step.FilteringWindowScreenStep;
+import ru.iteco.fmhandroid.ui.step.MainScreenStep;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
 public class FilteringScreenTest {
+
+    @Rule
+    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
 
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
     MainScreenStep mainScreenStep = new MainScreenStep();
     ClaimsScreenStep claimsScreenStep = new ClaimsScreenStep();
     FilteringWindowScreenStep filteringWindowScreenStep = new FilteringWindowScreenStep();
 
-    @Rule
-    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
+    int position = randomClaims(0, 1, 2);
 
     @Before
     public void logoutCheck() {
@@ -45,8 +46,11 @@ public class FilteringScreenTest {
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
         } finally {
-            filteringWindowScreenStep.switchingToFilteringWindow();
-            SystemClock.sleep(5000);
+            mainScreenStep.clickingOnTheActionMenuButton();
+            mainScreenStep.clickingOnTheClaimsName();
+            SystemClock.sleep(3000);
+            claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
+            SystemClock.sleep(3000);
         }
     }
 
@@ -66,9 +70,6 @@ public class FilteringScreenTest {
     @DisplayName("Must find a claim using Filtering when using a single check-box Open")
     @Description("В этом тест кейсе мы проверяем поиск \"Претензии\" с помощью Filtering, устанавливая галочку,  на нужном параметре чек-бокса для поиска \"Open\"")
     public void mustFindClaimUsingFilteringWhenUsingSingleCheckBoxOpen() {
-        int position = randomClaims(0, 1, 2);
-
-        SystemClock.sleep(5000);
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheCheckBoxOpen();
         filteringWindowScreenStep.clickingOnRandomlySelectedCheckBox();
@@ -83,9 +84,6 @@ public class FilteringScreenTest {
     @DisplayName("Must find a claim using Filtering when using a single checkbox In progress")
     @Description("В этом тест кейсе мы проверяем поиск \"Topic\" с помощью Filtering, устанавливая галочку,  на нужном параметре чек-бокса для поиска  \"In progress\"")
     public void mustFindClaimUsingFilteringWhenUsingSingleCheckboxInProgress() {
-        int position = randomClaims(0, 1, 2);
-
-        SystemClock.sleep(5000);
         filteringWindowScreenStep.clickingOnTheCheckBoxOpen();
         filteringWindowScreenStep.clickingOnTheOkButton();
         SystemClock.sleep(2000);
@@ -98,9 +96,6 @@ public class FilteringScreenTest {
     @DisplayName("Must find a claim using the Executed checkbox")
     @Description("В этом тест кейсе мы проверяем поиск \"Topic\" с помощью Filtering, устанавливая галочку,  на нужном параметре чек-бокса для поиска \"Executed\"")
     public void mustFindClaimUsingTheExecutedCheckBox() {
-        int position = randomClaims(0, 1, 2);
-
-        SystemClock.sleep(5000);
         filteringWindowScreenStep.clickingOnTheCheckBoxOpen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheCheckBoxExecuted();
@@ -115,9 +110,6 @@ public class FilteringScreenTest {
     @DisplayName("Must find a claim using Filtering when using a single Cancelled checkbox")
     @Description("В этом тест кейсе мы проверяем поиск \"Topic\" с помощью Filtering, устанавливая галочку,  на нужном параметре чек-бокса для поиска \"Cancelled\"")
     public void mustFindClaimUsingFilteringWhenUsingSingleCancelledCheckbox() {
-        int position = randomClaims(0, 1, 2);
-
-        SystemClock.sleep(5000);
         filteringWindowScreenStep.clickingOnTheCheckBoxOpen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheCheckBoxCancelled();
@@ -132,21 +124,6 @@ public class FilteringScreenTest {
     @DisplayName("Must find a claim using Filtering when using all checkboxes")
     @Description("В этом тест кейсе мы проверяем поиск \"претензии\" с помощью Filtering, устанавливая  галочку,  на всех имеющихся критериях чек-боксов для поиска ")
     public void mustFindClaimUsingFilteringWhenUsingAllCheckBoxes() {
-        int position = randomClaims(0, 1, 2);
-
-        SystemClock.sleep(5000);
-        filteringWindowScreenStep.clickingOnTheOkButton();
-        SystemClock.sleep(2000);
-        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
-        SystemClock.sleep(2000);
-        filteringWindowScreenStep.checkingTheStatus();
-        claimsScreenStep.checkingTheStatusShouldNotBeExecuted();
-        claimsScreenStep.checkingTheStatusShouldNotBeCancelled();
-        Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(2000);
-        claimsScreenStep.pressingTheExitButton();
-
-        claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxExecuted();
         filteringWindowScreenStep.clickingOnTheCheckBoxCancelled();
         filteringWindowScreenStep.clickingOnTheOkButton();

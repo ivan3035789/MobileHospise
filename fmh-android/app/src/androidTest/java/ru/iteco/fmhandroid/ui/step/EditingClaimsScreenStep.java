@@ -100,21 +100,24 @@ public class EditingClaimsScreenStep {
         editingClaimsScreenElements.getTimeClaimField().perform(click());
     }
 
-    public void invalidLanguage(String title, String executed, String description) {
+    public void invalidLanguage(String title) {
         Allure.step("Ввод невалидного языка");
         editingClaimsScreenElements.getTitleClaimField().perform(replaceText(""));
         editingClaimsScreenElements.getExecutorClaimField().perform(replaceText(""));
         editingClaimsScreenElements.getDescriptionClaimField().perform(replaceText(""));
+        SystemClock.sleep(2000);
         editingClaimsScreenElements.getTitleClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
-        editingClaimsScreenElements.getExecutorClaimField().perform(typeText(executed)).perform(closeSoftKeyboard());
-        editingClaimsScreenElements.getDescriptionClaimField().perform(typeText(description)).perform(closeSoftKeyboard());
+        SystemClock.sleep(2000);
+        editingClaimsScreenElements.getExecutorClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
+        SystemClock.sleep(2000);
+        editingClaimsScreenElements.getDescriptionClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
     }
 
-    public void validLanguage(String title, String executed, String description) {
+    public void validLanguage(String title) {
         Allure.step("Ввод валидного языка");
         editingClaimsScreenElements.getTitleClaimField().perform(replaceText(title));
-        editingClaimsScreenElements.getExecutorClaimField().perform(replaceText(executed));
-        editingClaimsScreenElements.getDescriptionClaimField().perform(replaceText(description)).perform(closeSoftKeyboard());
+        editingClaimsScreenElements.getExecutorClaimField().perform(replaceText(title));
+        editingClaimsScreenElements.getDescriptionClaimField().perform(replaceText(title)).perform(closeSoftKeyboard());
     }
 
     public void fillingInFieldsWithValidData() {
@@ -138,15 +141,6 @@ public class EditingClaimsScreenStep {
         Allure.step("Заполнение поля Executor");
         editingClaimsScreenElements.getExecutorClaimField().perform(replaceText(text));
     }
-
-//    public void checkNameFieldInEditingClaims() {
-//        Allure.step("Проверка идентифицирующих названий полей");
-//        editingClaimsScreenElements.getTitleName().check(matches(isDisplayed()));
-//        editingClaimsScreenElements.getExecutorName().check(matches(isDisplayed()));
-//        editingClaimsScreenElements.getDateName().check(matches(isDisplayed()));
-//        editingClaimsScreenElements.getTimeName().check(matches(isDisplayed()));
-//        editingClaimsScreenElements.getDescriptionName().check(matches(isDisplayed()));
-//    }
 
     public void checkingTheFieldsAreFilledIn() {
         Allure.step("Проверка Заполнения Полей");
@@ -252,11 +246,9 @@ public class EditingClaimsScreenStep {
                 .inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
     }
 
-    public void checkingTheFillEmptyFields(@NonNull AppActivity activity, int text) {
+    public void checkingTheFillEmptyFields(@NonNull AppActivity activity, String text) {
         Allure.step("Проверка появления предупреждающего сообщения Fill empty fields");
-        onView(withText(text))
-                .inRoot(withDecorView(not(is(activity.getWindow().getDecorView()))))
-                .check(matches(withText("Fill empty fields"))).check(matches(isDisplayed()));
+        onView(withText(text)).inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
     }
 
     public String titleClaimField() {

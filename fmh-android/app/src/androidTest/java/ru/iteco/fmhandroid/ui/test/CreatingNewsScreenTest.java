@@ -1,5 +1,6 @@
 package ru.iteco.fmhandroid.ui.test;
 
+import static ru.iteco.fmhandroid.ui.data.Helper.Rand.randomCategory;
 import static ru.iteco.fmhandroid.ui.data.Helper.Text.textSymbol;
 import static ru.iteco.fmhandroid.ui.data.Helper.authInfo;
 
@@ -49,6 +50,7 @@ public class CreatingNewsScreenTest {
             SystemClock.sleep(5000);
         } finally {
             mainScreenStep.randomTransitionToCreatingNews();
+            SystemClock.sleep(3000);
         }
     }
 
@@ -100,7 +102,6 @@ public class CreatingNewsScreenTest {
     @DisplayName("The type of watch should change")
     @Description("В этом тест кейсе мы проверяем возможность выбора типа часов. что при нажатии на кнопку с иконкой \"клавиатура\" должен поменяться вид часов")
     public void theTypeOfWatchShouldChange() {
-        SystemClock.sleep(3000);
         creatingNewsScreenStep.clickingOnTheTimeField();
         watchScreenStep.pressingTheButtonToChangeTheWatchType();
         watchScreenStep.checkingTheTypeOfDigitalClock();
@@ -112,6 +113,7 @@ public class CreatingNewsScreenTest {
     public void newsShouldBeCreated() {
         int position = 0;
         String text = textSymbol(5);
+        String validCategory = randomCategory();
 
         creatingNewsScreenStep.clickingOnTheExitButtonFromNewsCreation();
         creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
@@ -123,8 +125,9 @@ public class CreatingNewsScreenTest {
         String authorNewsItWas = creatingNewsScreenStep.authorNews();
         String descriptionNewsItWas = creatingNewsScreenStep.descriptionNews();
 
+        SystemClock.sleep(3000);
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
-        creatingNewsScreenStep.fillingInFieldsWithValidData(text);
+        creatingNewsScreenStep.fillingInFieldsWithValidData(text, validCategory);
         creatingNewsScreenStep.clickingOnTheSaveNewsButton();
         creatingNewsScreenStep.choosingNews(position);
 
@@ -133,6 +136,7 @@ public class CreatingNewsScreenTest {
         String creationDateNewsItWasHasBecomes = creatingNewsScreenStep.creationDateNews();
         String authorNewsItWasHasBecomes = creatingNewsScreenStep.authorNews();
         String descriptionNewsItWasHasBecomes = creatingNewsScreenStep.descriptionNews();
+        SystemClock.sleep(3000);
 
         creatingNewsScreenStep.comparingTheDataOfTheCreatedNewsWithTheDataOfTheFirstNewsFromTheList(
                 nameNewsItWas, nameNewsItWasHasBecomes, publicationDateNewsItWas, publicationDateNewsItWasHasBecomes,
@@ -146,6 +150,7 @@ public class CreatingNewsScreenTest {
     public void cancelingNewsCreation() {
         int position = 0;
         String text = textSymbol(5);
+        String validCategory = randomCategory();
 
         creatingNewsScreenStep.clickingOnTheExitButtonFromNewsCreation();
         creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
@@ -158,7 +163,7 @@ public class CreatingNewsScreenTest {
         String descriptionNewsItWas = creatingNewsScreenStep.descriptionNews();
 
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
-        creatingNewsScreenStep.fillingInFieldsWithValidData(text);
+        creatingNewsScreenStep.fillingInFieldsWithValidData(text, validCategory);
         creatingNewsScreenStep.clickingOnTheExitButtonFromNewsCreation();
         creatingNewsScreenStep.clickingOnTheConfirmationButtonToCancelTheCreationOfTheNews();
 
@@ -202,7 +207,7 @@ public class CreatingNewsScreenTest {
     public void theFieldsMustBeFilledInWithEnglishLetters() {
         String validLanguageText = "hello world";
 
-        creatingNewsScreenStep.validLanguage(validLanguageText, validLanguageText, validLanguageText);
+        creatingNewsScreenStep.validLanguage(validLanguageText);
         creatingNewsScreenStep.checkingForThePresenceOfWordsFromEnglishLettersInTheFields(validLanguageText);
     }
 
@@ -213,8 +218,8 @@ public class CreatingNewsScreenTest {
         String invalidLanguageText = "привет мир";
 
         try {
-            creatingNewsScreenStep.invalidLanguage(invalidLanguageText, invalidLanguageText);
-        } catch (RuntimeException expected) {
+            creatingNewsScreenStep.invalidLanguage(invalidLanguageText);
+        } catch (RuntimeException e) {
 
         } finally {
             creatingNewsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();

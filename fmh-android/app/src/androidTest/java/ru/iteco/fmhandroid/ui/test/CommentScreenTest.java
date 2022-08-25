@@ -52,6 +52,7 @@ public class CommentScreenTest {
             SystemClock.sleep(5000);
         } finally {
             mainScreenStep.clickingOnTheAllClaimsTextLink();
+            SystemClock.sleep(3000);
             claimsScreenStep.clickingOnRandomlySelectedClaim(position);
             SystemClock.sleep(3000);
         }
@@ -69,6 +70,7 @@ public class CommentScreenTest {
         Helper.Swipes.swipeToBottom();
         SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheAddCommentButton();
+        SystemClock.sleep(3000);
         commentScreenStep.checkingTheEntryToTheCommentScreen();
     }
 
@@ -99,6 +101,7 @@ public class CommentScreenTest {
         Helper.Swipes.swipeToBottom();
         SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheAddCommentButton();
+        SystemClock.sleep(3000);
         commentScreenStep.validLanguageTextComment(validTextComment);
         commentScreenStep.checkTheFieldIsFilledWithText(validTextComment);
     }

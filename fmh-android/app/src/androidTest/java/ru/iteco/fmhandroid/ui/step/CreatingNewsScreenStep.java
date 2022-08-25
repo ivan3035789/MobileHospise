@@ -78,33 +78,33 @@ public class CreatingNewsScreenStep {
         creatingNewsScreenElements.getOkButton().perform(scrollTo(), click());
     }
 
-    public void validLanguage(String category, String title, String description) {
+    public void validLanguage(String title) {
         Allure.step("Ввод валидного языка");
         creatingNewsScreenElements.getTitleFieldNews().perform(typeText(title));
-        creatingNewsScreenElements.getCategoryFieldNews().perform(typeText(category));
-        creatingNewsScreenElements.getDescriptionFieldNews().perform(typeText(description)).perform(closeSoftKeyboard());
+        creatingNewsScreenElements.getCategoryFieldNews().perform(typeText(title));
+        creatingNewsScreenElements.getDescriptionFieldNews().perform(typeText(title)).perform(closeSoftKeyboard());
     }
 
-    public void invalidLanguage(String title, String description) {
+    public void invalidLanguage(String title) {
         Allure.step("Ввод невалидного языка");
         creatingNewsScreenElements.getTitleFieldNews().perform(typeText(title));
-        creatingNewsScreenElements.getDescriptionFieldNews().perform(typeText(description)).perform(closeSoftKeyboard());
+        creatingNewsScreenElements.getDescriptionFieldNews().perform(typeText(title)).perform(closeSoftKeyboard());
     }
 
-    public void fillingInFieldsWithValidData(String text) {
+    public void fillingInFieldsWithValidData(String text, String validCategory) {
         Allure.step("Заполнение полей валидными данными");
         WatchScreenElements watchScreenElements = new WatchScreenElements();
         CalendarScreenStep calendarScreenStep = new CalendarScreenStep();
 
-        creatingNewsScreenElements.getCategoryFieldNews().perform(replaceText(randomCategory())).perform(closeSoftKeyboard());
-        creatingNewsScreenElements.getTitleFieldNews().perform(replaceText(textSymbol(5)), click()).perform(closeSoftKeyboard());
+        creatingNewsScreenElements.getCategoryFieldNews().perform(typeText(validCategory)).perform(closeSoftKeyboard());
+        creatingNewsScreenElements.getTitleFieldNews().perform(typeText(text), click()).perform(closeSoftKeyboard());
         SystemClock.sleep(3000);
         creatingNewsScreenElements.getPublicationDateFieldNews().perform(click());
         watchScreenElements.getOkButton().perform(scrollTo(), click());
         SystemClock.sleep(3000);
         creatingNewsScreenElements.getTimeFieldNews().perform(click());
         calendarScreenStep.clickingOnTheConfirmButton();
-        creatingNewsScreenElements.getDescriptionFieldNews().perform(replaceText(text), click()).perform(closeSoftKeyboard());
+        creatingNewsScreenElements.getDescriptionFieldNews().perform(typeText(text), click()).perform(closeSoftKeyboard());
     }
 
     public void fillingInTheCategoryField(String text) {

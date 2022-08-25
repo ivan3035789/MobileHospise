@@ -73,18 +73,18 @@ public class CreatingClaimsScreenStep {
         creatingClaimsScreenElements.getTimeClaimField().perform(click());
     }
 
-    public void invalidLanguage(String title, String executed, String description) {
+    public void invalidLanguage(String title) {
         Allure.step("Ввод невалидного языка");
         creatingClaimsScreenElements.getTitleClaimField().perform(typeText(title));
-        creatingClaimsScreenElements.getExecutorClaimField().perform(typeText(executed));
-        creatingClaimsScreenElements.getDescriptionClaimField().perform(typeText(description)).perform(closeSoftKeyboard());
+        creatingClaimsScreenElements.getExecutorClaimField().perform(typeText(title));
+        creatingClaimsScreenElements.getDescriptionClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
     }
 
-    public void validLanguage(String title, String executed, String description) {
+    public void validLanguage(String title) {
         Allure.step("Ввод валидного языка");
         creatingClaimsScreenElements.getTitleClaimField().perform(typeText(title));
-        creatingClaimsScreenElements.getExecutorClaimField().perform(typeText(executed));
-        creatingClaimsScreenElements.getDescriptionClaimField().perform(typeText(description)).perform(closeSoftKeyboard());
+        creatingClaimsScreenElements.getExecutorClaimField().perform(typeText(title));
+        creatingClaimsScreenElements.getDescriptionClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
     }
 
     public void fillingInFieldsWithValidData(String titleText, String randomExecutor) {

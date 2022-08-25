@@ -98,20 +98,20 @@ public class EditingNewsScreenStep {
         editingNewsScreenElements.getCategoryField().perform(replaceText(text));
     }
 
-    public void invalidLanguage(String title, String description) {
+    public void invalidLanguage(String title) {
         Allure.step("Ввод невалидного языка");
         editingNewsScreenElements.getTitleTextNewsField().perform(replaceText("")).perform(closeSoftKeyboard());
         editingNewsScreenElements.getDescriptionField().perform(replaceText("")).perform(closeSoftKeyboard());
         SystemClock.sleep(3000);
         editingNewsScreenElements.getTitleTextNewsField().perform(typeText(title)).perform(closeSoftKeyboard());
-        editingNewsScreenElements.getDescriptionField().perform(typeText(description)).perform(closeSoftKeyboard());
+        editingNewsScreenElements.getDescriptionField().perform(typeText(title)).perform(closeSoftKeyboard());
     }
 
-    public void validLanguage(String title, String category, String description) {
+    public void validLanguage(String title) {
         Allure.step("Ввод валидного языка");
         editingNewsScreenElements.getTitleTextNewsField().perform(replaceText(title));
-        editingNewsScreenElements.getCategoryField().perform(replaceText(category));
-        editingNewsScreenElements.getDescriptionField().perform(replaceText(description)).perform(closeSoftKeyboard());
+        editingNewsScreenElements.getCategoryField().perform(replaceText(title));
+        editingNewsScreenElements.getDescriptionField().perform(replaceText(title)).perform(closeSoftKeyboard());
     }
 
     public void fillingInTheNewsFieldsWithNewData(String text, String Category) {

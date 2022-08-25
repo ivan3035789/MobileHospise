@@ -248,7 +248,7 @@ public class EditingNewsScreenTest {
         String validLanguageText = "Hello world";
 
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
-        editingNewsScreenStep.validLanguage(validLanguageText, validLanguageText, validLanguageText);
+        editingNewsScreenStep.validLanguage(validLanguageText);
         SystemClock.sleep(3000);
         editingNewsScreenStep.checkingForThePresenceOfWordsFromEnglishLettersInTheFields(validLanguageText);
     }
@@ -261,7 +261,7 @@ public class EditingNewsScreenTest {
 
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
         try {
-            editingNewsScreenStep.invalidLanguage(invalidLanguageText, invalidLanguageText);
+            editingNewsScreenStep.invalidLanguage(invalidLanguageText);
         } catch (RuntimeException expected) {
 
         } finally {
@@ -288,7 +288,6 @@ public class EditingNewsScreenTest {
         int position = randomClaims(1);
         Helper.setUpStatusNewsNotActive(position);
 
-//        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
 
         SystemClock.sleep(3000);
