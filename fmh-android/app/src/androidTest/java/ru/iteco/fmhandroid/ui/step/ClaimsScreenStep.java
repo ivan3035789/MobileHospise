@@ -145,18 +145,17 @@ public class ClaimsScreenStep {
 
     public void checkClaim() {
         Allure.step("Проверка названий в претензии");
-        String textExecutor = Helper.Text.getText(claimsScreenElements.getExecutorText());
-        claimsScreenElements.getExecutorText().check(matches(withText(textExecutor))).check(matches(isDisplayed()));
+        claimsScreenElements.getExecutorText().check(matches(isDisplayed()));
         claimsScreenElements.getPlanDateText().check(matches(isDisplayed()));
         claimsScreenElements.getTimeText().check(matches(isDisplayed()));
         claimsScreenElements.getAuthorText().check(matches(isDisplayed()));
         claimsScreenElements.getDescriptionText().check(matches(isDisplayed()));
         claimsScreenElements.getStatus().check(matches(isDisplayed()));
-        claimsScreenElements.getTitle().check(matches(withText("Title"))).check(matches(isDisplayed()));
-        claimsScreenElements.getExecutorLabel().check(matches(withText("Executor"))).check(matches(isDisplayed()));
-        claimsScreenElements.getPlanDateLabel().check(matches(withText("Plan date"))).check(matches(isDisplayed()));
-        claimsScreenElements.getAuthorLabel().check(matches(withText("Author"))).check(matches(isDisplayed()));
-        claimsScreenElements.getCreatedLabel().check(matches(withText("Created"))).check(matches(isDisplayed()));
+        claimsScreenElements.getTitle().check(matches(isDisplayed()));
+        claimsScreenElements.getExecutorLabel().check(matches(isDisplayed()));
+        claimsScreenElements.getPlanDateLabel().check(matches(isDisplayed()));
+        claimsScreenElements.getAuthorLabel().check(matches(isDisplayed()));
+        claimsScreenElements.getCreatedLabel().check(matches(isDisplayed()));
     }
 
     public void fillingInTheCommentField(String text) {
