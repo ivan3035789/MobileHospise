@@ -1,6 +1,7 @@
 package ru.iteco.fmhandroid.ui.test;
 
 import static ru.iteco.fmhandroid.ui.data.Helper.Rand.randomClaims;
+import static ru.iteco.fmhandroid.ui.data.Helper.Search.searchComment;
 import static ru.iteco.fmhandroid.ui.data.Helper.Text.textSymbol;
 import static ru.iteco.fmhandroid.ui.data.Helper.authInfo;
 
@@ -38,7 +39,7 @@ public class CommentScreenTest {
     ClaimsScreenStep claimsScreenStep = new ClaimsScreenStep();
     CommentScreenStep commentScreenStep = new CommentScreenStep();
 
-    int position = randomClaims(0);
+    int position = randomClaims(1);
     int positionComment = 2;
 
     @Before
@@ -166,9 +167,6 @@ public class CommentScreenTest {
         String validTextComment = textSymbol(5);
 
         commentScreenStep.clickingOnTheButtonToCancelAddingComment();
-
-        Helper.Swipes.scrollSlowlyDown();
-        SystemClock.sleep(5000);
         claimsScreenStep.clickingOnTheButtonToEnterTheCommentEditingScreen(positionComment);
         SystemClock.sleep(3000);
         commentScreenStep.validLanguageTextComment(validTextComment);

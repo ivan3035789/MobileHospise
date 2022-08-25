@@ -5,6 +5,7 @@ import static androidx.test.espresso.action.ViewActions.click;
 import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.replaceText;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
+import static androidx.test.espresso.action.ViewActions.swipeDown;
 import static androidx.test.espresso.action.ViewActions.swipeLeft;
 import static androidx.test.espresso.action.ViewActions.swipeRight;
 import static androidx.test.espresso.action.ViewActions.swipeUp;
@@ -476,6 +477,24 @@ public class Helper {
                     notFound = true;
                     position += 1;
                 }
+            }
+            return position;
+        }
+
+        public static int searchComment(String text) {
+            ClaimsScreenElements claimsScreenElements = new ClaimsScreenElements();
+            int position = 0;
+            boolean notFound = true;
+
+            while (notFound) {
+                try {
+                    onView(withText(text)).check(matches(isDisplayed()));
+                    notFound = false;
+                } catch (PerformException e) {
+                    break;
+                }
+                claimsScreenElements.getBlockComment().check(matches(isDisplayed())).perform(actionOnItemAtPosition(position, swipeDown()));
+                position += 1;
             }
             return position;
         }

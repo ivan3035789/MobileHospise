@@ -31,6 +31,9 @@ public class AuthorizationScreenTest {
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
     MainScreenStep mainScreenStep = new MainScreenStep();
 
+    String MessageEmpty = "Login and password cannot be empty";
+    String messageWrong = "Wrong login or password";
+
     @Before
     public void logoutCheck() {
         SystemClock.sleep(8000);
@@ -68,26 +71,24 @@ public class AuthorizationScreenTest {
     @DisplayName("The fields must be filled in with English letters")
     @Description("В этом тест кейсе мы проверяем, что поля заполняются латинскими буквами")
     public void theFieldsMustBeFilledInWithEnglishLetters() {
-        String login = "loginLogin";
-        String password = "passwordPassword";
+        String loginPassword = "loginAndPassword";
 
-        authorizationScreenStep.validLanguage(login, password);
-        authorizationScreenStep.checkingThePresenceOfTheEnteredDataInTheFields(login, password);
+        authorizationScreenStep.validLanguage(loginPassword);
+        authorizationScreenStep.checkingThePresenceOfTheEnteredDataInTheFields(loginPassword);
     }
 
     @Test
     @DisplayName("Fields should not be filled in with Russian letters")
     @Description("В этом тест кейсе мы проверяем, что поля незаполняются нелатинскими буквами")
     public void fieldsShouldNotBeFilledInWithRussianLetters() {
-        String invalidLoginText = "привет мир";
-        String invalidPasswordText = "привет мир";
+        String invalidLoginPasswordText = "привет мир";
 
         try {
-            authorizationScreenStep.invalidLanguage(invalidLoginText, invalidPasswordText);
+            authorizationScreenStep.invalidLanguage(invalidLoginPasswordText);
         } catch (RuntimeException ignored) {
 
         } finally {
-            authorizationScreenStep.checkingTheAbsenceOfTheEnteredDataInTheFields(invalidLoginText, invalidPasswordText);
+            authorizationScreenStep.checkingTheAbsenceOfTheEnteredDataInTheFields(invalidLoginPasswordText);
         }
     }
 
@@ -107,7 +108,7 @@ public class AuthorizationScreenTest {
         authorizationScreenStep.invalidAuthorization();
         SystemClock.sleep(1000);
 //        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), R.string.empty_login_or_password);
-        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), "Login and password cannot be empty");
+        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), MessageEmpty);
     }
 
     @Test
@@ -117,7 +118,7 @@ public class AuthorizationScreenTest {
         authorizationScreenStep.invalidAuthorizationLoginPassword();
         SystemClock.sleep(1000);
 //        authorizationScreenStep.checkingTheWrongLoginOrPassword(ActivityTestRule.getActivity(), R.string.wrong_login_or_password);
-        authorizationScreenStep.checkingTheWrongLoginOrPassword(ActivityTestRule.getActivity(), "Wrong login or password");
+        authorizationScreenStep.checkingTheWrongLoginOrPassword(ActivityTestRule.getActivity(), messageWrong);
     }
 
     @Test
@@ -127,7 +128,7 @@ public class AuthorizationScreenTest {
         authorizationScreenStep.invalidAuthorization();
         SystemClock.sleep(1000);
 //        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), R.string.empty_login_or_password);
-        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), "Login and password cannot be empty");
+        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), MessageEmpty);
     }
 
     @Test
@@ -137,7 +138,7 @@ public class AuthorizationScreenTest {
         authorizationScreenStep.invalidAuthorization();
         SystemClock.sleep(1000);
 //        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), R.string.empty_login_or_password);
-        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), "Login and password cannot be empty");
+        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), MessageEmpty);
     }
 
     @Test
@@ -147,7 +148,7 @@ public class AuthorizationScreenTest {
         authorizationScreenStep.invalidAuthorization();
         SystemClock.sleep(1000);
 //        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), R.string.empty_login_or_password);
-        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), "Login and password cannot be empty");
+        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), MessageEmpty);
     }
 
     @Test

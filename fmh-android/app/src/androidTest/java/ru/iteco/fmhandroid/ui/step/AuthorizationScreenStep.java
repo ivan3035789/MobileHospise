@@ -75,34 +75,34 @@ public class AuthorizationScreenStep {
         authorizationScreenElements.getButton().perform(click());
     }
 
-    public void validLanguage(String login, String password) {
+    public void validLanguage(String loginPassword) {
         Allure.step("Ввод английских букв");
-        authorizationScreenElements.getLoginField().perform(typeText(login));
-        authorizationScreenElements.getPasswordField().perform(typeText(password)).perform(closeSoftKeyboard());
+        authorizationScreenElements.getLoginField().perform(typeText(loginPassword));
+        authorizationScreenElements.getPasswordField().perform(typeText(loginPassword)).perform(closeSoftKeyboard());
         authorizationScreenElements.getButton().perform(click());
     }
 
-    public void invalidLanguage(String login, String password) {
+    public void invalidLanguage(String loginPassword) {
         Allure.step("Ввод русских букв");
-        authorizationScreenElements.getLoginField().perform(typeText(login));
-        authorizationScreenElements.getPasswordField().perform(typeText(password)).perform(closeSoftKeyboard());
+        authorizationScreenElements.getLoginField().perform(typeText(loginPassword));
+        authorizationScreenElements.getPasswordField().perform(typeText(loginPassword)).perform(closeSoftKeyboard());
         authorizationScreenElements.getButton().perform(click());
     }
 
-    public void checkingThePresenceOfTheEnteredDataInTheFields(String login, String password) {
+    public void checkingThePresenceOfTheEnteredDataInTheFields(String loginPassword) {
         Allure.step("Проверка присутствия в полях введенных данных");
         authorizationScreenElements.getLoginField().check(matches(isDisplayed()));
         authorizationScreenElements.getPasswordField().check(matches(isDisplayed()));
-        authorizationScreenElements.getLoginField().check(matches(withText(login)));
-        authorizationScreenElements.getPasswordField().check(matches(withText(password)));
+        authorizationScreenElements.getLoginField().check(matches(withText(loginPassword)));
+        authorizationScreenElements.getPasswordField().check(matches(withText(loginPassword)));
     }
 
-    public void checkingTheAbsenceOfTheEnteredDataInTheFields(String invalidLoginText, String invalidPasswordText) {
+    public void checkingTheAbsenceOfTheEnteredDataInTheFields(String loginPassword) {
         Allure.step("Проверка отсутствия в полях введенных данных");
         authorizationScreenElements.getLoginField().check(matches(isDisplayed()));
         authorizationScreenElements.getPasswordField().check(matches(isDisplayed()));
-        authorizationScreenElements.getLoginField().check(matches(not(withText(invalidLoginText))));
-        authorizationScreenElements.getPasswordField().check(matches(not(withText(invalidPasswordText))));
+        authorizationScreenElements.getLoginField().check(matches(not(withText(loginPassword))));
+        authorizationScreenElements.getPasswordField().check(matches(not(withText(loginPassword))));
     }
 
     public void checkingTheLoginAndPasswordCannotBeEmpty(@NonNull AppActivity activity, String text) {
