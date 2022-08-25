@@ -18,6 +18,7 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
+import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
@@ -248,6 +249,29 @@ public class Helper {
         }
     }
 
+    public static int searchNews(String text) {
+        ControlPanelScreenStep controlPanelScreenStep = new ControlPanelScreenStep();
+        int position = 0;
+        boolean notFound = true;
+
+        while (notFound) {
+            controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
+            try {
+                String description = controlPanelScreenStep.descriptionNews();
+                if (text.equals(description)) {
+                    assertEquals(text, description);
+                    notFound = false;
+                } else {
+                    notFound = true;
+                }
+            } catch (RuntimeException exception) {
+                break;
+            }
+            position += 1;
+        }
+        return position;
+    }
+
     public static class Rand {
 
         private static final Random rand = new Random();
@@ -450,6 +474,28 @@ public class Helper {
     }
 
     public static class Search {
+
+        public static int searchNews(String text) {
+            ControlPanelScreenStep controlPanelScreenStep = new ControlPanelScreenStep();
+            int position = 0;
+            boolean notFound = true;
+
+            controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
+
+            while (notFound) {
+                try {
+                    controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
+                    SystemClock.sleep(2000);
+                        onView(withText(text.trim())).check(matches(isDisplayed()));
+                        SystemClock.sleep(2000);
+//                        notFound = false;
+                } catch (RuntimeException e) {
+                    break;
+                }
+                position += 1;
+            }
+            return position;
+        }
 
         public static String searchForAnUncreatedComment(String text) {
             ClaimsScreenElements claimsScreenElements = new ClaimsScreenElements();

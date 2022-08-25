@@ -1,6 +1,6 @@
 package ru.iteco.fmhandroid.ui.test;
 
-import static ru.iteco.fmhandroid.ui.data.Helper.DateTime.generatorDate;
+ import static ru.iteco.fmhandroid.ui.data.Helper.DateTime.generatorDate;
 import static ru.iteco.fmhandroid.ui.data.Helper.DateTime.generatorDate2;
 import static ru.iteco.fmhandroid.ui.data.Helper.DateTime.invalidGeneratorDate;
 import static ru.iteco.fmhandroid.ui.data.Helper.Rand.random;
@@ -21,21 +21,22 @@ import androidx.test.rule.ActivityTestRule;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Rule;
+ import org.junit.Ignore;
+ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import java.text.ParseException;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.data.Helper;
 import ru.iteco.fmhandroid.ui.step.AdvancedNewsSearchScreenStep;
 import ru.iteco.fmhandroid.ui.step.AuthorizationScreenStep;
 import ru.iteco.fmhandroid.ui.step.ControlPanelScreenStep;
 import ru.iteco.fmhandroid.ui.step.MainScreenStep;
-import io.qameta.allure.android.runners.AllureAndroidJUnit4;
-import io.qameta.allure.kotlin.Description;
-import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.ui.AppActivity;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -93,6 +94,7 @@ public class AdvancedNewsSearchTest {
         advancedNewsSearchScreenStep.checkingTheVisibilityOfTheNamesOfCheckBoxes();
     }
 
+    @Ignore
     @Test
     @DisplayName("Must search for news in the list of news blocks using FilterNews according to the specified criteria in all fields")
     @Description("В этом тест кейсе мы проверяем поиск новости по всем заданным критериям в полях в разделе \"Filter news\"")
@@ -114,9 +116,10 @@ public class AdvancedNewsSearchTest {
         advancedNewsSearchScreenStep.fillingInFieldsWithSearchData(category, dateStartInput, dateEndInput);
         advancedNewsSearchScreenStep.clickingOnTheFilterButtonToSearchForNews();
 
-        controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
-        String dateOnCardNews = controlPanelScreenStep.dateOnCardNews(position);
-        controlPanelScreenStep.comparisonOfSearchDataWithNewsData(dateOnCardNews, dateStartInput, dateEndInput, position, category);
+
+        int p = Helper.Search.searchNews(text);
+        String dateOnCardNews = controlPanelScreenStep.dateOnCardNews(p);
+        controlPanelScreenStep.comparisonOfSearchDataWithNewsData(dateOnCardNews, dateStartInput, dateEndInput, p, category);
     }
 
     @Test
