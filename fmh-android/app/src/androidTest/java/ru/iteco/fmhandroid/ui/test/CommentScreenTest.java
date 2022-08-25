@@ -51,7 +51,7 @@ public class CommentScreenTest {
             authorizationScreenStep.validLoginPassword(authInfo());
             SystemClock.sleep(5000);
         } finally {
-            mainScreenStep.clickingOnTheAllClaimsTextLink();
+            mainScreenStep.clickingOnAllClaims();
             SystemClock.sleep(3000);
             claimsScreenStep.clickingOnRandomlySelectedClaim(position);
             SystemClock.sleep(3000);

@@ -72,11 +72,6 @@ public class MainScreenStep {
         mainScreenElements.getAllNews().perform(click());
     }
 
-    public void clickingOnTheAllClaimsTextLink() {
-        Allure.step("Нажатие на текстовую ссылку AllClaims");
-        mainScreenElements.getAllClaims().perform(click());
-    }
-
     public void pressingTheButtonInTheFormOfButterfly() {
         Allure.step("Нажатие на кнопку в виде бабочки");
         mainScreenElements.getThematicQuotesButton().perform(click());
