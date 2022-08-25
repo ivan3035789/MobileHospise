@@ -3,6 +3,7 @@ package ru.iteco.fmhandroid.ui.test;
 import static ru.iteco.fmhandroid.ui.data.Helper.Rand.random;
 import static ru.iteco.fmhandroid.ui.data.Helper.Text.textSymbol;
 import static ru.iteco.fmhandroid.ui.data.Helper.authInfo;
+import static ru.iteco.fmhandroid.ui.data.Helper.createClaim;
 
 import android.os.SystemClock;
 
@@ -101,8 +102,8 @@ public class ClaimsScreenTest {
     @DisplayName("The status should change to In progress")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"блокнот с шестиренкой\"  и нажатии в сплывшем окне на \"Take to work\" статус претензии меняется на  \"In progress\" ")
     public void theStatusShouldChangeToInProgress() {
-        creatingClaimsScreenStep.createClaimStatusOpenSetUp();
-        SystemClock.sleep(5000);
+        createClaim();
+        SystemClock.sleep(3000);
 
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
@@ -251,8 +252,10 @@ public class ClaimsScreenTest {
     @DisplayName("Canceling the comment field when selecting Throw off")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на \"Throw off\" сбрасывается статус с \"In progress\" на \"Open\"")
     public void cancelingTheCommentFieldWhenSelectingThrowOff() {
-        creatingClaimsScreenStep.createClaimStatusOpenSetUp();
         String text = textSymbol(5);
+
+        createClaim();
+        SystemClock.sleep(3000);
 
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
@@ -286,8 +289,10 @@ public class ClaimsScreenTest {
     @DisplayName("The status should change to executed")
     @Description("В этом тест кейсе мы проверяем смену статуса In Progress на статус executed")
     public void theStatusShouldChangeToExecuted() {
-        creatingClaimsScreenStep.createClaimStatusOpenSetUp();
         String text = textSymbol(5);
+
+        createClaim();
+        SystemClock.sleep(3000);
 
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();

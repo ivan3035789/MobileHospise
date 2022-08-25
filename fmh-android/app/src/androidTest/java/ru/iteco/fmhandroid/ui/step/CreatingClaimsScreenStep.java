@@ -233,9 +233,9 @@ public class CreatingClaimsScreenStep {
                 .check(matches(withText("Fill empty fields"))).check(matches(isDisplayed()));
     }
 
-    public void createClaimStatusOpenSetUp() {
-        createClaim();
-    }
+//    public void createClaimStatusOpenSetUp() {
+//        createClaim();
+//    }
 
     public String title() {
         return Helper.Text.getText(onView(withIndex(withId(R.id.title_edit_text), 0)));
