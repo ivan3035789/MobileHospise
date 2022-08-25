@@ -232,20 +232,21 @@ public class AdvancedNewsSearchTest {
     @Description("В этом тест кейсе мы проверяем поиск новости по статусу Not active")
     public void mustFindNewsWithTheStatusNotActive() {
         String category = randomCategory();
-        int position = randomNews(0);
         String text = Helper.Text.textSymbol(5);
         createNews(text, category);
         SystemClock.sleep(3000);
-        setUpStatusNewsNotActive(0);
-
+        int positionNews = Helper.Search.searchNews(text.trim());
+        setUpStatusNewsNotActive(positionNews);
+        SystemClock.sleep(3000);
+        
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
         SystemClock.sleep(3000);
         advancedNewsSearchScreenStep.clickingOnTheNotActiveCheckBox();
         advancedNewsSearchScreenStep.clickingOnTheFilterButtonToSearchForNews();
 
         SystemClock.sleep(3000);
-        controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
-        controlPanelScreenStep.CheckingTheStatusNotActive(position);
+        controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(positionNews);
+        controlPanelScreenStep.CheckingTheStatusNotActive(positionNews);
     }
 
     @Test

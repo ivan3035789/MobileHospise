@@ -408,12 +408,7 @@ public class Helper {
     public static void setUpStatusNewsNotActive(int position) {
         ControlPanelScreenElements controlPanelScreenElements = new ControlPanelScreenElements();
         EditingNewsScreenElements editingNewsScreenElements = new EditingNewsScreenElements();
-//        MainScreenStep mainScreenStep = new MainScreenStep();
-//        NewsScreenElements newsScreenElements = new NewsScreenElements();
 
-//        mainScreenStep.clickingOnTheActionMenuButton();
-//        mainScreenStep.clickingOnTheNewsName();
-//        newsScreenElements.getEditButton().perform(click());
         controlPanelScreenElements.getRecyclerView().perform(actionOnItemAtPosition(position, click()));
         SystemClock.sleep(3000);
         String nameNewsItWas = Text.getText(controlPanelScreenElements.getNewsItemTitle());
