@@ -55,7 +55,6 @@ public class ClaimsScreenTest {
             authorizationScreenStep.validLoginPassword(authInfo());
             SystemClock.sleep(5000);
         } finally {
-            mainScreenStep.clickingOnTheActionMenuButton();
             mainScreenStep.clickingOnAllClaims();
             SystemClock.sleep(5000);
         }
