@@ -156,7 +156,7 @@ public class ControlPanelScreenStep {
     }
 
     public void comparisonOfSearchDataWithNewsData(
-            String dateOnCardNews,String dateStartInput,String dateEndInput,int position,String category) throws ParseException {
+            String dateOnCardNews, String dateStartInput, String dateEndInput, int position, String category) throws ParseException {
         Allure.step("Сравнение данных поиска с данными новости");
         String localDate = localDate();
 

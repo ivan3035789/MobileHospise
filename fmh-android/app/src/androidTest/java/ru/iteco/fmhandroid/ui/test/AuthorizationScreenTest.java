@@ -42,10 +42,7 @@ public class AuthorizationScreenTest {
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.clickingTheExitProfileButton();
             SystemClock.sleep(5000);
-        } finally {
-            authorizationScreenStep.checkingTheNameOfTheAuthorizationScreen();
-            SystemClock.sleep(5000);
-        }
+        } 
     }
 
     @After

@@ -206,6 +206,7 @@ public class Helper {
         SystemClock.sleep(3000);
         creatingNewsScreenElements.getTimeFieldNews().perform(click());
         calendarScreenElements.getOkButton().perform(scrollTo(), click());
+        SystemClock.sleep(3000);
         creatingNewsScreenElements.getDescriptionFieldNews().perform(replaceText(text)).perform(closeSoftKeyboard());
         SystemClock.sleep(3000);
         creatingNewsScreenElements.getSaveButton().perform(click());
@@ -460,22 +461,22 @@ public class Helper {
             ControlPanelScreenStep controlPanelScreenStep = new ControlPanelScreenStep();
             int position = 0;
             boolean notFound = true;
-            String d;
+            String description;
 
             while (notFound) {
 
                 try {
                     controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
                     SystemClock.sleep(2000);
+                    description = controlPanelScreenStep.descriptionNewsPosition(position);
+                    if (text.equals(description)) {
+                        notFound = false;
+                    } else {
+                        notFound = true;
+                        position += 1;
+                    }
                 } catch (PerformException e) {
                     break;
-                }
-                d = controlPanelScreenStep.descriptionNewsPosition(position);
-                if (text.equals(d)) {
-                    notFound = false;
-                } else {
-                    notFound = true;
-                    position += 1;
                 }
             }
             return position;
@@ -532,6 +533,7 @@ public class Helper {
                     onView(withText(text)).check(matches(isDisplayed()));
                     notFound = false;
                 } catch (NoMatchingViewException ignored) {
+
                 }
                 claimsScreenElements.getBlockClaims().check(matches(isDisplayed())).perform(actionOnItemAtPosition(position, swipeUp()));
                 position += 1;

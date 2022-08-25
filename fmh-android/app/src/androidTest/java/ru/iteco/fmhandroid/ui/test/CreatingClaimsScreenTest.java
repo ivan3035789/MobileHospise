@@ -54,7 +54,10 @@ public class CreatingClaimsScreenTest {
             authorizationScreenStep.validLoginPassword(authInfo());
             SystemClock.sleep(5000);
         } finally {
-            mainScreenStep.randomTransitionToCreatingClaims();
+//            mainScreenStep.randomTransitionToCreatingClaims();
+            mainScreenStep.clickingOnTheActionMenuButton();
+            mainScreenStep.clickingOnTheClaimsName();
+            claimsScreenStep.clickingOnTheButtonToGoToTheClaimCreationScreen();
             SystemClock.sleep(5000);
         }
     }
@@ -139,16 +142,7 @@ public class CreatingClaimsScreenTest {
         String description = creatingClaimsScreenStep.description();
 
         creatingClaimsScreenStep.clickingOnTheSaveButton();
-        SystemClock.sleep(3000);
-        try {
-            claimsScreenStep.checkScreenNameClaims();
-        } catch (NoMatchingViewException e) {
-            mainScreenStep.clickingOnTheActionMenuButton();
-            mainScreenStep.clickingOnTheClaimsName();
-            SystemClock.sleep(3000);
-        } finally {
-            creatingClaimsScreenStep.searchForCreatedClaim(titleText);
-        }
+        creatingClaimsScreenStep.searchForCreatedClaim(titleText);
 
         String titleOnCaredClaims = creatingClaimsScreenStep.titleOnCaredClaims();
         String executorOnCaredClaims = creatingClaimsScreenStep.executorOnCaredClaims();
@@ -183,15 +177,7 @@ public class CreatingClaimsScreenTest {
         filteringWindowScreenStep.clickingOnTheOkButton();
         SystemClock.sleep(3000);
 
-        try {
-            claimsScreenStep.checkScreenNameClaims();
-        } catch (NoMatchingViewException e) {
-            mainScreenStep.clickingOnTheActionMenuButton();
-            mainScreenStep.clickingOnTheClaimsName();
-            SystemClock.sleep(3000);
-        } finally {
-            creatingClaimsScreenStep.searchForCreatedClaim(titleText);
-        }
+        creatingClaimsScreenStep.searchForCreatedClaim(titleText);
 
         String titleOnCaredClaims = creatingClaimsScreenStep.titleOnCaredClaims();
         String dateOnCaredClaims = creatingClaimsScreenStep.dateOnCaredClaims();

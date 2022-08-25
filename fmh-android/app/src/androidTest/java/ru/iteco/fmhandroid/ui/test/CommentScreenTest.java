@@ -1,7 +1,6 @@
 package ru.iteco.fmhandroid.ui.test;
 
 import static ru.iteco.fmhandroid.ui.data.Helper.Rand.randomClaims;
-import static ru.iteco.fmhandroid.ui.data.Helper.Search.searchComment;
 import static ru.iteco.fmhandroid.ui.data.Helper.Text.textSymbol;
 import static ru.iteco.fmhandroid.ui.data.Helper.authInfo;
 
@@ -17,15 +16,15 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.data.Helper;
 import ru.iteco.fmhandroid.ui.step.AuthorizationScreenStep;
 import ru.iteco.fmhandroid.ui.step.ClaimsScreenStep;
 import ru.iteco.fmhandroid.ui.step.CommentScreenStep;
 import ru.iteco.fmhandroid.ui.step.MainScreenStep;
-import io.qameta.allure.android.runners.AllureAndroidJUnit4;
-import io.qameta.allure.kotlin.Description;
-import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.ui.AppActivity;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -56,10 +55,10 @@ public class CommentScreenTest {
             SystemClock.sleep(3000);
             claimsScreenStep.clickingOnRandomlySelectedClaim(position);
             SystemClock.sleep(3000);
-            Helper.Swipes.swipeToBottom();
-            SystemClock.sleep(5000);
-            claimsScreenStep.clickingOnTheAddCommentButton();
-            SystemClock.sleep(3000);
+//            Helper.Swipes.swipeToBottom();
+//            SystemClock.sleep(5000);
+//            claimsScreenStep.clickingOnTheAddCommentButton();
+//            SystemClock.sleep(3000);
         }
     }
 
@@ -72,10 +71,10 @@ public class CommentScreenTest {
     @DisplayName("Must enter the comment creation section")
     @Description("В этом тест кейсе мы проверяем, что при клике на кнопку \"+\" в поле \"Add comment\" пользователь переходит в раздел создания коментария ")
     public void mustEnterTheCommentCreationSection() {
-//        Helper.Swipes.swipeToBottom();
-//        SystemClock.sleep(5000);
-//        claimsScreenStep.clickingOnTheAddCommentButton();
-//        SystemClock.sleep(3000);
+        Helper.Swipes.swipeToBottom();
+        SystemClock.sleep(5000);
+        claimsScreenStep.clickingOnTheAddCommentButton();
+        SystemClock.sleep(3000);
         commentScreenStep.checkingTheEntryToTheCommentScreen();
     }
 
@@ -85,9 +84,9 @@ public class CommentScreenTest {
     public void fieldsShouldNotBeFilledInWithRussianLetters() {
         String invalidLanguageTextComment = "Привет мир";
 
-//        Helper.Swipes.swipeToBottom();
-//        SystemClock.sleep(3000);
-//        claimsScreenStep.clickingOnTheAddCommentButton();
+        Helper.Swipes.swipeToBottom();
+        SystemClock.sleep(3000);
+        claimsScreenStep.clickingOnTheAddCommentButton();
         try {
             commentScreenStep.enteringAnIncorrectLanguageTextComment(invalidLanguageTextComment);
         } catch (RuntimeException e) {
@@ -103,10 +102,10 @@ public class CommentScreenTest {
     public void theFieldsMustBeFilledInWithEnglishLetters() {
         String validTextComment = textSymbol(5);
 
-//        Helper.Swipes.swipeToBottom();
-//        SystemClock.sleep(3000);
-//        claimsScreenStep.clickingOnTheAddCommentButton();
-//        SystemClock.sleep(3000);
+        Helper.Swipes.swipeToBottom();
+        SystemClock.sleep(3000);
+        claimsScreenStep.clickingOnTheAddCommentButton();
+        SystemClock.sleep(3000);
         commentScreenStep.validLanguageTextComment(validTextComment);
         commentScreenStep.checkTheFieldIsFilledWithText(validTextComment);
     }
@@ -117,10 +116,10 @@ public class CommentScreenTest {
     public void commentShouldBeAdded() {
         String validTextComment = textSymbol(5);
 
-//        Helper.Swipes.swipeToBottom();
-//        SystemClock.sleep(3000);
-//        claimsScreenStep.clickingOnTheAddCommentButton();
-//        SystemClock.sleep(3000);
+        Helper.Swipes.swipeToBottom();
+        SystemClock.sleep(3000);
+        claimsScreenStep.clickingOnTheAddCommentButton();
+        SystemClock.sleep(3000);
         commentScreenStep.validLanguageTextComment(validTextComment);
         SystemClock.sleep(3000);
         commentScreenStep.clickingOnTheSaveCommentButton();
@@ -137,11 +136,11 @@ public class CommentScreenTest {
     public void cancelingAddingComment() {
         String validTextComment = textSymbol(5);
 
-//        Helper.Swipes.swipeToBottom();
-//        SystemClock.sleep(3000);
-//
-//        claimsScreenStep.clickingOnTheAddCommentButton();
-//        SystemClock.sleep(3000);
+        Helper.Swipes.swipeToBottom();
+        SystemClock.sleep(3000);
+
+        claimsScreenStep.clickingOnTheAddCommentButton();
+        SystemClock.sleep(3000);
         commentScreenStep.validLanguageTextComment(validTextComment);
         SystemClock.sleep(3000);
         commentScreenStep.clickingOnTheButtonToCancelAddingComment();
@@ -153,9 +152,9 @@ public class CommentScreenTest {
     @DisplayName("A warning message should appear when the comment field is empty")
     @Description("В этом тест кейсе мы проверяем что при незаполнении поля \"comment\", после нажатия на кнопку \"SAVE\", появляется предупреждающая надпись \"The field cannot be empty\" ")
     public void warningMessageShouldAppearWhenTheCommentFieldIsEmpty() {
-//        Helper.Swipes.swipeToBottom();
-//        SystemClock.sleep(3000);
-//        claimsScreenStep.clickingOnTheAddCommentButton();
+        Helper.Swipes.swipeToBottom();
+        SystemClock.sleep(3000);
+        claimsScreenStep.clickingOnTheAddCommentButton();
         commentScreenStep.clickingOnTheSaveCommentButton();
         commentScreenStep.checkingTheFieldCannotBeEmpty(ActivityTestRule.getActivity(), "The field cannot be empty.");
     }
@@ -166,7 +165,6 @@ public class CommentScreenTest {
     public void theCommentInTheClaimShouldBeEdited() {
         String validTextComment = textSymbol(5);
 
-        commentScreenStep.clickingOnTheButtonToCancelAddingComment();
         claimsScreenStep.clickingOnTheButtonToEnterTheCommentEditingScreen(positionComment);
         SystemClock.sleep(3000);
         commentScreenStep.validLanguageTextComment(validTextComment);

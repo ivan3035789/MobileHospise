@@ -113,10 +113,11 @@ public class AdvancedNewsSearchTest {
         advancedNewsSearchScreenStep.fillingInFieldsWithSearchData(category, dateStartInput, dateEndInput);
         advancedNewsSearchScreenStep.clickingOnTheFilterButtonToSearchForNews();
 
-
-        int p = Helper.Search.searchNews(text);
-        String dateOnCardNews = controlPanelScreenStep.dateOnCardNews(p);
-        controlPanelScreenStep.comparisonOfSearchDataWithNewsData(dateOnCardNews, dateStartInput, dateEndInput, p, category);
+        SystemClock.sleep(3000);
+        int positionNews = Helper.Search.searchNews(text);
+        controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(positionNews);
+        String dateOnCardNews = controlPanelScreenStep.dateOnCardNews(positionNews);
+        controlPanelScreenStep.comparisonOfSearchDataWithNewsData(dateOnCardNews, dateStartInput, dateEndInput, positionNews, category);
     }
 
     @Test
