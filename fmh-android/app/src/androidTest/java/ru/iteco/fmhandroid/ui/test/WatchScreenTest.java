@@ -31,13 +31,13 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 @RunWith(AllureAndroidJUnit4.class)
 public class WatchScreenTest {
 
+    @Rule
+    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
+
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
     MainScreenStep mainScreenStep = new MainScreenStep();
     WatchScreenStep watchScreenStep = new WatchScreenStep();
     CreatingClaimsScreenStep creatingClaimsScreenStep = new CreatingClaimsScreenStep();
-
-    @Rule
-    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
 
     @Before
     public void logoutCheck() {

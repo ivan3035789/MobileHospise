@@ -40,14 +40,14 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 @RunWith(AllureAndroidJUnit4.class)
 public class FilterNewsScreenTest {
 
+    @Rule
+    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
+
     MainScreenStep mainScreenStep = new MainScreenStep();
     NewsScreenStep newsScreenStep = new NewsScreenStep();
     ControlPanelScreenStep controlPanelScreenStep = new ControlPanelScreenStep();
     FilterNewsScreenStep filterNewsScreenStep = new FilterNewsScreenStep();
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
-
-    @Rule
-    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
 
     @Before
     public void logoutCheck() {

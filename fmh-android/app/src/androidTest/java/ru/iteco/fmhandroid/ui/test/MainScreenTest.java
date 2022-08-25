@@ -31,6 +31,9 @@ import ru.iteco.fmhandroid.ui.AppActivity;
 @RunWith(AllureAndroidJUnit4.class)
 public class MainScreenTest {
 
+    @Rule
+    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
+
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
     MainScreenStep mainScreenStep = new MainScreenStep();
     NewsScreenStep newsScreenStep = new NewsScreenStep();
@@ -38,9 +41,6 @@ public class MainScreenTest {
     ClaimsScreenStep claimsScreenStep = new ClaimsScreenStep();
     CreatingClaimsScreenStep creatingClaimsScreenStep = new CreatingClaimsScreenStep();
     ThematicQuotesScreenStep thematicQuotesScreenStep = new ThematicQuotesScreenStep();
-
-    @Rule
-    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
 
     @Before
     public void logoutCheck() {

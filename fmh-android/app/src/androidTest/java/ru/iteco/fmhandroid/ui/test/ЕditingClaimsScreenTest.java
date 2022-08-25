@@ -32,6 +32,9 @@ import ru.iteco.fmhandroid.ui.step.WatchScreenStep;
 @RunWith(AllureAndroidJUnit4.class)
 public class ЕditingClaimsScreenTest {
 
+    @Rule
+    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
+
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
     MainScreenStep mainScreenStep = new MainScreenStep();
     EditingClaimsScreenStep editingClaimsScreenStep = new EditingClaimsScreenStep();
@@ -39,9 +42,6 @@ public class ЕditingClaimsScreenTest {
     WatchScreenStep watchScreenStep = new WatchScreenStep();
 
     int position = randomClaims(0);
-
-    @Rule
-    public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
 
     @Before
     public void logoutCheck() {

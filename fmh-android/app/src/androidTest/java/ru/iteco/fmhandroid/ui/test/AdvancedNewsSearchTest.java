@@ -124,7 +124,6 @@ public class AdvancedNewsSearchTest {
     @Description("В этом тест кейсе мы проверяем поиск новости по категории")
     public void mustSearchByCategory() {
         String category = randomCategory();
-        int position = 0;
         String text = Helper.Text.textSymbol(5);
         createNewsForCategory(text, category);
 
@@ -136,9 +135,11 @@ public class AdvancedNewsSearchTest {
 
         advancedNewsSearchScreenStep.fillingInTheCategoryField(category);
         SystemClock.sleep(3000);
+
         advancedNewsSearchScreenStep.clickingOnTheFilterButtonToSearchForNews();
 
-        controlPanelScreenStep.checkingTheEnteredDataForTheSearchWithThoseObtainedFromTheNews(category, position);
+        int positionNews = Helper.Search.searchNews(text);
+        controlPanelScreenStep.checkingTheEnteredDataForTheSearchWithThoseObtainedFromTheNews(category, positionNews);
     }
 
     @Test
