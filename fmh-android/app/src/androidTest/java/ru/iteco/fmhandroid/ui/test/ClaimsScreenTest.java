@@ -149,31 +149,62 @@ public class ClaimsScreenTest {
         filteringWindowScreenStep.clickingOnTheOkButton();
         SystemClock.sleep(3000);
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
-        SystemClock.sleep(3000);
+        claimsScreenStep.checkingTheOpenStatus();
 
-        String titleClaimFieldItWas = editingClaimsScreenStep.titleClaimField();
-        String executorClaimFieldItWas = editingClaimsScreenStep.executorClaimField();
-        String dateClaimFieldItWas = editingClaimsScreenStep.dateClaimField();
-        String timeClaimFieldItWas = editingClaimsScreenStep.timeClaimField();
-        String descriptionClaimFieldItWas = editingClaimsScreenStep.descriptionClaimField();
+        String titleClaimFieldItWas = claimsScreenStep.authorText();
+        String executorClaimFieldItWas = claimsScreenStep.executorText();
+        String dateClaimFieldItWas = claimsScreenStep.planDateText();
+        String timeClaimFieldItWas = claimsScreenStep.timeText();
+        String descriptionClaimFieldItWas = claimsScreenStep.descriptionClaimField();
 
         Helper.Swipes.swipeToBottom();
         SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
-        SystemClock.sleep(3000);
         editingClaimsScreenStep.fillingInFieldsWithValidData();
-        SystemClock.sleep(3000);
         editingClaimsScreenStep.clickingOnTheSaveButton();
 
-        String titleClaimFieldItWasHasBecome = editingClaimsScreenStep.titleClaimField();
-        String executorClaimFieldItWasHasBecome = editingClaimsScreenStep.executorClaimField();
-        String dateClaimFieldItWasHasBecome = editingClaimsScreenStep.dateClaimField();
-        String timeClaimFieldItWasHasBecome = editingClaimsScreenStep.timeClaimField();
-        String descriptionClaimFieldItWasHasBecome = editingClaimsScreenStep.descriptionClaimField();
+        String titleClaimFieldItWasHasBecome = claimsScreenStep.authorText();
+        String executorClaimFieldItWasHasBecome = claimsScreenStep.executorText();
+        String dateClaimFieldItWasHasBecome = claimsScreenStep.planDateText();
+        String timeClaimFieldItWasHasBecome = claimsScreenStep.timeText();
+        String descriptionClaimFieldItWasHasBecome = claimsScreenStep.descriptionClaimField();
 
-        editingClaimsScreenStep.comparisonOfDataBeforeAndAfterEditing(titleClaimFieldItWas, titleClaimFieldItWasHasBecome, executorClaimFieldItWas,
-                executorClaimFieldItWasHasBecome, dateClaimFieldItWas, dateClaimFieldItWasHasBecome,
-                timeClaimFieldItWas, timeClaimFieldItWasHasBecome, descriptionClaimFieldItWas, descriptionClaimFieldItWasHasBecome);
+        SystemClock.sleep(3000);
+        editingClaimsScreenStep.checkingDataBeforeEditingAndAfter(
+                titleClaimFieldItWas, titleClaimFieldItWasHasBecome, executorClaimFieldItWas, executorClaimFieldItWasHasBecome,
+                dateClaimFieldItWas, dateClaimFieldItWasHasBecome, timeClaimFieldItWas, timeClaimFieldItWasHasBecome,
+                descriptionClaimFieldItWas, descriptionClaimFieldItWasHasBecome);
+//        claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
+//        filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
+//        filteringWindowScreenStep.clickingOnTheOkButton();
+//        SystemClock.sleep(3000);
+//        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
+//
+//        String titleClaimFieldItWas = editingClaimsScreenStep.titleClaimField();
+//        String executorClaimFieldItWas = editingClaimsScreenStep.executorClaimField();
+//        String dateClaimFieldItWas = editingClaimsScreenStep.dateClaimField();
+//        String timeClaimFieldItWas = editingClaimsScreenStep.timeClaimField();
+//        String descriptionClaimFieldItWas = editingClaimsScreenStep.descriptionClaimField();
+//        SystemClock.sleep(3000);
+//
+//        Helper.Swipes.swipeToBottom();
+//        SystemClock.sleep(3000);
+//        claimsScreenStep.clickingOnTheNotepadWithPencilButton();
+//        SystemClock.sleep(3000);
+//        editingClaimsScreenStep.fillingInFieldsWithValidData();
+//        SystemClock.sleep(3000);
+//        editingClaimsScreenStep.clickingOnTheSaveButton();
+//
+//        String titleClaimFieldItWasHasBecome = editingClaimsScreenStep.titleClaimField();
+//        String executorClaimFieldItWasHasBecome = editingClaimsScreenStep.executorClaimField();
+//        String dateClaimFieldItWasHasBecome = editingClaimsScreenStep.dateClaimField();
+//        String timeClaimFieldItWasHasBecome = editingClaimsScreenStep.timeClaimField();
+//        String descriptionClaimFieldItWasHasBecome = editingClaimsScreenStep.descriptionClaimField();
+//        SystemClock.sleep(3000);
+//
+//        editingClaimsScreenStep.comparisonOfDataBeforeAndAfterEditing(titleClaimFieldItWas, titleClaimFieldItWasHasBecome, executorClaimFieldItWas,
+//                executorClaimFieldItWasHasBecome, dateClaimFieldItWas, dateClaimFieldItWasHasBecome,
+//                timeClaimFieldItWas, timeClaimFieldItWasHasBecome, descriptionClaimFieldItWas, descriptionClaimFieldItWasHasBecome);
     }
 
     @Test
@@ -358,7 +389,8 @@ public class ClaimsScreenTest {
         claimsScreenStep.checkingTheOpenStatus();
     }
 
-    @Ignore("TODO")
+//    @Ignore("TODO")
+    @Ignore
     @Test
     @DisplayName("The status should change to cancelled")
     @Description("В этом тест кейсе мы проверяем смену статуса с Open на Canceled")

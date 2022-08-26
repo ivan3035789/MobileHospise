@@ -230,7 +230,7 @@ public class ClaimsScreenStep {
     public void comparisonOfDataBeforeAndAfterEditing(
             String executorTextItWas, String executorTextItWasHasBecome, String planDateTextItWas, String planDateTextItWasHasBecome,
             String timeTextItWas, String timeTextItWasHasBecome, String authorTextItWas, String authorTextItWasHasBecome) {
-        Allure.step("Сравнение данных до редактирования и после");
+        Allure.step("Сравнение данных до редактирования и после отмены редактирования");
         Assert.assertEquals(executorTextItWas, executorTextItWasHasBecome);
         Assert.assertEquals(planDateTextItWas, planDateTextItWasHasBecome);
         Assert.assertEquals(timeTextItWas, timeTextItWasHasBecome);

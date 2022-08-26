@@ -25,13 +25,11 @@ public class EditingClaimsScreenElements {
     private final ViewInteraction timeName = onView(withHint("Time"));
     private final ViewInteraction descriptionName = onView(withHint("Description"));
 
-//    private final ViewInteraction titleClaimField = onView(allOf(withId(R.id.title_edit_text)));
+    private final ViewInteraction titleClaimField = onView(allOf(withId(R.id.title_edit_text)));
     private final ViewInteraction executorClaimField = onView(allOf(withId(R.id.executor_drop_menu_auto_complete_text_view)));
     private final ViewInteraction dateClaimField = onView(withId(R.id.date_in_plan_text_input_edit_text));
     private final ViewInteraction timeClaimField = onView(withId(R.id.time_in_plan_text_input_edit_text));
     private final ViewInteraction descriptionClaimField = onView(withId(R.id.description_edit_text));
-
-    private final ViewInteraction titleClaimField = onView(allOf(withId(R.id.title_text_view)));
 
     private final ViewInteraction saveButton = onView(allOf(withId(R.id.save_button), withText("SAVE")));
 

@@ -22,6 +22,8 @@ import ru.iteco.fmhandroid.R;
 
 public class ClaimsScreenElements {
 
+    private final ViewInteraction titleClaimOnCard = onView(withId(R.id.title_text_view));
+
     private final ViewInteraction screenNameClaims = onView(withText("Claims"));
     private final ViewInteraction filtering = onView(withId(R.id.claim_filter_dialog_title));
 
@@ -165,6 +167,10 @@ public class ClaimsScreenElements {
 
     private final ViewInteraction commentStatus = onView(withIndex(withId(R.id.claim_comments_list_recycler_view), 0));
     private final ViewInteraction blockComment = onView(withId(R.id.claim_comments_list_recycler_view));
+
+    public ViewInteraction getTitleClaimOnCard() {
+        return titleClaimOnCard;
+    }
 
     public ViewInteraction getFiltering() {
         return filtering;
