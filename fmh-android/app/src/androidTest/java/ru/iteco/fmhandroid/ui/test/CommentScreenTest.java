@@ -38,9 +38,11 @@ public class CommentScreenTest {
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
     ClaimsScreenStep claimsScreenStep = new ClaimsScreenStep();
     CommentScreenStep commentScreenStep = new CommentScreenStep();
+    FilteringWindowScreenStep filteringWindowScreenStep = new FilteringWindowScreenStep();
 
     int position = randomClaims(1);
     int positionComment = 2;
+    String message = "The field cannot be empty.";
 
     @Before
     public void logoutCheck() {
@@ -52,10 +54,21 @@ public class CommentScreenTest {
             authorizationScreenStep.validLoginPassword(authInfo());
             SystemClock.sleep(5000);
         } finally {
+            String validTextComment = textSymbol(5);
+
             mainScreenStep.clickingOnTheActionMenuButton();
             mainScreenStep.clickingOnTheClaimsName();
             SystemClock.sleep(3000);
+            claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
+            SystemClock.sleep(3000);
+            filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
+            filteringWindowScreenStep.clickingOnTheOkButton();
+            SystemClock.sleep(3000);
             claimsScreenStep.clickingOnRandomlySelectedClaim(position);
+            Helper.Swipes.swipeToBottom();
+            SystemClock.sleep(3000);
+            claimsScreenStep.clickingOnTheAddCommentButton();
+            SystemClock.sleep(3000);
         }
     }
 
@@ -68,10 +81,10 @@ public class CommentScreenTest {
     @DisplayName("Must enter the comment creation section")
     @Description("В этом тест кейсе мы проверяем, что при клике на кнопку \"+\" в поле \"Add comment\" пользователь переходит в раздел создания коментария ")
     public void mustEnterTheCommentCreationSection() {
-        Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(5000);
-        claimsScreenStep.clickingOnTheAddCommentButton();
-        SystemClock.sleep(3000);
+//        Helper.Swipes.swipeToBottom();
+//        SystemClock.sleep(5000);
+//        claimsScreenStep.clickingOnTheAddCommentButton();
+//        SystemClock.sleep(3000);
         commentScreenStep.checkingTheEntryToTheCommentScreen();
     }
 
@@ -81,7 +94,6 @@ public class CommentScreenTest {
     public void fieldsShouldNotBeFilledInWithRussianLetters() {
         String invalidLanguageTextComment = "Привет мир";
 
-        mustEnterTheCommentCreationSection();
 //        Helper.Swipes.swipeToBottom();
 //        SystemClock.sleep(3000);
 //        claimsScreenStep.clickingOnTheAddCommentButton();
@@ -104,7 +116,6 @@ public class CommentScreenTest {
 //        SystemClock.sleep(3000);
 //        claimsScreenStep.clickingOnTheAddCommentButton();
 //        SystemClock.sleep(3000);
-        mustEnterTheCommentCreationSection();
         commentScreenStep.validLanguageTextComment(validTextComment);
         commentScreenStep.checkTheFieldIsFilledWithText(validTextComment);
     }
@@ -119,7 +130,6 @@ public class CommentScreenTest {
 //        SystemClock.sleep(3000);
 //        claimsScreenStep.clickingOnTheAddCommentButton();
 //        SystemClock.sleep(3000);
-        mustEnterTheCommentCreationSection();
         commentScreenStep.validLanguageTextComment(validTextComment);
         SystemClock.sleep(3000);
         commentScreenStep.clickingOnTheSaveCommentButton();
@@ -141,7 +151,6 @@ public class CommentScreenTest {
 //
 //        claimsScreenStep.clickingOnTheAddCommentButton();
 //        SystemClock.sleep(3000);
-        mustEnterTheCommentCreationSection();
         commentScreenStep.validLanguageTextComment(validTextComment);
         SystemClock.sleep(3000);
         commentScreenStep.clickingOnTheButtonToCancelAddingComment();
@@ -156,9 +165,8 @@ public class CommentScreenTest {
 //        Helper.Swipes.swipeToBottom();
 //        SystemClock.sleep(3000);
 //        claimsScreenStep.clickingOnTheAddCommentButton();
-        mustEnterTheCommentCreationSection();
         commentScreenStep.clickingOnTheSaveCommentButton();
-        commentScreenStep.checkingTheFieldCannotBeEmpty(ActivityTestRule.getActivity(), "The field cannot be empty.");
+        commentScreenStep.checkingTheFieldCannotBeEmpty(ActivityTestRule.getActivity(), message);
     }
 
     @Test
@@ -187,7 +195,6 @@ public class CommentScreenTest {
 //        SystemClock.sleep(5000);
 //        claimsScreenStep.clickingOnTheAddCommentButton();
 //        SystemClock.sleep(3000);
-        mustEnterTheCommentCreationSection();
         commentScreenStep.validLanguageTextComment(validTextComment1);
         SystemClock.sleep(3000);
         commentScreenStep.clickingOnTheSaveCommentButton();
