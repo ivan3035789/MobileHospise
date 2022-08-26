@@ -35,7 +35,6 @@ public class CreatingClaimsScreenStep {
     public void clickingOnTheSaveButton() {
         Allure.step("Нажатие на кнопку сохранения");
         creatingClaimsScreenElements.getSaveButton().perform(click());
-        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheCancelButtonToExitTheClaimCreation() {
@@ -250,11 +249,9 @@ public class CreatingClaimsScreenStep {
         SystemClock.sleep(3000);
     }
 
-    public void checkingTheFillEmptyFields(@NonNull AppActivity activity, int text) {
+    public void checkingTheFillEmptyFields(@NonNull AppActivity activity, String text) {
         Allure.step("Проверка появления предупреждающего сообщения Fill empty fields");
-        onView(withText(text))
-                .inRoot(withDecorView(not(is(activity.getWindow().getDecorView()))))
-                .check(matches(withText("Fill empty fields"))).check(matches(isDisplayed()));
+        onView(withText(text)).inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
         SystemClock.sleep(3000);
     }
 

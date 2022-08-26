@@ -39,7 +39,6 @@ public class CommentScreenStep {
     public void clickingOnTheSaveCommentButton() {
         Allure.step("Нажатие на кнопку сохранения комментария");
         commentScreenElements.getSaveButton().perform(click());
-        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheButtonToCancelAddingComment() {

@@ -65,7 +65,6 @@ public class EditingNewsScreenStep {
     public void clickingOnTheSaveButton() {
         Allure.step("Нажатие на кнопку сохранить");
         editingNewsScreenElements.getSaveButton().perform(click());
-        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheCancelNewsEditingButton() {

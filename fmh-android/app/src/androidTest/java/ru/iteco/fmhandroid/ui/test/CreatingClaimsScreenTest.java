@@ -44,6 +44,8 @@ public class CreatingClaimsScreenTest {
     WatchScreenStep watchScreenStep = new WatchScreenStep();
     FilteringWindowScreenStep filteringWindowScreenStep = new FilteringWindowScreenStep();
 
+    String message = "fill empty fields";
+
     @Before
     public void logoutCheck() {
         SystemClock.sleep(8000);
@@ -52,7 +54,6 @@ public class CreatingClaimsScreenTest {
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
         } finally {
-//            mainScreenStep.randomTransitionToCreatingClaims();
             mainScreenStep.clickingOnTheActionMenuButton();
             mainScreenStep.clickingOnTheClaimsName();
             claimsScreenStep.clickingOnTheButtonToGoToTheClaimCreationScreen();
@@ -115,7 +116,7 @@ public class CreatingClaimsScreenTest {
     @Test
     @DisplayName("The type of watch should change")
     @Description("В этом тест кейсе мы проверяем возможность выбора типа часов, при нажатии на кнопку с иконкой \"клавиатура\" должен поменяться вид часов")
-    public void theTypeOfWatchShouldChange() { ;
+    public void theTypeOfWatchShouldChange() {
         creatingClaimsScreenStep.clickingOnTheTimeField();
         watchScreenStep.pressingTheButtonToChangeTheWatchType();
         watchScreenStep.checkingTheTypeOfDigitalClock();
@@ -127,7 +128,6 @@ public class CreatingClaimsScreenTest {
     public void aClaimShouldBeCreatedInTheClaimsSection() {
         String titleText = textSymbol(5);
         String randomExecutor = randomExecutor();
-//        enterCreateClaimsActionButton();
 
         creatingClaimsScreenStep.fillingInFieldsWithValidData(titleText, randomExecutor);
 
@@ -207,7 +207,7 @@ public class CreatingClaimsScreenTest {
         creatingClaimsScreenStep.fillingInFieldsWithValidData(titleText, randomExecutor);
         creatingClaimsScreenStep.nameDeletion();
         creatingClaimsScreenStep.clickingOnTheSaveButton();
-        creatingClaimsScreenStep.checkingTheFillEmptyFields(ActivityTestRule.getActivity(), R.string.empty_fields);
+        creatingClaimsScreenStep.checkingTheFillEmptyFields(ActivityTestRule.getActivity(), message);
     }
 
     @Test

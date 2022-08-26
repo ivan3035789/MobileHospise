@@ -58,7 +58,6 @@ public class EditingClaimsScreenStep {
     public void clickingOnTheSaveButton() {
         Allure.step("Нажатие на кнопку сохранить");
         editingClaimsScreenElements.getSaveButton().perform(click());
-        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheUndoEditButton() {
