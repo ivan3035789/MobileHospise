@@ -70,7 +70,7 @@ public class CommentScreenTest {
         SystemClock.sleep(3000);
     }
 
-    @Ignore
+
     @Test
     @DisplayName("Must enter the comment creation section")
     @Description("В этом тест кейсе мы проверяем, что при клике на кнопку \"+\" в поле \"Add comment\" пользователь переходит в раздел создания коментария ")
@@ -81,7 +81,7 @@ public class CommentScreenTest {
 //        SystemClock.sleep(3000);
         commentScreenStep.checkingTheEntryToTheCommentScreen();
     }
-    @Ignore
+
     @Test
     @DisplayName("Fields should not be filled in with Russian letters")
     @Description("В этом тест кейсе мы проверяем, что поле \"comment\", не заполняется русскими буквами")
@@ -98,7 +98,7 @@ public class CommentScreenTest {
             commentScreenStep.checkTheFieldIsNotFilledWithText();
         }
     }
-    @Ignore
+
     @Test
     @DisplayName("The fields must be filled in with English letters")
     @Description("В этом тест кейсе мы проверяем, что поле \"comment\", заполняется английскими буквами")
@@ -110,7 +110,7 @@ public class CommentScreenTest {
         commentScreenStep.validLanguageTextComment(validTextComment);
         commentScreenStep.checkTheFieldIsFilledWithText(validTextComment);
     }
-    @Ignore
+
     @Test
     @DisplayName("A comment should be added")
     @Description("В этом тест кейсе мы проверяем что после заполнения поля \"comment\" коментарием, и после нажатия на кнопку \"SAVE\", должен добавиться коментарий")
@@ -125,7 +125,7 @@ public class CommentScreenTest {
 
         claimsScreenStep.checkingCommentShouldBeAdded(validTextComment);
     }
-    @Ignore
+
     @Test
     @DisplayName("Canceling adding a comment")
     @Description("В этом тест кейсе мы проверяем что после заполнения поля \"comment\" коментарием, и после нажатия на кнопку \"CANCEL\", не должен добавиться коментарий")
@@ -140,7 +140,7 @@ public class CommentScreenTest {
         commentScreenStep.clickingOnTheButtonToCancelAddingComment();
         claimsScreenStep.checkingTheCommentShouldNotBeCreated(validTextComment);
     }
-    @Ignore
+
     @Test
     @DisplayName("A warning message should appear when the comment field is empty")
     @Description("В этом тест кейсе мы проверяем что при незаполнении поля \"comment\", после нажатия на кнопку \"SAVE\", появляется предупреждающая надпись \"The field cannot be empty\" ")
@@ -167,7 +167,7 @@ public class CommentScreenTest {
         commentScreenStep.clickingOnTheSaveCommentButton();
         claimsScreenStep.checkingTheCommentBeforeEditingAndAfter(validTextComment2);
     }
-    @Ignore
+
     @Test
     @DisplayName("Two comments should be added")
     @Description("В этом тест кейсе мы проверяем что имеется возможность добавить несколько коментариев в одину \"претензию\" ")

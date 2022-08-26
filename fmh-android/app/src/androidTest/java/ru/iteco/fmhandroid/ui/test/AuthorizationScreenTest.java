@@ -46,7 +46,7 @@ public class AuthorizationScreenTest {
 
     @After
     public void setUp() {
-        SystemClock.sleep(5000);
+        SystemClock.sleep(3000);
     }
 
     @Test

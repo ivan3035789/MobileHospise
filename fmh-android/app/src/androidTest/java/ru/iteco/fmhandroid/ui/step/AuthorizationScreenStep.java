@@ -68,7 +68,6 @@ public class AuthorizationScreenStep {
         authorizationScreenElements.getPasswordField().perform(typeText(invalidAuthInfo().getPassword())).perform(closeSoftKeyboard());
         SystemClock.sleep(3000);
         authorizationScreenElements.getButton().perform(click());
-        SystemClock.sleep(1000);
     }
 
     public void invalidAuthorizationLoginPassword() {
@@ -78,7 +77,6 @@ public class AuthorizationScreenStep {
         authorizationScreenElements.getPasswordField().perform(typeText(invalidLoginPasswordAuthInfo().getPassword())).perform(closeSoftKeyboard());
         SystemClock.sleep(3000);
         authorizationScreenElements.getButton().perform(click());
-        SystemClock.sleep(1000);
     }
 
     public void validLanguage(String loginPassword) {

@@ -2,6 +2,7 @@ package ru.iteco.fmhandroid.ui.test;
 
 import android.os.SystemClock;
 
+import androidx.test.espresso.NoMatchingViewException;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
 
@@ -26,10 +27,10 @@ public class ApplicationLoadingScreenTest {
 
     ApplicationLoadingScreenStep applicationLoadingScreenStep = new ApplicationLoadingScreenStep();
 
-    @Before
-    public void logoutCheck() {
-        SystemClock.sleep(1000);
-    }
+//    @Before
+//    public void logoutCheck() {
+//        SystemClock.sleep(1000);
+//    }
 
     @After
     public void setUp() {
@@ -52,8 +53,14 @@ public class ApplicationLoadingScreenTest {
 
     @Test
     @DisplayName("The download icon should be displayed")
-    @Description("В этом тест кейсе мы проверяем, что  во время загрузки приложения появляется индекатор загрузки)")
-    public void theDownloadIconShouldBeDisplayed() {
-        applicationLoadingScreenStep.checkProgressIndicator();
+    @Description("В этом тест кейсе мы проверяем, что  во время загрузки приложения появляется индекатор загрузки")
+    public void theDownloadIconShouldBeDisplayed() throws InterruptedException {
+        try {
+            applicationLoadingScreenStep.checkProgressIndicator();
+        } catch (NoMatchingViewException ignore) {
+            SystemClock.sleep(1000);
+        } finally {
+            applicationLoadingScreenStep.checkProgressIndicator();
+        }
     }
 }
