@@ -79,14 +79,14 @@ public class AuthorizationScreenStep {
         Allure.step("Ввод английских букв");
         authorizationScreenElements.getLoginField().perform(typeText(loginPassword));
         authorizationScreenElements.getPasswordField().perform(typeText(loginPassword)).perform(closeSoftKeyboard());
-        authorizationScreenElements.getButton().perform(click());
+//        authorizationScreenElements.getButton().perform(click());
     }
 
     public void invalidLanguage(String loginPassword) {
         Allure.step("Ввод русских букв");
         authorizationScreenElements.getLoginField().perform(typeText(loginPassword));
         authorizationScreenElements.getPasswordField().perform(typeText(loginPassword)).perform(closeSoftKeyboard());
-        authorizationScreenElements.getButton().perform(click());
+//        authorizationScreenElements.getButton().perform(click());
     }
 
     public void checkingThePresenceOfTheEnteredDataInTheFields(String loginPassword) {
