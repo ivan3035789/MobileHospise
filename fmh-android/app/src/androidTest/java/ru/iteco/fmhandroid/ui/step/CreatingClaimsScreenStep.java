@@ -75,15 +75,15 @@ public class CreatingClaimsScreenStep {
 
     public void invalidLanguage(String title) {
         Allure.step("Ввод невалидного языка");
-        creatingClaimsScreenElements.getTitleClaimField().perform(typeText(title));
-        creatingClaimsScreenElements.getExecutorClaimField().perform(typeText(title));
+        creatingClaimsScreenElements.getTitleClaimField().perform(typeText(title)).perform(closeSoftKeyboard());;
+        creatingClaimsScreenElements.getExecutorClaimField().perform(typeText(title)).perform(closeSoftKeyboard());;
         creatingClaimsScreenElements.getDescriptionClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
     }
 
     public void validLanguage(String title) {
         Allure.step("Ввод валидного языка");
-        creatingClaimsScreenElements.getTitleClaimField().perform(typeText(title));
-        creatingClaimsScreenElements.getExecutorClaimField().perform(typeText(title));
+        creatingClaimsScreenElements.getTitleClaimField().perform(typeText(title)).perform(closeSoftKeyboard());;
+        creatingClaimsScreenElements.getExecutorClaimField().perform(typeText(title)).perform(closeSoftKeyboard());;
         creatingClaimsScreenElements.getDescriptionClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
     }
 
@@ -258,7 +258,7 @@ public class CreatingClaimsScreenStep {
     }
 
     public String titleOnCaredClaims() {
-        return Helper.Text.getText(onView(withId(R.id.title_text_view)));
+        return Helper.Text.getText(onView(withIndex(withId(R.id.title_text_view), 0)));
     }
 
     public String executorOnCaredClaims() {

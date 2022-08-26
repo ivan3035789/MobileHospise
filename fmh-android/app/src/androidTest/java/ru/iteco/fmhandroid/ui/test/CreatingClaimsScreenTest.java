@@ -141,7 +141,9 @@ public class CreatingClaimsScreenTest {
         String time = creatingClaimsScreenStep.time();
         String description = creatingClaimsScreenStep.description();
 
+        SystemClock.sleep(3000);
         creatingClaimsScreenStep.clickingOnTheSaveButton();
+        SystemClock.sleep(3000);
         creatingClaimsScreenStep.searchForCreatedClaim(titleText);
 
         String titleOnCaredClaims = creatingClaimsScreenStep.titleOnCaredClaims();
@@ -169,6 +171,7 @@ public class CreatingClaimsScreenTest {
         String time = creatingClaimsScreenStep.time();
         String description = creatingClaimsScreenStep.description();
 
+        SystemClock.sleep(3000);
         creatingClaimsScreenStep.clickingOnTheSaveButton();
         SystemClock.sleep(3000);
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
