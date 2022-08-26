@@ -51,7 +51,9 @@ public class CommentScreenTest {
             authorizationScreenStep.validLoginPassword(authInfo());
             SystemClock.sleep(5000);
         } finally {
-            mainScreenStep.clickingOnAllClaims();
+//            mainScreenStep.clickingOnAllClaims();
+            mainScreenStep.clickingOnTheActionMenuButton();
+            mainScreenStep.clickingOnTheClaimsName();
             SystemClock.sleep(3000);
             claimsScreenStep.clickingOnRandomlySelectedClaim(position);
             SystemClock.sleep(3000);
@@ -181,10 +183,10 @@ public class CommentScreenTest {
         String validTextComment1 = textSymbol(5);
         String validTextComment2 = textSymbol(5);
 
-//        Helper.Swipes.swipeToBottom();
-//        SystemClock.sleep(5000);
-//        claimsScreenStep.clickingOnTheAddCommentButton();
-//        SystemClock.sleep(3000);
+        Helper.Swipes.swipeToBottom();
+        SystemClock.sleep(5000);
+        claimsScreenStep.clickingOnTheAddCommentButton();
+        SystemClock.sleep(3000);
         commentScreenStep.validLanguageTextComment(validTextComment1);
         SystemClock.sleep(3000);
         commentScreenStep.clickingOnTheSaveCommentButton();

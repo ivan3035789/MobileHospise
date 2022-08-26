@@ -64,6 +64,7 @@ public class AuthorizationScreenStep {
         checkingTheNameOfTheAuthorizationScreen();
         authorizationScreenElements.getLoginField().perform(typeText(invalidAuthInfo().getLogin()));
         authorizationScreenElements.getPasswordField().perform(typeText(invalidAuthInfo().getPassword())).perform(closeSoftKeyboard());
+        SystemClock.sleep(3000);
         authorizationScreenElements.getButton().perform(click());
     }
 
@@ -79,14 +80,12 @@ public class AuthorizationScreenStep {
         Allure.step("Ввод английских букв");
         authorizationScreenElements.getLoginField().perform(typeText(loginPassword));
         authorizationScreenElements.getPasswordField().perform(typeText(loginPassword)).perform(closeSoftKeyboard());
-//        authorizationScreenElements.getButton().perform(click());
     }
 
     public void invalidLanguage(String loginPassword) {
         Allure.step("Ввод русских букв");
         authorizationScreenElements.getLoginField().perform(typeText(loginPassword));
         authorizationScreenElements.getPasswordField().perform(typeText(loginPassword)).perform(closeSoftKeyboard());
-//        authorizationScreenElements.getButton().perform(click());
     }
 
     public void checkingThePresenceOfTheEnteredDataInTheFields(String loginPassword) {

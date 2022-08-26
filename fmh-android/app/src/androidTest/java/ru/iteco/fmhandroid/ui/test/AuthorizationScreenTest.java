@@ -104,7 +104,6 @@ public class AuthorizationScreenTest {
     public void aWarningMessageShouldAppearIfTheFieldsAreBlank() {
         authorizationScreenStep.invalidAuthorization();
         SystemClock.sleep(1000);
-//        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), R.string.empty_login_or_password);
         authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), MessageEmpty);
     }
 
@@ -114,7 +113,6 @@ public class AuthorizationScreenTest {
     public void warningMessagesShouldAppearWhenEnteringAnIncorrectPassword() {
         authorizationScreenStep.invalidAuthorizationLoginPassword();
         SystemClock.sleep(1000);
-//        authorizationScreenStep.checkingTheWrongLoginOrPassword(ActivityTestRule.getActivity(), R.string.wrong_login_or_password);
         authorizationScreenStep.checkingTheWrongLoginOrPassword(ActivityTestRule.getActivity(), messageWrong);
     }
 
@@ -124,7 +122,6 @@ public class AuthorizationScreenTest {
     public void warningMessagesShouldAppearWhenYouEnterSpace() {
         authorizationScreenStep.invalidAuthorization();
         SystemClock.sleep(1000);
-//        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), R.string.empty_login_or_password);
         authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), MessageEmpty);
     }
 
@@ -134,7 +131,6 @@ public class AuthorizationScreenTest {
     public void warningMessagesShouldAppearWhenThePasswordFieldIsBlank() {
         authorizationScreenStep.invalidAuthorization();
         SystemClock.sleep(1000);
-//        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), R.string.empty_login_or_password);
         authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), MessageEmpty);
     }
 
@@ -144,7 +140,6 @@ public class AuthorizationScreenTest {
     public void warningMessagesShouldAppearWhenTheLoginFieldIsEmpty() {
         authorizationScreenStep.invalidAuthorization();
         SystemClock.sleep(1000);
-//        authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), R.string.empty_login_or_password);
         authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), MessageEmpty);
     }
 
