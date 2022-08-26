@@ -37,10 +37,8 @@ public class AboutScreenTest {
         SystemClock.sleep(8000);
         try {
             mainScreenStep.checkNameMainScreen();
-            SystemClock.sleep(5000);
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(Helper.authInfo());
-            SystemClock.sleep(5000);
         } finally {
             mainScreenStep.clickingOnTheActionMenuButton();
             mainScreenStep.clickingOnTheAboutName();

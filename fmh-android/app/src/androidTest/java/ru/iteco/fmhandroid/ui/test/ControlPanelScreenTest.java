@@ -51,13 +51,10 @@ public class ControlPanelScreenTest {
         SystemClock.sleep(8000);
         try {
             mainScreenStep.checkNameMainScreen();
-            SystemClock.sleep(5000);
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
-            SystemClock.sleep(3000);
         } finally {
             deletingNewsUpToTheNumberOfTenControlPanelScreen(7);
-            SystemClock.sleep(5000);
         }
     }
 
@@ -82,15 +79,10 @@ public class ControlPanelScreenTest {
             "оказаться в самом низу новостной ленты) и наоборот")
     public void newsBlocksShouldBeSwapped() {
         String firstNews = newsScreenStep.news();
-        SystemClock.sleep(5000);
         controlPanelScreenStep.changeOfSorting();
-        SystemClock.sleep(5000);
         String lastNews = newsScreenStep.news();
-        SystemClock.sleep(5000);
         controlPanelScreenStep.changeOfSorting();
-        SystemClock.sleep(5000);
         String firstNewsAgain = newsScreenStep.news();
-        SystemClock.sleep(5000);
         controlPanelScreenStep.checkingTheNewsBeforeSortingAndAfter(firstNews, firstNewsAgain, lastNews);
     }
 
@@ -99,7 +91,6 @@ public class ControlPanelScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"три полоски с кружками\" в  Control panel, пользователь попадает в \"Filter news\" ")
     public void mustGoToTheNewsFilter() {
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
-        SystemClock.sleep(5000);
         filterNewsScreenStep.checkingTheScreenNameForNewsSearch();
     }
 
@@ -108,7 +99,6 @@ public class ControlPanelScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"+\" в  Control panel, пользователь попадает в  \"Creating News\"")
     public void shouldGoToTheNewsCreationSection() {
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
-        SystemClock.sleep(5000);
         creatingNewsScreenStep.checkingTheNameOfTheCreatingNewsScreen();
     }
 
@@ -119,7 +109,6 @@ public class ControlPanelScreenTest {
             "These changes cannot be reversed in the future.\" при нажатии на кнопку  \"ок\"  происходит удаление" +
             " новостного блока ")
     public void mustDeleteTheNews() {
-        SystemClock.sleep(3000);
         int position = randomNews(0);
         String category = randomCategory();
         String text = Helper.Text.textSymbol(5);
@@ -133,13 +122,9 @@ public class ControlPanelScreenTest {
         String descriptionNewsItWas = controlPanelScreenStep.descriptionNews();
 
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
-        SystemClock.sleep(3000);
         controlPanelScreenStep.clickingOnTheDeleteNewsButton();
-        SystemClock.sleep(3000);
         controlPanelScreenStep.clickingOnTheConfirmationButtonToDeleteTheNews();
-        SystemClock.sleep(3000);
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
-        SystemClock.sleep(3000);
 
         String nameNewsItWasHasBecomes = controlPanelScreenStep.nameNews();
         String publicationDateNewsItWasHasBecomes = controlPanelScreenStep.publicationDateNews();
@@ -160,7 +145,6 @@ public class ControlPanelScreenTest {
             " These changes cannot be reversed in the future.\" при нажатии на кнопку  \"CANCEL\" не происходит удаление" +
             " новостного блока")
     public void mustNotDeleteNewsBlockFromTheNewsFeedWhileInTheControlPanel() {
-        SystemClock.sleep(3000);
         int position = randomNews(1);
 
         String nameNewsItWas = controlPanelScreenStep.nameNews();
@@ -170,11 +154,8 @@ public class ControlPanelScreenTest {
         String descriptionNewsItWas = controlPanelScreenStep.descriptionNews();
 
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
-        SystemClock.sleep(3000);
         controlPanelScreenStep.clickingOnTheDeleteNewsButton();
-        SystemClock.sleep(3000);
         controlPanelScreenStep.clickingOnTheCancelConfirmationButtonToDeleteTheNews();
-        SystemClock.sleep(3000);
 
         String nameNewsItWasHasBecomes = controlPanelScreenStep.nameNews();
         String publicationDateNewsItWasHasBecomes = controlPanelScreenStep.publicationDateNews();
@@ -195,9 +176,7 @@ public class ControlPanelScreenTest {
     public void aDescriptionShouldAppearInTheNewsBlockInTheControlPanel() {
         int position = randomNews(0);
 
-        SystemClock.sleep(2000);
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
-        SystemClock.sleep(2000);
         controlPanelScreenStep.checkingTheVisibilityOfTheNewsDescription();
 
     }
@@ -210,7 +189,6 @@ public class ControlPanelScreenTest {
 
 //        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
-        SystemClock.sleep(2000);
         controlPanelScreenStep.clickingOnTheButtonToGoToTheEditingNewsScreen(position);
         editingNewsScreenStep.checkingTheNameOfTheEditingNewsScreen();
     }

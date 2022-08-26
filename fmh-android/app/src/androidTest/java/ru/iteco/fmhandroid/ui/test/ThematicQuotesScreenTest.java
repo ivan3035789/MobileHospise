@@ -42,10 +42,8 @@ public class ThematicQuotesScreenTest {
             mainScreenStep.checkNameMainScreen();
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
-            SystemClock.sleep(5000);
         } finally {
             mainScreenStep.pressingTheButtonInTheFormOfButterfly();
-            SystemClock.sleep(3000);
         }
     }
 

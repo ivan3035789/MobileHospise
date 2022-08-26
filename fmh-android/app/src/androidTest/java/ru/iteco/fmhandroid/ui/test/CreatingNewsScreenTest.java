@@ -48,10 +48,8 @@ public class CreatingNewsScreenTest {
             mainScreenStep.checkNameMainScreen();
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
-            SystemClock.sleep(5000);
         } finally {
             mainScreenStep.randomTransitionToCreatingNews();
-            SystemClock.sleep(3000);
         }
     }
 
@@ -79,7 +77,6 @@ public class CreatingNewsScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при клике на поле \"Category\" появляется выпадающий список с доспупными категориями ")
     public void aDropDownListWithCategoriesShouldAppear() {
         creatingNewsScreenStep.clickingOnTheCategoryField();
-        SystemClock.sleep(2000);
         creatingNewsScreenStep.checkingTheAppearanceOfTheDropDownList(ActivityTestRule.getActivity());
     }
 
@@ -126,7 +123,6 @@ public class CreatingNewsScreenTest {
         String authorNewsItWas = creatingNewsScreenStep.authorNews();
         String descriptionNewsItWas = creatingNewsScreenStep.descriptionNews();
 
-        SystemClock.sleep(3000);
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
         creatingNewsScreenStep.fillingInFieldsWithValidData(text, validCategory);
         creatingNewsScreenStep.clickingOnTheSaveNewsButton();
@@ -138,7 +134,6 @@ public class CreatingNewsScreenTest {
         String creationDateNewsItWasHasBecomes = creatingNewsScreenStep.creationDateNewsPosition(positionNews);
         String authorNewsItWasHasBecomes = creatingNewsScreenStep.authorNewsPosition(positionNews);
         String descriptionNewsItWasHasBecomes = creatingNewsScreenStep.descriptionNewsPosition(positionNews);
-        SystemClock.sleep(3000);
 
         creatingNewsScreenStep.comparingTheDataOfTheCreatedNewsWithTheDataOfTheFirstNewsFromTheList(
                 nameNewsItWas, nameNewsItWasHasBecomes, publicationDateNewsItWas, publicationDateNewsItWasHasBecomes,
@@ -188,7 +183,6 @@ public class CreatingNewsScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при незаполненном, незаполненных полях появляется предупреждающее сообщение, после нажатия на кнопку \"SAVE\"  \"fill empty fields\" ")
     public void aWarningMessageShouldAppearIfTheFieldsAreEmptyWhenYouClickOnTheSaveButton() {
         creatingNewsScreenStep.clickingOnTheSaveNewsButton();
-        SystemClock.sleep(2000);
         creatingNewsScreenStep.checkingTheFillEmptyFields(ActivityTestRule.getActivity(), R.string.empty_fields);
     }
 

@@ -45,17 +45,12 @@ public class CalendarScreenTest {
         SystemClock.sleep(8000);
         try {
             mainScreenStep.checkNameMainScreen();
-            SystemClock.sleep(5000);
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
-            SystemClock.sleep(5000);
         } finally {
             mainScreenStep.clickingOnTheButtonToGoToTheClaimCreationScreen();
-            SystemClock.sleep(3000);
             creatingClaimsScreenStep.checkingTheNameOfTheClaimCreationScreen();
-            SystemClock.sleep(3000);
             creatingClaimsScreenStep.clickingOnTheDateField();
-            SystemClock.sleep(5000);
         }
     }
 
@@ -83,7 +78,6 @@ public class CalendarScreenTest {
 
         calendarScreenStep.pressingTheButtonToGoToTheNextMonthTwelveTimes(numberOfMonths);
         calendarScreenStep.settingDate(yearNowSetUp, monthPlusTwoMonthSetUp, dayNowSetUp);
-        SystemClock.sleep(2000);
 
         String dateBefore = calendarScreenStep.dateFromTheCalendarHeaderReturnString(dayOfWeekPlusMonth, monthPlusTwoMonth, dayPlusYearPlusMonth);
 
@@ -93,7 +87,6 @@ public class CalendarScreenTest {
                 dayPlusYearPlusMonth);
 
         calendarScreenStep.clickingOnTheButtonToGoToThePreviousMonthTwelveTimes(numberOfMonths1);
-        SystemClock.sleep(2000);
         calendarScreenStep.settingDate(yearNowSetUp, monthNowSetUp, dayNowSetUp);
 
         String dateAfter = calendarScreenStep.dateFromTheCalendarHeaderReturnString(dayOfWeekNow, monthNow, dayNow);
@@ -115,7 +108,6 @@ public class CalendarScreenTest {
         String dayPlusRandomDay = String.valueOf(LocalDate.now().plusMonths(1).plusDays(randomDay).getDayOfMonth());
 
         calendarScreenStep.settingDate(yearNowSetUp, monthPlusRandomDaySetUp, dayPlusRandomDayDetUp);
-        SystemClock.sleep(3000);
 
         String dateAfter = calendarScreenStep.dateFromTheCalendarHeaderReturnString(dayOfWeekPlusRandomDay, monthPlusRandomDay, dayPlusRandomDay);
         ViewInteraction dateFromTheCalendarHeaderAfter = calendarScreenStep.dateFromTheCalendarHeaderBeforeReturnViewInteraction(dayOfWeekPlusRandomDay, monthPlusRandomDay, dayPlusRandomDay);
@@ -146,7 +138,6 @@ public class CalendarScreenTest {
         calendarScreenStep.checkingTheYearChangeCalendarDisplayInTheHeader(yearBefore, yearNumberOfMonths, yearFromTheCalendarHeaderBefore);
 
         calendarScreenStep.clickingOnTheButtonToGoToThePreviousMonthTwelveTimes(numberOfMonths);
-        SystemClock.sleep(3000);
         calendarScreenStep.settingDate(yearNowSetUp, monthNowSetUp, dayNowSetUp);
 
         String yearFromTheCalendarHeaderAfter = calendarScreenStep.yearFromTheCalendarHeaderReturnString(yearNow);
@@ -158,7 +149,6 @@ public class CalendarScreenTest {
     @DisplayName("The set date must be displayed correctly")
     @Description("В этом тест кейсе мы проверяем, что при выборе даты, дата в верхней части окна соответствует выбранной пользователем")
     public void theSetDateMustBeDisplayedCorrectly() {
-        SystemClock.sleep(3000);
         int randomDay = randomDay();
         int randomYear = random(1, 2);
         String yearPlusRandomYear = String.valueOf(LocalDate.now().plusYears(randomYear).getYear());
@@ -170,17 +160,14 @@ public class CalendarScreenTest {
         int DayOfMonthPlusRandomDaySetUp = LocalDate.now().plusMonths(1).plusDays(randomDay).getDayOfMonth();
 
         calendarScreenStep.settingDate(yearNowSetUp, monthPlusRandomDaySetUp, DayOfMonthPlusRandomDaySetUp);
-        SystemClock.sleep(3000);
 
         String dateAfter = calendarScreenStep.dateFromTheCalendarHeaderReturnString(dayOfWeekPlusRandomDay, monthPlusRandomDay, dayOfMonthPlusRandomDay);
         ViewInteraction dateFromTheCalendarHeaderAfter = calendarScreenStep.dateFromTheCalendarHeaderBeforeReturnViewInteraction(dayOfWeekPlusRandomDay, monthPlusRandomDay, dayOfMonthPlusRandomDay);
         calendarScreenStep.checkingTheDisplayInTheCalendarHeaderOfTheMonthNameChange(
                 dateFromTheCalendarHeaderAfter, dayOfWeekPlusRandomDay, monthPlusRandomDay, dayOfMonthPlusRandomDay, dateAfter, dayOfWeekPlusRandomDay,
                 monthPlusRandomDay, dayOfMonthPlusRandomDay);
-        SystemClock.sleep(3000);
 
         calendarScreenStep.pressingTheButtonToSelectTheYear();
-        SystemClock.sleep(3000);
         calendarScreenStep.settingTheYear(randomYear);
 
         String yearFromTheCalendarHeaderAfter = calendarScreenStep.yearFromTheCalendarHeaderReturnString(yearPlusRandomYear);
@@ -192,7 +179,6 @@ public class CalendarScreenTest {
     @DisplayName("The selected date should be set")
     @Description("В этом тест кейсе мы проверяем, что при выборе даты и после нажатия на кнопку \"ок\" в поле \"Publication date\" устанавливается выбранная дата")
     public void theSelectedDateShouldBeSet() {
-        SystemClock.sleep(3000);
         int randomYear = random(1, 2);
 
         int yearPlusYears = LocalDate.now().plusYears(randomYear).getYear();
@@ -200,7 +186,6 @@ public class CalendarScreenTest {
         int dayOfMonthNow = LocalDate.now().getDayOfMonth();
 
         calendarScreenStep.pressingTheButtonToSelectTheYear();
-        SystemClock.sleep(3000);
         calendarScreenStep.settingTheYear(randomYear);
 
         String today = calendarScreenStep.dateFormatting(yearPlusYears, monthNow, dayOfMonthNow);
@@ -216,7 +201,6 @@ public class CalendarScreenTest {
     @DisplayName("Canceling the date selection and setting")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"Cancel\", происходит отмена установки выбраной даты, календарь закрывается")
     public void cancelingTheDateSelectionAndSetting() {
-        SystemClock.sleep(3000);
         int randomYear = random(1);
         int randomMonth = random(1);
         int day = randomDay();
@@ -229,7 +213,6 @@ public class CalendarScreenTest {
         String dayPlusRandomYearPlusRandomMonth = String.valueOf(LocalDate.now().plusYears(randomYear).plusMonths(randomMonth).plusDays(day).getDayOfMonth());
 
         calendarScreenStep.pressingTheButtonToSelectTheYear();
-        SystemClock.sleep(3000);
         calendarScreenStep.settingTheYear(randomYear);
 
         String yearFromTheCalendarHeaderAfter = calendarScreenStep.yearFromTheCalendarHeaderReturnString(yearPlusRandomYear);
@@ -237,7 +220,6 @@ public class CalendarScreenTest {
         calendarScreenStep.checkingTheYearChangeCalendarDisplayInTheHeader(yearAfter, yearPlusRandomYear, yearFromTheCalendarHeaderAfter);
 
         calendarScreenStep.pressingTheButtonToGoToTheNextMonthTwelveTimes(randomMonth);
-        SystemClock.sleep(3000);
         calendarScreenStep.settingDate(yearPlusRandomYearSetUp, monthPlusRandomMonthSetUp, dayOfMonthPlusRandomYearPlusRandomMonth);
 
         String dateAfter = calendarScreenStep.dateFromTheCalendarHeaderReturnString(dayOfWeekPlusRandomYearPlusRandomMonth, monthPlusRandomYearPlusRandomMonth, dayPlusRandomYearPlusRandomMonth);
@@ -247,9 +229,7 @@ public class CalendarScreenTest {
                 dateFromTheCalendarHeaderAfter, dayOfWeekPlusRandomYearPlusRandomMonth, monthPlusRandomYearPlusRandomMonth, dayPlusRandomYearPlusRandomMonth, dateAfter, dayOfWeekPlusRandomYearPlusRandomMonth,
                 monthPlusRandomYearPlusRandomMonth, dayPlusRandomYearPlusRandomMonth);
 
-        SystemClock.sleep(3000);
         calendarScreenStep.clickingOnTheCancelYearSettingButton();
-        SystemClock.sleep(3000);
         creatingClaimsScreenStep.checkingTheNameOfTheClaimCreationScreen();
         creatingClaimsScreenStep.checkingTheAbsenceOfSetYear();
     }
@@ -262,7 +242,6 @@ public class CalendarScreenTest {
         String yearPlusRandomYear = String.valueOf(LocalDate.now().plusYears(randomYear).getYear());
 
         calendarScreenStep.pressingTheButtonToSelectTheYear();
-        SystemClock.sleep(3000);
         calendarScreenStep.settingTheYear(randomYear);
 
         String yearFromTheCalendarHeaderAfter = calendarScreenStep.yearFromTheCalendarHeaderReturnString(yearPlusRandomYear);
@@ -278,16 +257,13 @@ public class CalendarScreenTest {
         String yearPlusRandomYear = String.valueOf(LocalDate.now().plusYears(randomYear).getYear());
 
         calendarScreenStep.pressingTheButtonToSelectTheYear();
-        SystemClock.sleep(3000);
         calendarScreenStep.settingTheYear(randomYear);
 
         String yearFromTheCalendarHeaderAfter = calendarScreenStep.yearFromTheCalendarHeaderReturnString(yearPlusRandomYear);
         ViewInteraction yearAfter = calendarScreenStep.yearFromTheCalendarHeaderReturnViewInteraction(yearPlusRandomYear);
         calendarScreenStep.checkingTheYearChangeCalendarDisplayInTheHeader(yearAfter, yearPlusRandomYear, yearFromTheCalendarHeaderAfter);
 
-        SystemClock.sleep(3000);
         calendarScreenStep.clickingOnTheCancelYearSettingButton();
-        SystemClock.sleep(3000);
         creatingClaimsScreenStep.checkingTheAbsenceOfSetYear();
     }
 
@@ -295,7 +271,6 @@ public class CalendarScreenTest {
     @DisplayName("Should display the current date")
     @Description("В этом тест кейсе мы проверяем, что текущая дата соответствует сегоднящней")
     public void shouldDisplayTheCurrentDate() {
-        SystemClock.sleep(3000);
 
         String dayOfWeekNow = String.valueOf(LocalDate.now().getDayOfWeek()).substring(0, 3).toLowerCase();
         String monthNow = String.valueOf(LocalDate.now().getMonth()).substring(0, 3).toLowerCase();

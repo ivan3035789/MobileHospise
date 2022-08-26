@@ -58,7 +58,6 @@ public class FilterNewsScreenTest {
             authorizationScreenStep.validLoginPassword(authInfo());
         } finally {
             deletingNewsUpToTheNumberOfTenControlPanelScreen(7);
-            SystemClock.sleep(5000);
         }
     }
 
@@ -101,12 +100,9 @@ public class FilterNewsScreenTest {
 
         mainScreenStep.clickingOnTheActionMenuButton();
         mainScreenStep.clickingOnTheNewsName();
-        SystemClock.sleep(3000);
 
         newsScreenStep.clickingOnTheButtonToGoToFilterNews();
-        SystemClock.sleep(3000);
         filterNewsScreenStep.checkingTheScreenNameForNewsSearch();
-        SystemClock.sleep(3000);
 
         filterNewsScreenStep.enteringSearchData(category, dateStartInput, dateEndInput);
         filterNewsScreenStep.clickingOnTheSearchButton();
@@ -129,15 +125,11 @@ public class FilterNewsScreenTest {
 
         mainScreenStep.clickingOnTheActionMenuButton();
         mainScreenStep.clickingOnTheNewsName();
-        SystemClock.sleep(3000);
 
         newsScreenStep.clickingOnTheButtonToGoToFilterNews();
-        SystemClock.sleep(3000);
         filterNewsScreenStep.checkingTheScreenNameForNewsSearch();
-        SystemClock.sleep(3000);
 
         filterNewsScreenStep.enteringCategory(category);
-        SystemClock.sleep(3000);
         filterNewsScreenStep.clickingOnTheSearchButton();
 
         String categoryText = newsScreenStep.categoryText(position);
@@ -155,15 +147,10 @@ public class FilterNewsScreenTest {
 
         mainScreenStep.clickingOnTheActionMenuButton();
         mainScreenStep.clickingOnTheNewsName();
-        SystemClock.sleep(3000);
         newsScreenStep.clickingOnTheButtonToGoToFilterNews();
-        SystemClock.sleep(3000);
         filterNewsScreenStep.checkingTheScreenNameForNewsSearch();
-        SystemClock.sleep(3000);
         filterNewsScreenStep.enteringTheStartDate(dateStartInput);
-        SystemClock.sleep(3000);
         filterNewsScreenStep.enteringTheEndOfTheDate(dateEndInput);
-        SystemClock.sleep(3000);
         filterNewsScreenStep.clickingOnTheSearchButton();
 
         newsScreenStep.clickingOnTheNews(position);
@@ -181,7 +168,6 @@ public class FilterNewsScreenTest {
 
         mainScreenStep.clickingOnTheActionMenuButton();
         mainScreenStep.clickingOnTheNewsName();
-        SystemClock.sleep(3000);
         newsScreenStep.clickingOnTheButtonToGoToFilterNews();
         filterNewsScreenStep.clickingOnTheSearchButton();
         newsScreenStep.clickingOnTheNews(position);
@@ -199,9 +185,7 @@ public class FilterNewsScreenTest {
         mainScreenStep.clickingOnTheActionMenuButton();
         mainScreenStep.clickingOnTheNewsName();
         newsScreenStep.clickingOnTheButtonToGoToFilterNews();
-        SystemClock.sleep(3000);
         filterNewsScreenStep.checkingTheScreenNameForNewsSearch();
-        SystemClock.sleep(3000);
         filterNewsScreenStep.clickingOnTheCancelSearchButton();
         newsScreenStep.checkTheNameOfTheNewsScreen();
     }
@@ -215,13 +199,9 @@ public class FilterNewsScreenTest {
 
         mainScreenStep.clickingOnTheActionMenuButton();
         mainScreenStep.clickingOnTheNewsName();
-        SystemClock.sleep(3000);
         newsScreenStep.clickingOnTheButtonToGoToFilterNews();
-        SystemClock.sleep(3000);
         filterNewsScreenStep.checkingTheScreenNameForNewsSearch();
-        SystemClock.sleep(3000);
         filterNewsScreenStep.enteringDates(dateStartInput, dateEndInput);
-        SystemClock.sleep(3000);
         filterNewsScreenStep.clickingOnTheSearchButton();
         newsScreenStep.checkingTheDisplayOfTheInscriptionInTheAbsenceOfFoundNews();
     }

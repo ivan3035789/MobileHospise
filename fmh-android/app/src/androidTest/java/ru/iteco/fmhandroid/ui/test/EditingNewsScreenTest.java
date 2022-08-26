@@ -46,20 +46,20 @@ public class EditingNewsScreenTest {
     EditingNewsScreenStep editingNewsScreenStep = new EditingNewsScreenStep();
     WatchScreenStep watchScreenStep = new WatchScreenStep();
 
+    String messageEmpty = "fill empty fields";
+    String messageSaving = "Saving failed. Try again later.";
+
     @Before
     public void logoutCheck() {
         SystemClock.sleep(8000);
         try {
             mainScreenStep.checkNameMainScreen();
-            SystemClock.sleep(5000);
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
-            SystemClock.sleep(5000);
         } finally {
             mainScreenStep.clickingOnTheActionMenuButton();
             mainScreenStep.clickingOnTheNewsName();
             newsScreenStep.clickingOnTheButtonToGoToTheControlPanel();
-            SystemClock.sleep(3000);
         }
     }
 
@@ -81,7 +81,6 @@ public class EditingNewsScreenTest {
     @Description("В этом тест кейсе мы проверяем, что поля имеют данные заполненые ранее")
     public void theFieldsMustContainData() {
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
-        SystemClock.sleep(3000);
 
         String category = editingNewsScreenStep.categoryField();
         String titleTextNews = editingNewsScreenStep.titleTextNewsField();
@@ -99,7 +98,6 @@ public class EditingNewsScreenTest {
     public void aDropDownListWithCategoriesShouldAppear() {
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
         editingNewsScreenStep.clickingOnTheCategoryField();
-        SystemClock.sleep(3000);
         editingNewsScreenStep.checkingTheAppearanceOfTheDropDownList(ActivityTestRule.getActivity());
     }
 
@@ -126,7 +124,6 @@ public class EditingNewsScreenTest {
     @Description("В этом тест кейсе мы проверяем возможность выбора типа часов. что при нажатии на кнопку с иконкой \"клавиатура\" должен поменяться вид часов")
     public void theTypeOfWatchShouldChange() {
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
-        SystemClock.sleep(3000);
         editingNewsScreenStep.clickingOnTheTimeField();
         watchScreenStep.pressingTheButtonToChangeTheWatchType();
         watchScreenStep.checkingTheTypeOfDigitalClock();
@@ -141,7 +138,6 @@ public class EditingNewsScreenTest {
         String text = textSymbol(5);
         String Category = randomCategory();
         int position = randomNews( 1);
-        SystemClock.sleep(3000);
 
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
 
@@ -151,7 +147,6 @@ public class EditingNewsScreenTest {
         String descriptionNewsItWas = editingNewsScreenStep.descriptionNews();
 
         editingNewsScreenStep.clickingOnTheButtonToEnterTheNewsEditing(nameNewsItWas);
-        SystemClock.sleep(2000);
         editingNewsScreenStep.fillingInTheNewsFieldsWithNewData(text, Category);
 
         String nameNewsInput = editingNewsScreenStep.titleTextNewsField();
@@ -183,7 +178,6 @@ public class EditingNewsScreenTest {
         String text = textSymbol(5);
         String Category = randomCategory();
         int position = randomClaims( 1);
-        SystemClock.sleep(3000);
 
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
 
@@ -193,7 +187,6 @@ public class EditingNewsScreenTest {
         String descriptionNewsItWas = editingNewsScreenStep.descriptionNews();
 
         editingNewsScreenStep.clickingOnTheButtonToEnterTheNewsEditing(nameNewsItWas);
-        SystemClock.sleep(2000);
         editingNewsScreenStep.fillingInTheNewsFieldsWithNewData(text, Category);
 
         String nameNewsInput = editingNewsScreenStep.titleTextNewsField();
@@ -208,7 +201,6 @@ public class EditingNewsScreenTest {
         String publicationDateNewsItWasHasBecomes = editingNewsScreenStep.publicationDateNews();
         String creationDateNewsItWasHasBecomes = editingNewsScreenStep.creationDateNews();
         String descriptionNewsItWasHasBecomes = editingNewsScreenStep.descriptionNews();
-        SystemClock.sleep(2000);
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
 
         editingNewsScreenStep.checkingNewsDataBeforeEditingAndAfterCancelingEditing(
@@ -225,7 +217,7 @@ public class EditingNewsScreenTest {
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
         editingNewsScreenStep.deletingTheNewsTitle();
         editingNewsScreenStep.clickingOnTheSaveButton();
-        editingNewsScreenStep.checkingTheFillEmptyFields(ActivityTestRule.getActivity(), R.string.empty_fields);
+        editingNewsScreenStep.checkingTheFillEmptyFields(ActivityTestRule.getActivity(), messageEmpty);
     }
 
     @Test
@@ -236,9 +228,8 @@ public class EditingNewsScreenTest {
 
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
         editingNewsScreenStep.enteringTextInTheCategoryField(text);
-        SystemClock.sleep(2000);
         editingNewsScreenStep.clickingOnTheSaveButton();
-        editingNewsScreenStep.checkingTheSavingFailedTryAgainLater(ActivityTestRule.getActivity(), R.string.error_saving);
+        editingNewsScreenStep.checkingTheSavingFailedTryAgainLater(ActivityTestRule.getActivity(), messageSaving);
     }
 
     @Test
@@ -249,7 +240,6 @@ public class EditingNewsScreenTest {
 
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
         editingNewsScreenStep.validLanguage(validLanguageText);
-        SystemClock.sleep(3000);
         editingNewsScreenStep.checkingForThePresenceOfWordsFromEnglishLettersInTheFields(validLanguageText);
     }
 
@@ -275,9 +265,7 @@ public class EditingNewsScreenTest {
     public void undoUndoEdit() {
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
         editingNewsScreenStep.clickingOnTheCancelNewsEditingButton();
-        SystemClock.sleep(3000);
         editingNewsScreenStep.clickingOnTheCancelButtonToExitEditing();
-        SystemClock.sleep(3000);
         editingNewsScreenStep.checkingTheNameOfTheEditingNewsScreen();
     }
 
@@ -290,18 +278,15 @@ public class EditingNewsScreenTest {
 
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
 
-        SystemClock.sleep(3000);
         String nameNewsItWas = editingNewsScreenStep.nameNews();
         ViewInteraction statusBefore = editingNewsScreenStep.statusNews(nameNewsItWas);
 
         editingNewsScreenStep.clickingOnTheNews(nameNewsItWas);
-        SystemClock.sleep(3000);
         editingNewsScreenStep.clickingOnTheCheckBox();
         editingNewsScreenStep.clickingOnTheSaveButton();
 
         String statusAfter = editingNewsScreenStep.statusNewsText(nameNewsItWas);
         ViewInteraction statusAfter2 = editingNewsScreenStep.statusNewsPosition(position);
-        SystemClock.sleep(3000);
 
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
         controlPanelScreenStep.checkingTheStatusChange(statusBefore.toString(), statusAfter, statusAfter2);

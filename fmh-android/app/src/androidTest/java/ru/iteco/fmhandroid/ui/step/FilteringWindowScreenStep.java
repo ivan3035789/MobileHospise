@@ -36,55 +36,66 @@ public class FilteringWindowScreenStep {
     public void clickingOnTheOkButton() {
         Allure.step("Нажатие на кнопку ok");
         filteringWindowScreenElements.getOkButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheExitFilteringButton() {
         Allure.step("Нажатие на кнопку выхода из Filtering");
         filteringWindowScreenElements.getCancelButton().perform(click());
+        SystemClock.sleep(3000);
     }
     
     public void clickingOnTheCheckBoxInProgress() {
         Allure.step("Нажатие на чек бокс In progress");
         filteringWindowScreenElements.getCheckBoxInProgress().perform(click());
+        SystemClock.sleep(3000);
     }
     
     public void clickingOnTheCheckBoxOpen() {
         Allure.step("Нажатие на чек бокс Open");
         filteringWindowScreenElements.getCheckBoxOpen().perform(click());
+        SystemClock.sleep(3000);
     }
     
     public void clickingOnTheCheckBoxExecuted() {
         Allure.step("Нажатие на чек бокс Executed");
         filteringWindowScreenElements.getCheckBoxExecuted().perform(click());
+        SystemClock.sleep(3000);
     }
     
     public void clickingOnTheCheckBoxCancelled() {
         Allure.step("Нажатие на чек бокс Cancelled");
         filteringWindowScreenElements.getCheckBoxCancelled().perform(click());
+        SystemClock.sleep(3000);
     }
     
     public void clickingOnRandomlySelectedCheckBox() {
         Allure.step("Нажатие на выбранный случайным образом чек бокс");
         randomCheckBox();
+        SystemClock.sleep(3000);
     }
     
     public void checkingTheStatus() {
         Allure.step("Проверка статуса");
         checkStatus(Helper.Text.getText(claimsScreenElements.getStatus()));
+        SystemClock.sleep(3000);
     }
     
     public void checkingTheMessageForUndiscoveredClaims() {
         Allure.step("Проверка сообщения при ненайденных претензиях");
         onView(withText(startsWith("There is nothing here yet"))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
     
     public void checkingTheScreenNameFiltering() {
         Allure.step("Проверка названия экрана filtering");
         filteringWindowScreenElements.getFilteringNameScreen().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
     
     public void checkingForMissingScreenNameFiltering() {
         Allure.step("Проверка отсутствия название экрана Filtering");
         claimsScreenElements.getScreenNameClaims().check(matches(not(filteringWindowScreenElements.getFilteringNameScreen())));
+        SystemClock.sleep(3000);
     }
 }

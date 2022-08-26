@@ -37,17 +37,20 @@ public class AuthorizationScreenStep {
         user.perform(click());
         ViewInteraction exitButton = onView(withText("Log out"));
         exitButton.perform(click());
+        SystemClock.sleep(5000);
     }
 
     public void checkingTheNameOfTheAuthorizationScreen() {
         Allure.step("Проверка названия Экрана Авторизации");
         authorizationScreenElements.getAuthorization().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingIdentifyingFieldNames() {
         Allure.step("Проверка идентифицирующих названий полей");
         authorizationScreenElements.getLoginField().check(matches(isDisplayed()));
         authorizationScreenElements.getPasswordField().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void validLoginPassword(Helper.AuthInfo info) {
@@ -57,6 +60,7 @@ public class AuthorizationScreenStep {
         authorizationScreenElements.getPasswordField().perform(typeText(info.getPassword())).perform(closeSoftKeyboard());
         SystemClock.sleep(3000);
         authorizationScreenElements.getButton().perform(click());
+        SystemClock.sleep(5000);
     }
 
     public void invalidAuthorization() {
@@ -66,6 +70,7 @@ public class AuthorizationScreenStep {
         authorizationScreenElements.getPasswordField().perform(typeText(invalidAuthInfo().getPassword())).perform(closeSoftKeyboard());
         SystemClock.sleep(3000);
         authorizationScreenElements.getButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void invalidAuthorizationLoginPassword() {
@@ -73,19 +78,23 @@ public class AuthorizationScreenStep {
         checkingTheNameOfTheAuthorizationScreen();
         authorizationScreenElements.getLoginField().perform(typeText(invalidLoginPasswordAuthInfo().getLogin()));
         authorizationScreenElements.getPasswordField().perform(typeText(invalidLoginPasswordAuthInfo().getPassword())).perform(closeSoftKeyboard());
+        SystemClock.sleep(3000);
         authorizationScreenElements.getButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void validLanguage(String loginPassword) {
         Allure.step("Ввод английских букв");
         authorizationScreenElements.getLoginField().perform(typeText(loginPassword));
         authorizationScreenElements.getPasswordField().perform(typeText(loginPassword)).perform(closeSoftKeyboard());
+        SystemClock.sleep(3000);
     }
 
     public void invalidLanguage(String loginPassword) {
         Allure.step("Ввод русских букв");
         authorizationScreenElements.getLoginField().perform(typeText(loginPassword));
         authorizationScreenElements.getPasswordField().perform(typeText(loginPassword)).perform(closeSoftKeyboard());
+        SystemClock.sleep(3000);
     }
 
     public void checkingThePresenceOfTheEnteredDataInTheFields(String loginPassword) {
@@ -94,6 +103,7 @@ public class AuthorizationScreenStep {
         authorizationScreenElements.getPasswordField().check(matches(isDisplayed()));
         authorizationScreenElements.getLoginField().check(matches(withText(loginPassword)));
         authorizationScreenElements.getPasswordField().check(matches(withText(loginPassword)));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheAbsenceOfTheEnteredDataInTheFields(String loginPassword) {
@@ -102,15 +112,18 @@ public class AuthorizationScreenStep {
         authorizationScreenElements.getPasswordField().check(matches(isDisplayed()));
         authorizationScreenElements.getLoginField().check(matches(not(withText(loginPassword))));
         authorizationScreenElements.getPasswordField().check(matches(not(withText(loginPassword))));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheLoginAndPasswordCannotBeEmpty(@NonNull AppActivity activity, String text) {
         Allure.step("Проверка появления предупреждающего сообщения Login and password cannot be empty");
         onView(withText(text)).inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheWrongLoginOrPassword(@NonNull AppActivity activity, String text) {
         Allure.step("Проверка появления предупреждающего сообщения Wrong login or password");
         onView(withText(text)).inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 }

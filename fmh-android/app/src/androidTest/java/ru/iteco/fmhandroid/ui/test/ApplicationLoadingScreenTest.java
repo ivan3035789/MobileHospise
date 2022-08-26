@@ -28,7 +28,7 @@ public class ApplicationLoadingScreenTest {
 
     @Before
     public void logoutCheck() {
-        SystemClock.sleep(1000);
+        SystemClock.sleep(2000);
     }
 
     @After

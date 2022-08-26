@@ -50,11 +50,9 @@ public class ЕditingClaimsScreenTest {
             mainScreenStep.checkNameMainScreen();
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
-            SystemClock.sleep(5000);
         } finally {
             editingClaimsScreenStep.goToTheClaimCardWithTheOpenStatus(position);
             claimsScreenStep.checkingTheOpenStatus();
-            SystemClock.sleep(5000);
         }
     }
 
@@ -68,9 +66,7 @@ public class ЕditingClaimsScreenTest {
     @Description("В этом тест кейсе мы проверяем название экрана Editing Claims")
     public void theScreenShouldHaveName() {
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
-        SystemClock.sleep(3000);
         editingClaimsScreenStep.checkingTheNameOfTheScreenForEditingClaims();
     }
 
@@ -79,7 +75,6 @@ public class ЕditingClaimsScreenTest {
     @Description("В этом тест кейсе мы проверяем, что поля имеют данные заполненые ранее")
     public void theFieldsMustContainData() {
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
         editingClaimsScreenStep.checkingTheFieldsAreFilledIn();
     }
@@ -89,9 +84,7 @@ public class ЕditingClaimsScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при клике на поле \"Category\" появляется выпадающий список с доспупными категориями")
     public void aDropDownListWithCategoriesShouldAppear() {
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
-        SystemClock.sleep(3000);
         editingClaimsScreenStep.clickingOnTheExecutorField();
         editingClaimsScreenStep.checkingTheAppearanceOfTheDropDownList(ActivityTestRule.getActivity());
     }
@@ -101,9 +94,7 @@ public class ЕditingClaimsScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при нажатии на поле \"Publication date\" появляется календарь")
     public void aCalendarShouldAppear() {
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
-        SystemClock.sleep(3000);
         editingClaimsScreenStep.clickingOnTheDateField();
         editingClaimsScreenStep.checkingTheCalendarAppearance(ActivityTestRule.getActivity());
     }
@@ -113,9 +104,7 @@ public class ЕditingClaimsScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при нажатии на поле \"Time\" появляется часы стрелочного типа")
     public void aClockOfTheArrowTypeShouldAppear() {
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
-        SystemClock.sleep(3000);
         editingClaimsScreenStep.clickingOnTheTimeField();
         editingClaimsScreenStep.checkingTheAppearanceOfClockOfTheArrowType(ActivityTestRule.getActivity());
     }
@@ -125,9 +114,7 @@ public class ЕditingClaimsScreenTest {
     @Description("В этом тест кейсе мы проверяем возможность смены типа часов. что при нажатии на кнопку с иконкой \"клавиатура\" должен поменяться вид часов")
     public void theTypeOfWatchShouldChange() {
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
-        SystemClock.sleep(3000);
         editingClaimsScreenStep.clickingOnTheTimeField();
         watchScreenStep.pressingTheButtonToChangeTheWatchType();
         watchScreenStep.checkingTheTypeOfDigitalClock();
@@ -145,7 +132,6 @@ public class ЕditingClaimsScreenTest {
         String descriptionClaimFieldItWas = claimsScreenStep.descriptionClaimField();
 
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
         editingClaimsScreenStep.fillingInFieldsWithValidData();
         editingClaimsScreenStep.clickingOnTheSaveButton();
@@ -156,7 +142,6 @@ public class ЕditingClaimsScreenTest {
         String timeClaimFieldItWasHasBecome = claimsScreenStep.timeText();
         String descriptionClaimFieldItWasHasBecome = claimsScreenStep.descriptionClaimField();
 
-        SystemClock.sleep(3000);
         editingClaimsScreenStep.checkingDataBeforeEditingAndAfter(
                 titleClaimFieldItWas, titleClaimFieldItWasHasBecome, executorClaimFieldItWas, executorClaimFieldItWasHasBecome,
                 dateClaimFieldItWas, dateClaimFieldItWasHasBecome, timeClaimFieldItWas, timeClaimFieldItWasHasBecome,
@@ -175,7 +160,6 @@ public class ЕditingClaimsScreenTest {
         String descriptionClaimFieldItWas = claimsScreenStep.descriptionClaimField();
 
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
         editingClaimsScreenStep.clickingOnTheUndoEditButton();
         editingClaimsScreenStep.clickingOnTheButtonToConfirmTheCancellationOfEditing();
@@ -210,7 +194,6 @@ public class ЕditingClaimsScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при незаполненном, незаполненных полях появляется предупреждающее сообщение, после нажатия на кнопку \"SAVE\"  \"fill empty fields\" ")
     public void aWarningMessageShouldAppearIfTheFieldsAreEmptyWhenClickingOnTheSaveButton() {
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
         editingClaimsScreenStep.deletingTextFromTheTitleField();
         editingClaimsScreenStep.clickingOnTheSaveButton();
@@ -224,11 +207,8 @@ public class ЕditingClaimsScreenTest {
         String validLanguageText = "hello world";
 
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
-        SystemClock.sleep(3000);
         editingClaimsScreenStep.validLanguage(validLanguageText);
-        SystemClock.sleep(3000);
         editingClaimsScreenStep.checkingForThePresenceOfWordsFromEnglishLettersInTheFields(validLanguageText);
     }
 
@@ -239,9 +219,7 @@ public class ЕditingClaimsScreenTest {
         String invalidLanguageText = "Привет мир";
 
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
-        SystemClock.sleep(3000);
         try {
             editingClaimsScreenStep.invalidLanguage(invalidLanguageText);
         } catch (RuntimeException e) {
@@ -258,15 +236,10 @@ public class ЕditingClaimsScreenTest {
         String executor = randomExecutor();
 
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
-        SystemClock.sleep(2000);
         editingClaimsScreenStep.clickingOnTheExecutorField();
-        SystemClock.sleep(2000);
         editingClaimsScreenStep.clickingOnRandomlySelectedArtist(ActivityTestRule.getActivity(), executor);
-        SystemClock.sleep(2000);
         editingClaimsScreenStep.clickingOnTheSaveButton();
-        SystemClock.sleep(2000);
         claimsScreenStep.checkingTheInProgressStatus();
     }
 
@@ -277,17 +250,13 @@ public class ЕditingClaimsScreenTest {
         String text = textSymbol(5);
 
         String executorClaimFieldItWas = claimsScreenStep.executorText();
-        SystemClock.sleep(2000);
 
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
 
         String executorClaimFieldInputText = editingClaimsScreenStep.executorClaim();
-        SystemClock.sleep(2000);
 
         editingClaimsScreenStep.fillingInTheExecutorField(text);
-        SystemClock.sleep(2000);
         editingClaimsScreenStep.clickingOnTheSaveButton();
 
         String executorClaimFieldItWasHasBecome = claimsScreenStep.executorText();

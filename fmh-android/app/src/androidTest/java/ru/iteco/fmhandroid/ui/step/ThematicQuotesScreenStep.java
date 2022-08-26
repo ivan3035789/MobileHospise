@@ -10,6 +10,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static junit.framework.TestCase.assertEquals;
 import static ru.iteco.fmhandroid.ui.data.Helper.withIndex;
 
+import android.os.SystemClock;
+
 import androidx.test.espresso.ViewInteraction;
 
 import ru.iteco.fmhandroid.ui.data.Helper;
@@ -25,17 +27,20 @@ public class ThematicQuotesScreenStep {
         Allure.step("Проветка названия экрана {loveIsAll}");
         thematicQuotesScreenElements.getLoveIsAll().check(matches(isDisplayed()));
         thematicQuotesScreenElements.getLoveIsAll().check(matches(withText("Love is all")));
+        SystemClock.sleep(3000);
     }
 
     public void quoteSelection(int position) {
         Allure.step("Выбор цитаты");
         thematicQuotesScreenElements.getRecyclerView().perform(actionOnItemAtPosition(position, click()));
+        SystemClock.sleep(3000);
     }
 
-//    public void openDescription() {
-//        Allure.step("Нажатие на кнопку развернуть/свернуть описание цитаты");
-//        thematicQuotesScreenElements.getQuoteTitle().perform(click());
-//    }
+    public void openDescription() {
+        Allure.step("Нажатие на кнопку развернуть/свернуть описание цитаты");
+        thematicQuotesScreenElements.getQuoteTitle().perform(click());
+        SystemClock.sleep(3000);
+    }
 
     public void checkingTheText(String title, ViewInteraction title2, String description, ViewInteraction description2) {
         Allure.step("Проверка названия и описания");
@@ -43,6 +48,7 @@ public class ThematicQuotesScreenStep {
         title2.check(matches(isDisplayed()));
         assertEquals("Ну, идеальное устройство мира в моих глазах. Где никто не оценивает, никто не осудит, где говоришь, и тебя слышат, где, если страшно, тебя обнимут и возьмут за руку, а если холодно тебя согреют.” Юля Капис, волонтер", description);
         description2.check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public String title(int position) {

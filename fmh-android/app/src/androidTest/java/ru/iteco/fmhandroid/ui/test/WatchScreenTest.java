@@ -46,10 +46,8 @@ public class WatchScreenTest {
             mainScreenStep.checkNameMainScreen();
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
-            SystemClock.sleep(5000);
         } finally {
             mainScreenStep.randomTransitionToCreatingClaims();
-            SystemClock.sleep(5000);
         }
     }
 
@@ -72,16 +70,14 @@ public class WatchScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"Cancel\", происходит отмена установки выбранного пользоваителем времени, часы закрываются  ")
     public void cancelingTheTimeSelectionAndSetting() {
         String timeBefore = watchScreenStep.timeBefore();
-        SystemClock.sleep(3000);
+
         creatingClaimsScreenStep.clickingOnTheTimeField();
         watchScreenStep.pressingTheButtonToChangeTheWatchType();
         watchScreenStep.checkingTheTypeOfDigitalClock();
 
         watchScreenStep.settingRandomlySelectedHour();
-        SystemClock.sleep(3000);
         watchScreenStep.settingRandomlySelectedMinute();
 
-        SystemClock.sleep(3000);
         watchScreenStep.pressingTheCancelTimeSettingButton();
         String timeAfter = watchScreenStep.timeAfter();
         watchScreenStep.checkingTheClockReadingsBeforeInstallationAndAfterCancelingTheInstallation(timeBefore, timeAfter);
@@ -95,16 +91,14 @@ public class WatchScreenTest {
         String minute = randomMinute59();
 
         String timeBefore = watchScreenStep.timeBefore();
-        SystemClock.sleep(3000);
+
         creatingClaimsScreenStep.clickingOnTheTimeField();
         watchScreenStep.pressingTheButtonToChangeTheWatchType();
         watchScreenStep.checkingTheTypeOfDigitalClock();
 
         watchScreenStep.settingTheHourSelectedRandomly(hour);
-        SystemClock.sleep(3000);
         watchScreenStep.settingTheMinutesSelectedRandomly(minute);
 
-        SystemClock.sleep(3000);
         watchScreenStep.clickingOnTheConfirmationButton();
         String timeAfter = watchScreenStep.timeAfter();
         watchScreenStep.checkingTheSetTime(hour, minute, timeAfter, timeBefore);
@@ -122,10 +116,8 @@ public class WatchScreenTest {
         watchScreenStep.checkingTheTypeOfDigitalClock();
 
         watchScreenStep.settingTheHourToAnInvalidValue(invalidHour);
-        SystemClock.sleep(3000);
         watchScreenStep.settingTheMinutesToAnInvalidValue(invalidMinute);
 
-        SystemClock.sleep(3000);
         watchScreenStep.clickingOnTheConfirmationButton();
         watchScreenStep.checkingEnterValidTime(ActivityTestRule.getActivity(), "Enter a valid time");
     }

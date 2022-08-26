@@ -41,61 +41,73 @@ public class EditingNewsScreenStep {
     public void deletingTheNewsTitle() {
         Allure.step("Удаление названия новости");
         editingNewsScreenElements.getTitleTextNewsField().perform(replaceText("")).perform(closeSoftKeyboard());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheCategoryField() {
         Allure.step("Нажатие на поле Category");
         editingNewsScreenElements.getCategoryField().perform(replaceText(""), click()).perform(closeSoftKeyboard());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnThePublicationDateField() {
         Allure.step("Нажатие на поле Publication date");
         editingNewsScreenElements.getPublishDateField().perform(scrollTo(), click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheTimeField() {
         Allure.step("Нажатие на поле Time");
         editingNewsScreenElements.getTimeField().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheSaveButton() {
         Allure.step("Нажатие на кнопку сохранить");
         editingNewsScreenElements.getSaveButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheCancelNewsEditingButton() {
         Allure.step("Нажатие на кнопку отмены редактирования новости");
         editingNewsScreenElements.getCancelButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheCancelButtonToExitEditing() {
         Allure.step("Нажатие на кнопку отмены выхода из редактирования");
         editingNewsScreenElements.getCancelButton2().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheButtonToConfirmTheCancellationOfNewsEditing() {
         Allure.step("Нажатие на кнопку подтверждения отмены редактирования новости");
         editingNewsScreenElements.getOkButton().perform(scrollTo(), click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheCheckBox() {
         Allure.step("Нажатие на Чек бокс");
         editingNewsScreenElements.getCheckBox().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheButtonToEnterTheNewsEditing(String nameNewsItWas) {
         Allure.step("Нажатие на кнопку для входа в редактирование новости");
         onView(allOf(withId(R.id.edit_news_item_image_view), withParent(withParent(allOf(withId(R.id.news_item_material_card_view), withChild(withChild(withText(nameNewsItWas)))))))).perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheNews(String nameNewsItWas) {
         Allure.step("Нажатие на новость");
         onView(allOf(withId(R.id.edit_news_item_image_view), withParent(withParent(allOf(withId(R.id.news_item_material_card_view), withChild(withChild(withText(nameNewsItWas)))))))).perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void enteringTextInTheCategoryField(String text) {
         Allure.step("Ввод текста в поле Category");
         editingNewsScreenElements.getCategoryField().perform(replaceText(text));
+        SystemClock.sleep(3000);
     }
 
     public void invalidLanguage(String title) {
@@ -105,6 +117,7 @@ public class EditingNewsScreenStep {
         SystemClock.sleep(3000);
         editingNewsScreenElements.getTitleTextNewsField().perform(typeText(title)).perform(closeSoftKeyboard());
         editingNewsScreenElements.getDescriptionField().perform(typeText(title)).perform(closeSoftKeyboard());
+        SystemClock.sleep(3000);
     }
 
     public void validLanguage(String title) {
@@ -112,6 +125,7 @@ public class EditingNewsScreenStep {
         editingNewsScreenElements.getTitleTextNewsField().perform(replaceText(title));
         editingNewsScreenElements.getCategoryField().perform(replaceText(title));
         editingNewsScreenElements.getDescriptionField().perform(replaceText(title)).perform(closeSoftKeyboard());
+        SystemClock.sleep(3000);
     }
 
     public void fillingInTheNewsFieldsWithNewData(String text, String Category) {
@@ -132,6 +146,7 @@ public class EditingNewsScreenStep {
         calendarScreenElements.getOkButton().perform(scrollTo(), click());
         editingNewsScreenElements.getDescriptionField().perform(replaceText("")).perform(closeSoftKeyboard());
         editingNewsScreenElements.getDescriptionField().perform(replaceText(text)).perform(closeSoftKeyboard());
+        SystemClock.sleep(3000);
     }
 
     public void checkingForThePresenceOfWordsFromEnglishLettersInTheFields(String validLanguageText) {
@@ -139,18 +154,21 @@ public class EditingNewsScreenStep {
         editingNewsScreenElements.getTitleTextNewsField().check(matches(withText(validLanguageText))).check(matches(isDisplayed()));
         editingNewsScreenElements.getCategoryField().check(matches(withText(validLanguageText))).check(matches(isDisplayed()));
         editingNewsScreenElements.getDescriptionField().check(matches(withText(validLanguageText))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingForTheAbsenceOfWordsFromRussianLettersInTheFields() {
         Allure.step("Проверка на отсутствие в полях слов из русских букв");
         editingNewsScreenElements.getTitleTextNewsField().check(matches(withText(""))).check(matches(isDisplayed()));
         editingNewsScreenElements.getDescriptionField().check(matches(withText(""))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheNameOfTheEditingNewsScreen() {
         Allure.step("Проверка названия экрана Editing News");
         editingNewsScreenElements.getEditingNameScreen().check(matches(withText("Editing"))).check(matches(isDisplayed()));
         editingNewsScreenElements.getNewsNameScreen().check(matches(withText("News"))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkNameFieldInEditingNews() {
@@ -160,6 +178,7 @@ public class EditingNewsScreenStep {
         editingNewsScreenElements.getPublicationDateName().check(matches(isDisplayed()));
         editingNewsScreenElements.getTimeName().check(matches(isDisplayed()));
         editingNewsScreenElements.getDescriptionName().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingWhetherTheFieldsAreFilledWithData(
@@ -170,6 +189,7 @@ public class EditingNewsScreenStep {
         editingNewsScreenElements.getPublishDateField().check(matches(withText(publishDate))).check(matches(isDisplayed()));
         editingNewsScreenElements.getTimeField().check(matches(withText(time))).check(matches(isDisplayed()));
         editingNewsScreenElements.getDescriptionField().check(matches(withText(description))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheInitialDataOfTheNewsWithTheFillingDataAndTheFinal(
@@ -208,6 +228,7 @@ public class EditingNewsScreenStep {
             assertNotEquals(creationDateNewsItWas, creationDateNewsItWasHasBecomes);
         }
         assertNotEquals(descriptionNewsItWas, descriptionNewsItWasHasBecomes);
+        SystemClock.sleep(3000);
     }
 
     public void checkingNewsDataBeforeEditingAndAfterCancelingEditing(
@@ -232,38 +253,40 @@ public class EditingNewsScreenStep {
         assertEquals(publicationDateNewsItWas, publicationDateNewsItWasHasBecomes);
         assertEquals(creationDateNewsItWas, creationDateNewsItWasHasBecomes);
         assertEquals(descriptionNewsItWas, descriptionNewsItWasHasBecomes);
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheCalendarAppearance(@NonNull AppActivity activity) {
         Allure.step("Проверка появления календаря");
         onView(withClassName(is("android.widget.DatePicker")))
                 .inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheAppearanceOfTheDropDownList(@NonNull AppActivity activity) {
         Allure.step("Проверка появления выпадающего списка");
         onView(withClassName(is("android.widget.PopupWindow$PopupBackgroundView")))
                 .inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheAppearanceOfClockOfTheArrowType(@NonNull AppActivity activity) {
         Allure.step("Проверка появления часов стрелочного типа");
         onView(withClassName(is("android.widget.RadialTimePickerView")))
                 .inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
-    public void checkingTheFillEmptyFields(@NonNull AppActivity activity, int text) {
+    public void checkingTheFillEmptyFields(@NonNull AppActivity activity, String text) {
         Allure.step("Проверка появления предупреждающего сообщения Fill empty fields");
-        onView(withText(text))
-                .inRoot(withDecorView(not(is(activity.getWindow().getDecorView()))))
-                .check(matches(withText("Fill empty fields"))).check(matches(isDisplayed()));
+        onView(withText(text)).inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
-    public void checkingTheSavingFailedTryAgainLater(@NonNull AppActivity activity, int text) {
+    public void checkingTheSavingFailedTryAgainLater(@NonNull AppActivity activity, String text) {
         Allure.step("Проверка появления предупреждающего сообщения Saving failed. Try again later");
-        onView(withText(text))
-                .inRoot(withDecorView(not(is(activity.getWindow().getDecorView()))))
-                .check(matches(withText("Saving failed. Try again later.")));
+        onView(withText(text)).inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public String categoryField() {

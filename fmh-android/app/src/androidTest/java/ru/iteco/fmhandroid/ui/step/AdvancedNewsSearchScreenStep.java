@@ -26,11 +26,13 @@ public class AdvancedNewsSearchScreenStep {
         advancedNewsSearchScreenElements.getDateStartField().perform(replaceText(dateStartInput));
         SystemClock.sleep(3000);
         advancedNewsSearchScreenElements.getDateEndField().perform(replaceText(dateEndInput));
+        SystemClock.sleep(3000);
     }
 
     public void fillingInTheCategoryField(String category) {
         Allure.step("Заполнение поля категории");
         advancedNewsSearchScreenElements.getFieldNameCategory().perform(replaceText(category));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheVisibilityOfIdentifyingFieldNames() {
@@ -38,12 +40,14 @@ public class AdvancedNewsSearchScreenStep {
         advancedNewsSearchScreenElements.getFieldNameCategory().check(matches(isDisplayed()));
         advancedNewsSearchScreenElements.getFieldNameStartDate().check(matches(isDisplayed()));
         advancedNewsSearchScreenElements.getFieldNameEndDate().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheVisibilityOfTheNamesOfCheckBoxes() {
         Allure.step("Проверка видимости названий чек боксов");
         advancedNewsSearchScreenElements.getCheckBoxActive().check(matches(isDisplayed()));
         advancedNewsSearchScreenElements.getCheckBoxNotActive().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void fillingInFieldsWithSearchData(String category, String dateStartInput, String dateEndInput) {
@@ -53,6 +57,7 @@ public class AdvancedNewsSearchScreenStep {
         advancedNewsSearchScreenElements.getFieldNameStartDate().perform(replaceText(dateStartInput));
         SystemClock.sleep(3000);
         advancedNewsSearchScreenElements.getFieldNameEndDate().perform(replaceText(dateEndInput));
+        SystemClock.sleep(3000);
     }
 
     public void fillingInTheFieldsForTheDate(String dateStartInput, String dateEndInput) {
@@ -60,30 +65,36 @@ public class AdvancedNewsSearchScreenStep {
         advancedNewsSearchScreenElements.getDateStartField().perform(replaceText(dateStartInput));
         SystemClock.sleep(3000);
         advancedNewsSearchScreenElements.getDateEndField().perform(replaceText(dateEndInput));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheTextWhenNewsIsNotFound() {
         Allure.step("Проверка текста при ненайденных новостях");
         onView(withText(startsWith("There is nothing here yet"))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheFilterButtonToSearchForNews() {
         Allure.step("Нажатие на кнопку filter поиска новостей");
         advancedNewsSearchScreenElements.getFilterButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheCancelSearchButton() {
         Allure.step("Нажатие на кнопку Cancel отмена поиска");
         advancedNewsSearchScreenElements.getCancelButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheActiveCheckBox() {
         Allure.step("Нажатие на чек бокс Active");
         advancedNewsSearchScreenElements.getCheckBoxNotActive().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheNotActiveCheckBox() {
         Allure.step("Нажатие на чек бокс Not Active");
         advancedNewsSearchScreenElements.getCheckBoxActive().perform(click());
+        SystemClock.sleep(3000);
     }
 }

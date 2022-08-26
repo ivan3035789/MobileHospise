@@ -19,7 +19,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
-import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
@@ -45,13 +44,11 @@ import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.espresso.contrib.PickerActions;
-import androidx.test.rule.ActivityTestRule;
 
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
 import org.hamcrest.TypeSafeMatcher;
-import org.junit.Rule;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -62,6 +59,8 @@ import java.util.Locale;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+import io.bloco.faker.Faker;
+import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.screenElements.CalendarScreenElements;
 import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreenElements;
 import ru.iteco.fmhandroid.ui.screenElements.ControlPanelScreenElements;
@@ -70,13 +69,9 @@ import ru.iteco.fmhandroid.ui.screenElements.CreatingNewsScreenElements;
 import ru.iteco.fmhandroid.ui.screenElements.EditingNewsScreenElements;
 import ru.iteco.fmhandroid.ui.screenElements.FilteringWindowScreenElements;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreenElements;
-import ru.iteco.fmhandroid.ui.screenElements.NewsScreenElements;
 import ru.iteco.fmhandroid.ui.screenElements.WatchScreenElements;
 import ru.iteco.fmhandroid.ui.step.ControlPanelScreenStep;
 import ru.iteco.fmhandroid.ui.step.MainScreenStep;
-import io.bloco.faker.Faker;
-import ru.iteco.fmhandroid.R;
-import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.step.NewsScreenStep;
 
 public class Helper {
@@ -188,6 +183,7 @@ public class Helper {
         creatingClaimsScreenElements.getDescriptionClaimField().perform(replaceText(Text.textSymbol(10)), closeSoftKeyboard());
         SystemClock.sleep(2000);
         creatingClaimsScreenElements.getSaveButton().perform(click());
+        SystemClock.sleep(2000);
     }
 
     public static void createNewsForCategory(String text, String category) {
@@ -210,6 +206,7 @@ public class Helper {
         creatingNewsScreenElements.getDescriptionFieldNews().perform(replaceText(text)).perform(closeSoftKeyboard());
         SystemClock.sleep(3000);
         creatingNewsScreenElements.getSaveButton().perform(click());
+        SystemClock.sleep(2000);
     }
 
     public static void createNews(String text, String category) {
@@ -231,6 +228,7 @@ public class Helper {
         creatingNewsScreenElements.getDescriptionFieldNews().perform(replaceText(text)).perform(closeSoftKeyboard());
         SystemClock.sleep(3000);
         creatingNewsScreenElements.getSaveButton().perform(click());
+        SystemClock.sleep(2000);
     }
 
     public static void deletingNewsUpToTheNumberOfTenControlPanelScreen(int position) {
@@ -343,6 +341,7 @@ public class Helper {
             } else {
                 filteringWindowScreenElements.getCheckBoxCancelled().perform(click());
             }
+            SystemClock.sleep(2000);
         }
 
         public static void randomLogInToClaimsCreation() {
@@ -358,6 +357,7 @@ public class Helper {
             } else {
                 enterCreateClaimsButtonPlus();
             }
+            SystemClock.sleep(2000);
         }
 
         public static void randomLogInToNewsCreation() {
@@ -371,6 +371,7 @@ public class Helper {
             } else {
                 enterCreateNews2();
             }
+            SystemClock.sleep(2000);
         }
     }
 
@@ -393,18 +394,22 @@ public class Helper {
 
         public static void swipeToBottom() {
             swiper(1000, 100, 0);
+            SystemClock.sleep(2000);
         }
 
         public static void scrollSlowlyDown() {
             swiper(775, 100, 100);
+            SystemClock.sleep(2000);
         }
 
         public static void swipeToTop() {
             swiper(1000, 100, 0);
+            SystemClock.sleep(2000);
         }
 
         public static void scrollSlowlyUp() {
             swiper(100, 775, 100);
+            SystemClock.sleep(2000);
         }
 
     }
@@ -427,6 +432,7 @@ public class Helper {
             editingNewsScreenElements.getCancelButton().perform(click());
             editingNewsScreenElements.getOkButton().perform(click());
         }
+        SystemClock.sleep(2000);
     }
 
     public static void checkStatus(String statusClaims) {
@@ -453,6 +459,7 @@ public class Helper {
         } else {
             claimsScreenElements.getStatus().check(matches(not(withText(status[3]))));
         }
+        SystemClock.sleep(2000);
     }
 
     public static class Search {

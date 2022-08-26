@@ -21,42 +21,50 @@ public class FilterNewsScreenStep {
         filterNewsScreenElements.getDateStartField().perform(replaceText(dateStartInput));
         SystemClock.sleep(2000);
         filterNewsScreenElements.getDateEndField().perform(replaceText(dateEndInput));
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheCancelSearchButton() {
         Allure.step("Нажатие на кнопку отмены поиска");
         filterNewsScreenElements.getCancelButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheSearchButton() {
         Allure.step("Нажатие на кнопку поиска");
         filterNewsScreenElements.getFilterButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void enteringCategory(String category) {
         Allure.step("Ввод категории");
         filterNewsScreenElements.getCategoryField().perform(replaceText(category));
+        SystemClock.sleep(3000);
     }
 
     public void enteringTheStartDate(String dateStartInput) {
         Allure.step("Ввод начала даты");
         filterNewsScreenElements.getDateStartField().perform(replaceText(dateStartInput));
+        SystemClock.sleep(3000);
     }
 
     public void enteringTheEndOfTheDate(String dateEndInput) {
         Allure.step("Ввод конца даты");
         filterNewsScreenElements.getDateEndField().perform(replaceText(dateEndInput));
+        SystemClock.sleep(3000);
     }
 
     public void enteringDates(String dateStartInput, String dateEndInput) {
         Allure.step("Ввод дат");
         filterNewsScreenElements.getDateStartField().perform(replaceText(dateStartInput));
         filterNewsScreenElements.getDateEndField().perform(replaceText(dateEndInput));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheScreenNameForNewsSearch() {
         Allure.step("Проверка названия экрана для поиска новостей");
         filterNewsScreenElements.getNameFilterNews().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingIdentifyingFieldNames() {
@@ -64,5 +72,6 @@ public class FilterNewsScreenStep {
         filterNewsScreenElements.getFieldNameCategory().check(matches(isDisplayed()));
         filterNewsScreenElements.getFieldNameStartDate().check(matches(isDisplayed()));
         filterNewsScreenElements.getFieldNameEndDate().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 }

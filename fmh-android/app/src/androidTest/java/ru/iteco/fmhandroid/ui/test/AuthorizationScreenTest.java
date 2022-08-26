@@ -41,7 +41,6 @@ public class AuthorizationScreenTest {
             authorizationScreenStep.checkingTheNameOfTheAuthorizationScreen();
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.clickingTheExitProfileButton();
-            SystemClock.sleep(5000);
         } 
     }
 
@@ -94,7 +93,6 @@ public class AuthorizationScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при вводе правильного логина и пароля пользователь входит в систему")
     public void mustLogIn() {
         authorizationScreenStep.validLoginPassword(authInfo());
-        SystemClock.sleep(5000);
         mainScreenStep.checkNameMainScreen();
     }
 
@@ -103,7 +101,6 @@ public class AuthorizationScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при невводе логина или пароля появляется предупреждающая надпись Login and password cannot be empty")
     public void aWarningMessageShouldAppearIfTheFieldsAreBlank() {
         authorizationScreenStep.invalidAuthorization();
-        SystemClock.sleep(1000);
         authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), MessageEmpty);
     }
 
@@ -112,7 +109,6 @@ public class AuthorizationScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при вводе неправильного логина или пароля пользователь не входит в систему, появляется надпись Wrong login or password")
     public void warningMessagesShouldAppearWhenEnteringAnIncorrectPassword() {
         authorizationScreenStep.invalidAuthorizationLoginPassword();
-        SystemClock.sleep(1000);
         authorizationScreenStep.checkingTheWrongLoginOrPassword(ActivityTestRule.getActivity(), messageWrong);
     }
 
@@ -121,7 +117,6 @@ public class AuthorizationScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при невведенном логине и пароле появлется предупреждающая надпись Login and password cannot be empty")
     public void warningMessagesShouldAppearWhenYouEnterSpace() {
         authorizationScreenStep.invalidAuthorization();
-        SystemClock.sleep(1000);
         authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), MessageEmpty);
     }
 
@@ -130,7 +125,6 @@ public class AuthorizationScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при невведенном пароле появлется предупреждающая надпись Login and password cannot be empty")
     public void warningMessagesShouldAppearWhenThePasswordFieldIsBlank() {
         authorizationScreenStep.invalidAuthorization();
-        SystemClock.sleep(1000);
         authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), MessageEmpty);
     }
 
@@ -139,7 +133,6 @@ public class AuthorizationScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при невведенном логине появлется предупреждающая надпись Login and password cannot be empty")
     public void warningMessagesShouldAppearWhenTheLoginFieldIsEmpty() {
         authorizationScreenStep.invalidAuthorization();
-        SystemClock.sleep(1000);
         authorizationScreenStep.checkingTheLoginAndPasswordCannotBeEmpty(ActivityTestRule.getActivity(), MessageEmpty);
     }
 
@@ -148,7 +141,6 @@ public class AuthorizationScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку выхода и нажатии log out, пользователь выходит из профиля")
     public void mustLogOutOfProfile() {
         authorizationScreenStep.validLoginPassword(authInfo());
-        SystemClock.sleep(5000);
         mainScreenStep.checkNameMainScreen();
         authorizationScreenStep.clickingTheExitProfileButton();
         authorizationScreenStep.checkingTheNameOfTheAuthorizationScreen();

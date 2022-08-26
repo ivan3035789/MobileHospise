@@ -48,9 +48,7 @@ public class FilteringScreenTest {
         } finally {
             mainScreenStep.clickingOnTheActionMenuButton();
             mainScreenStep.clickingOnTheClaimsName();
-            SystemClock.sleep(3000);
             claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
-            SystemClock.sleep(3000);
         }
     }
 
@@ -74,9 +72,7 @@ public class FilteringScreenTest {
         filteringWindowScreenStep.clickingOnTheCheckBoxOpen();
         filteringWindowScreenStep.clickingOnRandomlySelectedCheckBox();
         filteringWindowScreenStep.clickingOnTheOkButton();
-        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
-        SystemClock.sleep(2000);
         filteringWindowScreenStep.checkingTheStatus();
     }
 
@@ -86,9 +82,7 @@ public class FilteringScreenTest {
     public void mustFindClaimUsingFilteringWhenUsingSingleCheckboxInProgress() {
         filteringWindowScreenStep.clickingOnTheCheckBoxOpen();
         filteringWindowScreenStep.clickingOnTheOkButton();
-        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
-        SystemClock.sleep(2000);
         claimsScreenStep.checkingTheInProgressStatus();
     }
 
@@ -100,9 +94,7 @@ public class FilteringScreenTest {
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheCheckBoxExecuted();
         filteringWindowScreenStep.clickingOnTheOkButton();
-        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
-        SystemClock.sleep(2000);
         claimsScreenStep.checkingTheExecutedStatus();
     }
 
@@ -114,9 +106,7 @@ public class FilteringScreenTest {
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheCheckBoxCancelled();
         filteringWindowScreenStep.clickingOnTheOkButton();
-        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
-        SystemClock.sleep(2000);
         claimsScreenStep.checkingTheCanceledStatus();
     }
 
@@ -127,9 +117,7 @@ public class FilteringScreenTest {
         filteringWindowScreenStep.clickingOnTheCheckBoxExecuted();
         filteringWindowScreenStep.clickingOnTheCheckBoxCancelled();
         filteringWindowScreenStep.clickingOnTheOkButton();
-        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
-        SystemClock.sleep(2000);
         filteringWindowScreenStep.checkingTheStatus();
     }
 
@@ -140,7 +128,6 @@ public class FilteringScreenTest {
         filteringWindowScreenStep.clickingOnTheCheckBoxOpen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
-        SystemClock.sleep(2000);
         filteringWindowScreenStep.checkingTheMessageForUndiscoveredClaims();
     }
 

@@ -11,7 +11,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.withParent;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.Matchers.allOf;
-import static org.hamcrest.Matchers.not;
 import static org.hamcrest.Matchers.startsWith;
 import static org.junit.Assert.assertNotEquals;
 import static ru.iteco.fmhandroid.ui.data.Helper.DateTime.dateFormat;
@@ -25,10 +24,10 @@ import androidx.test.espresso.ViewInteraction;
 
 import java.text.ParseException;
 
-import ru.iteco.fmhandroid.ui.data.Helper;
-import ru.iteco.fmhandroid.ui.screenElements.ControlPanelScreenElements;
 import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
+import ru.iteco.fmhandroid.ui.data.Helper;
+import ru.iteco.fmhandroid.ui.screenElements.ControlPanelScreenElements;
 
 public class ControlPanelScreenStep {
 
@@ -37,56 +36,67 @@ public class ControlPanelScreenStep {
     public void clickingOnTheButtonToGoToTheNewsCreationScreen() {
         Allure.step("Нажатие на кнопку перехода к экрану создания новости");
         controlPanelScreenElements.getCreateNewsButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void pressingTheButtonToGoToTheAdvancedNewsSearchScreen() {
         Allure.step("Нажатие на кнопку для перехода на экран расширенного поиска новостей");
         controlPanelScreenElements.getFilterNewsButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheDeleteNewsButton() {
         Allure.step("Нажатие на кнопку удаления новости");
         controlPanelScreenElements.getDeleteNews().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheDeleteNewsButtonPosition(String nameNews) {
         Allure.step("Нажатие на кнопку удаления новости");
         onView(allOf(withId(R.id.delete_news_item_image_view), withParent(withParent(allOf(withId(R.id.news_item_material_card_view), withChild(withChild(withText(nameNews)))))))).perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheConfirmationButtonToDeleteTheNews() {
         Allure.step("Нажатие на кнопку подтверждения удаления новости");
         controlPanelScreenElements.getOkDeleteNewsButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheCancelConfirmationButtonToDeleteTheNews() {
         Allure.step("Нажатие на кнопку отмены подтверждения удаления новости");
         controlPanelScreenElements.getCancelDeleteNewsButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheButtonToGoToTheEditingNewsScreen(int position) {
         Allure.step("Нажатие на кнопку перехода к экрану Editing News");
         onView(withIndex(withId(R.id.edit_news_item_image_view), position)).perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheButtonToGoToTheNewsEditingScreen() {
         Allure.step("Нажатие на кнопку перехода на экран редактирование новости");
         controlPanelScreenElements.getEditingNewsButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnRandomlySelectedNewsItem(int position) {
         Allure.step("Нажатие на новость выбранную случайным образом");
         controlPanelScreenElements.getRecyclerView().perform(actionOnItemAtPosition(position, click()));
+        SystemClock.sleep(3000);
     }
 
     public void changeOfSorting() {
         Allure.step("Нажатие на кнопку смены сортировки новостей");
         controlPanelScreenElements.getButtonSort().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheNameOfTheControlPanelScreen() {
         Allure.step("Проверка названия экрана Control Panel");
         controlPanelScreenElements.getControlPanelNameScreen().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void CheckingTheStatusActive(int position) {
@@ -95,6 +105,7 @@ public class ControlPanelScreenStep {
 
         onView(allOf(withIndex(withId(R.id.news_item_material_card_view), position))).check(matches(isDisplayed()));
         assertEquals("ACTIVE", statusAfter.toUpperCase());
+        SystemClock.sleep(3000);
     }
 
     public void CheckingTheStatusNotActive(int position) {
@@ -104,6 +115,7 @@ public class ControlPanelScreenStep {
 
         statusAfter2.check(matches(isDisplayed()));
         assertEquals("NOT ACTIVE", statusAfter.toUpperCase());
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheStatusOfTheFoundNews(int position) {
@@ -117,6 +129,7 @@ public class ControlPanelScreenStep {
         }
         else if (statusAfter.equals("NOT ACTIVE")){
             assertEquals("NOT ACTIVE", statusAfter.toUpperCase());
+            SystemClock.sleep(3000);
         }
     }
 
@@ -137,6 +150,7 @@ public class ControlPanelScreenStep {
         } catch (NoMatchingViewException e) {
             onView(withText(startsWith("There is nothing here yet"))).check(matches(isDisplayed()));
         }
+        SystemClock.sleep(3000);
     }
 
     public void comparisonOfSearchDataByDateWithNewsData(int position, String dateStartInput, String dateEndInput) throws ParseException {
@@ -153,6 +167,7 @@ public class ControlPanelScreenStep {
         } else {
             assertNotEquals(localDate, dateOnCardNews);
         }
+        SystemClock.sleep(3000);
     }
 
     public void comparisonOfSearchDataWithNewsData(
@@ -170,18 +185,21 @@ public class ControlPanelScreenStep {
         } else {
             assertNotEquals(localDate, dateOnCardNews);
         }
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheEnteredDataForTheSearchWithThoseObtainedFromTheNews(String category, int position) {
         Allure.step("Проверка введенных данных для поиска с полученными из новости");
         String categoryText = categoryTextOnCardNews(position);
         assertEquals(category, categoryText);
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheNewsBeforeSortingAndAfter(String firstNews, String firstNewsAgain, String lastNews) {
         Allure.step("Проверка новостей до сортировки и после");
         assertEquals(firstNews, firstNewsAgain);
         assertNotEquals(firstNews, lastNews);
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheDataOfTheFirstNewsInTheListBeforeAndAfterCancelingTheDeletionOfTheNews(
@@ -194,16 +212,13 @@ public class ControlPanelScreenStep {
         assertEquals(creationDateNewsItWas, creationDateNewsItWasHasBecomes);
         assertEquals(authorNewsItWas, authorNewsItWasHasBecomes);
         assertEquals(descriptionNewsItWas, descriptionNewsItWasHasBecomes);
+        SystemClock.sleep(3000);
     }
-
-//    public void checkingTheInvisibilityOfTheNewsDescription(String descriptionNews) {
-//        Allure.step("Проверка невидимости описания новости");
-//        onView(allOf(withIndex(withId(R.id.news_item_description_text_view), 0), withText(descriptionNews))).check(matches(not(isDisplayed())));
-//    }
 
     public void checkingTheVisibilityOfTheNewsDescription() {
         Allure.step("Проверка видимости описания новости");
         onView(withIndex(withId(R.id.news_item_description_text_view), 0)).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
 
@@ -229,6 +244,7 @@ public class ControlPanelScreenStep {
         } else {
             assertNotEquals(descriptionNewsItWas, descriptionNewsItWasHasBecomes);
         }
+        SystemClock.sleep(3000);
     }
 
     public String dateOnCardNews(int position) {

@@ -54,13 +54,10 @@ public class AdvancedNewsSearchTest {
         SystemClock.sleep(8000);
         try {
             mainScreenStep.checkNameMainScreen();
-            SystemClock.sleep(5000);
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
-            SystemClock.sleep(5000);
         } finally {
             deletingNewsUpToTheNumberOfTenControlPanelScreen(7);
-            SystemClock.sleep(5000);
         }
     }
 
@@ -103,17 +100,13 @@ public class AdvancedNewsSearchTest {
         String text = Helper.Text.textSymbol(5);
         createNewsForCategory(text, category);
 
-        SystemClock.sleep(3000);
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
-        SystemClock.sleep(3000);
         advancedNewsSearchScreenStep.checkingTheNameOfTheAdvancedSearchScreen();
-        SystemClock.sleep(3000);
 
         advancedNewsSearchScreenStep.checkingTheNameOfTheAdvancedSearchScreen();
         advancedNewsSearchScreenStep.fillingInFieldsWithSearchData(category, dateStartInput, dateEndInput);
         advancedNewsSearchScreenStep.clickingOnTheFilterButtonToSearchForNews();
 
-        SystemClock.sleep(3000);
         int positionNews = Helper.Search.searchNews(text);
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(positionNews);
         String dateOnCardNews = controlPanelScreenStep.dateOnCardNews(positionNews);
@@ -128,14 +121,10 @@ public class AdvancedNewsSearchTest {
         String text = Helper.Text.textSymbol(5);
         createNewsForCategory(text, category);
 
-        SystemClock.sleep(3000);
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
-        SystemClock.sleep(3000);
         advancedNewsSearchScreenStep.checkingTheNameOfTheAdvancedSearchScreen();
-        SystemClock.sleep(3000);
 
         advancedNewsSearchScreenStep.fillingInTheCategoryField(category);
-        SystemClock.sleep(3000);
 
         advancedNewsSearchScreenStep.clickingOnTheFilterButtonToSearchForNews();
 
@@ -151,14 +140,9 @@ public class AdvancedNewsSearchTest {
         String dateStartInput = generatorDate2();
         String dateEndInput = generatorDate();
 
-        SystemClock.sleep(3000);
-
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
-        SystemClock.sleep(3000);
         advancedNewsSearchScreenStep.checkingTheNameOfTheAdvancedSearchScreen();
-        SystemClock.sleep(3000);
         advancedNewsSearchScreenStep.fillingInFieldsForDateSearch(dateStartInput, dateEndInput);
-        SystemClock.sleep(3000);
         advancedNewsSearchScreenStep.clickingOnTheFilterButtonToSearchForNews();
 
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
@@ -184,7 +168,6 @@ public class AdvancedNewsSearchTest {
     public void cancelingTheSearch() {
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
         advancedNewsSearchScreenStep.checkingTheNameOfTheAdvancedSearchScreen();
-        SystemClock.sleep(3000);
         advancedNewsSearchScreenStep.clickingOnTheCancelSearchButton();
         controlPanelScreenStep.checkingTheNameOfTheControlPanelScreen();
     }
@@ -196,13 +179,9 @@ public class AdvancedNewsSearchTest {
         String dateStartInput = invalidGeneratorDate();
         String dateEndInput = invalidGeneratorDate();
 
-        SystemClock.sleep(3000);
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
-        SystemClock.sleep(3000);
         advancedNewsSearchScreenStep.checkingTheNameOfTheAdvancedSearchScreen();
-        SystemClock.sleep(3000);
         advancedNewsSearchScreenStep.fillingInTheFieldsForTheDate(dateStartInput, dateEndInput);
-        SystemClock.sleep(3000);
         advancedNewsSearchScreenStep.clickingOnTheFilterButtonToSearchForNews();
         advancedNewsSearchScreenStep.checkingTheTextWhenNewsIsNotFound();
     }
@@ -214,17 +193,13 @@ public class AdvancedNewsSearchTest {
         int position = randomNews( 1);
 
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
-        SystemClock.sleep(3000);
 
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
         advancedNewsSearchScreenStep.checkingTheNameOfTheAdvancedSearchScreen();
         advancedNewsSearchScreenStep.clickingOnTheActiveCheckBox();
-        SystemClock.sleep(3000);
         advancedNewsSearchScreenStep.clickingOnTheFilterButtonToSearchForNews();
 
-        SystemClock.sleep(3000);
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
-        SystemClock.sleep(3000);
         controlPanelScreenStep.CheckingTheStatusActive(position);
     }
 
@@ -235,17 +210,14 @@ public class AdvancedNewsSearchTest {
         String category = randomCategory();
         String text = Helper.Text.textSymbol(5);
         createNews(text, category);
-        SystemClock.sleep(3000);
+
         int positionNews = Helper.Search.searchNews(text.trim());
         setUpStatusNewsNotActive(positionNews);
-        SystemClock.sleep(3000);
         
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
-        SystemClock.sleep(3000);
         advancedNewsSearchScreenStep.clickingOnTheNotActiveCheckBox();
         advancedNewsSearchScreenStep.clickingOnTheFilterButtonToSearchForNews();
 
-        SystemClock.sleep(3000);
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(positionNews);
         controlPanelScreenStep.CheckingTheStatusNotActive(positionNews);
     }
@@ -257,10 +229,8 @@ public class AdvancedNewsSearchTest {
         int position = randomClaims(0, 1);
 
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();
-        SystemClock.sleep(3000);
         advancedNewsSearchScreenStep.clickingOnTheFilterButtonToSearchForNews();
 
-        SystemClock.sleep(3000);
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
         controlPanelScreenStep.checkingTheStatusOfTheFoundNews(position);
     }

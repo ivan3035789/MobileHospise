@@ -12,6 +12,7 @@ import androidx.test.rule.ActivityTestRule;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -50,24 +51,17 @@ public class CommentScreenTest {
         SystemClock.sleep(8000);
         try {
             mainScreenStep.checkNameMainScreen();
-            SystemClock.sleep(3000);
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
-            SystemClock.sleep(5000);
         } finally {
             mainScreenStep.clickingOnTheActionMenuButton();
             mainScreenStep.clickingOnTheClaimsName();
-            SystemClock.sleep(3000);
             claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
-            SystemClock.sleep(3000);
             filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
             filteringWindowScreenStep.clickingOnTheOkButton();
-            SystemClock.sleep(3000);
             claimsScreenStep.clickingOnRandomlySelectedClaim(position);
             Helper.Swipes.swipeToBottom();
-            SystemClock.sleep(3000);
             claimsScreenStep.clickingOnTheAddCommentButton();
-            SystemClock.sleep(3000);
         }
     }
 
@@ -76,6 +70,7 @@ public class CommentScreenTest {
         SystemClock.sleep(3000);
     }
 
+    @Ignore
     @Test
     @DisplayName("Must enter the comment creation section")
     @Description("В этом тест кейсе мы проверяем, что при клике на кнопку \"+\" в поле \"Add comment\" пользователь переходит в раздел создания коментария ")
@@ -86,7 +81,7 @@ public class CommentScreenTest {
 //        SystemClock.sleep(3000);
         commentScreenStep.checkingTheEntryToTheCommentScreen();
     }
-
+    @Ignore
     @Test
     @DisplayName("Fields should not be filled in with Russian letters")
     @Description("В этом тест кейсе мы проверяем, что поле \"comment\", не заполняется русскими буквами")
@@ -103,7 +98,7 @@ public class CommentScreenTest {
             commentScreenStep.checkTheFieldIsNotFilledWithText();
         }
     }
-
+    @Ignore
     @Test
     @DisplayName("The fields must be filled in with English letters")
     @Description("В этом тест кейсе мы проверяем, что поле \"comment\", заполняется английскими буквами")
@@ -111,13 +106,11 @@ public class CommentScreenTest {
         String validTextComment = textSymbol(5);
 
 //        Helper.Swipes.swipeToBottom();
-//        SystemClock.sleep(3000);
 //        claimsScreenStep.clickingOnTheAddCommentButton();
-//        SystemClock.sleep(3000);
         commentScreenStep.validLanguageTextComment(validTextComment);
         commentScreenStep.checkTheFieldIsFilledWithText(validTextComment);
     }
-
+    @Ignore
     @Test
     @DisplayName("A comment should be added")
     @Description("В этом тест кейсе мы проверяем что после заполнения поля \"comment\" коментарием, и после нажатия на кнопку \"SAVE\", должен добавиться коментарий")
@@ -125,19 +118,14 @@ public class CommentScreenTest {
         String validTextComment = textSymbol(5);
 
 //        Helper.Swipes.swipeToBottom();
-//        SystemClock.sleep(3000);
 //        claimsScreenStep.clickingOnTheAddCommentButton();
-//        SystemClock.sleep(3000);
         commentScreenStep.validLanguageTextComment(validTextComment);
-        SystemClock.sleep(3000);
         commentScreenStep.clickingOnTheSaveCommentButton();
-        SystemClock.sleep(3000);
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(5000);
 
         claimsScreenStep.checkingCommentShouldBeAdded(validTextComment);
     }
-
+    @Ignore
     @Test
     @DisplayName("Canceling adding a comment")
     @Description("В этом тест кейсе мы проверяем что после заполнения поля \"comment\" коментарием, и после нажатия на кнопку \"CANCEL\", не должен добавиться коментарий")
@@ -145,17 +133,14 @@ public class CommentScreenTest {
         String validTextComment = textSymbol(5);
 
 //        Helper.Swipes.swipeToBottom();
-//        SystemClock.sleep(3000);
 //
 //        claimsScreenStep.clickingOnTheAddCommentButton();
 //        SystemClock.sleep(3000);
         commentScreenStep.validLanguageTextComment(validTextComment);
-        SystemClock.sleep(3000);
         commentScreenStep.clickingOnTheButtonToCancelAddingComment();
-        SystemClock.sleep(3000);
         claimsScreenStep.checkingTheCommentShouldNotBeCreated(validTextComment);
     }
-
+    @Ignore
     @Test
     @DisplayName("A warning message should appear when the comment field is empty")
     @Description("В этом тест кейсе мы проверяем что при незаполнении поля \"comment\", после нажатия на кнопку \"SAVE\", появляется предупреждающая надпись \"The field cannot be empty\" ")
@@ -166,7 +151,7 @@ public class CommentScreenTest {
         commentScreenStep.clickingOnTheSaveCommentButton();
         commentScreenStep.checkingTheFieldCannotBeEmpty(ActivityTestRule.getActivity(), message);
     }
-
+    @Ignore
     @Test
     @DisplayName("The comment in the claim should be edited")
     @Description("В этом тест кейсе мы проверяем что при нажатии на кнопку с иконкой \"блокнот с карандашом\" пользователь попадает в раздел создания, редактирования коментариев, имеется возможность отредактировать коментарий")
@@ -175,19 +160,14 @@ public class CommentScreenTest {
         String validTextComment2 = textSymbol(5);
 
         commentScreenStep.validLanguageTextComment(validTextComment1);
-        SystemClock.sleep(3000);
         commentScreenStep.clickingOnTheSaveCommentButton();
-        SystemClock.sleep(3000);
 
         claimsScreenStep.clickingOnTheButtonToEnterTheCommentEditingScreen(positionComment);
-        SystemClock.sleep(3000);
         commentScreenStep.validLanguageTextComment(validTextComment2);
-        SystemClock.sleep(3000);
         commentScreenStep.clickingOnTheSaveCommentButton();
-        SystemClock.sleep(3000);
         claimsScreenStep.checkingTheCommentBeforeEditingAndAfter(validTextComment2);
     }
-
+    @Ignore
     @Test
     @DisplayName("Two comments should be added")
     @Description("В этом тест кейсе мы проверяем что имеется возможность добавить несколько коментариев в одину \"претензию\" ")
@@ -200,21 +180,13 @@ public class CommentScreenTest {
 //        claimsScreenStep.clickingOnTheAddCommentButton();
 //        SystemClock.sleep(3000);
         commentScreenStep.validLanguageTextComment(validTextComment1);
-        SystemClock.sleep(3000);
         commentScreenStep.clickingOnTheSaveCommentButton();
-        SystemClock.sleep(3000);
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(5000);
         claimsScreenStep.checkingTheAddedComment(validTextComment1);
-        SystemClock.sleep(5000);
         claimsScreenStep.clickingOnTheAddCommentButton();
-        SystemClock.sleep(3000);
         commentScreenStep.validLanguageTextComment(validTextComment2);
-        SystemClock.sleep(3000);
         commentScreenStep.clickingOnTheSaveCommentButton();
-        SystemClock.sleep(3000);
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(5000);
         claimsScreenStep.checkingTheAddedComment(validTextComment2);
     }
 }

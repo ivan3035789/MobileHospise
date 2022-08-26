@@ -52,13 +52,11 @@ public class CreatingClaimsScreenTest {
             mainScreenStep.checkNameMainScreen();
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
-            SystemClock.sleep(5000);
         } finally {
 //            mainScreenStep.randomTransitionToCreatingClaims();
             mainScreenStep.clickingOnTheActionMenuButton();
             mainScreenStep.clickingOnTheClaimsName();
             claimsScreenStep.clickingOnTheButtonToGoToTheClaimCreationScreen();
-            SystemClock.sleep(5000);
         }
     }
 
@@ -96,7 +94,6 @@ public class CreatingClaimsScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при клике на поле \"Category\" появляется выпадающий список с доспупными категориями")
     public void aDropDownListWithCategoriesShouldAppear() {
         creatingClaimsScreenStep.clickingOnTheExecutorField();
-        SystemClock.sleep(2000);
         creatingClaimsScreenStep.checkingTheAppearanceOfTheDropDownList(ActivityTestRule.getActivity());
     }
 
@@ -141,9 +138,7 @@ public class CreatingClaimsScreenTest {
         String time = creatingClaimsScreenStep.time();
         String description = creatingClaimsScreenStep.description();
 
-        SystemClock.sleep(3000);
         creatingClaimsScreenStep.clickingOnTheSaveButton();
-        SystemClock.sleep(3000);
         creatingClaimsScreenStep.searchForCreatedClaim(titleText);
 
         String titleOnCaredClaims = creatingClaimsScreenStep.titleOnCaredClaims();
@@ -152,7 +147,6 @@ public class CreatingClaimsScreenTest {
         String timeOnCaredClaims = creatingClaimsScreenStep.timeOnCaredClaims();
         String descriptionOnCaredClaims = creatingClaimsScreenStep.descriptionOnCaredClaims();
 
-        SystemClock.sleep(3000);
         creatingClaimsScreenStep.checkingTheDataOfTheCreatedClaimAndTheFoundOne(
                 title, titleOnCaredClaims, executor, executorOnCaredClaims, date, dateOnCaredClaims, time, timeOnCaredClaims,
                 description, descriptionOnCaredClaims);
@@ -171,14 +165,10 @@ public class CreatingClaimsScreenTest {
         String time = creatingClaimsScreenStep.time();
         String description = creatingClaimsScreenStep.description();
 
-        SystemClock.sleep(3000);
         creatingClaimsScreenStep.clickingOnTheSaveButton();
-        SystemClock.sleep(3000);
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
-        SystemClock.sleep(3000);
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
-        SystemClock.sleep(3000);
 
         creatingClaimsScreenStep.searchForCreatedClaim(titleText);
 
@@ -187,7 +177,6 @@ public class CreatingClaimsScreenTest {
         String timeOnCaredClaims = creatingClaimsScreenStep.timeOnCaredClaims();
         String descriptionOnCaredClaims = creatingClaimsScreenStep.descriptionOnCaredClaims();
 
-        SystemClock.sleep(3000);
         creatingClaimsScreenStep.checkingTheDataAndStatusOfTheClaimCreatedAndFound(
                 title, titleOnCaredClaims, date, dateOnCaredClaims, time, timeOnCaredClaims,
                 description, descriptionOnCaredClaims);

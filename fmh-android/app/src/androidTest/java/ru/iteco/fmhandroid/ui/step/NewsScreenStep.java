@@ -32,41 +32,49 @@ public class NewsScreenStep {
     public void checkingTheScreenNameFilterNews() {
         Allure.step("Проверка названия экрана filterNews");
         newsScreenElements.getFilterNewsPage().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheNewsSortingChangeButton() {
         Allure.step("Нажатие на кнопку смены сортировки новостей");
         newsScreenElements.getButtonSort().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheButtonToGoToFilterNews() {
         Allure.step("Нажатие на кнопку перехода в Filter News");
         newsScreenElements.getFilterNewsButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheNews(int position) {
         Allure.step("Нажатие на новость");
         newsScreenElements.getNewsRecyclerList().perform(actionOnItemAtPosition(position, click()));
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheButtonToGoToTheControlPanel() {
         Allure.step("Нажатие на кнопку перехода в Control panel");
         newsScreenElements.getEditButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheButtonExpandTheNewsFeed(int position) {
         Allure.step("Нажатие на кнопку для развертывания/свертывания новостного блока");
         newsScreenElements.getExpandNewsButton().perform(actionOnItemAtPosition(position, click()));
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheExpandNewsDescriptionButton(int position) {
         Allure.step("Нажатие на кнопку развертывания/свертывания описания Новости");
         newsScreenElements.getExpandNewsButton().perform(actionOnItemAtPosition(position, click()));
+        SystemClock.sleep(3000);
     }
 
     public void checkTheNameOfTheNewsScreen() {
         Allure.step("Проверка названия экрана News");
         newsScreenElements.getScreenNameNews().check(matches(withText("News"))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheTextOfTheNewsDescriptionIsVisible(int position) {
@@ -75,6 +83,7 @@ public class NewsScreenStep {
         ViewInteraction textNews =  onView(allOf(withId(R.id.news_item_description_text_view), withText(descriptionText)));
         SystemClock.sleep(3000);
         textNews.check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheDateOfTheFoundNewsWithTheDataEnteredForTheSearch(
@@ -88,6 +97,7 @@ public class NewsScreenStep {
         } else {
             assertNotEquals(localDate, dateOnCardNews);
         }
+        SystemClock.sleep(3000);
     }
 
     public String takeTheNameOfTheFirstNews(int position) {
@@ -123,6 +133,7 @@ public class NewsScreenStep {
     public void checkingTheDataOfTheFoundNewsWithTheEnteredSearchData(String category, String categoryText) {
         Allure.step("Проверка данных найденной новости с введенными данными поиска");
         assertEquals(category, categoryText);
+        SystemClock.sleep(3000);
     }
 
     public void reconciliationOfNewsTitlesAndDescriptionsAfterSorting(
@@ -138,6 +149,7 @@ public class NewsScreenStep {
             assertNotEquals(firstNews, lastNews);
         }
         assertNotEquals(firstNewsDescription, lastNewsDescription);
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheFoundDataFromTheNewsWithTheDataEnteredForTheSearch(
@@ -153,17 +165,20 @@ public class NewsScreenStep {
         } else {
             assertNotEquals(localDate, dateOnCardNews);
         }
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheDisplayOfTheFoundNewsData(int position) {
         Allure.step("Проверка отображения данных найденной новости");
         onView(withIndex(withId(R.id.news_item_date_text_view), position)).check(matches(isDisplayed()));
         onView(withIndex(withId(R.id.news_item_title_text_view), position)).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheDisplayOfTheInscriptionInTheAbsenceOfFoundNews() {
         Allure.step("Проверка отображение надписи при отсутствии найденных по критериям новостей");
         onView(withText(startsWith("There is nothing here yet"))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public String dateOnCardNews(int position) {

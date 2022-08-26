@@ -51,13 +51,10 @@ public class ClaimsScreenTest {
         SystemClock.sleep(8000);
         try {
             mainScreenStep.checkNameMainScreen();
-            SystemClock.sleep(5000);
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
-            SystemClock.sleep(5000);
         } finally {
             mainScreenStep.clickingOnAllClaims();
-            SystemClock.sleep(5000);
         }
     }
 
@@ -103,23 +100,16 @@ public class ClaimsScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"блокнот с шестиренкой\"  и нажатии в сплывшем окне на \"Take to work\" статус претензии меняется на  \"In progress\" ")
     public void theStatusShouldChangeToInProgress() {
         createClaim();
-        SystemClock.sleep(3000);
 
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
-        SystemClock.sleep(3000);
         claimsScreenStep.checkingTheOpenStatus();
-        SystemClock.sleep(3000);
         Helper.Swipes.scrollSlowlyDown();
-        SystemClock.sleep(5000);
 
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
-        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnTakeToWork();
-        SystemClock.sleep(2000);
         claimsScreenStep.checkingTheInProgressStatus();
     }
 
@@ -129,13 +119,9 @@ public class ClaimsScreenTest {
     public void shouldGoToEditingClaims() {
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
-        SystemClock.sleep(3000);
         filteringWindowScreenStep.clickingOnTheOkButton();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
-        SystemClock.sleep(3000);
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(5000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
         editingClaimsScreenStep.checkingTheNameOfTheScreenForEditingClaims();
     }
@@ -147,7 +133,6 @@ public class ClaimsScreenTest {
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         claimsScreenStep.checkingTheOpenStatus();
 
@@ -158,7 +143,6 @@ public class ClaimsScreenTest {
         String descriptionClaimFieldItWas = claimsScreenStep.descriptionClaimField();
 
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
         editingClaimsScreenStep.fillingInFieldsWithValidData();
         editingClaimsScreenStep.clickingOnTheSaveButton();
@@ -169,42 +153,10 @@ public class ClaimsScreenTest {
         String timeClaimFieldItWasHasBecome = claimsScreenStep.timeText();
         String descriptionClaimFieldItWasHasBecome = claimsScreenStep.descriptionClaimField();
 
-        SystemClock.sleep(3000);
         editingClaimsScreenStep.checkingDataBeforeEditingAndAfter(
                 titleClaimFieldItWas, titleClaimFieldItWasHasBecome, executorClaimFieldItWas, executorClaimFieldItWasHasBecome,
                 dateClaimFieldItWas, dateClaimFieldItWasHasBecome, timeClaimFieldItWas, timeClaimFieldItWasHasBecome,
                 descriptionClaimFieldItWas, descriptionClaimFieldItWasHasBecome);
-//        claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
-//        filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
-//        filteringWindowScreenStep.clickingOnTheOkButton();
-//        SystemClock.sleep(3000);
-//        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
-//
-//        String titleClaimFieldItWas = editingClaimsScreenStep.titleClaimField();
-//        String executorClaimFieldItWas = editingClaimsScreenStep.executorClaimField();
-//        String dateClaimFieldItWas = editingClaimsScreenStep.dateClaimField();
-//        String timeClaimFieldItWas = editingClaimsScreenStep.timeClaimField();
-//        String descriptionClaimFieldItWas = editingClaimsScreenStep.descriptionClaimField();
-//        SystemClock.sleep(3000);
-//
-//        Helper.Swipes.swipeToBottom();
-//        SystemClock.sleep(3000);
-//        claimsScreenStep.clickingOnTheNotepadWithPencilButton();
-//        SystemClock.sleep(3000);
-//        editingClaimsScreenStep.fillingInFieldsWithValidData();
-//        SystemClock.sleep(3000);
-//        editingClaimsScreenStep.clickingOnTheSaveButton();
-//
-//        String titleClaimFieldItWasHasBecome = editingClaimsScreenStep.titleClaimField();
-//        String executorClaimFieldItWasHasBecome = editingClaimsScreenStep.executorClaimField();
-//        String dateClaimFieldItWasHasBecome = editingClaimsScreenStep.dateClaimField();
-//        String timeClaimFieldItWasHasBecome = editingClaimsScreenStep.timeClaimField();
-//        String descriptionClaimFieldItWasHasBecome = editingClaimsScreenStep.descriptionClaimField();
-//        SystemClock.sleep(3000);
-//
-//        editingClaimsScreenStep.comparisonOfDataBeforeAndAfterEditing(titleClaimFieldItWas, titleClaimFieldItWasHasBecome, executorClaimFieldItWas,
-//                executorClaimFieldItWasHasBecome, dateClaimFieldItWas, dateClaimFieldItWasHasBecome,
-//                timeClaimFieldItWas, timeClaimFieldItWasHasBecome, descriptionClaimFieldItWas, descriptionClaimFieldItWasHasBecome);
     }
 
     @Test
@@ -214,11 +166,8 @@ public class ClaimsScreenTest {
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
-        SystemClock.sleep(3000);
         Helper.Swipes.scrollSlowlyDown();
-        SystemClock.sleep(3000);
 
         claimsScreenStep.checkingTheOpenStatus();
         String executorTextItWas = claimsScreenStep.executorText();
@@ -252,28 +201,18 @@ public class ClaimsScreenTest {
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
-        SystemClock.sleep(3000);
         claimsScreenStep.checkingTheOpenStatus();
-        SystemClock.sleep(3000);
         Helper.Swipes.scrollSlowlyDown();
-        SystemClock.sleep(5000);
 
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
-        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnTakeToWork();
-        SystemClock.sleep(2000);
         claimsScreenStep.checkingTheInProgressStatus();
-        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
-        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnReset();
-        SystemClock.sleep(2000);
         claimsScreenStep.fillingInTheCommentField(text);
         String commentText = claimsScreenStep.commentText();
         claimsScreenStep.clickingOnTheButtonToCancelAddingComment();
-        SystemClock.sleep(2000);
 
         claimsScreenStep.checkingTheAbsenceOfComment(commentText);
         claimsScreenStep.checkingTheInProgressStatus();
@@ -286,32 +225,21 @@ public class ClaimsScreenTest {
         String text = textSymbol(5);
 
         createClaim();
-        SystemClock.sleep(3000);
 
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
-        SystemClock.sleep(3000);
         claimsScreenStep.checkingTheOpenStatus();
         Helper.Swipes.scrollSlowlyDown();
-        SystemClock.sleep(3000);
 
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
-        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnTakeToWork();
-        SystemClock.sleep(2000);
         claimsScreenStep.checkingTheInProgressStatus();
-        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
-        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnReset();
-        SystemClock.sleep(2000);
         claimsScreenStep.fillingInTheCommentField(text);
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheOkButtonToAddComment();
-        SystemClock.sleep(2000);
         claimsScreenStep.checkingTheVisibilityOfTheAddedComment();
         claimsScreenStep.checkingTheOpenStatus();
     }
@@ -323,33 +251,22 @@ public class ClaimsScreenTest {
         String text = textSymbol(5);
 
         createClaim();
-        SystemClock.sleep(3000);
 
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
-        SystemClock.sleep(3000);
         claimsScreenStep.checkingTheOpenStatus();
         Helper.Swipes.scrollSlowlyDown();
-        SystemClock.sleep(3000);
 
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
-        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnTakeToWork();
-        SystemClock.sleep(2000);
         claimsScreenStep.checkingTheInProgressStatus();
-        SystemClock.sleep(2000);
         Helper.Swipes.swipeToBottom();
-        SystemClock.sleep(5000);
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
-        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnToExecute();
         claimsScreenStep.fillingInTheCommentField(text);
-        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnTheOkButtonToAddComment();
-        SystemClock.sleep(2000);
         claimsScreenStep.checkingTheVisibilityOfTheAddedComment();
         claimsScreenStep.checkingTheExecutedStatus();
     }
@@ -363,28 +280,18 @@ public class ClaimsScreenTest {
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
-        SystemClock.sleep(3000);
         claimsScreenStep.checkingTheOpenStatus();
         Helper.Swipes.scrollSlowlyDown();
-        SystemClock.sleep(3000);
 
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
-        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnTakeToWork();
         Helper.Swipes.swipeToTop();
-        SystemClock.sleep(5000);
         claimsScreenStep.checkingTheInProgressStatus();
-        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
-        SystemClock.sleep(2000);
         claimsScreenStep.clickingOnReset();
-        SystemClock.sleep(2000);
         claimsScreenStep.fillingInTheCommentField(text);
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnTheOkButtonToAddComment();
-        SystemClock.sleep(2000);
         claimsScreenStep.checkingTheVisibilityOfTheAddedComment();
         claimsScreenStep.checkingTheOpenStatus();
     }
@@ -398,17 +305,13 @@ public class ClaimsScreenTest {
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
-        SystemClock.sleep(3000);
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
-        SystemClock.sleep(3000);
         claimsScreenStep.checkingTheOpenStatus();
         Helper.Swipes.scrollSlowlyDown();
-        SystemClock.sleep(3000);
 
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         claimsScreenStep.clickingOnToCancel();
         Helper.Swipes.swipeToTop();
-        SystemClock.sleep(5000);
         claimsScreenStep.checkingTheCanceledStatus();
     }
 }

@@ -49,7 +49,6 @@ public class MainScreenTest {
             mainScreenStep.checkNameMainScreen();
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
-            SystemClock.sleep(8000);
         }
     }
 
@@ -63,7 +62,6 @@ public class MainScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"Action menu\", должно появиться выпадающее окно с экранами \"Main, Claims, News, About\"")
     public void aDropDownListWithPageNamesShouldAppear() {
         mainScreenStep.clickingOnTheActionMenuButton();
-        SystemClock.sleep(3000);
         mainScreenStep.checkingTheNamesOfScreensInTheList();
     }
 
@@ -75,7 +73,6 @@ public class MainScreenTest {
     public void mustGoToTheScreenNews() {
         mainScreenStep.clickingOnTheActionMenuButton();
         mainScreenStep.clickingOnTheNewsName();
-        SystemClock.sleep(3000);
         newsScreenStep.checkTheNameOfTheNewsScreen();
     }
 
@@ -87,7 +84,6 @@ public class MainScreenTest {
     public void mustGoToTheScreenMain() {
         mainScreenStep.clickingOnTheActionMenuButton();
         mainScreenStep.clickingOnTheMainName();
-        SystemClock.sleep(3000);
         mainScreenStep.checkTheNameOfTheNewsBlock();
         mainScreenStep.checkTheNameOfTheClaimsBlock();
     }
@@ -99,7 +95,6 @@ public class MainScreenTest {
             " страница при этом после перехода нее должна сменить цвет на серый в списке страниц \"Action menu")
     public void mustGoToTheScreenClaims() {
         mainScreenStep.clickingOnTheClaimsName();
-        SystemClock.sleep(3000);
         claimsScreenStep.checkScreenNameClaims();
     }
 
@@ -111,7 +106,6 @@ public class MainScreenTest {
     public void mustGoToTheScreenAbout() {
         mainScreenStep.clickingOnTheActionMenuButton();
         mainScreenStep.clickingOnTheAboutName();
-        SystemClock.sleep(3000);
         aboutScreenStep.checkScreenNameAbout();
     }
 
@@ -120,7 +114,6 @@ public class MainScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при нажатии на текстовую ссылку  \"all news\", происходит переход на страницу \"News\" ")
     public void shouldGoToTheNewsScreenWhenClickingOnAllNews() {
         mainScreenStep.clickingOnAllClaims();
-        SystemClock.sleep(3000);
         newsScreenStep.checkTheNameOfTheNewsScreen();
     }
 
@@ -129,7 +122,6 @@ public class MainScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при нажатии на текстовую ссылку  \"all claims\", происходит переход на страницу \"Claims\"")
     public void shouldGoToTheClaimsScreenWhenClickingOnAllClaims() {
         mainScreenStep.clickingOnAllClaims();
-        SystemClock.sleep(3000);
         claimsScreenStep.checkScreenNameClaims();
     }
 
@@ -138,7 +130,6 @@ public class MainScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"+\", происходит переход в \"Creating Claims\"")
     public void shouldGoToTheCreateClaimsScreen() {
         mainScreenStep.clickingOnTheButtonToGoToTheClaimCreationScreen();
-        SystemClock.sleep(5000);
         creatingClaimsScreenStep.checkingTheNameOfTheClaimCreationScreen();
     }
 
@@ -147,7 +138,6 @@ public class MainScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку с иконкой \"бабочки\" осуществляется переход на страницу \"LOVE IS ALL\" (переход должен осуществляться с любой из страниц ")
     public void shouldGoToTheScreenWithThematicQuotes() {
         mainScreenStep.pressingTheButtonInTheFormOfButterfly();
-        SystemClock.sleep(3000);
         thematicQuotesScreenStep.checkingTheScreenName();
     }
 
@@ -156,7 +146,6 @@ public class MainScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку с выпадающим окном, разворачивается, сварачивается блок \"News\"")
     public void itIsNecessaryToExpandCollapseTheNewsFeed() {
         mainScreenStep.clickingOnTheButtonExpandTheNewsFeed();
-        SystemClock.sleep(3000);
         mainScreenStep.theNameAllNewsIsNotVisible();
         mainScreenStep.clickingOnTheButtonExpandTheNewsFeed();
         mainScreenStep.theNameAllNewsIsVisible();
@@ -168,7 +157,6 @@ public class MainScreenTest {
     public void itIsNecessaryToExpandCollapseTheTapeWithClaims() {
         mainScreenStep.expandTheClaimsFeed();
         mainScreenStep.theNameAllClaimsIsNotVisible();
-        SystemClock.sleep(3000);
         mainScreenStep.expandTheClaimsFeed();
         mainScreenStep.theNameAllClaimsIsVisible();
     }

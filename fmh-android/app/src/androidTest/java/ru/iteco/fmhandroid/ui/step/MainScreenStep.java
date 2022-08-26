@@ -35,36 +35,43 @@ public class MainScreenStep {
     public void clickingOnTheFirstClaimInTheList(int position) {
         Allure.step("Нажатие на первую претензию в списке");
         mainScreenElements.getClaimList().perform(actionOnItemAtPosition(position, click()));
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnAllClaims() {
         Allure.step("Нажатие на all Claims");
         mainScreenElements.getAllClaims().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheActionMenuButton() {
         Allure.step("Нажатие на кнопку ActionMenu");
         mainScreenElements.getMainMenuImageButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheNewsName() {
         Allure.step("Нажатие на название News");
         mainScreenElements.getTitleNews().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheMainName() {
         Allure.step("Нажатие на название Main");
         mainScreenElements.getTitleMain().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheClaimsName() {
         Allure.step("Нажатие на название Claims");
         mainScreenElements.getTitleClaimsScreen().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheAboutName() {
         Allure.step("Нажатие на название About");
         mainScreenElements.getTitleAbout().perform(click());
+        SystemClock.sleep(3000);
     }
 
 //    public void clickingOnTheAllNewsTextLink() {
@@ -75,26 +82,31 @@ public class MainScreenStep {
     public void pressingTheButtonInTheFormOfButterfly() {
         Allure.step("Нажатие на кнопку в виде бабочки");
         mainScreenElements.getThematicQuotesButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheButtonToGoToTheClaimCreationScreen() {
         Allure.step("Нажатие на кнопку +");
         mainScreenElements.getCreateClaimsButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheButtonExpandTheNewsFeed() {
         Allure.step("Нажатие на кнопку для развертывания/свертывания новостного блока");
         mainScreenElements.getExpandNewsFeedButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void expandTheClaimsFeed() {
         Allure.step("Нажатие на кнопку для развертывания/свертывания блока с претензиями");
         mainScreenElements.getExpandTheClaimsFeedButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheExpandNewsDescriptionButton(int position) {
         Allure.step("Нажатие на кнопку развертывания/свертывания описания Новости");
         mainScreenElements.getExpandNewsButton().perform(actionOnItemAtPosition(position, click()));
+        SystemClock.sleep(3000);
     }
 
     public void swipeUpBlockClaims() {
@@ -109,37 +121,44 @@ public class MainScreenStep {
     public void theNameAllNewsIsVisible() {
         Allure.step("Проверка название в блоке all News видно");
         mainScreenElements.getAllNews().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void theNameAllNewsIsNotVisible() {
         Allure.step("Проверка название в блоке all News не видно");
         mainScreenElements.getAllNews().check(matches(not(isDisplayed())));
+        SystemClock.sleep(3000);
     }
 
     public void theNameAllClaimsIsVisible() {
         Allure.step("Проверка название в блоке all Claims видно");
         mainScreenElements.getAllClaims().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void theNameAllClaimsIsNotVisible() {
         Allure.step("Проверка название в блоке all Claims не видно");
         mainScreenElements.getAllClaims().check(matches(not(isDisplayed())));
+        SystemClock.sleep(3000);
     }
 
     public void checkTheNameOfTheNewsBlock() {
         Allure.step("Проверка названия блока с новостями");
         mainScreenElements.getChapterNews().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkTheNameOfTheClaimsBlock() {
         Allure.step("Проверка названия блока с претензиями");
         mainScreenElements.getChapterClaims().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkNameMainScreen() {
         Allure.step("Проверка нахождения пользователя на экране Main");
         mainScreenElements.getChapterNews().check(matches(isDisplayed()));
         mainScreenElements.getChapterClaims().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheTextOfTheNewsDescriptionIsVisible(int position) {
@@ -148,6 +167,7 @@ public class MainScreenStep {
         ViewInteraction textNews =  onView(allOf(withId(R.id.news_item_description_text_view), withText(descriptionText)));
         SystemClock.sleep(3000);
         textNews.check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheNamesOfScreensInTheList() {
@@ -156,6 +176,7 @@ public class MainScreenStep {
         mainScreenElements.getTitleNews().check(matches(isDisplayed()));
         mainScreenElements.getTitleClaimsScreen().check(matches(isDisplayed()));
         mainScreenElements.getTitleAbout().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void randomTransitionToCreatingClaims() {
@@ -223,6 +244,7 @@ public class MainScreenStep {
         SystemClock.sleep(5000);
         creatingNewsScreenElements.getCreatingNameScreen().check(matches(isDisplayed()));
         creatingNewsScreenElements.getNewsNameScreen().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public static void enterCreateNews2() {
@@ -242,5 +264,6 @@ public class MainScreenStep {
         SystemClock.sleep(5000);
         creatingNewsScreenElements.getCreatingNameScreen().check(matches(isDisplayed()));
         creatingNewsScreenElements.getNewsNameScreen().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 }

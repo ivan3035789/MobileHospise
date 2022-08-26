@@ -13,6 +13,8 @@ import static ru.iteco.fmhandroid.ui.data.Helper.Text.firstUpperCase;
 import static ru.iteco.fmhandroid.ui.data.Helper.clickingNextMonth;
 import static ru.iteco.fmhandroid.ui.data.Helper.clickingPreviousMonth;
 
+import android.os.SystemClock;
+
 import androidx.test.espresso.ViewInteraction;
 
 import java.time.LocalDate;
@@ -29,36 +31,43 @@ public class CalendarScreenStep {
     public void clickingOnTheConfirmButton() {
         Allure.step("Нажатие на кнопку подтвердить");
         calendarScreenElements.getOkButton().perform(scrollTo(), click());
+        SystemClock.sleep(3000);
     }
 
     public void pressingTheButtonToSelectTheYear() {
         Allure.step("Нажатие на кнопку для выбора года");
         calendarScreenElements.getButtonOfTheYear().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void pressingTheButtonToGoToTheNextMonthTwelveTimes(int randomMonth) {
         Allure.step("Нажатие на кнопку перехода к следующему месяцу {randomMonth} раз");
         clickingNextMonth(randomMonth);
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheButtonToGoToThePreviousMonthTwelveTimes(int randomMonth) {
         Allure.step("Нажатие на кнопку перехода к предыдущему месяцу {randomMonth} раз");
         clickingPreviousMonth(randomMonth);
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheCancelYearSettingButton() {
         Allure.step("Нажатие на кнопку отмены установки года");
         calendarScreenElements.getButtonToCancelTheYearSetting().perform(scrollTo(), click());
+        SystemClock.sleep(3000);
     }
 
     public void settingDate(int yearInt, int monthInt, int dayInt) {
         Allure.step("Установка даты");
         settingTheDate(yearInt, monthInt, dayInt);
+        SystemClock.sleep(3000);
     }
 
     public void settingTheYear(int randomYear) {
         Allure.step("Установка года");
         calendarScreenElements.getYear().atPosition(randomYear).perform(scrollTo(), click());
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheDisplayInTheCalendarHeaderOfTheMonthNameChange(ViewInteraction dateFromTheCalendarHeader, String dayOfWeek, String month, String day, String dateFromTheCalendar, String dayOfWeekPlusMonth, String monthPlusTwoMonth, String dayPlusYearPlusMonth) {

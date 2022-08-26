@@ -42,11 +42,9 @@ public class NewsScreenTest {
             mainScreenStep.checkNameMainScreen();
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
-            SystemClock.sleep(5000);
         } finally {
             mainScreenStep.clickingOnTheActionMenuButton();
             mainScreenStep.clickingOnTheNewsName();
-            SystemClock.sleep(5000);
         }
     }
 
@@ -75,23 +73,18 @@ public class NewsScreenTest {
 
         String firstNews = newsScreenStep.takeTheNameOfTheFirstNews(position);
         String firstNewsDescription = newsScreenStep.takeTheDescriptionOfTheFirstNewsBeforeSorting(position);
-        SystemClock.sleep(2000);
 
         newsScreenStep.clickingOnTheNewsSortingChangeButton();
-        SystemClock.sleep(3000);
 
         newsScreenStep.clickingOnTheButtonExpandTheNewsFeed(position);
         String lastNews = newsScreenStep.takeTheNameOfTheFirstNewsAfterSorting(position);
         String lastNewsDescription = newsScreenStep.takeTheDescriptionOfTheFirstNewsAfterTheFirstSorting(position);
-        SystemClock.sleep(2000);
 
         newsScreenStep.clickingOnTheNewsSortingChangeButton();
-        SystemClock.sleep(3000);
 
         newsScreenStep.clickingOnTheButtonExpandTheNewsFeed(position);
         String firstNewsAgain = newsScreenStep.takeTheNameOfTheFirstNewsAfterTwoSorts(position);
         String firstAgainNewsDescription = newsScreenStep.takeTheDescriptionOfTheFirstNewsAfterTwoSorts(position);
-        SystemClock.sleep(2000);
 
         newsScreenStep.reconciliationOfNewsTitlesAndDescriptionsAfterSorting(
                 firstNews, firstNewsDescription, lastNews, lastNewsDescription, firstNewsAgain, firstAgainNewsDescription);

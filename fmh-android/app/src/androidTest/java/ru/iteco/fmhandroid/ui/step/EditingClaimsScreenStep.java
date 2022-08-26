@@ -52,52 +52,62 @@ public class EditingClaimsScreenStep {
         filteringWindowScreenElements.getOkButton().perform(click());
         SystemClock.sleep(3000);
         claimsScreenElements.getBlockClaims().perform(actionOnItemAtPosition(position, click()));
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheSaveButton() {
         Allure.step("Нажатие на кнопку сохранить");
         editingClaimsScreenElements.getSaveButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheUndoEditButton() {
         Allure.step("Нажатие на кнопку отмены редактирования");
         editingClaimsScreenElements.getCancelButton().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnRandomlySelectedArtist(@NonNull AppActivity activity, String executor) {
         Allure.step("Нажатие на исполнителя выбранного случайным образом");
         onView(withText(executor))
                 .inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheCancelButtonToExitEditingEditing() {
         Allure.step("Нажатие на кнопку  отмены выхода из редактирования редактирования");
         editingClaimsScreenElements.getCancelButton2().perform(scrollTo(), click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheButtonToConfirmTheCancellationOfEditing() {
         Allure.step("Нажатие на кнопку подтверждения отмены редактирования");
         editingClaimsScreenElements.getOkButton().perform(scrollTo(), click());
+        SystemClock.sleep(3000);
     }
 
     public void deletingTextFromTheTitleField() {
         Allure.step("Удаление текста из поля Title");
         editingClaimsScreenElements.getTitleClaimField().perform(replaceText(""), closeSoftKeyboard());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheExecutorField() {
         Allure.step("Нажатие на поле Executor");
         editingClaimsScreenElements.getExecutorClaimField().perform(click(), closeSoftKeyboard());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheDateField() {
         Allure.step("Нажатие на поле Date");
         editingClaimsScreenElements.getDateClaimField().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheTimeField() {
         Allure.step("Нажатие на поле Time");
         editingClaimsScreenElements.getTimeClaimField().perform(click());
+        SystemClock.sleep(3000);
     }
 
     public void invalidLanguage(String title) {
@@ -111,6 +121,7 @@ public class EditingClaimsScreenStep {
         editingClaimsScreenElements.getExecutorClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
         SystemClock.sleep(2000);
         editingClaimsScreenElements.getDescriptionClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
+        SystemClock.sleep(3000);
     }
 
     public void validLanguage(String title) {
@@ -118,6 +129,7 @@ public class EditingClaimsScreenStep {
         editingClaimsScreenElements.getTitleClaimField().perform(replaceText(title));
         editingClaimsScreenElements.getExecutorClaimField().perform(replaceText(title));
         editingClaimsScreenElements.getDescriptionClaimField().perform(replaceText(title)).perform(closeSoftKeyboard());
+        SystemClock.sleep(3000);
     }
 
     public void fillingInFieldsWithValidData() {
@@ -135,11 +147,13 @@ public class EditingClaimsScreenStep {
         calendarScreenElements.getOkButton().perform(scrollTo(), click());
         SystemClock.sleep(2000);
         editingClaimsScreenElements.getDescriptionClaimField().perform(replaceText(textSymbol(5)), closeSoftKeyboard());
+        SystemClock.sleep(3000);
     }
 
     public void fillingInTheExecutorField(String text) {
         Allure.step("Заполнение поля Executor");
         editingClaimsScreenElements.getExecutorClaimField().perform(replaceText(text));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheFieldsAreFilledIn() {
@@ -149,12 +163,14 @@ public class EditingClaimsScreenStep {
         editingClaimsScreenElements.getDateClaimField().check(matches(isDisplayed()));
         editingClaimsScreenElements.getTimeClaimField().check(matches(isDisplayed()));
         editingClaimsScreenElements.getDescriptionClaimField().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheNameOfTheScreenForEditingClaims() {
         Allure.step("Проверка названия экрана для редактирования претензий");
         editingClaimsScreenElements.getEditingName().check(matches(isDisplayed()));
         editingClaimsScreenElements.getClaimsName().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingDataBeforeEditingAndAfter(
@@ -171,6 +187,7 @@ public class EditingClaimsScreenStep {
         }
         assertNotEquals(timeClaimFieldItWas, timeClaimFieldItWasHasBecome);
         assertNotEquals(descriptionClaimFieldItWas, descriptionClaimFieldItWasHasBecome);
+        SystemClock.sleep(3000);
     }
 
     public void comparisonOfDataBeforeAndAfterEditing(
@@ -187,6 +204,7 @@ public class EditingClaimsScreenStep {
         }
         assertNotEquals(timeClaimFieldItWas, timeClaimFieldItWasHasBecome);
         assertNotEquals(descriptionClaimFieldItWas, descriptionClaimFieldItWasHasBecome);
+        SystemClock.sleep(3000);
     }
 
     public void verificationOfClaimDataBeforeEditingAndAfterCancellationOfEditing(
@@ -200,6 +218,7 @@ public class EditingClaimsScreenStep {
         assertEquals(dateClaimFieldItWas, dateClaimFieldItWasHasBecome);
         assertEquals(timeClaimFieldItWas, timeClaimFieldItWasHasBecome);
         assertEquals(descriptionClaimFieldItWas, descriptionClaimFieldItWasHasBecome);
+        SystemClock.sleep(3000);
     }
 
     public void checkingForThePresenceOfWordsFromEnglishLettersInTheFields(String validLanguageText) {
@@ -207,6 +226,7 @@ public class EditingClaimsScreenStep {
         editingClaimsScreenElements.getTitleClaimField().check(matches(withText(validLanguageText))).check(matches(isDisplayed()));
         editingClaimsScreenElements.getExecutorClaimField().check(matches(withText(validLanguageText))).check(matches(isDisplayed()));
         editingClaimsScreenElements.getDescriptionClaimField().check(matches(withText(validLanguageText))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingForTheAbsenceOfWordsFromRussianLettersInTheFields() {
@@ -214,6 +234,7 @@ public class EditingClaimsScreenStep {
         editingClaimsScreenElements.getTitleClaimField().check(matches(withText(""))).check(matches(isDisplayed()));
         editingClaimsScreenElements.getExecutorClaimField().check(matches(withText(""))).check(matches(isDisplayed()));
         editingClaimsScreenElements.getDescriptionClaimField().check(matches(withText(""))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingThePerformerBeforeEditingAndAfter(
@@ -226,29 +247,34 @@ public class EditingClaimsScreenStep {
             assertNotEquals(executorClaimFieldInputText, executorClaimFieldItWasHasBecome);
         }
         claimsScreenElements.getExecutorText().check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheCalendarAppearance(@NonNull AppActivity activity) {
         Allure.step("Проверка появления календаря");
         onView(withClassName(is("android.widget.DatePicker")))
                 .inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheAppearanceOfTheDropDownList(@NonNull AppActivity activity) {
         Allure.step("Проверка появления выпадающего списка");
         onView(withClassName(is("android.widget.PopupWindow$PopupBackgroundView")))
                 .inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheAppearanceOfClockOfTheArrowType(@NonNull AppActivity activity) {
         Allure.step("Проверка появления часов стрелочного типа");
         onView(withClassName(is("android.widget.RadialTimePickerView")))
                 .inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public void checkingTheFillEmptyFields(@NonNull AppActivity activity, String text) {
         Allure.step("Проверка появления предупреждающего сообщения Fill empty fields");
         onView(withText(text)).inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
+        SystemClock.sleep(3000);
     }
 
     public String titleClaimField() {
