@@ -541,7 +541,7 @@ public class Helper {
                 claimsScreenElements.getBlockClaims().check(matches(isDisplayed())).perform(actionOnItemAtPosition(position, swipeUp()));
                 position += 1;
             }
-            SystemClock.sleep(3000);
+//            SystemClock.sleep(3000);
             claimsScreenElements.getBlockClaims().check(matches(isDisplayed())).perform(actionOnItemAtPosition(position - 1, click()));
         }
 

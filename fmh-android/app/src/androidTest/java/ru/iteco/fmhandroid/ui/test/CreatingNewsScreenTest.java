@@ -41,6 +41,9 @@ public class CreatingNewsScreenTest {
     CreatingNewsScreenStep creatingNewsScreenStep = new CreatingNewsScreenStep();
     WatchScreenStep watchScreenStep = new WatchScreenStep();
 
+    String messageSaving = "Saving failed. Try again later.";
+    String messageEmpty = "Fill empty fields";
+
     @Before
     public void logoutCheck() {
         SystemClock.sleep(8000);
@@ -183,7 +186,7 @@ public class CreatingNewsScreenTest {
     @Description("В этом тест кейсе мы проверяем, что при незаполненном, незаполненных полях появляется предупреждающее сообщение, после нажатия на кнопку \"SAVE\"  \"fill empty fields\" ")
     public void aWarningMessageShouldAppearIfTheFieldsAreEmptyWhenYouClickOnTheSaveButton() {
         creatingNewsScreenStep.clickingOnTheSaveNewsButton();
-        creatingNewsScreenStep.checkingTheFillEmptyFields(ActivityTestRule.getActivity(), R.string.empty_fields);
+        creatingNewsScreenStep.checkingTheFillEmptyFields(ActivityTestRule.getActivity(), messageEmpty);
     }
 
     @Test
@@ -194,7 +197,7 @@ public class CreatingNewsScreenTest {
 
         creatingNewsScreenStep.fillingInTheCategoryField(text);
         creatingNewsScreenStep.clickingOnTheSaveNewsButton();
-        creatingNewsScreenStep.checkingTheSavingFailedTryAgainLater(ActivityTestRule.getActivity(), R.string.error_saving);
+        creatingNewsScreenStep.checkingTheSavingFailedTryAgainLater(ActivityTestRule.getActivity(), messageSaving);
     }
 
     @Test
@@ -215,7 +218,7 @@ public class CreatingNewsScreenTest {
 
         try {
             creatingNewsScreenStep.invalidLanguage(invalidLanguageText);
-        } catch (RuntimeException e) {
+        } catch (RuntimeException ignored) {
 
         } finally {
             creatingNewsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();

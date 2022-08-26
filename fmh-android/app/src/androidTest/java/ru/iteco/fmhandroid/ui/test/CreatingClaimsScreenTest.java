@@ -4,7 +4,6 @@ import static ru.iteco.fmhandroid.ui.data.Helper.Rand.randomExecutor;
 import static ru.iteco.fmhandroid.ui.data.Helper.Text.text51Symbol;
 import static ru.iteco.fmhandroid.ui.data.Helper.Text.textSymbol;
 import static ru.iteco.fmhandroid.ui.data.Helper.authInfo;
-import static ru.iteco.fmhandroid.ui.step.MainScreenStep.enterCreateClaimsActionButton;
 
 import android.os.SystemClock;
 
@@ -219,7 +218,7 @@ public class CreatingClaimsScreenTest {
 
         try {
             creatingClaimsScreenStep.invalidLanguage(invalidLanguageText);
-        } catch (RuntimeException e) {
+        } catch (RuntimeException ignored) {
 
         } finally {
             creatingClaimsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();

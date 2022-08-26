@@ -69,7 +69,6 @@ public class CreatingNewsScreenStep {
     public void clickingOnTheSaveNewsButton() {
         Allure.step("Нажатие на кнопку сохранения новости");
         creatingNewsScreenElements.getSaveButton().perform(click());
-        SystemClock.sleep(3000);
     }
 
     public void clickingOnTheCancelNewsCreationButton() {
@@ -94,7 +93,13 @@ public class CreatingNewsScreenStep {
 
     public void invalidLanguage(String title) {
         Allure.step("Ввод невалидного языка");
-        creatingNewsScreenElements.getTitleFieldNews().perform(typeText(title));
+        try {
+            creatingNewsScreenElements.getTitleFieldNews().perform(typeText(title));
+        } catch (RuntimeException ignore) {
+
+        } finally {
+            closeSoftKeyboard();
+        }
         creatingNewsScreenElements.getDescriptionFieldNews().perform(typeText(title)).perform(closeSoftKeyboard());
         SystemClock.sleep(3000);
     }
@@ -229,19 +234,15 @@ public class CreatingNewsScreenStep {
         SystemClock.sleep(3000);
     }
 
-    public void checkingTheFillEmptyFields(@NonNull AppActivity activity, int text) {
+    public void checkingTheFillEmptyFields(@NonNull AppActivity activity, String text) {
         Allure.step("Проверка появления предупреждающего сообщения Fill empty fields");
-        onView(withText(text))
-                .inRoot(withDecorView(not(is(activity.getWindow().getDecorView()))))
-                .check(matches(withText("Fill empty fields"))).check(matches(isDisplayed()));
+        onView(withText(text)).inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
         SystemClock.sleep(3000);
     }
 
-    public void checkingTheSavingFailedTryAgainLater(@NonNull AppActivity activity, int text) {
+    public void checkingTheSavingFailedTryAgainLater(@NonNull AppActivity activity, String text) {
         Allure.step("Проверка появления предупреждающего сообщения Saving failed. Try again later");
-        onView(withText(text))
-                .inRoot(withDecorView(not(is(activity.getWindow().getDecorView()))))
-                .check(matches(withText("Saving failed. Try again later.")));
+        onView(withText(text)).inRoot(withDecorView(not(is(activity.getWindow().getDecorView())))).check(matches(isDisplayed()));
         SystemClock.sleep(3000);
     }
 
