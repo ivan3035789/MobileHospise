@@ -394,22 +394,18 @@ public class Helper {
 
         public static void swipeToBottom() {
             swiper(1000, 100, 0);
-            SystemClock.sleep(2000);
         }
 
         public static void scrollSlowlyDown() {
             swiper(775, 100, 100);
-            SystemClock.sleep(2000);
         }
 
         public static void swipeToTop() {
             swiper(1000, 100, 0);
-            SystemClock.sleep(2000);
         }
 
         public static void scrollSlowlyUp() {
             swiper(100, 775, 100);
-            SystemClock.sleep(2000);
         }
 
     }

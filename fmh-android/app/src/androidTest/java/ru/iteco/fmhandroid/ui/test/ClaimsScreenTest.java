@@ -106,10 +106,11 @@ public class ClaimsScreenTest {
         filteringWindowScreenStep.clickingOnTheOkButton();
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         claimsScreenStep.checkingTheOpenStatus();
-        Helper.Swipes.scrollSlowlyDown();
+        Helper.Swipes.swipeToBottom();
 
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         claimsScreenStep.clickingOnTakeToWork();
+        Helper.Swipes.swipeToTop();
         claimsScreenStep.checkingTheInProgressStatus();
     }
 
@@ -167,14 +168,14 @@ public class ClaimsScreenTest {
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
-        Helper.Swipes.scrollSlowlyDown();
-
         claimsScreenStep.checkingTheOpenStatus();
+
         String executorTextItWas = claimsScreenStep.executorText();
         String planDateTextItWas = claimsScreenStep.planDateText();
         String timeTextItWas = claimsScreenStep.timeText();
         String authorTextItWas = claimsScreenStep.authorText();
 
+        Helper.Swipes.swipeToBottom();
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
         editingClaimsScreenStep.checkingTheNameOfTheScreenForEditingClaims();
         editingClaimsScreenStep.fillingInFieldsWithValidData();
@@ -203,8 +204,8 @@ public class ClaimsScreenTest {
         filteringWindowScreenStep.clickingOnTheOkButton();
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         claimsScreenStep.checkingTheOpenStatus();
-        Helper.Swipes.scrollSlowlyDown();
 
+        Helper.Swipes.swipeToBottom();
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         claimsScreenStep.clickingOnTakeToWork();
         claimsScreenStep.checkingTheInProgressStatus();
@@ -231,8 +232,8 @@ public class ClaimsScreenTest {
         filteringWindowScreenStep.clickingOnTheOkButton();
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         claimsScreenStep.checkingTheOpenStatus();
-        Helper.Swipes.scrollSlowlyDown();
 
+        Helper.Swipes.swipeToBottom();
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         claimsScreenStep.clickingOnTakeToWork();
         claimsScreenStep.checkingTheInProgressStatus();
@@ -257,7 +258,7 @@ public class ClaimsScreenTest {
         filteringWindowScreenStep.clickingOnTheOkButton();
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         claimsScreenStep.checkingTheOpenStatus();
-        Helper.Swipes.scrollSlowlyDown();
+        Helper.Swipes.swipeToBottom();
 
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         claimsScreenStep.clickingOnTakeToWork();
@@ -282,7 +283,7 @@ public class ClaimsScreenTest {
         filteringWindowScreenStep.clickingOnTheOkButton();
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         claimsScreenStep.checkingTheOpenStatus();
-        Helper.Swipes.scrollSlowlyDown();
+        Helper.Swipes.swipeToBottom();
 
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         claimsScreenStep.clickingOnTakeToWork();
@@ -307,7 +308,7 @@ public class ClaimsScreenTest {
         filteringWindowScreenStep.clickingOnTheOkButton();
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         claimsScreenStep.checkingTheOpenStatus();
-        Helper.Swipes.scrollSlowlyDown();
+        Helper.Swipes.swipeToBottom();
 
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         claimsScreenStep.clickingOnToCancel();
