@@ -41,8 +41,9 @@ public class CommentScreenTest {
     FilteringWindowScreenStep filteringWindowScreenStep = new FilteringWindowScreenStep();
 
     int position = randomClaims(1);
-    int positionComment = 2;
+    int positionComment = 0;
     String message = "The field cannot be empty.";
+    String invalidLanguageTextComment = "Привет мир";
 
     @Before
     public void logoutCheck() {
@@ -54,8 +55,6 @@ public class CommentScreenTest {
             authorizationScreenStep.validLoginPassword(authInfo());
             SystemClock.sleep(5000);
         } finally {
-            String validTextComment = textSymbol(5);
-
             mainScreenStep.clickingOnTheActionMenuButton();
             mainScreenStep.clickingOnTheClaimsName();
             SystemClock.sleep(3000);
@@ -92,7 +91,6 @@ public class CommentScreenTest {
     @DisplayName("Fields should not be filled in with Russian letters")
     @Description("В этом тест кейсе мы проверяем, что поле \"comment\", не заполняется русскими буквами")
     public void fieldsShouldNotBeFilledInWithRussianLetters() {
-        String invalidLanguageTextComment = "Привет мир";
 
 //        Helper.Swipes.swipeToBottom();
 //        SystemClock.sleep(3000);
@@ -173,15 +171,21 @@ public class CommentScreenTest {
     @DisplayName("The comment in the claim should be edited")
     @Description("В этом тест кейсе мы проверяем что при нажатии на кнопку с иконкой \"блокнот с карандашом\" пользователь попадает в раздел создания, редактирования коментариев, имеется возможность отредактировать коментарий")
     public void theCommentInTheClaimShouldBeEdited() {
-        String validTextComment = textSymbol(5);
+        String validTextComment1 = textSymbol(5);
+        String validTextComment2 = textSymbol(5);
 
-        claimsScreenStep.clickingOnTheButtonToEnterTheCommentEditingScreen(positionComment);
-        SystemClock.sleep(3000);
-        commentScreenStep.validLanguageTextComment(validTextComment);
+        commentScreenStep.validLanguageTextComment(validTextComment1);
         SystemClock.sleep(3000);
         commentScreenStep.clickingOnTheSaveCommentButton();
         SystemClock.sleep(3000);
-        claimsScreenStep.checkingTheCommentBeforeEditingAndAfter(validTextComment);
+
+        claimsScreenStep.clickingOnTheButtonToEnterTheCommentEditingScreen(positionComment);
+        SystemClock.sleep(3000);
+        commentScreenStep.validLanguageTextComment(validTextComment2);
+        SystemClock.sleep(3000);
+        commentScreenStep.clickingOnTheSaveCommentButton();
+        SystemClock.sleep(3000);
+        claimsScreenStep.checkingTheCommentBeforeEditingAndAfter(validTextComment2);
     }
 
     @Test
