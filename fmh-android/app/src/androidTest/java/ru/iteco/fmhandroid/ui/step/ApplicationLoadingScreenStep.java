@@ -14,19 +14,16 @@ public class ApplicationLoadingScreenStep {
 
     public void checkSplashscreenImageView() {
         Allure.step("Проверка просмотр изображения на заставке");
-        SystemClock.sleep(2000);
         applicationLoadingScreenElements.getSplashscreenImageView().check(matches(isDisplayed()));
     }
 
     public void checkSplashscreenTextView() {
         Allure.step("Проверка текстовое представление заставки");
-        SystemClock.sleep(2000);
         applicationLoadingScreenElements.getSplashscreenTextView().check(matches(isDisplayed()));
     }
 
     public void checkProgressIndicator() {
         Allure.step("Проверка индикатора выполнения");
-        SystemClock.sleep(2000);
         applicationLoadingScreenElements.getProgressIndicator().check(matches(isDisplayed()));
     }
 }
