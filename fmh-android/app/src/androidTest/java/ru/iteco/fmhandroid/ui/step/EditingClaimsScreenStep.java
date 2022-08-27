@@ -126,10 +126,11 @@ public class EditingClaimsScreenStep {
         try {
             editingClaimsScreenElements.getTitleClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
         } catch (RuntimeException e) {
-            editingClaimsScreenElements.getTitleClaimField().perform(closeSoftKeyboard());
+
         }
         SystemClock.sleep(2000);
         try {
+            editingClaimsScreenElements.getExecutorClaimField().perform(click());
             editingClaimsScreenElements.getExecutorClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
         } catch (RuntimeException e) {
 
@@ -259,13 +260,13 @@ public class EditingClaimsScreenStep {
     public void checkingThePerformerBeforeEditingAndAfter(
             String executorClaimFieldItWas, String executorClaimFieldItWasHasBecome, String executorClaimFieldInputText) {
         Allure.step("Проверка исполнителя до редактирования и после");
-        ClaimsScreenElements claimsScreenElements = new ClaimsScreenElements();
+//        ClaimsScreenElements claimsScreenElements = new ClaimsScreenElements();
         if (executorClaimFieldItWas.equals("NOT ASSIGNED")) {
             assertEquals(executorClaimFieldItWas, executorClaimFieldItWasHasBecome);
         } else {
             assertNotEquals(executorClaimFieldInputText, executorClaimFieldItWasHasBecome);
         }
-        claimsScreenElements.getExecutorText().check(matches(isDisplayed()));
+//        claimsScreenElements.getExecutorText().check(matches(isDisplayed()));
         SystemClock.sleep(3000);
     }
 

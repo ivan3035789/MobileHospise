@@ -43,6 +43,10 @@ import androidx.test.espresso.PerformException;
 import androidx.test.espresso.UiController;
 import androidx.test.espresso.ViewAction;
 import androidx.test.espresso.ViewInteraction;
+import androidx.test.espresso.action.GeneralLocation;
+import androidx.test.espresso.action.GeneralSwipeAction;
+import androidx.test.espresso.action.Press;
+import androidx.test.espresso.action.Swipe;
 import androidx.test.espresso.contrib.PickerActions;
 
 import org.hamcrest.Description;
@@ -70,6 +74,7 @@ import ru.iteco.fmhandroid.ui.screenElements.EditingNewsScreenElements;
 import ru.iteco.fmhandroid.ui.screenElements.FilteringWindowScreenElements;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreenElements;
 import ru.iteco.fmhandroid.ui.screenElements.WatchScreenElements;
+import ru.iteco.fmhandroid.ui.step.ClaimsScreenStep;
 import ru.iteco.fmhandroid.ui.step.ControlPanelScreenStep;
 import ru.iteco.fmhandroid.ui.step.MainScreenStep;
 import ru.iteco.fmhandroid.ui.step.NewsScreenStep;
@@ -389,20 +394,24 @@ public class Helper {
             inst.sendPointerSync(event);
             event = MotionEvent.obtain(downTime, eventTime, MotionEvent.ACTION_UP, 500, end, 0);
             inst.sendPointerSync(event);
-            SystemClock.sleep(2000);
+            SystemClock.sleep(2000); //The wait is important to scroll
         }
+        // This swipes all the way to the bottom of the screen
         public static void swipeToBottom(){
             swiper(1000, 100, 0);
         }
 
+        // This scrolls down one page at a time
         public static void scrollSlowlyDown(){
             swiper(775, 100, 100);
         }
 
+        // This swipes to the top
         public static void swipeToTop(){
-            swiper(1000, 100, 0);
+            swiper(100, 1000, 0);
         }
 
+        // This scrolls up one page at a time
         public static void scrollSlowlyUp(){
             swiper(100, 775, 100);
         }

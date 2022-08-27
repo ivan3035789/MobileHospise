@@ -25,6 +25,7 @@ import ru.iteco.fmhandroid.ui.data.Helper;
 import ru.iteco.fmhandroid.ui.step.AuthorizationScreenStep;
 import ru.iteco.fmhandroid.ui.step.ClaimsScreenStep;
 import ru.iteco.fmhandroid.ui.step.EditingClaimsScreenStep;
+import ru.iteco.fmhandroid.ui.step.FilteringWindowScreenStep;
 import ru.iteco.fmhandroid.ui.step.MainScreenStep;
 import ru.iteco.fmhandroid.ui.step.WatchScreenStep;
 
@@ -37,6 +38,7 @@ public class ЕditingClaimsScreenTest {
 
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
     MainScreenStep mainScreenStep = new MainScreenStep();
+    FilteringWindowScreenStep filteringWindowScreenStep = new FilteringWindowScreenStep();
     EditingClaimsScreenStep editingClaimsScreenStep = new EditingClaimsScreenStep();
     ClaimsScreenStep claimsScreenStep = new ClaimsScreenStep();
     WatchScreenStep watchScreenStep = new WatchScreenStep();
@@ -51,8 +53,15 @@ public class ЕditingClaimsScreenTest {
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
         } finally {
-            editingClaimsScreenStep.goToTheClaimCardWithTheOpenStatus(position);
+            mainScreenStep.clickingOnTheActionMenuButton();
+            mainScreenStep.clickingOnTheClaimsName();
+            claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
+            filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
+            filteringWindowScreenStep.clickingOnTheOkButton();
+            claimsScreenStep.clickingOnRandomlySelectedClaim(position);
             claimsScreenStep.checkingTheOpenStatus();
+//            editingClaimsScreenStep.goToTheClaimCardWithTheOpenStatus(position);
+//            claimsScreenStep.checkingTheOpenStatus();
         }
     }
 
@@ -249,14 +258,15 @@ public class ЕditingClaimsScreenTest {
     public void performerShouldNotBeInstalledWhenSavingIfItIsNotSelectedFromTheProposedListOfPerformers() {
         String text = textSymbol(5);
 
-        String executorClaimFieldItWas = claimsScreenStep.executorText();
+        String executorClaimFieldItWas = claimsScreenStep.executorTextOnCard();
 
         Helper.Swipes.swipeToBottom();
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
 
-        String executorClaimFieldInputText = editingClaimsScreenStep.executorClaim();
+//        String executorClaimFieldInputText = editingClaimsScreenStep.executorClaim();
 
         editingClaimsScreenStep.fillingInTheExecutorField(text);
+        String executorClaimFieldInputText = editingClaimsScreenStep.executorClaim();
         editingClaimsScreenStep.clickingOnTheSaveButton();
 
         String executorClaimFieldItWasHasBecome = claimsScreenStep.executorText();

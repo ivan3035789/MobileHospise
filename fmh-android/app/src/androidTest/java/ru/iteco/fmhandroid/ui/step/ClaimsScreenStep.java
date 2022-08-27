@@ -266,6 +266,10 @@ public class ClaimsScreenStep {
         return Helper.Text.getText(onView(withIndex(withId(R.id.executor_name_text_view), 0)));
     }
 
+    public String executorTextOnCard() {
+        return Helper.Text.getText(onView(withId(R.id.executor_name_text_view)));
+    }
+
     public String planDateText() {
         return Helper.Text.getText(onView(withIndex(withId(R.id.plane_date_text_view), 0)));
     }

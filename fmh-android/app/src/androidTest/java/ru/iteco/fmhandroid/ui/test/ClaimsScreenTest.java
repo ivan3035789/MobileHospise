@@ -281,6 +281,7 @@ public class ClaimsScreenTest {
         claimsScreenStep.checkingTheExecutedStatus();
     }
 
+    @Ignore
     @Test
     @DisplayName("The status should be reset")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на \"Throw off\" сбрасывается статус с \"In progress\" на \"Open\"")
@@ -297,6 +298,7 @@ public class ClaimsScreenTest {
 
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         claimsScreenStep.clickingOnTakeToWork();
+
         Helper.Swipes.swipeToTop();
         claimsScreenStep.checkingTheInProgressStatus();
         Helper.Swipes.swipeToBottom();

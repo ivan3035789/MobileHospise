@@ -4,7 +4,6 @@ import static ru.iteco.fmhandroid.ui.data.Helper.DateTime.generatorDate;
 import static ru.iteco.fmhandroid.ui.data.Helper.DateTime.generatorDate2;
 import static ru.iteco.fmhandroid.ui.data.Helper.DateTime.invalidGeneratorDate;
 import static ru.iteco.fmhandroid.ui.data.Helper.DateTime.localDate;
-import static ru.iteco.fmhandroid.ui.data.Helper.Rand.random;
 import static ru.iteco.fmhandroid.ui.data.Helper.Rand.randomCategory;
 import static ru.iteco.fmhandroid.ui.data.Helper.Rand.randomNews;
 import static ru.iteco.fmhandroid.ui.data.Helper.authInfo;
@@ -25,16 +24,16 @@ import org.junit.runner.RunWith;
 
 import java.text.ParseException;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.data.Helper;
 import ru.iteco.fmhandroid.ui.step.AuthorizationScreenStep;
 import ru.iteco.fmhandroid.ui.step.ControlPanelScreenStep;
 import ru.iteco.fmhandroid.ui.step.FilterNewsScreenStep;
 import ru.iteco.fmhandroid.ui.step.MainScreenStep;
 import ru.iteco.fmhandroid.ui.step.NewsScreenStep;
-import io.qameta.allure.android.runners.AllureAndroidJUnit4;
-import io.qameta.allure.kotlin.Description;
-import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.ui.AppActivity;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -170,13 +169,12 @@ public class FilterNewsScreenTest {
         mainScreenStep.clickingOnTheActionMenuButton();
         mainScreenStep.clickingOnTheNewsName();
         newsScreenStep.clickingOnTheButtonToGoToFilterNews();
+
         filterNewsScreenStep.clickingOnTheSearchButton();
         newsScreenStep.clickingOnTheNews(position);
         try {
             newsScreenStep.checkingTheDisplayOfTheFoundNewsData(position);
-        } catch (NoMatchingViewException ignore) {
-
-        } finally {
+        } catch (NoMatchingViewException e) {
             newsScreenStep.checkingTheDisplayOfTheInscriptionInTheAbsenceOfFoundNews();
         }
     }
