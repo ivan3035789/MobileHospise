@@ -126,17 +126,6 @@ public class ClaimsScreenStep {
         SystemClock.sleep(3000);
     }
 
-//    public void searchForClaimsWithTheOpenStatus() {
-//        Allure.step("Случайный выбор претензии со статусом Open");
-//        FilteringWindowScreenElements filteringWindowScreenElements = new FilteringWindowScreenElements();
-//        pressingOnTheButtonToGoToTheFilteringScreen();
-//        filteringWindowScreenElements.getCheckBoxInProgress().perform(click());
-//        filteringWindowScreenElements.getOkButton().perform(click());
-//        SystemClock.sleep(2000);
-//        claimsScreenElements.getBlockClaims().perform(actionOnItemAtPosition(randomClaims(0, 1, 2), click()));
-//        SystemClock.sleep(3000);
-//    }
-
     public void checkingTheStatusShouldNotBeCancelled() {
         Allure.step("Проверка статус не должен быть Cancelled");
         claimsScreenElements.getStatus().check(matches(not(withText("Cancelled"))));

@@ -19,6 +19,10 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.data.Helper;
 import ru.iteco.fmhandroid.ui.step.AuthorizationScreenStep;
 import ru.iteco.fmhandroid.ui.step.ControlPanelScreenStep;
@@ -26,11 +30,6 @@ import ru.iteco.fmhandroid.ui.step.EditingNewsScreenStep;
 import ru.iteco.fmhandroid.ui.step.MainScreenStep;
 import ru.iteco.fmhandroid.ui.step.NewsScreenStep;
 import ru.iteco.fmhandroid.ui.step.WatchScreenStep;
-import io.qameta.allure.android.runners.AllureAndroidJUnit4;
-import io.qameta.allure.kotlin.Description;
-import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.R;
-import ru.iteco.fmhandroid.ui.AppActivity;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)

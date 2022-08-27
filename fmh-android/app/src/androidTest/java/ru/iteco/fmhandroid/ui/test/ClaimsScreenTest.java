@@ -241,7 +241,7 @@ public class ClaimsScreenTest {
         claimsScreenStep.clickingOnReset();
         claimsScreenStep.fillingInTheCommentField(text);
         claimsScreenStep.clickingOnTheOkButtonToAddComment();
-        claimsScreenStep.checkingTheVisibilityOfTheAddedComment();
+//        claimsScreenStep.checkingTheVisibilityOfTheAddedComment(); проверить при смене индекса в ClaimScreenElements, сделать поис по индексу
         claimsScreenStep.checkingTheOpenStatus();
     }
 
@@ -268,7 +268,7 @@ public class ClaimsScreenTest {
         claimsScreenStep.clickingOnToExecute();
         claimsScreenStep.fillingInTheCommentField(text);
         claimsScreenStep.clickingOnTheOkButtonToAddComment();
-        claimsScreenStep.checkingTheVisibilityOfTheAddedComment();
+//        claimsScreenStep.checkingTheVisibilityOfTheAddedComment();
         claimsScreenStep.checkingTheExecutedStatus();
     }
 

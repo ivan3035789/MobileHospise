@@ -16,17 +16,17 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import io.qameta.allure.android.runners.AllureAndroidJUnit4;
+import io.qameta.allure.kotlin.Description;
+import io.qameta.allure.kotlin.junit4.DisplayName;
+import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.data.Helper;
 import ru.iteco.fmhandroid.ui.step.AuthorizationScreenStep;
 import ru.iteco.fmhandroid.ui.step.ControlPanelScreenStep;
 import ru.iteco.fmhandroid.ui.step.CreatingNewsScreenStep;
 import ru.iteco.fmhandroid.ui.step.MainScreenStep;
+import ru.iteco.fmhandroid.ui.step.NewsScreenStep;
 import ru.iteco.fmhandroid.ui.step.WatchScreenStep;
-import io.qameta.allure.android.runners.AllureAndroidJUnit4;
-import io.qameta.allure.kotlin.Description;
-import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.R;
-import ru.iteco.fmhandroid.ui.AppActivity;
 
 @LargeTest
 @RunWith(AllureAndroidJUnit4.class)
@@ -36,6 +36,7 @@ public class CreatingNewsScreenTest {
     public ActivityTestRule<AppActivity> ActivityTestRule = new ActivityTestRule<>(AppActivity.class);
 
     MainScreenStep mainScreenStep = new MainScreenStep();
+    NewsScreenStep newsScreenStep = new NewsScreenStep();
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
     ControlPanelScreenStep controlPanelScreenStep = new ControlPanelScreenStep();
     CreatingNewsScreenStep creatingNewsScreenStep = new CreatingNewsScreenStep();
@@ -52,7 +53,10 @@ public class CreatingNewsScreenTest {
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
         } finally {
-            mainScreenStep.randomTransitionToCreatingNews();
+            mainScreenStep.clickingOnTheActionMenuButton();
+            mainScreenStep.clickingOnTheNewsName();
+            newsScreenStep.clickingOnTheButtonToGoToTheControlPanel();
+//            controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
         }
     }
 
@@ -65,6 +69,7 @@ public class CreatingNewsScreenTest {
     @DisplayName("The screen should have a name")
     @Description("В этом тест кейсе мы проверяем название экрана Creating News")
     public void theScreenShouldHaveName() {
+        creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
         creatingNewsScreenStep.checkingTheNameOfTheCreatingNewsScreen();
     }
 
@@ -72,6 +77,7 @@ public class CreatingNewsScreenTest {
     @DisplayName("the fields must have names")
     @Description("В этом тест кейсе мы проверяем названия полей")
     public void FieldsMustHaveNames() {
+        creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
         creatingNewsScreenStep.checkNameFieldInCreatingNews();
     }
 
@@ -79,6 +85,7 @@ public class CreatingNewsScreenTest {
     @DisplayName("A drop-down list with categories should appear")
     @Description("В этом тест кейсе мы проверяем, что при клике на поле \"Category\" появляется выпадающий список с доспупными категориями ")
     public void aDropDownListWithCategoriesShouldAppear() {
+        creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
         creatingNewsScreenStep.clickingOnTheCategoryField();
         creatingNewsScreenStep.checkingTheAppearanceOfTheDropDownList(ActivityTestRule.getActivity());
     }
@@ -87,6 +94,7 @@ public class CreatingNewsScreenTest {
     @DisplayName("A calendar should appear")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на поле \"Publication date\" появляется календарь ")
     public void aCalendarShouldAppear() {
+        creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
         creatingNewsScreenStep.clickingOnTheDateField();
         creatingNewsScreenStep.checkingTheCalendarAppearance(ActivityTestRule.getActivity());
     }
@@ -95,6 +103,7 @@ public class CreatingNewsScreenTest {
     @DisplayName("A clock of the arrow type should appear")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на поле \"Time\" появляется часы стрелочного типа")
     public void aClockOfTheArrowTypeShouldAppear() {
+        creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
         creatingNewsScreenStep.clickingOnTheTimeField();
         creatingNewsScreenStep.checkingTheAppearanceOfClockOfTheArrowType(ActivityTestRule.getActivity());
     }
@@ -103,6 +112,7 @@ public class CreatingNewsScreenTest {
     @DisplayName("The type of watch should change")
     @Description("В этом тест кейсе мы проверяем возможность выбора типа часов. что при нажатии на кнопку с иконкой \"клавиатура\" должен поменяться вид часов")
     public void theTypeOfWatchShouldChange() {
+        creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
         creatingNewsScreenStep.clickingOnTheTimeField();
         watchScreenStep.pressingTheButtonToChangeTheWatchType();
         watchScreenStep.checkingTheTypeOfDigitalClock();
@@ -116,7 +126,6 @@ public class CreatingNewsScreenTest {
         String text = textSymbol(5);
         String validCategory = randomCategory();
 
-        creatingNewsScreenStep.clickingOnTheExitButtonFromNewsCreation();
         creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
         creatingNewsScreenStep.choosingNews(position);
 
@@ -143,6 +152,7 @@ public class CreatingNewsScreenTest {
                 creationDateNewsItWas, creationDateNewsItWasHasBecomes, authorNewsItWas, authorNewsItWasHasBecomes,
                 descriptionNewsItWas, descriptionNewsItWasHasBecomes);
     }
+
 
     @Test
     @DisplayName("Canceling news creation")

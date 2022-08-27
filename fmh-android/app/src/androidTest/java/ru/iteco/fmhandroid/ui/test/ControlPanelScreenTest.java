@@ -187,7 +187,6 @@ public class ControlPanelScreenTest {
     public void mustGoToEditingNews() {
         int position = randomNews( 0, 1, 2);
 
-//        mainScreenStep.switchingToTheControlPanel();
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
         controlPanelScreenStep.clickingOnTheButtonToGoToTheEditingNewsScreen(position);
         editingNewsScreenStep.checkingTheNameOfTheEditingNewsScreen();

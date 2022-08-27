@@ -89,9 +89,14 @@ public class CreatingClaimsScreenStep {
 
     public void validLanguage(String title) {
         Allure.step("Ввод валидного языка");
-        creatingClaimsScreenElements.getTitleClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
-        creatingClaimsScreenElements.getExecutorClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
-        creatingClaimsScreenElements.getDescriptionClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
+        try {
+            creatingClaimsScreenElements.getTitleClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
+        } catch (RuntimeException ignore) {
+
+        } finally {
+            creatingClaimsScreenElements.getExecutorClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
+            creatingClaimsScreenElements.getDescriptionClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
+        }
         SystemClock.sleep(3000);
     }
 

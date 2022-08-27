@@ -165,7 +165,7 @@ public class ClaimsScreenElements {
                                         0),
                                                 1)));
 
-    private final ViewInteraction commentStatus = onView(withIndex(withId(R.id.claim_comments_list_recycler_view), 0));
+    private final ViewInteraction commentStatus = onView(withIndex(withId(R.id.claim_comments_list_recycler_view), 0));  //проверить при смене индекса
     private final ViewInteraction blockComment = onView(withId(R.id.claim_comments_list_recycler_view));
 
     public ViewInteraction getTitleClaimOnCard() {

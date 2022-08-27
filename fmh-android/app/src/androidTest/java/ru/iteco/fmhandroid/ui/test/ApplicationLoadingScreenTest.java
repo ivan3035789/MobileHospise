@@ -27,11 +27,6 @@ public class ApplicationLoadingScreenTest {
 
     ApplicationLoadingScreenStep applicationLoadingScreenStep = new ApplicationLoadingScreenStep();
 
-//    @Before
-//    public void logoutCheck() {
-//        SystemClock.sleep(1000);
-//    }
-
     @After
     public void setUp() {
         SystemClock.sleep(3000);

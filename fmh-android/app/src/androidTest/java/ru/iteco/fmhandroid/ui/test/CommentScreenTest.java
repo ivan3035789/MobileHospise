@@ -75,10 +75,6 @@ public class CommentScreenTest {
     @DisplayName("Must enter the comment creation section")
     @Description("В этом тест кейсе мы проверяем, что при клике на кнопку \"+\" в поле \"Add comment\" пользователь переходит в раздел создания коментария ")
     public void mustEnterTheCommentCreationSection() {
-//        Helper.Swipes.swipeToBottom();
-//        SystemClock.sleep(5000);
-//        claimsScreenStep.clickingOnTheAddCommentButton();
-//        SystemClock.sleep(3000);
         commentScreenStep.checkingTheEntryToTheCommentScreen();
     }
 
@@ -87,9 +83,6 @@ public class CommentScreenTest {
     @Description("В этом тест кейсе мы проверяем, что поле \"comment\", не заполняется русскими буквами")
     public void fieldsShouldNotBeFilledInWithRussianLetters() {
 
-//        Helper.Swipes.swipeToBottom();
-//        SystemClock.sleep(3000);
-//        claimsScreenStep.clickingOnTheAddCommentButton();
         try {
             commentScreenStep.enteringAnIncorrectLanguageTextComment(invalidLanguageTextComment);
         } catch (RuntimeException e) {
@@ -105,8 +98,6 @@ public class CommentScreenTest {
     public void theFieldsMustBeFilledInWithEnglishLetters() {
         String validTextComment = textSymbol(5);
 
-//        Helper.Swipes.swipeToBottom();
-//        claimsScreenStep.clickingOnTheAddCommentButton();
         commentScreenStep.validLanguageTextComment(validTextComment);
         commentScreenStep.checkTheFieldIsFilledWithText(validTextComment);
     }
@@ -117,8 +108,6 @@ public class CommentScreenTest {
     public void commentShouldBeAdded() {
         String validTextComment = textSymbol(5);
 
-//        Helper.Swipes.swipeToBottom();
-//        claimsScreenStep.clickingOnTheAddCommentButton();
         commentScreenStep.validLanguageTextComment(validTextComment);
         commentScreenStep.clickingOnTheSaveCommentButton();
         Helper.Swipes.swipeToBottom();
@@ -132,10 +121,6 @@ public class CommentScreenTest {
     public void cancelingAddingComment() {
         String validTextComment = textSymbol(5);
 
-//        Helper.Swipes.swipeToBottom();
-//
-//        claimsScreenStep.clickingOnTheAddCommentButton();
-//        SystemClock.sleep(3000);
         commentScreenStep.validLanguageTextComment(validTextComment);
         commentScreenStep.clickingOnTheButtonToCancelAddingComment();
         claimsScreenStep.checkingTheCommentShouldNotBeCreated(validTextComment);
@@ -145,9 +130,6 @@ public class CommentScreenTest {
     @DisplayName("A warning message should appear when the comment field is empty")
     @Description("В этом тест кейсе мы проверяем что при незаполнении поля \"comment\", после нажатия на кнопку \"SAVE\", появляется предупреждающая надпись \"The field cannot be empty\" ")
     public void warningMessageShouldAppearWhenTheCommentFieldIsEmpty() {
-//        Helper.Swipes.swipeToBottom();
-//        SystemClock.sleep(3000);
-//        claimsScreenStep.clickingOnTheAddCommentButton();
         commentScreenStep.clickingOnTheSaveCommentButton();
         commentScreenStep.checkingTheFieldCannotBeEmpty(ActivityTestRule.getActivity(), message);
     }
@@ -175,10 +157,6 @@ public class CommentScreenTest {
         String validTextComment1 = textSymbol(5);
         String validTextComment2 = textSymbol(5);
 
-//        Helper.Swipes.swipeToBottom();
-//        SystemClock.sleep(5000);
-//        claimsScreenStep.clickingOnTheAddCommentButton();
-//        SystemClock.sleep(3000);
         commentScreenStep.validLanguageTextComment(validTextComment1);
         commentScreenStep.clickingOnTheSaveCommentButton();
         Helper.Swipes.swipeToBottom();

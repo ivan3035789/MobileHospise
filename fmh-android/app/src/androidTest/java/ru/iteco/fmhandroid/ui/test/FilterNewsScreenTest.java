@@ -173,7 +173,9 @@ public class FilterNewsScreenTest {
         newsScreenStep.clickingOnTheNews(position);
         try {
             newsScreenStep.checkingTheDisplayOfTheFoundNewsData(position);
-        } catch (NoMatchingViewException e) {
+        } catch (NoMatchingViewException ignore) {
+
+        } finally {
             newsScreenStep.checkingTheDisplayOfTheInscriptionInTheAbsenceOfFoundNews();
         }
     }

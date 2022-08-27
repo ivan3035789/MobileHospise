@@ -13,6 +13,7 @@ import androidx.test.rule.ActivityTestRule;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +21,6 @@ import org.junit.runner.RunWith;
 import io.qameta.allure.android.runners.AllureAndroidJUnit4;
 import io.qameta.allure.kotlin.Description;
 import io.qameta.allure.kotlin.junit4.DisplayName;
-import ru.iteco.fmhandroid.R;
 import ru.iteco.fmhandroid.ui.AppActivity;
 import ru.iteco.fmhandroid.ui.step.AuthorizationScreenStep;
 import ru.iteco.fmhandroid.ui.step.ClaimsScreenStep;
@@ -44,7 +44,7 @@ public class CreatingClaimsScreenTest {
     WatchScreenStep watchScreenStep = new WatchScreenStep();
     FilteringWindowScreenStep filteringWindowScreenStep = new FilteringWindowScreenStep();
 
-    String message = "fill empty fields";
+    String message = "Fill empty fields";
 
     @Before
     public void logoutCheck() {
@@ -122,6 +122,7 @@ public class CreatingClaimsScreenTest {
         watchScreenStep.checkingTheTypeOfDigitalClock();
     }
 
+    @Ignore
     @Test
     @DisplayName("A claim should be created in the Claims section")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"SAVE\" после заполнения полей \"Title, Executor, Date Time, Description, \" валидными значениями, должна создаться \"Претензия\" в разделе Claims (появиться в ленте Claims на странице \"Claims\" ")
@@ -151,6 +152,7 @@ public class CreatingClaimsScreenTest {
                 description, descriptionOnCaredClaims);
     }
 
+    @Ignore
     @Test
     @DisplayName("A claim with the Open status should be created")
     @Description("В этом тест кейсе мы проверяем, что при отсутствии ввода исполнителя, или ввода исполнителя не из выпадающего  списка создается претензия со статусом \"Open\"")
@@ -187,7 +189,6 @@ public class CreatingClaimsScreenTest {
     public void cancellationOfTheClaimCreation() {
         String titleText = textSymbol(5);
         String randomExecutor = randomExecutor();
-//        enterCreateClaimsActionButton();
 
         creatingClaimsScreenStep.fillingInFieldsWithValidData(titleText, randomExecutor);
         creatingClaimsScreenStep.clickingOnTheCancelClaimCreationButton();
