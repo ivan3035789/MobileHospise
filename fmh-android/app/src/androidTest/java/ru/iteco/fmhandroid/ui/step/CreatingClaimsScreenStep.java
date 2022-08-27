@@ -84,17 +84,19 @@ public class CreatingClaimsScreenStep {
         try {
             creatingClaimsScreenElements.getTitleClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
         } catch (RuntimeException e) {
-
+            creatingClaimsScreenElements.getTitleClaimField().perform(closeSoftKeyboard());
         }
+        SystemClock.sleep(2000);
         try {
             creatingClaimsScreenElements.getExecutorClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
         } catch (RuntimeException e) {
 
         }
+        SystemClock.sleep(2000);
         try {
             creatingClaimsScreenElements.getDescriptionClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
         } catch (RuntimeException e) {
-
+            creatingClaimsScreenElements.getExecutorClaimField().perform(closeSoftKeyboard());
         }
         SystemClock.sleep(3000);
     }
@@ -102,7 +104,9 @@ public class CreatingClaimsScreenStep {
     public void validLanguage(String title) {
         Allure.step("Ввод валидного языка");
             creatingClaimsScreenElements.getTitleClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
+        SystemClock.sleep(2000);
             creatingClaimsScreenElements.getExecutorClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
+        SystemClock.sleep(3000);
             creatingClaimsScreenElements.getDescriptionClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
         SystemClock.sleep(3000);
     }

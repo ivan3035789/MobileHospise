@@ -227,12 +227,12 @@ public class CreatingNewsScreenTest {
         String invalidLanguageText = "привет мир";
 
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
-        try {
+//        try {
             creatingNewsScreenStep.invalidLanguage(invalidLanguageText);
-        } catch (RuntimeException e) {
-
-        } finally {
+//        } catch (RuntimeException e) {
+//
+//        } finally {
             creatingNewsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();
-        }
+//        }
     }
 }

@@ -91,11 +91,11 @@ public class FilterNewsScreenTest {
     @Description("В этом тест кейсе мы проверяем поиск новости по всем заданным критериям в полях в разделе \"Filter news\"")
     public void mustSearchForNewsByCriteriaInAllFields() throws ParseException {
         String localDate = localDate();
-        int position = random(0);
         String dateStartInput = generatorDate2();
         String dateEndInput = generatorDate();
         String category = randomCategory();
         String text = Helper.Text.textSymbol(5);
+
         createNewsForCategory(text, category);
 
         mainScreenStep.clickingOnTheActionMenuButton();
@@ -107,11 +107,12 @@ public class FilterNewsScreenTest {
         filterNewsScreenStep.enteringSearchData(category, dateStartInput, dateEndInput);
         filterNewsScreenStep.clickingOnTheSearchButton();
 
-        controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
-        String dateOnCardNews = newsScreenStep.dateOnCardNews(position);
+        int positionNews = Helper.Search.searchNews(text);
+        controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(positionNews);
+        String dateOnCardNews = newsScreenStep.dateOnCardNews(positionNews);
 
         newsScreenStep.checkingTheFoundDataFromTheNewsWithTheDataEnteredForTheSearch(
-                dateOnCardNews, dateStartInput, dateEndInput, category, localDate, position);
+                dateOnCardNews, dateStartInput, dateEndInput, category, localDate, positionNews);
     }
 
     @Test

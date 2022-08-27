@@ -118,15 +118,17 @@ public class EditingNewsScreenStep {
         try {
             editingNewsScreenElements.getTitleTextNewsField().perform(typeText(title)).perform(closeSoftKeyboard());
         } catch (RuntimeException e) {
-
+            editingNewsScreenElements.getTitleTextNewsField().perform(closeSoftKeyboard());
+        } finally {
+            SystemClock.sleep(2000);
         }
-        SystemClock.sleep(2000);
         try {
-            editingNewsScreenElements.getDescriptionField().perform(typeText(title)).perform(closeSoftKeyboard());
+            editingNewsScreenElements.getDescriptionField().perform(typeText(title));
         } catch (RuntimeException e) {
-
+            editingNewsScreenElements.getDescriptionField().perform(closeSoftKeyboard());
+        } finally {
+            SystemClock.sleep(3000);
         }
-        SystemClock.sleep(3000);
     }
 
     public void validLanguage(String title) {

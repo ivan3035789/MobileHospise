@@ -249,13 +249,13 @@ public class EditingNewsScreenTest {
         String invalidLanguageText = "Привет мир";
 
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
-        try {
+//        try {
             editingNewsScreenStep.invalidLanguage(invalidLanguageText);
-        } catch (RuntimeException e) {
+//        } catch (RuntimeException e) {
 
-        } finally {
+//        } finally {
             editingNewsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();
-        }
+//        }
     }
 
     @Test

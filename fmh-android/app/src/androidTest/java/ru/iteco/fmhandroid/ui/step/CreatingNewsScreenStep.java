@@ -86,7 +86,9 @@ public class CreatingNewsScreenStep {
     public void validLanguage(String title) {
         Allure.step("Ввод валидного языка");
         creatingNewsScreenElements.getCategoryFieldNews().perform(typeText(title)).perform(closeSoftKeyboard());
+        SystemClock.sleep(2000);
         creatingNewsScreenElements.getTitleFieldNews().perform(typeText(title)).perform(closeSoftKeyboard());
+        SystemClock.sleep(2000);
         creatingNewsScreenElements.getDescriptionFieldNews().perform(typeText(title)).perform(closeSoftKeyboard());
         SystemClock.sleep(3000);
     }
@@ -96,9 +98,13 @@ public class CreatingNewsScreenStep {
         try {
             creatingNewsScreenElements.getTitleFieldNews().perform(typeText(title));
         } catch (RuntimeException e) {
-
-        } finally {
+            creatingNewsScreenElements.getTitleFieldNews().perform(closeSoftKeyboard());
+        }
+        SystemClock.sleep(2000);
+        try {
             creatingNewsScreenElements.getDescriptionFieldNews().perform(typeText(title));
+        } catch (RuntimeException e) {
+            creatingNewsScreenElements.getDescriptionFieldNews().perform(closeSoftKeyboard());
         }
         SystemClock.sleep(3000);
     }
@@ -182,6 +188,7 @@ public class CreatingNewsScreenStep {
             String creationDateNewsItWas, String creationDateNewsItWasHasBecomes, String authorNewsItWas, String authorNewsItWasHasBecomes,
             String descriptionNewsItWas, String descriptionNewsItWasHasBecomes) {
         Allure.step("Сравнение данных созданной новости с данными новости первой из списка");
+
         assertNotEquals(nameNewsItWas, nameNewsItWasHasBecomes);
 
         if (publicationDateNewsItWas.equals(publicationDateNewsItWasHasBecomes)) {
@@ -194,7 +201,11 @@ public class CreatingNewsScreenStep {
         } else {
             assertNotEquals(creationDateNewsItWas, creationDateNewsItWasHasBecomes);
         }
-        assertEquals(authorNewsItWas, authorNewsItWasHasBecomes);
+        if (authorNewsItWas.equals(authorNewsItWasHasBecomes)) {
+            assertEquals(authorNewsItWas, authorNewsItWasHasBecomes);
+        } else {
+            assertNotEquals(authorNewsItWas, authorNewsItWasHasBecomes);
+        }
         assertNotEquals(descriptionNewsItWas, descriptionNewsItWasHasBecomes);
         SystemClock.sleep(3000);
     }

@@ -44,6 +44,11 @@ public class MainScreenStep {
         SystemClock.sleep(3000);
     }
 
+    public void clickingOnAllNews() {
+        Allure.step("Нажатие на текстовую ссылку AllNews");
+        mainScreenElements.getAllNews().perform(click());
+    }
+
     public void clickingOnTheActionMenuButton() {
         Allure.step("Нажатие на кнопку ActionMenu");
         mainScreenElements.getMainMenuImageButton().perform(click());
@@ -73,11 +78,6 @@ public class MainScreenStep {
         mainScreenElements.getTitleAbout().perform(click());
         SystemClock.sleep(3000);
     }
-
-//    public void clickingOnTheAllNewsTextLink() {
-//        Allure.step("Нажатие на текстовую ссылку AllNews");
-//        mainScreenElements.getAllNews().perform(click());
-//    }
 
     public void pressingTheButtonInTheFormOfButterfly() {
         Allure.step("Нажатие на кнопку в виде бабочки");

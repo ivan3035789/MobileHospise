@@ -220,13 +220,13 @@ public class ЕditingClaimsScreenTest {
 
         Helper.Swipes.swipeToBottom();
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
-        try {
+//        try {
             editingClaimsScreenStep.invalidLanguage(invalidLanguageText);
-        } catch (RuntimeException e) {
-
-        } finally {
+//        } catch (RuntimeException e) {
+//
+//        } finally {
             editingClaimsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();
-        }
+//        }
     }
 
     @Test

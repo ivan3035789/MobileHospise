@@ -217,13 +217,13 @@ public class CreatingClaimsScreenTest {
     public void fieldsShouldNotBeFilledInWithRussianLetters() {
         String invalidLanguageText = "Привет мир";
 
-        try {
+//        try {
             creatingClaimsScreenStep.invalidLanguage(invalidLanguageText);
-        } catch (RuntimeException ignored) {
+//        } catch (RuntimeException e) {
 
-        } finally {
+//        } finally {
             creatingClaimsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();
-        }
+//        }
     }
 
     @Test

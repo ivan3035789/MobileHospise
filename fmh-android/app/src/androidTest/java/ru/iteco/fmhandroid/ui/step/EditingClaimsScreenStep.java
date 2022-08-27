@@ -97,6 +97,12 @@ public class EditingClaimsScreenStep {
         SystemClock.sleep(3000);
     }
 
+    public void clickingOnTheExecutorFieldRandom() {
+        Allure.step("Нажатие на поле Executor");
+        editingClaimsScreenElements.getExecutorClaimField().perform(click());
+        SystemClock.sleep(3000);
+    }
+
     public void clickingOnTheDateField() {
         Allure.step("Нажатие на поле Date");
         editingClaimsScreenElements.getDateClaimField().perform(click());
@@ -119,14 +125,12 @@ public class EditingClaimsScreenStep {
         SystemClock.sleep(2000);
         try {
             editingClaimsScreenElements.getTitleClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
-            SystemClock.sleep(2000);
         } catch (RuntimeException e) {
-
+            editingClaimsScreenElements.getTitleClaimField().perform(closeSoftKeyboard());
         }
         SystemClock.sleep(2000);
         try {
             editingClaimsScreenElements.getExecutorClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
-            SystemClock.sleep(2000);
         } catch (RuntimeException e) {
 
         }
