@@ -472,7 +472,7 @@ public class Helper {
                     controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
                     SystemClock.sleep(2000);
                     description = controlPanelScreenStep.descriptionNewsPosition(position);
-                    if (text.equals(description)) {
+                    if (text.trim().equals(description.trim())) {
                         notFound = false;
                     } else {
                         notFound = true;

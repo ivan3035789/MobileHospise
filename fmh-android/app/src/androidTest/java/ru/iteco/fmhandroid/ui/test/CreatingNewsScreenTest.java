@@ -126,7 +126,7 @@ public class CreatingNewsScreenTest {
         String text = textSymbol(5);
         String validCategory = randomCategory();
 
-        creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
+//        creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
         creatingNewsScreenStep.choosingNews(position);
 
         String nameNewsItWas = creatingNewsScreenStep.nameNews();
