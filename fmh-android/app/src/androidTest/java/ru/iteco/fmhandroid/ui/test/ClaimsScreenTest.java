@@ -182,6 +182,7 @@ public class ClaimsScreenTest {
         editingClaimsScreenStep.clickingOnTheUndoEditButton();
         editingClaimsScreenStep.clickingOnTheButtonToConfirmTheCancellationOfEditing();
 
+        Helper.Swipes.swipeToTop();
         claimsScreenStep.checkingTheOpenStatus();
         String executorTextItWasHasBecome = claimsScreenStep.executorText();
         String planDateTextItWasHasBecome = claimsScreenStep.planDateText();
@@ -208,6 +209,7 @@ public class ClaimsScreenTest {
         Helper.Swipes.swipeToBottom();
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         claimsScreenStep.clickingOnTakeToWork();
+        Helper.Swipes.swipeToTop();
         claimsScreenStep.checkingTheInProgressStatus();
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         claimsScreenStep.clickingOnReset();
@@ -216,6 +218,7 @@ public class ClaimsScreenTest {
         claimsScreenStep.clickingOnTheButtonToCancelAddingComment();
 
         claimsScreenStep.checkingTheAbsenceOfComment(commentText);
+        Helper.Swipes.swipeToTop();
         claimsScreenStep.checkingTheInProgressStatus();
     }
 
@@ -236,12 +239,15 @@ public class ClaimsScreenTest {
         Helper.Swipes.swipeToBottom();
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         claimsScreenStep.clickingOnTakeToWork();
+        Helper.Swipes.swipeToTop(); //не скролит
         claimsScreenStep.checkingTheInProgressStatus();
+        Helper.Swipes.swipeToBottom();
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         claimsScreenStep.clickingOnReset();
         claimsScreenStep.fillingInTheCommentField(text);
         claimsScreenStep.clickingOnTheOkButtonToAddComment();
-//        claimsScreenStep.checkingTheVisibilityOfTheAddedComment(); проверить при смене индекса в ClaimScreenElements, сделать поис по индексу
+        claimsScreenStep.checkingTheVisibilityOfTheAddedComment();
+        Helper.Swipes.swipeToTop(); //не скролит
         claimsScreenStep.checkingTheOpenStatus();
     }
 
@@ -256,19 +262,22 @@ public class ClaimsScreenTest {
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
+
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         claimsScreenStep.checkingTheOpenStatus();
         Helper.Swipes.swipeToBottom();
 
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         claimsScreenStep.clickingOnTakeToWork();
+        Helper.Swipes.swipeToTop();
         claimsScreenStep.checkingTheInProgressStatus();
         Helper.Swipes.swipeToBottom();
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         claimsScreenStep.clickingOnToExecute();
         claimsScreenStep.fillingInTheCommentField(text);
         claimsScreenStep.clickingOnTheOkButtonToAddComment();
-//        claimsScreenStep.checkingTheVisibilityOfTheAddedComment();
+        claimsScreenStep.checkingTheVisibilityOfTheAddedComment();
+        Helper.Swipes.swipeToTop();
         claimsScreenStep.checkingTheExecutedStatus();
     }
 
@@ -294,6 +303,7 @@ public class ClaimsScreenTest {
         claimsScreenStep.fillingInTheCommentField(text);
         claimsScreenStep.clickingOnTheOkButtonToAddComment();
         claimsScreenStep.checkingTheVisibilityOfTheAddedComment();
+        Helper.Swipes.swipeToTop();
         claimsScreenStep.checkingTheOpenStatus();
     }
 

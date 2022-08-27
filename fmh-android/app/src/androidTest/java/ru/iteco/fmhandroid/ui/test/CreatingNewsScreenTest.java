@@ -69,6 +69,7 @@ public class CreatingNewsScreenTest {
     @DisplayName("The screen should have a name")
     @Description("В этом тест кейсе мы проверяем название экрана Creating News")
     public void theScreenShouldHaveName() {
+        controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
         creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
         creatingNewsScreenStep.checkingTheNameOfTheCreatingNewsScreen();
     }
@@ -77,7 +78,7 @@ public class CreatingNewsScreenTest {
     @DisplayName("the fields must have names")
     @Description("В этом тест кейсе мы проверяем названия полей")
     public void FieldsMustHaveNames() {
-        creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
+        controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
         creatingNewsScreenStep.checkNameFieldInCreatingNews();
     }
 
@@ -85,7 +86,7 @@ public class CreatingNewsScreenTest {
     @DisplayName("A drop-down list with categories should appear")
     @Description("В этом тест кейсе мы проверяем, что при клике на поле \"Category\" появляется выпадающий список с доспупными категориями ")
     public void aDropDownListWithCategoriesShouldAppear() {
-        creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
+        controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
         creatingNewsScreenStep.clickingOnTheCategoryField();
         creatingNewsScreenStep.checkingTheAppearanceOfTheDropDownList(ActivityTestRule.getActivity());
     }
@@ -94,7 +95,7 @@ public class CreatingNewsScreenTest {
     @DisplayName("A calendar should appear")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на поле \"Publication date\" появляется календарь ")
     public void aCalendarShouldAppear() {
-        creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
+        controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
         creatingNewsScreenStep.clickingOnTheDateField();
         creatingNewsScreenStep.checkingTheCalendarAppearance(ActivityTestRule.getActivity());
     }
@@ -103,7 +104,7 @@ public class CreatingNewsScreenTest {
     @DisplayName("A clock of the arrow type should appear")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на поле \"Time\" появляется часы стрелочного типа")
     public void aClockOfTheArrowTypeShouldAppear() {
-        creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
+        controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
         creatingNewsScreenStep.clickingOnTheTimeField();
         creatingNewsScreenStep.checkingTheAppearanceOfClockOfTheArrowType(ActivityTestRule.getActivity());
     }
@@ -112,7 +113,7 @@ public class CreatingNewsScreenTest {
     @DisplayName("The type of watch should change")
     @Description("В этом тест кейсе мы проверяем возможность выбора типа часов. что при нажатии на кнопку с иконкой \"клавиатура\" должен поменяться вид часов")
     public void theTypeOfWatchShouldChange() {
-        creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
+        controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
         creatingNewsScreenStep.clickingOnTheTimeField();
         watchScreenStep.pressingTheButtonToChangeTheWatchType();
         watchScreenStep.checkingTheTypeOfDigitalClock();
@@ -126,7 +127,6 @@ public class CreatingNewsScreenTest {
         String text = textSymbol(5);
         String validCategory = randomCategory();
 
-//        creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
         creatingNewsScreenStep.choosingNews(position);
 
         String nameNewsItWas = creatingNewsScreenStep.nameNews();
@@ -162,8 +162,7 @@ public class CreatingNewsScreenTest {
         String text = textSymbol(5);
         String validCategory = randomCategory();
 
-        creatingNewsScreenStep.clickingOnTheExitButtonFromNewsCreation();
-        creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
+//        controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
         creatingNewsScreenStep.choosingNews(position);
 
         String nameNewsItWas = creatingNewsScreenStep.nameNews();
@@ -195,6 +194,7 @@ public class CreatingNewsScreenTest {
     @DisplayName("A warning message should appear if the fields are empty when you click on the SAVE button")
     @Description("В этом тест кейсе мы проверяем, что при незаполненном, незаполненных полях появляется предупреждающее сообщение, после нажатия на кнопку \"SAVE\"  \"fill empty fields\" ")
     public void aWarningMessageShouldAppearIfTheFieldsAreEmptyWhenYouClickOnTheSaveButton() {
+        controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
         creatingNewsScreenStep.clickingOnTheSaveNewsButton();
         creatingNewsScreenStep.checkingTheFillEmptyFields(ActivityTestRule.getActivity(), messageEmpty);
     }
@@ -205,6 +205,7 @@ public class CreatingNewsScreenTest {
     public void aWarningMessageShouldAppearWhenFillingInTheCategoryField() {
         String text = textSymbol(5);
 
+        controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
         creatingNewsScreenStep.fillingInTheCategoryField(text);
         creatingNewsScreenStep.clickingOnTheSaveNewsButton();
         creatingNewsScreenStep.checkingTheSavingFailedTryAgainLater(ActivityTestRule.getActivity(), messageSaving);
@@ -216,6 +217,7 @@ public class CreatingNewsScreenTest {
     public void theFieldsMustBeFilledInWithEnglishLetters() {
         String validLanguageText = "hello world";
 
+        controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
         creatingNewsScreenStep.validLanguage(validLanguageText);
         creatingNewsScreenStep.checkingForThePresenceOfWordsFromEnglishLettersInTheFields(validLanguageText);
     }
@@ -226,6 +228,7 @@ public class CreatingNewsScreenTest {
     public void fieldsShouldNotBeFilledInWithRussianLetters() {
         String invalidLanguageText = "привет мир";
 
+        controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
         try {
             creatingNewsScreenStep.invalidLanguage(invalidLanguageText);
         } catch (RuntimeException ignored) {

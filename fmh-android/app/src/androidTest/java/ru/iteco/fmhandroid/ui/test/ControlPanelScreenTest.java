@@ -78,11 +78,13 @@ public class ControlPanelScreenTest {
             " должна оказаться на самом верху  новостной ленты), на более раннюю (по убыванию, самая раняя дата должна " +
             "оказаться в самом низу новостной ленты) и наоборот")
     public void newsBlocksShouldBeSwapped() {
-        String firstNews = newsScreenStep.news();
+        int position = 0;
+
+        String firstNews = controlPanelScreenStep.nameNewsPosition(position);
         controlPanelScreenStep.changeOfSorting();
-        String lastNews = newsScreenStep.news();
+        String lastNews = controlPanelScreenStep.nameNewsPosition(position);
         controlPanelScreenStep.changeOfSorting();
-        String firstNewsAgain = newsScreenStep.news();
+        String firstNewsAgain = controlPanelScreenStep.nameNewsPosition(position);
         controlPanelScreenStep.checkingTheNewsBeforeSortingAndAfter(firstNews, firstNewsAgain, lastNews);
     }
 

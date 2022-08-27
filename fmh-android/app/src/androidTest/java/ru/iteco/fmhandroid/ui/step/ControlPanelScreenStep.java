@@ -259,6 +259,10 @@ public class ControlPanelScreenStep {
         return  Helper.Text.getText(onView(withIndex(withId(R.id.news_item_title_text_view), 0)));
     }
 
+    public String nameNewsPosition(int position) {
+        return  Helper.Text.getText(onView(withIndex(withId(R.id.news_item_title_text_view), position)));
+    }
+
     public String publicationDateNews() {
         return Helper.Text.getText(onView(withIndex(withId(R.id.news_item_publication_date_text_view), 0)));
     }
