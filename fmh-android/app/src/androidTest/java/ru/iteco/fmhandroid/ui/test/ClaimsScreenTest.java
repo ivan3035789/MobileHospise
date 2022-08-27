@@ -290,6 +290,7 @@ public class ClaimsScreenTest {
         claimsScreenStep.pressingOnTheButtonToGoToTheFilteringScreen();
         filteringWindowScreenStep.clickingOnTheCheckBoxInProgress();
         filteringWindowScreenStep.clickingOnTheOkButton();
+
         claimsScreenStep.clickingOnRandomlySelectedClaim(position);
         claimsScreenStep.checkingTheOpenStatus();
         Helper.Swipes.swipeToBottom();
@@ -298,6 +299,7 @@ public class ClaimsScreenTest {
         claimsScreenStep.clickingOnTakeToWork();
         Helper.Swipes.swipeToTop();
         claimsScreenStep.checkingTheInProgressStatus();
+        Helper.Swipes.swipeToBottom();
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         claimsScreenStep.clickingOnReset();
         claimsScreenStep.fillingInTheCommentField(text);
@@ -308,6 +310,7 @@ public class ClaimsScreenTest {
     }
 
 //    @Ignore("TODO")
+    @Ignore
     @Test
     @DisplayName("The status should change to cancelled")
     @Description("В этом тест кейсе мы проверяем смену статуса с Open на Canceled")

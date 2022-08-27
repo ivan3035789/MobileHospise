@@ -2,6 +2,7 @@ package ru.iteco.fmhandroid.ui.step;
 
 import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.action.ViewActions.click;
+import static androidx.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static androidx.test.espresso.action.ViewActions.scrollTo;
 import static androidx.test.espresso.action.ViewActions.typeText;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
@@ -14,7 +15,6 @@ import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.hamcrest.Matchers.allOf;
 import static org.hamcrest.Matchers.not;
 import static org.junit.Assert.assertNotEquals;
-import static ru.iteco.fmhandroid.ui.data.Helper.Rand.randomClaims;
 import static ru.iteco.fmhandroid.ui.data.Helper.Search.searchForAnUncreatedClaim;
 import static ru.iteco.fmhandroid.ui.data.Helper.Search.searchForAnUncreatedComment;
 import static ru.iteco.fmhandroid.ui.data.Helper.withIndex;
@@ -25,11 +25,10 @@ import androidx.test.espresso.ViewInteraction;
 
 import org.junit.Assert;
 
-import ru.iteco.fmhandroid.ui.data.Helper;
-import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreenElements;
-import ru.iteco.fmhandroid.ui.screenElements.FilteringWindowScreenElements;
 import io.qameta.allure.kotlin.Allure;
 import ru.iteco.fmhandroid.R;
+import ru.iteco.fmhandroid.ui.data.Helper;
+import ru.iteco.fmhandroid.ui.screenElements.ClaimsScreenElements;
 
 public class ClaimsScreenStep {
 
@@ -168,7 +167,7 @@ public class ClaimsScreenStep {
 
     public void fillingInTheCommentField(String text) {
         Allure.step("Заполнение поля комментария");
-        claimsScreenElements.getCommentField().perform(typeText(text));
+        claimsScreenElements.getCommentField().perform(typeText(text)).perform(closeSoftKeyboard());
         SystemClock.sleep(3000);
     }
 
