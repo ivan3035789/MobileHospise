@@ -111,15 +111,31 @@ public class EditingClaimsScreenStep {
 
     public void invalidLanguage(String title) {
         Allure.step("Ввод невалидного языка");
-        editingClaimsScreenElements.getTitleClaimField().perform(replaceText(""));
-        editingClaimsScreenElements.getExecutorClaimField().perform(replaceText(""));
-        editingClaimsScreenElements.getDescriptionClaimField().perform(replaceText(""));
+        editingClaimsScreenElements.getTitleClaimField().perform(replaceText("")).perform(closeSoftKeyboard());
         SystemClock.sleep(2000);
-        editingClaimsScreenElements.getTitleClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
+        editingClaimsScreenElements.getExecutorClaimField().perform(replaceText("")).perform(closeSoftKeyboard());
         SystemClock.sleep(2000);
-        editingClaimsScreenElements.getExecutorClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
+        editingClaimsScreenElements.getDescriptionClaimField().perform(replaceText("")).perform(closeSoftKeyboard());
         SystemClock.sleep(2000);
-        editingClaimsScreenElements.getDescriptionClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
+        try {
+            editingClaimsScreenElements.getTitleClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
+            SystemClock.sleep(2000);
+        } catch (RuntimeException e) {
+
+        }
+        SystemClock.sleep(2000);
+        try {
+            editingClaimsScreenElements.getExecutorClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
+            SystemClock.sleep(2000);
+        } catch (RuntimeException e) {
+
+        }
+        SystemClock.sleep(2000);
+        try {
+            editingClaimsScreenElements.getDescriptionClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
+        } catch (RuntimeException e) {
+
+        }
         SystemClock.sleep(3000);
     }
 

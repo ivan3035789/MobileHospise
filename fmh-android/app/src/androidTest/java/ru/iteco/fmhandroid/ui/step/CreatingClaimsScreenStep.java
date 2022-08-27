@@ -81,22 +81,29 @@ public class CreatingClaimsScreenStep {
 
     public void invalidLanguage(String title) {
         Allure.step("Ввод невалидного языка");
-        creatingClaimsScreenElements.getTitleClaimField().perform(typeText(title));
-        creatingClaimsScreenElements.getExecutorClaimField().perform(typeText(title));
-        creatingClaimsScreenElements.getDescriptionClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
+        try {
+            creatingClaimsScreenElements.getTitleClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
+        } catch (RuntimeException e) {
+
+        }
+        try {
+            creatingClaimsScreenElements.getExecutorClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
+        } catch (RuntimeException e) {
+
+        }
+        try {
+            creatingClaimsScreenElements.getDescriptionClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
+        } catch (RuntimeException e) {
+
+        }
         SystemClock.sleep(3000);
     }
 
     public void validLanguage(String title) {
         Allure.step("Ввод валидного языка");
-        try {
             creatingClaimsScreenElements.getTitleClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
-        } catch (RuntimeException ignore) {
-
-        } finally {
             creatingClaimsScreenElements.getExecutorClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
             creatingClaimsScreenElements.getDescriptionClaimField().perform(typeText(title)).perform(closeSoftKeyboard());
-        }
         SystemClock.sleep(3000);
     }
 

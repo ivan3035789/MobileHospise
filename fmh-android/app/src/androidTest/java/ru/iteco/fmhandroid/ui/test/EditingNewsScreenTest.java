@@ -45,7 +45,7 @@ public class EditingNewsScreenTest {
     EditingNewsScreenStep editingNewsScreenStep = new EditingNewsScreenStep();
     WatchScreenStep watchScreenStep = new WatchScreenStep();
 
-    String messageEmpty = "fill empty fields";
+    String messageEmpty = "Fill empty fields";
     String messageSaving = "Saving failed. Try again later.";
 
     @Before
@@ -251,7 +251,7 @@ public class EditingNewsScreenTest {
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
         try {
             editingNewsScreenStep.invalidLanguage(invalidLanguageText);
-        } catch (RuntimeException expected) {
+        } catch (RuntimeException e) {
 
         } finally {
             editingNewsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();

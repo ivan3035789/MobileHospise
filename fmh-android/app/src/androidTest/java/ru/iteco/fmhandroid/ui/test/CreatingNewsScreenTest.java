@@ -70,7 +70,6 @@ public class CreatingNewsScreenTest {
     @Description("В этом тест кейсе мы проверяем название экрана Creating News")
     public void theScreenShouldHaveName() {
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
-        creatingNewsScreenStep.clickingOnTheConfirmationButtonToExitTheNewsCreation();
         creatingNewsScreenStep.checkingTheNameOfTheCreatingNewsScreen();
     }
 
@@ -162,7 +161,6 @@ public class CreatingNewsScreenTest {
         String text = textSymbol(5);
         String validCategory = randomCategory();
 
-//        controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
         creatingNewsScreenStep.choosingNews(position);
 
         String nameNewsItWas = creatingNewsScreenStep.nameNews();
@@ -231,7 +229,7 @@ public class CreatingNewsScreenTest {
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
         try {
             creatingNewsScreenStep.invalidLanguage(invalidLanguageText);
-        } catch (RuntimeException ignored) {
+        } catch (RuntimeException e) {
 
         } finally {
             creatingNewsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();

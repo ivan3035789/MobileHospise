@@ -308,7 +308,6 @@ public class ClaimsScreenTest {
     }
 
 //    @Ignore("TODO")
-    @Ignore
     @Test
     @DisplayName("The status should change to cancelled")
     @Description("В этом тест кейсе мы проверяем смену статуса с Open на Canceled")

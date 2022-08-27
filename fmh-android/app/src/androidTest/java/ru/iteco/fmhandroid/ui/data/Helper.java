@@ -382,32 +382,6 @@ public class Helper {
             long eventTime = SystemClock.uptimeMillis();
             Instrumentation inst = getInstrumentation();
 
-//            MotionEvent event = MotionEvent.obtain(downTime, eventTime, MotionEvent.ACTION_DOWN, 500, start, 0);
-//            inst.sendPointerSync(event);
-//            eventTime = SystemClock.uptimeMillis() + delay;
-//            event = MotionEvent.obtain(downTime, eventTime, MotionEvent.ACTION_MOVE, 500, end, 0);
-//            inst.sendPointerSync(event);
-//            event = MotionEvent.obtain(downTime, eventTime, MotionEvent.ACTION_UP, 500, end, 0);
-//            inst.sendPointerSync(event);
-//            SystemClock.sleep(2000);
-//        }
-
-//        public static void swipeToBottom() {
-//            swiper(1000, 100, 0);
-//        }
-//
-//        public static void scrollSlowlyDown() {
-//            swiper(775, 100, 100);
-//        }
-//
-//        public static void swipeToTop() {
-//            swiper(100, 1000, 0);
-//        }
-//
-//        public static void scrollSlowlyUp() {
-//            swiper(100, 775, 100);
-//        }
-
             MotionEvent event = MotionEvent.obtain(downTime, eventTime, MotionEvent.ACTION_DOWN, 500, start, 0);
             inst.sendPointerSync(event);
             eventTime = SystemClock.uptimeMillis() + delay;
@@ -417,22 +391,18 @@ public class Helper {
             inst.sendPointerSync(event);
             SystemClock.sleep(2000);
         }
-        // This swipes all the way to the bottom of the screen
         public static void swipeToBottom(){
             swiper(1000, 100, 0);
         }
 
-        // This scrolls down one page at a time
         public static void scrollSlowlyDown(){
             swiper(775, 100, 100);
         }
 
-        // This swipes to the top
         public static void swipeToTop(){
             swiper(1000, 100, 0);
         }
 
-        // This scrolls up one page at a time
         public static void scrollSlowlyUp(){
             swiper(100, 775, 100);
         }

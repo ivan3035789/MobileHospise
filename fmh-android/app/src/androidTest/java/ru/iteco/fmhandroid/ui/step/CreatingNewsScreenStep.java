@@ -85,8 +85,8 @@ public class CreatingNewsScreenStep {
 
     public void validLanguage(String title) {
         Allure.step("Ввод валидного языка");
-        creatingNewsScreenElements.getTitleFieldNews().perform(typeText(title));
-        creatingNewsScreenElements.getCategoryFieldNews().perform(typeText(title));
+        creatingNewsScreenElements.getCategoryFieldNews().perform(typeText(title)).perform(closeSoftKeyboard());
+        creatingNewsScreenElements.getTitleFieldNews().perform(typeText(title)).perform(closeSoftKeyboard());
         creatingNewsScreenElements.getDescriptionFieldNews().perform(typeText(title)).perform(closeSoftKeyboard());
         SystemClock.sleep(3000);
     }
@@ -95,12 +95,11 @@ public class CreatingNewsScreenStep {
         Allure.step("Ввод невалидного языка");
         try {
             creatingNewsScreenElements.getTitleFieldNews().perform(typeText(title));
-        } catch (RuntimeException ignore) {
+        } catch (RuntimeException e) {
 
         } finally {
-            closeSoftKeyboard();
+            creatingNewsScreenElements.getDescriptionFieldNews().perform(typeText(title));
         }
-        creatingNewsScreenElements.getDescriptionFieldNews().perform(typeText(title)).perform(closeSoftKeyboard());
         SystemClock.sleep(3000);
     }
 

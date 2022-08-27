@@ -112,10 +112,20 @@ public class EditingNewsScreenStep {
     public void invalidLanguage(String title) {
         Allure.step("Ввод невалидного языка");
         editingNewsScreenElements.getTitleTextNewsField().perform(replaceText("")).perform(closeSoftKeyboard());
+        SystemClock.sleep(2000);
         editingNewsScreenElements.getDescriptionField().perform(replaceText("")).perform(closeSoftKeyboard());
-        SystemClock.sleep(3000);
-        editingNewsScreenElements.getTitleTextNewsField().perform(typeText(title)).perform(closeSoftKeyboard());
-        editingNewsScreenElements.getDescriptionField().perform(typeText(title)).perform(closeSoftKeyboard());
+        SystemClock.sleep(2000);
+        try {
+            editingNewsScreenElements.getTitleTextNewsField().perform(typeText(title)).perform(closeSoftKeyboard());
+        } catch (RuntimeException e) {
+
+        }
+        SystemClock.sleep(2000);
+        try {
+            editingNewsScreenElements.getDescriptionField().perform(typeText(title)).perform(closeSoftKeyboard());
+        } catch (RuntimeException e) {
+
+        }
         SystemClock.sleep(3000);
     }
 
