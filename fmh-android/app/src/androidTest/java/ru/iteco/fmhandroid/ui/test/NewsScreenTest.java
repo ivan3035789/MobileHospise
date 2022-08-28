@@ -70,7 +70,6 @@ public class NewsScreenTest {
             " оказаться в самом низу новостной ленты) и наоборот ")
     public void newsBlocksShouldBeSwapped() {
         newsScreenStep.clickingOnTheButtonExpandTheNewsFeed(position);
-
         String firstNews = newsScreenStep.takeTheNameOfTheFirstNews(position);
         String firstNewsDescription = newsScreenStep.takeTheDescriptionOfTheFirstNewsBeforeSorting(position);
 
@@ -81,10 +80,10 @@ public class NewsScreenTest {
         String lastNewsDescription = newsScreenStep.takeTheDescriptionOfTheFirstNewsAfterTheFirstSorting(position);
 
         newsScreenStep.clickingOnTheNewsSortingChangeButton();
-
-        newsScreenStep.clickingOnTheButtonExpandTheNewsFeed(position);
+        
         String firstNewsAgain = newsScreenStep.takeTheNameOfTheFirstNewsAfterTwoSorts(position);
         String firstAgainNewsDescription = newsScreenStep.takeTheDescriptionOfTheFirstNewsAfterTwoSorts(position);
+        newsScreenStep.clickingOnTheButtonExpandTheNewsFeed(position);
 
         newsScreenStep.reconciliationOfNewsTitlesAndDescriptionsAfterSorting(
                 firstNews, firstNewsDescription, lastNews, lastNewsDescription, firstNewsAgain, firstAgainNewsDescription);

@@ -136,19 +136,33 @@ public class NewsScreenStep {
         SystemClock.sleep(3000);
     }
 
-    public void reconciliationOfNewsTitlesAndDescriptionsAfterSorting(
-            String firstNews, String firstNewsDescription, String lastNews, String lastNewsDescription, String firstNewsAgain,
-            String firstAgainNewsDescription) {
-        Allure.step("Сверка названий и описаний новостей после двух сортировок");
-        assertEquals(firstNews, firstNewsAgain);
-        assertEquals(firstNewsDescription, firstAgainNewsDescription);
+//    public void reconciliationOfNewsTitlesAndDescriptionsAfterSorting(
+//            String firstNews, String firstNewsDescription, String lastNews, String lastNewsDescription, String firstNewsAgain,
+//            String firstAgainNewsDescription) {
+//        Allure.step("Сверка названий и описаний новостей после двух сортировок");
+//        assertEquals(firstNews, firstNewsAgain);
+//        assertEquals(firstNewsDescription, firstAgainNewsDescription);
+//
+//        if (firstNews.equals(lastNews)) {
+//            assertEquals(firstNews, lastNews);
+//        } else {
+//            assertNotEquals(firstNews, lastNews);
+//        }
+//        assertNotEquals(firstNewsDescription, lastNewsDescription);
+//        SystemClock.sleep(3000);
+//    }
 
+    public void reconciliationOfNewsTitlesAndDescriptionsAfterSorting(
+    String firstNews, String firstDescription, String lastDescription,
+    String firstNewsAgain, String lastNews, String firstDescriptionAgain) {
+        Allure.step("Проверка новостей до сортировки и после");
         if (firstNews.equals(lastNews)) {
-            assertEquals(firstNews, lastNews);
+            assertEquals(firstDescription, firstDescriptionAgain);
+            assertNotEquals(firstDescription, lastDescription);
         } else {
+            assertEquals(firstNews, firstNewsAgain);
             assertNotEquals(firstNews, lastNews);
         }
-        assertNotEquals(firstNewsDescription, lastNewsDescription);
         SystemClock.sleep(3000);
     }
 

@@ -44,6 +44,8 @@ public class ControlPanelScreenTest {
     FilterNewsScreenStep filterNewsScreenStep = new FilterNewsScreenStep();
     EditingNewsScreenStep editingNewsScreenStep = new EditingNewsScreenStep();
 
+    int position = randomNews(0);
+
     @Before
     public void logoutCheck() {
         SystemClock.sleep(8000);
@@ -76,14 +78,24 @@ public class ControlPanelScreenTest {
             " должна оказаться на самом верху  новостной ленты), на более раннюю (по убыванию, самая раняя дата должна " +
             "оказаться в самом низу новостной ленты) и наоборот")
     public void newsBlocksShouldBeSwapped() {
-        int position = 0;
-
+        controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
         String firstNews = controlPanelScreenStep.nameNewsPosition(position);
+        String firstDescription = controlPanelScreenStep.descriptionNewsPosition(position);
+
         controlPanelScreenStep.changeOfSorting();
+
+        controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
         String lastNews = controlPanelScreenStep.nameNewsPosition(position);
+        String lastDescription = controlPanelScreenStep.descriptionNewsPosition(position);
+
         controlPanelScreenStep.changeOfSorting();
+
         String firstNewsAgain = controlPanelScreenStep.nameNewsPosition(position);
-        controlPanelScreenStep.checkingTheNewsBeforeSortingAndAfter(firstNews, firstNewsAgain, lastNews);
+        String firstDescriptionAgain = controlPanelScreenStep.descriptionNewsPosition(position);
+        controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
+
+        controlPanelScreenStep.checkingTheNewsBeforeSortingAndAfter(
+                firstNews, firstDescription, lastDescription, firstNewsAgain, lastNews, firstDescriptionAgain);
     }
 
     @Test
@@ -109,7 +121,6 @@ public class ControlPanelScreenTest {
             "These changes cannot be reversed in the future.\" при нажатии на кнопку  \"ок\"  происходит удаление" +
             " новостного блока ")
     public void mustDeleteTheNews() {
-        int position = randomNews(0);
         String category = randomCategory();
         String text = Helper.Text.textSymbol(5);
 
@@ -174,8 +185,6 @@ public class ControlPanelScreenTest {
     @DisplayName("A description should appear in the news block in the Control panel")
     @Description(" В этом тест кейсе мы проверяем, что при нажатии на кнопку \"стрелка вниз\" или нажатии на новость, появляется описание")
     public void aDescriptionShouldAppearInTheNewsBlockInTheControlPanel() {
-        int position = randomNews(0);
-
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
         controlPanelScreenStep.checkingTheVisibilityOfTheNewsDescription();
 

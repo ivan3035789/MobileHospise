@@ -195,10 +195,17 @@ public class ControlPanelScreenStep {
         SystemClock.sleep(3000);
     }
 
-    public void checkingTheNewsBeforeSortingAndAfter(String firstNews, String firstNewsAgain, String lastNews) {
+    public void checkingTheNewsBeforeSortingAndAfter(
+            String firstNews, String firstDescription, String lastDescription,
+            String firstNewsAgain, String lastNews, String firstDescriptionAgain) {
         Allure.step("Проверка новостей до сортировки и после");
-        assertEquals(firstNews, firstNewsAgain);
-        assertNotEquals(firstNews, lastNews);
+        if (firstNews.equals(lastNews)) {
+            assertEquals(firstDescription, firstDescriptionAgain);
+            assertNotEquals(firstDescription, lastDescription);
+        } else {
+            assertEquals(firstNews, firstNewsAgain);
+            assertNotEquals(firstNews, lastNews);
+        }
         SystemClock.sleep(3000);
     }
 
