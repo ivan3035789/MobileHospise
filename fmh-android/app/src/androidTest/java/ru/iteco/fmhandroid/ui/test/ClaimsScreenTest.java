@@ -5,6 +5,7 @@ import static ru.iteco.fmhandroid.ui.data.Helper.Text.textSymbol;
 import static ru.iteco.fmhandroid.ui.data.Helper.authInfo;
 import static ru.iteco.fmhandroid.ui.data.Helper.createClaim;
 
+import android.annotation.SuppressLint;
 import android.os.SystemClock;
 
 import androidx.test.espresso.NoMatchingViewException;
@@ -281,7 +282,8 @@ public class ClaimsScreenTest {
         claimsScreenStep.checkingTheExecutedStatus();
     }
 
-    @Ignore
+    @SuppressLint("IgnoreWithoutReason")
+    @Ignore("TODO")
     @Test
     @DisplayName("The status should be reset")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на \"Throw off\" сбрасывается статус с \"In progress\" на \"Open\"")
@@ -299,7 +301,7 @@ public class ClaimsScreenTest {
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
         claimsScreenStep.clickingOnTakeToWork();
 
-        Helper.Swipes.swipeToTop();
+
         claimsScreenStep.checkingTheInProgressStatus();
         Helper.Swipes.swipeToBottom();
         claimsScreenStep.clickingOnTheButtonWithTheNotepadIconWithGear();
@@ -311,8 +313,8 @@ public class ClaimsScreenTest {
         claimsScreenStep.checkingTheOpenStatus();
     }
 
-//    @Ignore("TODO")
-    @Ignore
+    @SuppressLint("IgnoreWithoutReason")
+    @Ignore("the button is not called periodically")
     @Test
     @DisplayName("The status should change to cancelled")
     @Description("В этом тест кейсе мы проверяем смену статуса с Open на Canceled")

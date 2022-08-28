@@ -1,7 +1,6 @@
 package ru.iteco.fmhandroid.ui.test;
 
 import static ru.iteco.fmhandroid.ui.data.Helper.Rand.randomCategory;
-import static ru.iteco.fmhandroid.ui.data.Helper.Rand.randomClaims;
 import static ru.iteco.fmhandroid.ui.data.Helper.Rand.randomNews;
 import static ru.iteco.fmhandroid.ui.data.Helper.Text.textSymbol;
 import static ru.iteco.fmhandroid.ui.data.Helper.authInfo;
@@ -47,6 +46,7 @@ public class EditingNewsScreenTest {
 
     String messageEmpty = "Fill empty fields";
     String messageSaving = "Saving failed. Try again later.";
+    int position = randomNews(1);
 
     @Before
     public void logoutCheck() {
@@ -136,7 +136,6 @@ public class EditingNewsScreenTest {
     public void theNewsShouldBeEdited() {
         String text = textSymbol(5);
         String Category = randomCategory();
-        int position = randomNews( 1);
 
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
 
@@ -176,7 +175,6 @@ public class EditingNewsScreenTest {
     public void cancelingNewsEditing() {
         String text = textSymbol(5);
         String Category = randomCategory();
-        int position = randomClaims( 1);
 
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
 
@@ -249,13 +247,8 @@ public class EditingNewsScreenTest {
         String invalidLanguageText = "Привет мир";
 
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsEditingScreen();
-//        try {
-            editingNewsScreenStep.invalidLanguage(invalidLanguageText);
-//        } catch (RuntimeException e) {
-
-//        } finally {
-            editingNewsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();
-//        }
+        editingNewsScreenStep.invalidLanguage(invalidLanguageText);
+        editingNewsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();
     }
 
     @Test
@@ -272,7 +265,6 @@ public class EditingNewsScreenTest {
     @DisplayName("The status in the news block in the Control panel should change")
     @Description("В этом тест кейсе мы проверяем что при переключении чек бокса со статусм Not Active на Active в новостной ленте статус меняется с Not Active на Active")
     public void theStatusInTheNewsBlockInTheControlPanelShouldChange() {
-        int position = randomClaims(1);
         Helper.setUpStatusNewsNotActive(position);
 
         controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);

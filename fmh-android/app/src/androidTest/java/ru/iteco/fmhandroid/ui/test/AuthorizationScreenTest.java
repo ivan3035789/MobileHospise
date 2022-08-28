@@ -77,7 +77,7 @@ public class AuthorizationScreenTest {
     @DisplayName("Fields should not be filled in with Russian letters")
     @Description("В этом тест кейсе мы проверяем, что поля незаполняются нелатинскими буквами")
     public void fieldsShouldNotBeFilledInWithRussianLetters() {
-        String invalidLoginPasswordText = "привет мир";
+        String invalidLoginPasswordText = "привет мир";  // убрать try, catch, finally в метод
 
         try {
             authorizationScreenStep.invalidLanguage(invalidLoginPasswordText);

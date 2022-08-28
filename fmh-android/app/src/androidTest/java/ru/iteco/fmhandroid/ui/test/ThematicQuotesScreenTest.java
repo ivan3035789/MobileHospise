@@ -35,6 +35,8 @@ public class ThematicQuotesScreenTest {
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
     ThematicQuotesScreenStep thematicQuotesScreenStep = new ThematicQuotesScreenStep();
 
+    int position = random(0);
+
     @Before
     public void logoutCheck() {
         SystemClock.sleep(8000);
@@ -63,8 +65,6 @@ public class ThematicQuotesScreenTest {
     @DisplayName("The description should open")
     @Description("В этом тест кейсе мы проверяем что при нажатии на кнопку ввиде галочки разворачивается описание цитаты")
     public void theDescriptionShouldOpen() {
-        int position = random(0);
-
         thematicQuotesScreenStep.checkingTheScreenName();
         thematicQuotesScreenStep.quoteSelection(position);
 

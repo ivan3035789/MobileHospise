@@ -3,10 +3,8 @@ package ru.iteco.fmhandroid.ui.step;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 
-import android.os.SystemClock;
-
-import ru.iteco.fmhandroid.ui.screenElements.ApplicationLoadingScreenElements;
 import io.qameta.allure.kotlin.Allure;
+import ru.iteco.fmhandroid.ui.screenElements.ApplicationLoadingScreenElements;
 
 public class ApplicationLoadingScreenStep {
 

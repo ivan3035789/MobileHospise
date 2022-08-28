@@ -44,6 +44,7 @@ public class CreatingNewsScreenTest {
 
     String messageSaving = "Saving failed. Try again later.";
     String messageEmpty = "Fill empty fields";
+    int position = 0;
 
     @Before
     public void logoutCheck() {
@@ -56,7 +57,6 @@ public class CreatingNewsScreenTest {
             mainScreenStep.clickingOnTheActionMenuButton();
             mainScreenStep.clickingOnTheNewsName();
             newsScreenStep.clickingOnTheButtonToGoToTheControlPanel();
-//            controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
         }
     }
 
@@ -122,7 +122,6 @@ public class CreatingNewsScreenTest {
     @DisplayName("News should be created")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"SAVE\" после заполнения полей \"Title, Time, Description, Publicftion date\" валидными значениями, должна создаться новость (появиться в ленте новостей на странице \"News, Main\", а так же в \"Control panel\"")
     public void newsShouldBeCreated() {
-        int position = 0;
         String text = textSymbol(5);
         String validCategory = randomCategory();
 
@@ -157,7 +156,6 @@ public class CreatingNewsScreenTest {
     @DisplayName("Canceling news creation")
     @Description("В этом тест кейсе мы проверяем отмену создания новости при нажатии на кнопку \"CANCEL\"")
     public void cancelingNewsCreation() {
-        int position = 0;
         String text = textSymbol(5);
         String validCategory = randomCategory();
 
@@ -227,12 +225,7 @@ public class CreatingNewsScreenTest {
         String invalidLanguageText = "привет мир";
 
         controlPanelScreenStep.clickingOnTheButtonToGoToTheNewsCreationScreen();
-//        try {
-            creatingNewsScreenStep.invalidLanguage(invalidLanguageText);
-//        } catch (RuntimeException e) {
-//
-//        } finally {
-            creatingNewsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();
-//        }
+        creatingNewsScreenStep.invalidLanguage(invalidLanguageText);
+        creatingNewsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();
     }
 }

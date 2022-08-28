@@ -60,8 +60,6 @@ public class ЕditingClaimsScreenTest {
             filteringWindowScreenStep.clickingOnTheOkButton();
             claimsScreenStep.clickingOnRandomlySelectedClaim(position);
             claimsScreenStep.checkingTheOpenStatus();
-//            editingClaimsScreenStep.goToTheClaimCardWithTheOpenStatus(position);
-//            claimsScreenStep.checkingTheOpenStatus();
         }
     }
 
@@ -229,13 +227,8 @@ public class ЕditingClaimsScreenTest {
 
         Helper.Swipes.swipeToBottom();
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
-//        try {
-            editingClaimsScreenStep.invalidLanguage(invalidLanguageText);
-//        } catch (RuntimeException e) {
-//
-//        } finally {
-            editingClaimsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();
-//        }
+        editingClaimsScreenStep.invalidLanguage(invalidLanguageText);
+        editingClaimsScreenStep.checkingForTheAbsenceOfWordsFromRussianLettersInTheFields();
     }
 
     @Test
@@ -263,7 +256,6 @@ public class ЕditingClaimsScreenTest {
         Helper.Swipes.swipeToBottom();
         claimsScreenStep.clickingOnTheNotepadWithPencilButton();
 
-//        String executorClaimFieldInputText = editingClaimsScreenStep.executorClaim();
 
         editingClaimsScreenStep.fillingInTheExecutorField(text);
         String executorClaimFieldInputText = editingClaimsScreenStep.executorClaim();

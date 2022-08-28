@@ -35,6 +35,8 @@ public class NewsScreenTest {
     AuthorizationScreenStep authorizationScreenStep = new AuthorizationScreenStep();
     ControlPanelScreenStep controlPanelScreenStep = new ControlPanelScreenStep();
 
+    int position = 0;
+
     @Before
     public void logoutCheck() {
         SystemClock.sleep(8000);
@@ -67,8 +69,6 @@ public class NewsScreenTest {
             "должна оказаться на самом верху  новостной ленты), на более раннюю (по убыванию, самая раняя дата должна" +
             " оказаться в самом низу новостной ленты) и наоборот ")
     public void newsBlocksShouldBeSwapped() {
-        int position = 0;
-
         newsScreenStep.clickingOnTheButtonExpandTheNewsFeed(position);
 
         String firstNews = newsScreenStep.takeTheNameOfTheFirstNews(position);
@@ -110,8 +110,6 @@ public class NewsScreenTest {
     @DisplayName("a description should appear at the news")
     @Description("В этом тест кейсе мы проверяем, что при нажатии на кнопку \"свернуть, развернуть\" в новостном блоке, разворачивается, сварачивается (появляется) описание новости")
     public void aDescriptionShouldAppearAtTheNews() {
-        int position = 0;
-
         newsScreenStep.clickingOnTheExpandNewsDescriptionButton(position);
         newsScreenStep.checkingTheTextOfTheNewsDescriptionIsVisible(position);
     }

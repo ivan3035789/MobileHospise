@@ -74,7 +74,6 @@ import ru.iteco.fmhandroid.ui.screenElements.EditingNewsScreenElements;
 import ru.iteco.fmhandroid.ui.screenElements.FilteringWindowScreenElements;
 import ru.iteco.fmhandroid.ui.screenElements.MainScreenElements;
 import ru.iteco.fmhandroid.ui.screenElements.WatchScreenElements;
-import ru.iteco.fmhandroid.ui.step.ClaimsScreenStep;
 import ru.iteco.fmhandroid.ui.step.ControlPanelScreenStep;
 import ru.iteco.fmhandroid.ui.step.MainScreenStep;
 import ru.iteco.fmhandroid.ui.step.NewsScreenStep;
@@ -416,6 +415,11 @@ public class Helper {
             swiper(100, 775, 100);
         }
 
+    }
+
+    public static ViewAction swipeUpSlow() {
+        return new GeneralSwipeAction(Swipe.SLOW, GeneralLocation.BOTTOM_CENTER,
+                GeneralLocation.TOP_CENTER, Press.FINGER);
     }
 
 

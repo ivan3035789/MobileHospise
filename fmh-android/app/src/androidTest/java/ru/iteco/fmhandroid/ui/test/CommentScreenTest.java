@@ -83,7 +83,7 @@ public class CommentScreenTest {
     @Description("В этом тест кейсе мы проверяем, что поле \"comment\", не заполняется русскими буквами")
     public void fieldsShouldNotBeFilledInWithRussianLetters() {
 
-        try {
+        try {    // убрать try, catch, finally в метод
             commentScreenStep.enteringAnIncorrectLanguageTextComment(invalidLanguageTextComment);
         } catch (RuntimeException e) {
 
