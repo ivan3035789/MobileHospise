@@ -439,7 +439,7 @@ public class Helper {
             editingNewsScreenElements.getSaveButton().perform(click());
         } else {
             editingNewsScreenElements.getCancelButton().perform(click());
-            editingNewsScreenElements.getOkButton().perform(click());
+            editingNewsScreenElements.getOkButton().perform(scrollTo(), click());
         }
         SystemClock.sleep(2000);
     }
