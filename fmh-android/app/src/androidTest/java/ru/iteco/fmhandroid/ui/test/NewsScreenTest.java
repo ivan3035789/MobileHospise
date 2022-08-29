@@ -1,6 +1,7 @@
 package ru.iteco.fmhandroid.ui.test;
 
 import static ru.iteco.fmhandroid.ui.data.Helper.authInfo;
+import static ru.iteco.fmhandroid.ui.data.Helper.deletingNewsUpToTheNumberOfTenControlPanelScreen;
 
 import android.os.SystemClock;
 
@@ -45,6 +46,7 @@ public class NewsScreenTest {
         } catch (NoMatchingViewException e) {
             authorizationScreenStep.validLoginPassword(authInfo());
         } finally {
+            deletingNewsUpToTheNumberOfTenControlPanelScreen(6);
             mainScreenStep.clickingOnTheActionMenuButton();
             mainScreenStep.clickingOnTheNewsName();
         }
