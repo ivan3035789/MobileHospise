@@ -490,9 +490,9 @@ public class Helper {
                         notFound = false;
                     } else {
                         notFound = true;
-                        controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
+//                        controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
                         position += 1;
-                        controlPanelScreenElements.getRecyclerView().perform(scrollToPosition(position), click());
+//                        controlPanelScreenElements.getRecyclerView().perform(scrollToPosition(position), click());
                         SystemClock.sleep(2000);
                     }
                 } catch (PerformException e) {
