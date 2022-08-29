@@ -93,13 +93,8 @@ public class EditingClaimsScreenStep {
 
     public void clickingOnTheExecutorField() {
         Allure.step("Нажатие на поле Executor");
-        editingClaimsScreenElements.getExecutorClaimField().perform(click(), closeSoftKeyboard());
-        SystemClock.sleep(3000);
-    }
-
-    public void clickingOnTheExecutorFieldRandom() {
-        Allure.step("Нажатие на поле Executor");
         editingClaimsScreenElements.getExecutorClaimField().perform(click());
+        editingClaimsScreenElements.getExecutorClaimField().perform(closeSoftKeyboard());
         SystemClock.sleep(3000);
     }
 
