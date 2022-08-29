@@ -313,6 +313,16 @@ public class ClaimsScreenTest {
         claimsScreenStep.checkingTheOpenStatus();
     }
 
+    @Test
+    @DisplayName("The status should be reset")
+    @Description("В этом тест кейсе мы проверяем, что при нажатии на \"Throw off\" сбрасывается статус с \"In progress\" на \"Open\"")
+    public void statusShouldBeReset() {
+        claimsScreenStep.clickingOnRandomlySelectedClaim(position);
+        Helper.Swipes.swipeToBottom();
+
+        Helper.Swipes.swipeToBottom();
+    }
+
     @SuppressLint("IgnoreWithoutReason")
     @Ignore("the button is not called periodically")
     @Test

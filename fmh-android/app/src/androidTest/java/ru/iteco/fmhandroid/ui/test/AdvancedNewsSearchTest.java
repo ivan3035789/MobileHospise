@@ -97,7 +97,8 @@ public class AdvancedNewsSearchTest {
         String category = randomCategory();
         String dateStartInput = generatorDate2();
         String dateEndInput = generatorDate();
-        String text = Helper.Text.textSymbol(5);
+        String text1 = Helper.Text.textSymbol(5);
+        String text = text1 + " " + text1;
         createNewsForCategory(text, category);
 
         controlPanelScreenStep.pressingTheButtonToGoToTheAdvancedNewsSearchScreen();

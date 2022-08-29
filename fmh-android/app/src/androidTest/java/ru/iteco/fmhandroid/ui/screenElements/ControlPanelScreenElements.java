@@ -54,11 +54,13 @@ public class ControlPanelScreenElements {
                             3),
                     isDisplayed()));
 
-    private final ViewInteraction recyclerView = onView(
-            allOf(withId(R.id.news_list_recycler_view),
-                    childAtPosition(
-                            withClassName(is("android.widget.LinearLayout")), withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
-                            0)));
+//    private final ViewInteraction recyclerView = onView(
+//            allOf(withId(R.id.news_list_recycler_view),
+//                    childAtPosition(
+//                            withClassName(is("android.widget.LinearLayout")), withClassName(is("androidx.constraintlayout.widget.ConstraintLayout")),
+//                            0)));
+
+    private final ViewInteraction recyclerView = onView(withId(R.id.news_list_recycler_view));
 
 
     public ViewInteraction getDescription() {

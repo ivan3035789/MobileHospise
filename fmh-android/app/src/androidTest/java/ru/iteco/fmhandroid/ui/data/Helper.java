@@ -11,6 +11,7 @@ import static androidx.test.espresso.action.ViewActions.swipeRight;
 import static androidx.test.espresso.action.ViewActions.swipeUp;
 import static androidx.test.espresso.assertion.ViewAssertions.matches;
 import static androidx.test.espresso.contrib.RecyclerViewActions.actionOnItemAtPosition;
+import static androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition;
 import static androidx.test.espresso.matcher.ViewMatchers.isAssignableFrom;
 import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withChild;
@@ -474,21 +475,25 @@ public class Helper {
 
         public static int searchNews(String text) {
             ControlPanelScreenStep controlPanelScreenStep = new ControlPanelScreenStep();
+            ControlPanelScreenElements controlPanelScreenElements = new ControlPanelScreenElements();
             int position = 0;
             boolean notFound = true;
             String description;
 
             while (notFound) {
-
                 try {
                     controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
+//                    controlPanelScreenElements.getRecyclerView().perform(scrollToPosition(position), click());
                     SystemClock.sleep(2000);
                     description = controlPanelScreenStep.descriptionNewsPosition(position);
                     if (text.trim().equals(description.trim())) {
                         notFound = false;
                     } else {
                         notFound = true;
+                        controlPanelScreenStep.clickingOnRandomlySelectedNewsItem(position);
                         position += 1;
+                        controlPanelScreenElements.getRecyclerView().perform(scrollToPosition(position), click());
+                        SystemClock.sleep(2000);
                     }
                 } catch (PerformException e) {
                     break;
